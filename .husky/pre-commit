@@ -4,8 +4,3 @@
 cd client
 yarn lint
 yarn format
-
-cd ..
-cd server
-yarn format
-yarn lint
