@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd client
+yarn lint
+yarn format
+
+cd ..
+cd server
+yarn format
+yarn lint
