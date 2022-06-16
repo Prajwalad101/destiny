@@ -10,7 +10,11 @@ export interface IBusiness {
 }
 
 const businessSchema = new mongoose.Schema<IBusiness>({
-  name: { type: String, required: [true, 'A business must contain a name'] },
+  name: {
+    type: String,
+    unique: true,
+    required: [true, 'A business must contain a name'],
+  },
   description: {
     type: String,
     required: [true, 'A business must contain a description'],
