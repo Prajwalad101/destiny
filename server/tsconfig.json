@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "target": "ES2021",
     "lib": ["ES2021"],
     "module": "CommonJS",
@@ -8,6 +9,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true
+  },
+  "ts-node": {
+    "swc": true
   },
   "exclude": ["node_modules"]
 }
