@@ -1,7 +1,9 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import Business from '../models/business.model';
+import AppError from '../utils/appError';
+import catchAsync from '../utils/catchAsync';
 
-const getAllBusinesses = async (req: Request, res: Response) => {
+const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
   try {
     const allBusiness = await Business.find();
     res.json({
@@ -14,70 +16,62 @@ const getAllBusinesses = async (req: Request, res: Response) => {
       message: err,
     });
   }
-};
+});
 
-const createBusiness = async (req: Request, res: Response) => {
-  try {
+const createBusiness = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
     const business = await Business.create(req.body);
-    res.json({
+    res.status(201).json({
       status: 'success',
       data: business,
     });
-  } catch (err) {
-    res.json({
-      status: 'error',
-      message: err,
-    });
   }
-};
+);
 
-const getBusiness = async (req: Request, res: Response) => {
-  try {
+const getBusiness = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const business = await Business.findById(req.params.id);
-    res.json({
+    if (!business) {
+      return next(new AppError('No business found with that ID', 404));
+    }
+
+    res.status(200).json({
       status: 'success',
       data: business,
     });
-  } catch (err) {
-    res.json({
-      status: 'error',
-      message: err,
-    });
   }
-};
+);
 
-const deleteBusiness = async (req: Request, res: Response) => {
-  try {
-    const business = await Business.findByIdAndDelete(req.params.id);
-    res.json({
-      status: 'success',
-      data: business,
-    });
-  } catch (err) {
-    res.json({
-      status: 'error',
-      message: err,
-    });
-  }
-};
-
-const updateBusiness = async (req: Request, res: Response) => {
-  try {
+const updateBusiness = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const business = await Business.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
-    res.json({
+    if (!business) {
+      return next(new AppError('No business found with that ID', 404));
+    }
+
+    res.status(200).json({
       status: 'success',
       data: business,
     });
-  } catch (err) {
-    res.json({
-      status: 'error',
-      message: err,
+  }
+);
+
+const deleteBusiness = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const business = await Business.findByIdAndDelete(req.params.id);
+
+    if (!business) {
+      return next(new AppError('No business found with that ID', 404));
+    }
+
+    res.status(204).json({
+      status: 'success',
     });
   }
-};
+);
 
 export default {
   getAllBusinesses,
