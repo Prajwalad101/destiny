@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import './load-env';
+
 import app from './app';
 
 mongoose
@@ -10,6 +12,6 @@ mongoose
     console.log('Error while connecting to database');
   });
 
-app.listen(4000, () => {
-  console.log('The server is listening on port', 4000);
+app.listen(process.env.PORT, () => {
+  console.log('The server is listening on port', process.env.PORT);
 });
