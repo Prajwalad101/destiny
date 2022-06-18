@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import Business from '../models/business.model';
+import Business from '../models/businessModel';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
 

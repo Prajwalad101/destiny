@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import './load-env';
+import './loadEnv';
 
 process.on('uncaughtException', (err: Error) => {
   console.log('Uncaught Exception. Shutting down...');

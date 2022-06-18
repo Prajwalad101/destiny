@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
-import globalErrorHandler from './controllers/error.controller';
-import businessRouter from './routes/business.routes';
+import globalErrorHandler from './controllers/errorController';
+import businessRouter from './routes/businessRoutes';
 import AppError from './utils/appError';
 
 const app = express();
