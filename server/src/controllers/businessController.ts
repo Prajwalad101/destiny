@@ -30,7 +30,7 @@ const createBusiness = catchAsync(
 
 const getBusiness = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const business = await Business.findById(req.params.id);
+    const business = await Business.findById(req.params.id).populate('reviews');
     if (!business) {
       return next(new AppError('No business found with that ID', 404));
     }
