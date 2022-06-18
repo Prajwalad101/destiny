@@ -1,12 +1,5 @@
-import { model, Schema, Types } from 'mongoose';
-
-interface IReview {
-  review: string;
-  rating: number;
-  likes: number;
-  dislikes: number;
-  business: Types.ObjectId;
-}
+import { model, Schema } from 'mongoose';
+import { IReview } from '../types/interfaces';
 
 const reviewSchema = new Schema<IReview>(
   {

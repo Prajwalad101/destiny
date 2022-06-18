@@ -1,13 +1,5 @@
 import mongoose from 'mongoose';
-
-export interface IBusiness {
-  name: {
-    type: string;
-  };
-  description: string;
-  rating: number;
-  createdAt: Date;
-}
+import { IBusiness } from '../types/interfaces';
 
 const businessSchema = new mongoose.Schema<IBusiness>(
   {

@@ -31,8 +31,9 @@ const createBusiness = catchAsync(
 const getBusiness = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const business = await Business.findById(req.params.id).populate('reviews');
+
     if (!business) {
-      return next(new AppError('No business found with that ID', 404));
+      return next(new AppError('No document found with that ID', 404));
     }
 
     res.status(200).json({
@@ -48,8 +49,9 @@ const updateBusiness = catchAsync(
       new: true,
       runValidators: true,
     });
+
     if (!business) {
-      return next(new AppError('No business found with that ID', 404));
+      return next(new AppError('No document found with that ID', 404));
     }
 
     res.status(200).json({
@@ -64,7 +66,7 @@ const deleteBusiness = catchAsync(
     const business = await Business.findByIdAndDelete(req.params.id);
 
     if (!business) {
-      return next(new AppError('No business found with that ID', 404));
+      return next(new AppError('No document found with that ID', 404));
     }
 
     res.status(204).json({
