@@ -11,7 +11,18 @@ const getAllReviews = catchAsync(
 
     const review = await Review.find(filter);
 
-    res.status(201).json({
+    res.status(200).json({
+      status: 'success',
+      data: review,
+    });
+  }
+);
+
+const getReview = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
+    const review = await Review.findById(req.params.id);
+
+    res.status(200).json({
       status: 'success',
       data: review,
     });
@@ -32,4 +43,32 @@ const createReview = catchAsync(
   }
 );
 
-export default { getAllReviews, createReview };
+const updateReview = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
+    const newReview = await Review.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(200).json({
+      status: 'success',
+      data: newReview,
+    });
+  }
+);
+
+const deleteReview = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
+    await Review.findByIdAndDelete(req.params.id);
+
+    res.status(204).json({});
+  }
+);
+
+export default {
+  getAllReviews,
+  getReview,
+  createReview,
+  updateReview,
+  deleteReview,
+};

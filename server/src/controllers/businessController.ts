@@ -11,7 +11,7 @@ const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
       data: allBusiness,
     });
   } catch (err) {
-    res.json({
+    res.status(200).json({
       status: 'error',
       message: err,
     });
