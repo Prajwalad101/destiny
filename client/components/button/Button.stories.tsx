@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Button from '../components/Button';
+import Button, { IButton } from './Button';
+import { mockButtonProps } from './Button.mocks';
 
 export default {
-  title: 'Button',
+  title: 'templates/Button',
   component: Button,
   argTypes: {
     variant: {
@@ -14,14 +15,16 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
+// primary button
 export const Primary = Template.bind({});
 Primary.args = {
+  ...mockButtonProps.base,
   variant: 'primary',
-  label: 'Click Me',
-};
+} as IButton;
 
+// secondary button
 export const Secondary = Template.bind({});
 Secondary.args = {
+  ...mockButtonProps.base,
   variant: 'secondary',
-  label: 'Click Me',
-};
+} as IButton;
