@@ -10,6 +10,9 @@ module.exports = {
         rubik: ['Rubik', 'sans-serif'],
         merriweather: ['Merriweather', 'serif'],
       },
+      colors: {
+        primaryred: '#F55A5A',
+      },
     },
   },
   plugins: [],
