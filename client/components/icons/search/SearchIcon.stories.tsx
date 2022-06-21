@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import SearchIcon from './SearchIcon';
 
 export default {
-  title: 'templates/SearchIcon',
+  title: 'components/SearchIcon',
   component: SearchIcon,
 } as ComponentMeta<typeof SearchIcon>;
 

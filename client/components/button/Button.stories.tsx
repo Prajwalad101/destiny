@@ -3,7 +3,7 @@ import Button, { IButton } from './Button';
 import { mockButtonProps } from './Button.mocks';
 
 export default {
-  title: 'templates/Button',
+  title: 'components/Button',
   component: Button,
   argTypes: {
     variant: {
