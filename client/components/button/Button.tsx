@@ -11,8 +11,8 @@ function Button({ children, variant }: IButton) {
       className={classNames(
         variant === 'primary'
           ? 'bg-primaryred hover:bg-red-500'
-          : 'border-2 border-white bg-transparent hover:border-primaryred hover:bg-primaryred',
-        'rounded-md py-2 px-6 font-rubik text-base text-white transition-colors '
+          : 'border-[1px] border-white bg-transparent hover:border-primaryred hover:bg-primaryred',
+        'md h-[37px] rounded-md px-6 font-rubik text-base text-white transition-colors'
       )}
     >
       {children}

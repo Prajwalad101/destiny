@@ -3,7 +3,8 @@ export interface INavbarLayout {
 }
 
 function NavbarLayout({ children }: INavbarLayout) {
-  return <div className="flex justify-between py-2 shadow-md">{children}</div>;
+  return <div className="py-2 shadow-md">{children}</div>;
 }
 
 export default NavbarLayout;
+3;
