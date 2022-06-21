@@ -3,7 +3,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 function SearchIcon() {
   return (
     <>
-      <AiOutlineSearch size={25} />
+      <AiOutlineSearch size={30} />
     </>
   );
 }

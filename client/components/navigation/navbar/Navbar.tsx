@@ -6,8 +6,8 @@ import Logo from '../../logo/Logo';
 
 function Navbar() {
   return (
-    <div className="py-2 shadow-md">
-      <div className="flex justify-between md:hidden">
+    <div className="px-3 py-4 shadow-md md:shadow-none">
+      <div className="flex items-center justify-between md:hidden">
         <HamburgerIcon />
         <Logo>Logo</Logo>
         <SearchIcon />
