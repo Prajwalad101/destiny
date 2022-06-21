@@ -1,9 +1,9 @@
-import { AiOutlineMenu } from 'react-icons/ai';
+import { BiMenu } from 'react-icons/bi';
 
 function HamburgerIcon() {
   return (
     <>
-      <AiOutlineMenu size={25} />
+      <BiMenu size={30} />
     </>
   );
 }
