@@ -6,7 +6,7 @@ import Logo from '../../logo/Logo';
 
 function Navbar() {
   return (
-    <div className="px-3 py-4 shadow-md md:shadow-none">
+    <div className=" relative z-10 px-3 py-4 text-black shadow-md md:shadow-none">
       <div className="flex items-center justify-between md:hidden">
         <HamburgerIcon />
         <Logo>Logo</Logo>

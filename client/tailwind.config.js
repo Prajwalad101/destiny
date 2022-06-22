@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         primaryred: '#F55A5A',
       },
+      backgroundImage: {
+        'main-img': "url('/images/img.jpg')",
+      },
     },
   },
   plugins: [],
