@@ -1,7 +1,7 @@
 import { classNames } from '../../utils/tailwindFunc';
 
 export interface IButton {
-  children: string;
+  children: React.ReactNode;
   variant?: 'primary' | 'secondary';
 }
 

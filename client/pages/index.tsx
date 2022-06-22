@@ -4,7 +4,7 @@ const Home: NextPage = () => {
   return (
     <div className="mt-7 md:mt-12">
       <div className="relative z-10">
-        <h1 className="max-w-sm font-merriweather text-4xl font-black leading-tight tracking-wider sm:max-w-xl sm:text-[40px] md:text-[45px] md:leading-[69px] md:text-white">
+        <h1 className="max-w-sm font-merriweather text-[33px] font-black leading-tight tracking-wider sm:max-w-xl sm:text-[40px] md:text-[45px] md:leading-[69px] md:text-white">
           Find and support local businesses
         </h1>
       </div>
