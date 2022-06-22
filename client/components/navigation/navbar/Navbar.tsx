@@ -1,16 +1,16 @@
 import Link from 'next/link';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { BiMenu } from 'react-icons/bi';
 import Button from '../../button/Button';
-import HamburgerIcon from '../../icons/hamburger/HamburgerIcon';
-import SearchIcon from '../../icons/search/SearchIcon';
 import Logo from '../../logo/Logo';
 
 function Navbar() {
   return (
     <div className="relative z-10 px-3 py-4 text-black shadow-md md:px-16 md:pt-7 md:shadow-none">
       <div className="flex items-center justify-between md:hidden">
-        <HamburgerIcon />
+        <BiMenu size={35} /> {/* Hamburger Icon */}
         <Logo>Logo</Logo>
-        <SearchIcon />
+        <AiOutlineSearch size={30} />
       </div>
       <div className="hidden items-center justify-between text-white md:flex">
         <Logo>Logo</Logo>
