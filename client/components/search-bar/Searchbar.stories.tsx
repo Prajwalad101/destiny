@@ -12,5 +12,6 @@ const Template: ComponentStory<typeof Searchbar> = (args) => (
 
 export const Base = Template.bind({});
 Base.args = {
-  placeholder: 'Search for stuff ...',
+  foodPlaceholder: 'Search for stuff ...',
+  locationPlaceholder: 'Kathmandu, New Baneshwor',
 };

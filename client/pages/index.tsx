@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Searchbar from '../components/search-bar/Searchbar';
 
 const Home: NextPage = () => {
   return (
@@ -8,7 +9,13 @@ const Home: NextPage = () => {
           Find and support local businesses
         </h1>
       </div>
-      <div className="absolute inset-0 hidden h-[95vh] bg-main-img bg-cover bg-no-repeat md:block"></div>
+      <div className="absolute inset-0 hidden h-[95vh] bg-main-img bg-cover bg-no-repeat md:block" />
+      <div className="mt-5 w-full max-w-xl md:mt-7 md:max-w-2xl">
+        <Searchbar
+          foodPlaceholder="Search for stuff"
+          locationPlaceholder="Kathmandu, New baneshwor"
+        />
+      </div>
     </div>
   );
 };
