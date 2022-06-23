@@ -6,7 +6,7 @@ import Logo from '../../logo/Logo';
 
 function Navbar() {
   return (
-    <div className="relative z-10 px-3 py-4 font-rubik text-black shadow-md md:px-16 md:pt-7 md:shadow-none">
+    <div className="px-3 py-4 font-rubik text-black shadow-md md:px-16 md:pt-7 md:shadow-none">
       <div className="flex items-center justify-between md:hidden">
         <BiMenu size={35} /> {/* Hamburger Icon */}
         <Logo>Logo</Logo>
