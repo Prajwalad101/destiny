@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         primaryred: '#F55A5A',
+        secondarytext: '#4E4E4E',
       },
       backgroundImage: {
         'main-img': "url('/images/img.jpg')",

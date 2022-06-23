@@ -1,4 +1,4 @@
-import { classNames } from '../../utils/tailwindFunc';
+import { classNames } from '../../utils/tailwind';
 
 export interface IButton {
   children: React.ReactNode;
