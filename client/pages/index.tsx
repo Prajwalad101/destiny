@@ -1,31 +1,8 @@
 import type { NextPage } from 'next';
 import ExploreTopicDropdown from '../components/dropdown/explore-topic/ExploreTopicDropdown';
 import Searchbar from '../components/search-bar/Searchbar';
+import dropDownData from '../data/dropdown.data';
 
-const dropDownData = [
-  {
-    topic: 'food and drinks',
-    items: ['resturants', 'cafes', 'food stalls', 'hotels'],
-  },
-  {
-    topic: 'fitness',
-    items: [
-      'gyms',
-      'meditation centers',
-      'fitness centers',
-      'zumba',
-      'swimming',
-    ],
-  },
-  {
-    topic: 'home services',
-    items: ['plumbing', 'electricity', 'cleaning', 'repairs'],
-  },
-  {
-    topic: 'more',
-    items: ['entertainment', 'shopping', 'essentials', 'vehicles'],
-  },
-];
 const Home: NextPage = () => {
   return (
     <div className="mt-7 md:mt-12">
