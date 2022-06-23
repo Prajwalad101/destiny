@@ -1,12 +1,14 @@
 {
   "extends": [
-    "plugin:storybook/recommended",
+    "eslint:recommended",
     "next",
     "next/core-web-vitals",
-    "eslint:recommended",
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended"
   ],
-  "plugins": ["prettier"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier", "@typescript-eslint"],
   "globals": {
     "React": "readonly"
   },
@@ -20,6 +22,7 @@
   ],
   "rules": {
     "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": 0,
     "prettier/prettier": ["error"]
   }
 }
