@@ -53,6 +53,13 @@ const Home: NextPage = () => {
           </div>
         ))}
       </div>
+
+      {/* IMAGE SLIDER INDICATOR */}
+      <div className="mt-32 flex gap-3">
+        <div className="h-[5px] w-12 rounded-md bg-white"></div>
+        <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
+        <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
+      </div>
     </div>
   );
 };
