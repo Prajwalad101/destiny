@@ -46,7 +46,7 @@ const Home: NextPage = () => {
       </div>
 
       {/* DROPDOWN ITEMS */}
-      <div className="mt-5 hidden gap-8 md:flex">
+      <div className="mt-5 hidden gap-8 font-rubik md:flex">
         {dropDownData.map((data, index) => (
           <div key={index}>
             <ExploreTopicDropdown topic={data.topic} items={data.items} />
