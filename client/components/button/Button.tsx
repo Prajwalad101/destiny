@@ -12,7 +12,7 @@ function Button({ children, variant }: IButton) {
         variant === 'primary'
           ? 'bg-primaryred hover:bg-red-500'
           : 'border-[1px] border-white bg-transparent hover:border-primaryred hover:bg-primaryred',
-        'md h-[37px] rounded-md px-6 font-rubik text-base text-white transition-colors'
+        'md h-[37px] rounded-md px-6 text-base text-white transition-colors'
       )}
     >
       {children}
