@@ -12,26 +12,31 @@ export interface IBusinessCard {
 
 function BusinessCard(props: IBusinessCard) {
   return (
-    <div className="w-1/2 font-rubik">
+    <div className="font-rubik">
       {/* IMAGE COMPONENT */}
-      <div className="relative h-[148px] w-full">
-        <Image
-          src={props.image}
-          alt={props.name}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
+      <Image
+        src={props.image}
+        alt={props.name}
+        width={300}
+        height={240}
+        layout="responsive"
+        objectFit="cover"
+        className="rounded-t-sm"
+      />
 
       {/* BODY */}
-      <div className="border-x-2 border-b-2 px-2 pt-3">
+      <div className="rounded-sm border-x-2 border-b-2 px-2 pt-3">
         {/* NAME */}
-        <div className="mb-[10px] flex items-center gap-3">
-          <p className="text-base">{props.name}</p>
-          <div className="rounded-sm bg-[#DDE7CA] px-1 py-[2px]">
-            <p className="text-[12px] capitalize">{props.status}</p>
-          </div>
+        <div className="mb-1">
+          <p className="text-base font-medium">{props.name}</p>
         </div>
+        {props.status ? (
+          <div className="mb-3 w-max rounded-sm bg-[#DDE7CA] px-2 py-[2px]">
+            <p className="text-sm capitalize text-secondarytext">
+              {props.status}
+            </p>
+          </div>
+        ) : null}
 
         {/* LOCATION */}
         <p className="mb-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm text-secondarytext">
@@ -39,7 +44,7 @@ function BusinessCard(props: IBusinessCard) {
         </p>
 
         {/* BUSINESS RATING */}
-        <div className="mb-2 flex gap-2 text-secondarytext">
+        <div className="mb-2 flex gap-2 ">
           <RatingIcons avgRating={props.avgRating} />
           <span className="text-sm">({props.numReviews})</span>
         </div>

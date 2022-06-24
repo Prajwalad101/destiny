@@ -44,7 +44,9 @@ const Home: NextPage = () => {
       {/* BUSINESSES CARD LIST */}
       <CardsListLayout>
         <BusinessCard {...mockBusinessCardProps.base} />
-        <BusinessCard {...mockBusinessCardProps.base} />
+        <BusinessCard {...mockBusinessCardProps.card1} />
+        <BusinessCard {...mockBusinessCardProps.card2} />
+        <BusinessCard {...mockBusinessCardProps.card3} />
       </CardsListLayout>
     </div>
   );
