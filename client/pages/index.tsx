@@ -1,5 +1,8 @@
 import type { NextPage } from 'next';
+import BusinessCard from '../components/cards/business/BusinessCard';
+import { mockBusinessCardProps } from '../components/cards/business/BusinessCard.mocks';
 import ExploreTopicDropdown from '../components/dropdown/explore-topic/ExploreTopicDropdown';
+import CardsListLayout from '../components/layout/cards-list/CardsListLayout';
 import Searchbar from '../components/search-bar/Searchbar';
 import dropDownData from '../data/dropdown.data';
 
@@ -32,11 +35,17 @@ const Home: NextPage = () => {
       </div>
 
       {/* IMAGE SLIDER INDICATOR */}
-      <div className="mt-32 flex gap-3">
+      <div className="mt-32 hidden gap-3 md:flex">
         <div className="h-[5px] w-12 rounded-md bg-white"></div>
         <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
         <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
       </div>
+
+      {/* BUSINESSES CARD LIST */}
+      <CardsListLayout>
+        <BusinessCard {...mockBusinessCardProps.base} />
+        <BusinessCard {...mockBusinessCardProps.base} />
+      </CardsListLayout>
     </div>
   );
 };

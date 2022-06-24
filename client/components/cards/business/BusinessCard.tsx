@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { truncateText } from '../../../utils/text';
 import RatingIcons from '../../icons/ratings/RatingIcons';
 
 export interface IBusinessCard {
@@ -12,12 +11,10 @@ export interface IBusinessCard {
 }
 
 function BusinessCard(props: IBusinessCard) {
-  const location = truncateText(props.location, 20);
-
   return (
-    <div className="w-max border-2 font-rubik">
+    <div className="w-1/2 font-rubik">
       {/* IMAGE COMPONENT */}
-      <div className="relative mb-3 h-[148px] w-full">
+      <div className="relative h-[148px] w-full">
         <Image
           src={props.image}
           alt={props.name}
@@ -27,7 +24,7 @@ function BusinessCard(props: IBusinessCard) {
       </div>
 
       {/* BODY */}
-      <div className="mx-2">
+      <div className="border-x-2 border-b-2 px-2 pt-3">
         {/* NAME */}
         <div className="mb-[10px] flex items-center gap-3">
           <p className="text-base">{props.name}</p>
@@ -37,12 +34,14 @@ function BusinessCard(props: IBusinessCard) {
         </div>
 
         {/* LOCATION */}
-        <p className="mb-1 text-sm text-secondarytext">{location}</p>
+        <p className="mb-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm text-secondarytext">
+          {props.location}
+        </p>
 
         {/* BUSINESS RATING */}
-        <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm">{props.numReviews} reviews</span>
+        <div className="mb-2 flex gap-2 text-secondarytext">
           <RatingIcons avgRating={props.avgRating} />
+          <span className="text-sm">({props.numReviews})</span>
         </div>
       </div>
     </div>
