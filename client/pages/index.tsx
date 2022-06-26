@@ -1,23 +1,13 @@
-import BusinessCard from '../components/cards/business/BusinessCard';
-import { mockBusinessCardProps } from '../components/cards/business/BusinessCard.mocks';
-import AppLayout from '../components/layout/app/AppLayout';
-import CardsListLayout from '../components/layout/cards-list/CardsListLayout';
-import HeroLayout from '../components/layout/hero/HeroLayout';
-import { NextPageWithLayout } from './page';
+import { NextPage } from 'next';
+import HeroSection from '../components/sections/hero/HeroSection';
+import RecommendedSection from '../components/sections/recommended/RecommendedSection';
 
-const Home: NextPageWithLayout = () => {
+const Home: NextPage = () => {
   return (
     <div>
-      <HeroLayout />
+      <HeroSection />
       {/* BUSINESSES CARD LIST */}
-      <AppLayout>
-        <CardsListLayout>
-          <BusinessCard {...mockBusinessCardProps.base} />
-          <BusinessCard {...mockBusinessCardProps.card1} />
-          <BusinessCard {...mockBusinessCardProps.card2} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-        </CardsListLayout>
-      </AppLayout>
+      <RecommendedSection />
     </div>
   );
 };

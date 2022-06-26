@@ -3,7 +3,7 @@ interface IAppLayout {
 }
 
 function AppLayout({ children }: IAppLayout) {
-  return <div className="mx-3 md:px-16">{children}</div>;
+  return <div className="px-3 md:px-44">{children}</div>;
 }
 
 export default AppLayout;

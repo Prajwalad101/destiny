@@ -6,7 +6,8 @@ import Logo from '../../logo/Logo';
 
 function Navbar() {
   return (
-    <div className="px-3 py-4 font-rubik text-black shadow-md md:px-16 md:pt-7 md:shadow-none">
+    // <AppLayout>
+    <div className="py-4 px-3 font-rubik text-black shadow-md md:px-10 md:pt-7 md:shadow-none">
       {/* FOR SMALLER(<md) SCREENS */}
       <div className="flex items-center justify-between md:hidden">
         <BiMenu size={35} /> {/* Hamburger Icon */}
@@ -34,6 +35,7 @@ function Navbar() {
         </div>
       </div>
     </div>
+    // </AppLayout>
   );
 }
 
