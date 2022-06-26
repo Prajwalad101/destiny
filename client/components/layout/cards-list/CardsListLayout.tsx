@@ -4,14 +4,14 @@ interface ICardsListLayout {
 
 function CardsListLayout({ children }: ICardsListLayout) {
   return (
-    <div className="mt-10 ">
-      <h3 className="mb-5 font-rubik text-xl font-medium text-secondarytext sm:text-[22px]">
+    <section>
+      <h3 className="my-7 font-rubik text-xl font-medium text-gray-700 sm:text-[22px] md:my-10 md:text-center md:text-[26px]">
         Top picks for you
       </h3>
-      <div className="grid grid-cols-2 gap-y-5 gap-x-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-y-5 gap-x-3 sm:grid-cols-3 md:grid-cols-4">
         {children}
       </div>
-    </div>
+    </section>
   );
 }
 
