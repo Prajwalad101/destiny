@@ -4,7 +4,7 @@ import AppLayout from '../../layout/app/AppLayout';
 import Navbar from '../../navigation/navbar/Navbar';
 import Searchbar from '../../search-bar/Searchbar';
 
-function HeroLayout() {
+function HeroSection() {
   return (
     <div className="relative md:h-[700px]">
       {/* BACKGROUND IMAGE */}
@@ -13,7 +13,7 @@ function HeroLayout() {
       {/* NAVIGATION BAR */}
       <Navbar />
       <AppLayout>
-        <section className="mt-7 md:mt-12">
+        <section className="mt-7 md:mt-20">
           {/*/ MAIN HEADING */}
           <h1 className="max-w-sm font-merriweather text-[33px] font-black leading-tight tracking-wider sm:max-w-xl sm:text-[40px] md:text-[45px] md:leading-[69px] md:text-white">
             Find and support local businesses
@@ -37,7 +37,7 @@ function HeroLayout() {
           </div>
 
           {/* IMAGE SLIDER INDICATOR */}
-          <div className="mt-32 hidden gap-3 md:flex">
+          <div className="mt-52 hidden gap-3 md:flex">
             <div className="h-[5px] w-12 rounded-md bg-white"></div>
             <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
             <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
@@ -48,4 +48,4 @@ function HeroLayout() {
   );
 }
 
-export default HeroLayout;
+export default HeroSection;
