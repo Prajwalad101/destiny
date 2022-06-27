@@ -16,6 +16,7 @@ function RecommendedSection({
     const slider = document.getElementById('slider') as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft - 500;
   };
+
   const slideRight = () => {
     const slider = document.getElementById('slider') as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft + 500;
@@ -37,12 +38,18 @@ function RecommendedSection({
             className="hide-scrollbar mb-10 flex gap-3 overflow-x-scroll scroll-smooth"
           >
             {/* LEFT BUTTON */}
-            <div className="absolute top-[35%] left-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white">
-              <AiOutlineArrowLeft size={25} onClick={slideLeft} />
+            <div
+              className="absolute top-[35%] left-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white"
+              onClick={slideLeft}
+            >
+              <AiOutlineArrowLeft size={25} />
             </div>
             {/* RIGHT BUTTON */}
-            <div className="absolute top-[35%] right-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white">
-              <AiOutlineArrowRight size={25} onClick={slideRight} />
+            <div
+              className="absolute top-[35%] right-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white"
+              onClick={slideRight}
+            >
+              <AiOutlineArrowRight size={25} />
             </div>
             {children}
           </div>
