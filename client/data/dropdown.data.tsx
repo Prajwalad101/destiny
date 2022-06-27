@@ -19,7 +19,7 @@ export interface IItem {
   icon: JSX.Element;
 }
 
-interface ITopicDropdownData {
+export interface ITopicDropdownData {
   topic: string;
   items: IItem[];
 }
