@@ -13,12 +13,12 @@ function RecommendedSection({
   children,
 }: IRecommendedSection) {
   const slideLeft = () => {
-    const slider = document.getElementById('slider') as HTMLDivElement;
+    const slider = document.getElementById(title) as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft - 500;
   };
 
   const slideRight = () => {
-    const slider = document.getElementById('slider') as HTMLDivElement;
+    const slider = document.getElementById(title) as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft + 500;
   };
 
@@ -34,7 +34,7 @@ function RecommendedSection({
 
         <div className="relative">
           <div
-            id="slider"
+            id={title}
             className="hide-scrollbar mb-10 flex gap-3 overflow-x-scroll scroll-smooth"
           >
             {/* LEFT BUTTON */}
