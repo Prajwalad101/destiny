@@ -28,7 +28,7 @@ function HeroSection() {
           </div>
 
           {/* DROPDOWN ITEMS */}
-          <div className="mt-5 hidden gap-8 font-rubik md:flex">
+          <div className="mt-5 hidden gap-5 font-rubik md:flex">
             {dropdownData.map((data, index) => (
               <div key={index}>
                 <ExploreTopicDropdown topic={data.topic} items={data.items} />
@@ -37,11 +37,11 @@ function HeroSection() {
           </div>
 
           {/* IMAGE SLIDER INDICATOR */}
-          <div className="mt-52 hidden gap-3 md:flex">
+          {/* <div className="mt-52 hidden gap-3 md:flex">
             <div className="h-[5px] w-12 rounded-md bg-white"></div>
             <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
             <div className="h-[5px] w-12 rounded-md bg-gray-400 hover:cursor-pointer"></div>
-          </div>
+          </div> */}
         </section>
       </AppLayout>
     </div>
