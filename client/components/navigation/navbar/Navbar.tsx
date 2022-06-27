@@ -11,9 +11,13 @@ function Navbar() {
       <AppLayout>
         {/* FOR SMALLER(<md) SCREENS */}
         <div className="flex items-center justify-between md:hidden">
-          <BiMenu size={35} /> {/* Hamburger Icon */}
+          <BiMenu size={35} className="cursor-pointer hover:text-gray-700" />{' '}
+          {/* Hamburger Icon */}
           <Logo>Logo</Logo>
-          <AiOutlineSearch size={30} />
+          <AiOutlineSearch
+            size={30}
+            className="cursor-pointer hover:text-gray-700"
+          />
         </div>
 
         {/* FOR LARGER(>=md) SCREENS  */}
