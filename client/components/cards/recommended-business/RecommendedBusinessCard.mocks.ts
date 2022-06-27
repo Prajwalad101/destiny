@@ -1,4 +1,4 @@
-import { IBusinessCard } from './BusinessCard';
+import { IBusinessCard } from './RecommendedBusinessCard';
 
 const base: IBusinessCard = {
   name: 'Eat Greek',

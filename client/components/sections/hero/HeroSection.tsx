@@ -6,7 +6,7 @@ import Searchbar from '../../search-bar/Searchbar';
 
 function HeroSection() {
   return (
-    <div className="relative md:h-[700px]">
+    <div className="relative mb-14 md:mb-0 md:h-[700px]">
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
 

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import BusinessCard, { IBusinessCard } from './BusinessCard';
-import { mockBusinessCardProps } from './BusinessCard.mocks';
+import BusinessCard, { IBusinessCard } from './RecommendedBusinessCard';
+import { mockBusinessCardProps } from './RecommendedBusinessCard.mocks';
 
 export default {
   title: 'components/Cards/Business',

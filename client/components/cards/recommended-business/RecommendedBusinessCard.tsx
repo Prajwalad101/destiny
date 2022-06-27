@@ -12,7 +12,7 @@ export interface IBusinessCard {
 
 function BusinessCard(props: IBusinessCard) {
   return (
-    <div className="w-[calc(100%*0.6)] shrink-0 font-rubik md:w-[calc(100%*0.3)] lg:md:w-[calc(100%*0.25)]">
+    <div className="w-[55%] shrink-0 font-rubik md:w-[30%] lg:md:w-[25%]">
       {/* IMAGE COMPONENT */}
       <Image
         src={props.image}

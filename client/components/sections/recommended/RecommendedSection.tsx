@@ -1,9 +1,17 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
-import BusinessCard from '../../cards/business/BusinessCard';
-import { mockBusinessCardProps } from '../../cards/business/BusinessCard.mocks';
 import AppLayout from '../../layout/app/AppLayout';
 
-function RecommendedSection() {
+interface IRecommendedSection {
+  title: string;
+  description?: string;
+  children: React.ReactNode;
+}
+
+function RecommendedSection({
+  title,
+  description,
+  children,
+}: IRecommendedSection) {
   const slideLeft = () => {
     const slider = document.getElementById('slider') as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -15,27 +23,29 @@ function RecommendedSection() {
 
   return (
     <AppLayout>
-      <h3 className="mb-4 mt-7 font-rubik text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:mb-5 md:text-2xl">
-        Trending right now
-      </h3>
+      <div className="mb-16">
+        <div className="mb-5 font-rubik">
+          <h3 className="mt-7 mb-2 text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:text-2xl">
+            {title}
+          </h3>
+          <p className="text-base text-gray-800 md:block">{description}</p>
+        </div>
 
-      <div className="relative">
-        <div
-          id="slider"
-          className="hide-scrollbar mb-10 flex gap-3 overflow-x-scroll scroll-smooth"
-        >
-          <div className="absolute top-[35%] left-5 z-10 cursor-pointer rounded-full bg-white p-1 text-black">
-            <AiOutlineArrowLeft size={30} onClick={slideLeft} />
+        <div className="relative">
+          <div
+            id="slider"
+            className="hide-scrollbar mb-10 flex gap-3 overflow-x-scroll scroll-smooth"
+          >
+            {/* LEFT BUTTON */}
+            <div className="absolute top-[35%] left-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white">
+              <AiOutlineArrowLeft size={25} onClick={slideLeft} />
+            </div>
+            {/* RIGHT BUTTON */}
+            <div className="absolute top-[35%] right-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white">
+              <AiOutlineArrowRight size={25} onClick={slideRight} />
+            </div>
+            {children}
           </div>
-          <div className="absolute top-[35%] right-5 z-10 cursor-pointer rounded-full bg-white p-1 text-black">
-            <AiOutlineArrowRight size={30} onClick={slideRight} />
-          </div>
-
-          <BusinessCard {...mockBusinessCardProps.base} />
-          <BusinessCard {...mockBusinessCardProps.card2} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
         </div>
       </div>
     </AppLayout>
