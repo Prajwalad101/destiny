@@ -42,7 +42,7 @@ const topicDropdownData: ITopicDropdownData[] = [
     ],
   },
   {
-    topic: 'Sports and Fitness',
+    topic: 'sports and fitness',
     items: [
       { title: 'gyms', icon: <GiWeightLiftingUp size={20} /> },
       { title: 'futsal', icon: <BiFootball size={20} /> },

@@ -1,17 +1,18 @@
-import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
-import dropdownData from '../../../data/dropdown.data';
 import { classNames } from '../../../utils/tailwind';
+import ExploreTopicDropdownMobile from '../../dropdown/explore-topic-mobile/ExploreTopicDropdownMobile';
 
 function Sidebar() {
   const { open, setOpen } = useSidebar();
+
   return (
     <div
       className={classNames(
         !open ? '-translate-x-[300px]' : '',
-        'absolute z-20 h-[100vh] w-[300px] bg-gray-50  p-5 font-rubik transition-all duration-500 md:hidden'
+        'absolute z-20 h-[100vh] w-[300px] overflow-scroll  bg-gray-50 p-5 font-rubik transition-all duration-500 md:hidden'
       )}
     >
       {/* LOGO SECTION */}
@@ -48,20 +49,7 @@ function Sidebar() {
       {/* HORIZONTAL LINE */}
       <div className="h-[1px] bg-gray-500"></div>
 
-      {/* EXPLORE SECTION */}
-      <div className="mt-4">
-        <p className="mb-3 text-lg font-medium">Explore</p>
-
-        {dropdownData.map((item, index) => (
-          <div
-            key={index}
-            className="mb-1 flex cursor-pointer items-center gap-2 rounded-md py-2 transition-all duration-300 hover:bg-gray-200 hover:pl-2"
-          >
-            <AiOutlinePlus className="text-gray-700" />
-            <p className="capitalize">{item.topic}</p>
-          </div>
-        ))}
-      </div>
+      <ExploreTopicDropdownMobile />
     </div>
   );
 }
