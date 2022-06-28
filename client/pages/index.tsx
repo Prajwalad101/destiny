@@ -1,6 +1,6 @@
 import BusinessCard from '../components/cards/recommended-business/RecommendedBusinessCard';
 import { mockBusinessCardProps } from '../components/cards/recommended-business/RecommendedBusinessCard.mocks';
-import Sidebar from '../components/navigation/sidebar/Sidebar';
+import NavLayout from '../components/layout/navigation/NavLayout';
 import HeroSection from '../components/sections/hero/HeroSection';
 import RecommendedSection from '../components/sections/recommended/RecommendedSection';
 import { NextPageWithLayout } from './_app';
@@ -37,11 +37,6 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-Home.getLayout = (page) => (
-  <>
-    <Sidebar />
-    {page}
-  </>
-);
+Home.getLayout = (page) => <NavLayout>{page}</NavLayout>;
 
 export default Home;

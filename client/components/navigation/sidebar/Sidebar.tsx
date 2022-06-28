@@ -1,17 +1,17 @@
-import { useState } from 'react';
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
+import { useSidebar } from '../../../context/navigation.context';
 import dropdownData from '../../../data/dropdown.data';
 import { classNames } from '../../../utils/tailwind';
 
 function Sidebar() {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen } = useSidebar();
   return (
     <div
       className={classNames(
         open ? '-translate-x-[300px]' : '',
-        'absolute z-20 h-[100vh] w-[300px]  bg-white p-5 font-rubik transition-all duration-500'
+        'absolute z-20 h-[100vh] w-[300px] bg-white  p-5 font-rubik transition-all duration-500 md:hidden'
       )}
     >
       {/* LOGO SECTION */}
