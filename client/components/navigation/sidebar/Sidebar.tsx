@@ -10,8 +10,8 @@ function Sidebar() {
   return (
     <div
       className={classNames(
-        open ? '-translate-x-[300px]' : '',
-        'absolute z-20 h-[100vh] w-[300px] bg-white  p-5 font-rubik transition-all duration-500 md:hidden'
+        !open ? '-translate-x-[300px]' : '',
+        'absolute z-20 h-[100vh] w-[300px] bg-gray-50  p-5 font-rubik transition-all duration-500 md:hidden'
       )}
     >
       {/* LOGO SECTION */}

@@ -24,9 +24,9 @@ function RecommendedSection({
 
   return (
     <AppLayout>
-      <div className="mb-16">
+      <div className="md:mb-16">
         <div className="mb-5 font-rubik">
-          <h3 className="mt-7 mb-2 text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:text-2xl">
+          <h3 className="mb-2 text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:text-2xl">
             {title}
           </h3>
           <p className="text-base text-gray-800 md:block">{description}</p>

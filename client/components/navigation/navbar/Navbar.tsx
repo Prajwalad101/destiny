@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
 import { useSidebar } from '../../../context/navigation.context';
@@ -8,6 +9,14 @@ import Logo from '../../logo/Logo';
 
 function Navbar() {
   const { open, setOpen } = useSidebar();
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [open]);
 
   return (
     <div className="py-4 font-rubik text-black shadow-md md:pt-7 md:shadow-none">

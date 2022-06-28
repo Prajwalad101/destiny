@@ -9,7 +9,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <div>
       <HeroSection />
-      <div className="">
+      <div>
         {/* Recommended Businesses */}
         <RecommendedSection
           title="Trending right now"
