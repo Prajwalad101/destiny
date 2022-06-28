@@ -1,10 +1,11 @@
-import { NextPage } from 'next';
 import BusinessCard from '../components/cards/recommended-business/RecommendedBusinessCard';
 import { mockBusinessCardProps } from '../components/cards/recommended-business/RecommendedBusinessCard.mocks';
+import Sidebar from '../components/navigation/sidebar/Sidebar';
 import HeroSection from '../components/sections/hero/HeroSection';
 import RecommendedSection from '../components/sections/recommended/RecommendedSection';
+import { NextPageWithLayout } from './_app';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <div>
       <HeroSection />
@@ -35,5 +36,12 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+Home.getLayout = (page) => (
+  <>
+    <Sidebar />
+    {page}
+  </>
+);
 
 export default Home;
