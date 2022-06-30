@@ -12,7 +12,7 @@ function HeroSection() {
 
       {/* NAVIGATION BAR */}
       <Navbar theme="dark" />
-      <AppLayout>
+      <AppLayout size="sm">
         <section className="mt-7 md:mt-20">
           {/*/ MAIN HEADING */}
           <h1 className="max-w-sm font-merriweather text-[33px] font-black leading-tight tracking-wider sm:max-w-xl sm:text-[40px] md:text-[45px] md:leading-[69px] md:text-white">

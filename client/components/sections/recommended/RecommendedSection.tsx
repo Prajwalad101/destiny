@@ -23,7 +23,7 @@ function RecommendedSection({
   };
 
   return (
-    <AppLayout>
+    <AppLayout size="sm">
       <div className="md:mb-16">
         <div className="mb-5 font-rubik">
           <h3 className="mb-2 text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:text-2xl">

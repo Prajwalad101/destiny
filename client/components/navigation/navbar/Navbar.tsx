@@ -25,7 +25,7 @@ function Navbar({ theme }: INavbar) {
 
   return (
     <div className="py-4 font-rubik shadow-md md:pt-7 md:shadow-none">
-      <AppLayout>
+      <AppLayout size="sm">
         {/* FOR SMALLER(<md) SCREENS */}
         <div className="flex items-center justify-between md:hidden">
           <BiMenu
