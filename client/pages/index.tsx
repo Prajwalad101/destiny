@@ -37,6 +37,6 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-Home.getLayout = (page) => <NavLayout>{page}</NavLayout>;
+Home.getLayout = (page) => <NavLayout navbar={false}>{page}</NavLayout>;
 
 export default Home;
