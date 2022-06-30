@@ -1,19 +1,21 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import BusinessCard, { IBusinessCard } from './RecommendedBusinessCard';
-import { mockBusinessCardProps } from './RecommendedBusinessCard.mocks';
+import RecommendedBusinessCard, {
+  IRecommendBusinessCard,
+} from './RecommendedBusinessCard';
+import { mockRecommendBusinessCardProps } from './RecommendedBusinessCard.mocks';
 
 export default {
-  title: 'components/Cards/Business',
-  component: BusinessCard,
+  title: 'components/Cards/RecommendBusiness',
+  component: RecommendedBusinessCard,
   argTypes: {},
-} as ComponentMeta<typeof BusinessCard>;
+} as ComponentMeta<typeof RecommendedBusinessCard>;
 
-const Template: ComponentStory<typeof BusinessCard> = (args) => (
-  <BusinessCard {...args} />
+const Template: ComponentStory<typeof RecommendedBusinessCard> = (args) => (
+  <RecommendedBusinessCard {...args} />
 );
 
 export const Base = Template.bind({});
 
 Base.args = {
-  ...mockBusinessCardProps.base,
-} as IBusinessCard;
+  ...mockRecommendBusinessCardProps.base,
+} as IRecommendBusinessCard;

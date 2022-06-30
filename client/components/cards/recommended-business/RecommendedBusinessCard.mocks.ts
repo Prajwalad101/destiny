@@ -1,6 +1,6 @@
-import { IBusinessCard } from './RecommendedBusinessCard';
+import { IRecommendBusinessCard } from './RecommendedBusinessCard';
 
-const base: IBusinessCard = {
+const base: IRecommendBusinessCard = {
   name: 'Eat Greek',
   location: 'Kathmandu, Naya Baneshwor',
   image: '/images/business/amer.jpg',
@@ -8,14 +8,14 @@ const base: IBusinessCard = {
   avgRating: 4.5,
   status: 'trending',
 };
-const card1: IBusinessCard = {
+const card1: IRecommendBusinessCard = {
   name: 'Gole Sausages',
   location: 'Kathmandu, Kapan',
   image: '/images/business/amer.jpg',
   numReviews: 11,
   avgRating: 4.5,
 };
-const card2: IBusinessCard = {
+const card2: IRecommendBusinessCard = {
   name: 'Bajeko Sekuwa',
   location: 'Kathmandu, Kapan',
   image: '/images/business/amer.jpg',
@@ -23,7 +23,7 @@ const card2: IBusinessCard = {
   avgRating: 4.5,
 };
 
-const card3: IBusinessCard = {
+const card3: IRecommendBusinessCard = {
   name: 'Bajeko Sekuwa',
   location: 'Kathmandu, Kapan',
   image: '/images/business/amer.jpg',
@@ -31,7 +31,7 @@ const card3: IBusinessCard = {
   avgRating: 4.5,
 };
 
-export const mockBusinessCardProps = {
+export const mockRecommendBusinessCardProps = {
   base,
   card1,
   card2,

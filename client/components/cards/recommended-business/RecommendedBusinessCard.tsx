@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import RatingIcons from '../../icons/ratings/RatingIcons';
 
-export interface IBusinessCard {
+export interface IRecommendBusinessCard {
   name: string;
   location: string;
   image: string;
@@ -10,9 +10,9 @@ export interface IBusinessCard {
   status?: string;
 }
 
-function BusinessCard(props: IBusinessCard) {
+function RecommendedBusinessCard(props: IRecommendBusinessCard) {
   return (
-    <div className="w-[55%] shrink-0 font-rubik md:w-[30%] lg:md:w-[25%]">
+    <div className="w-[55%] shrink-0 cursor-pointer font-rubik md:w-[30%] lg:md:w-[25%]">
       {/* IMAGE COMPONENT */}
       <Image
         src={props.image}
@@ -21,7 +21,7 @@ function BusinessCard(props: IBusinessCard) {
         height={300}
         layout="responsive"
         objectFit="cover"
-        className="rounded-t-sm"
+        className="rounded-t-sm hover:opacity-90"
       />
 
       {/* BODY */}
@@ -55,4 +55,4 @@ function BusinessCard(props: IBusinessCard) {
   );
 }
 
-export default BusinessCard;
+export default RecommendedBusinessCard;
