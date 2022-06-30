@@ -19,6 +19,7 @@ export interface IBusinessCard {
 }
 function BusinessCard(props: IBusinessCard) {
   const typeStr = props.type?.join(', ');
+
   return (
     <div className="font-rubik md:flex">
       {/* Image */}
@@ -26,14 +27,12 @@ function BusinessCard(props: IBusinessCard) {
         <Image
           src={props.image}
           alt={props.name}
-          width={100}
-          height={100}
           layout="fill"
           objectFit="cover"
         />
       </div>
       {/* Body */}
-      <div className="border-x-2 border-b-2 p-2 md:border-l-0 md:border-t-2 md:p-0">
+      <div className="grow border-x-2 border-b-2 p-2 md:border-l-0 md:border-t-2 md:p-0">
         <div className="md:pr-2 md:pl-3 md:pt-2">
           <h3 className="mb-2 text-lg font-medium">{props.name}</h3>
           <div className="mb-5 flex items-center gap-3">
