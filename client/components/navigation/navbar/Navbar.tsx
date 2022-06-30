@@ -3,11 +3,16 @@ import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
 import { useSidebar } from '../../../context/navigation.context';
+import { classNames } from '../../../utils/tailwind';
 import Button from '../../button/Button';
 import AppLayout from '../../layout/app/AppLayout';
 import Logo from '../../logo/Logo';
 
-function Navbar() {
+interface INavbar {
+  theme: 'light' | 'dark';
+}
+
+function Navbar({ theme }: INavbar) {
   const { open, setOpen } = useSidebar();
 
   useEffect(() => {
@@ -19,7 +24,7 @@ function Navbar() {
   }, [open]);
 
   return (
-    <div className="py-4 font-rubik text-black shadow-md md:pt-7 md:shadow-none">
+    <div className="py-4 font-rubik shadow-md md:pt-7 md:shadow-none">
       <AppLayout>
         {/* FOR SMALLER(<md) SCREENS */}
         <div className="flex items-center justify-between md:hidden">
@@ -37,7 +42,12 @@ function Navbar() {
         </div>
 
         {/* FOR LARGER(>=md) SCREENS  */}
-        <div className="hidden items-center justify-between text-white md:flex">
+        <div
+          className={classNames(
+            theme === 'dark' ? 'text-white' : 'text-black',
+            'hidden items-center justify-between md:flex'
+          )}
+        >
           {/* MAIN LOGO */}
           <Logo>Logo</Logo>
           {/* BUSINESS LINKS */}
@@ -50,8 +60,12 @@ function Navbar() {
             </div>
 
             {/* LOGIN BUTTONS */}
-            <Button variant="secondary">Sign Up</Button>
-            <Button variant="primary">Log In</Button>
+            <Button variant="secondary" theme={theme}>
+              Sign Up
+            </Button>
+            <Button variant="primary" theme={theme}>
+              Log In
+            </Button>
           </div>
         </div>
       </AppLayout>

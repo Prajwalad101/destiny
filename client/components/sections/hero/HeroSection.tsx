@@ -11,7 +11,7 @@ function HeroSection() {
       <div className="absolute inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
 
       {/* NAVIGATION BAR */}
-      <Navbar />
+      <Navbar theme="dark" />
       <AppLayout>
         <section className="mt-7 md:mt-20">
           {/*/ MAIN HEADING */}
