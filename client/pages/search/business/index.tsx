@@ -3,6 +3,8 @@ import BusinessCard from '../../../components/cards/business/BusinessCard';
 import { mockBusinessCardProps } from '../../../components/cards/business/BusinessCard.mocks';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
+import SortItems from '../../../components/sort/SortItems';
+import { mockSortItemsProps } from '../../../components/sort/SortItems.mocks';
 import { NextPageWithLayout } from '../../_app';
 
 const SearchBusiness: NextPageWithLayout = () => {
@@ -14,10 +16,17 @@ const SearchBusiness: NextPageWithLayout = () => {
     <div className="mt-5 flex gap-8 md:mt-10">
       <div className="hidden h-[600px] w-[400px] bg-gray-300 lg:block" />
       <div className="min-w-0 grow">
-        <h2 className="mb-5 font-merriweather text-2xl font-bold md:mb-10">
-          Top <span className="capitalize">{desc}s</span> in{' '}
-          <span className="capitalize">{city}</span>
-        </h2>
+        <div className="mb-7 flex flex-col justify-between gap-x-3 gap-y-4 sm:mr-10 sm:flex-row sm:items-center md:mb-10">
+          {/* Heading */}
+          <h2 className="font-merriweather text-2xl font-bold">
+            Top <span className="capitalize">{desc}</span> in{' '}
+            <span className="capitalize">{city}</span>
+          </h2>
+          {/* Sort Menu */}
+          <div className="w-72">
+            <SortItems {...mockSortItemsProps.base} />
+          </div>
+        </div>
         <div>
           <BusinessCard {...mockBusinessCardProps.card1} />
         </div>

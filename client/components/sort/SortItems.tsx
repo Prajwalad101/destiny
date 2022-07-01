@@ -13,7 +13,7 @@ export interface ISortItems {
 function SortItems({ sortItems }: ISortItems) {
   const [selected, setSelected] = useState(sortItems[0]);
   return (
-    <div className="flex items-center font-rubik text-sm">
+    <div className="flex shrink-0 items-center font-rubik">
       <p className="text-secondarytext">Sort By:</p>
 
       {/* Dropdown Menu */}
@@ -23,13 +23,13 @@ function SortItems({ sortItems }: ISortItems) {
           <BsChevronDown />
         </div>
         <div className="hidden opacity-0 hover:block hover:opacity-100 peer-hover:block peer-hover:opacity-100">
-          <ul className="absolute left-0 pt-2 shadow-lg ">
+          <ul className="absolute left-0 z-10 rounded-sm bg-white pt-2 shadow-lg">
             {sortItems.map((item) => {
               if (item.id === selected.id) return null;
               return (
                 <li
                   key={item.id}
-                  className="cursor-pointer whitespace-nowrap py-2 px-3 hover:bg-gray-200"
+                  className="cursor-pointer whitespace-nowrap rounded-sm py-2 px-3 hover:bg-gray-200"
                   onClick={() => setSelected(item)}
                 >
                   {item.name}
