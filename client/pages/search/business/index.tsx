@@ -12,7 +12,7 @@ const SearchBusiness: NextPageWithLayout = () => {
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
-      <div className="hidden h-[600px] w-[400px] bg-gray-300 md:block" />
+      <div className="hidden h-[600px] w-[400px] bg-gray-300 lg:block" />
       <div className="min-w-0 grow">
         <h2 className="mb-5 font-merriweather text-2xl font-bold md:mb-10">
           Top <span className="capitalize">{desc}s</span> in{' '}
