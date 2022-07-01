@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import SortItems from './SortItems';
+import { mockSortItemsProps } from './SortItems.mocks';
 
 export default {
   title: 'components/SortItems',
@@ -7,6 +8,11 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof SortItems>;
 
-const Template: ComponentStory<typeof SortItems> = () => <SortItems />;
+const Template: ComponentStory<typeof SortItems> = (args) => (
+  <SortItems {...args} />
+);
 
 export const Base = Template.bind({});
+Base.args = {
+  ...mockSortItemsProps.base,
+};
