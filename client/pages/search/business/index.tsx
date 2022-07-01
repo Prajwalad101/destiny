@@ -10,7 +10,7 @@ import { NextPageWithLayout } from '../../_app';
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
 
-  const { desc, city } = router.query;
+  const { name, city } = router.query;
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
@@ -19,7 +19,7 @@ const SearchBusiness: NextPageWithLayout = () => {
         <div className="mb-7 flex flex-col justify-between gap-x-3 gap-y-4 sm:mr-10 sm:flex-row sm:items-center md:mb-10">
           {/* Heading */}
           <h2 className="font-merriweather text-2xl font-bold">
-            Top <span className="capitalize">{desc}</span> in{' '}
+            Top <span className="capitalize">{name}</span> in{' '}
             <span className="capitalize">{city}</span>
           </h2>
           {/* Sort Menu */}
