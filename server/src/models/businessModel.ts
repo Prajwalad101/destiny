@@ -12,6 +12,34 @@ const businessSchema = new mongoose.Schema<IBusiness>(
       type: String,
       required: [true, 'A business must contain a description'],
     },
+    businessHours: {
+      open: {
+        type: String,
+      },
+      close: {
+        type: String,
+      },
+    },
+    location: {
+      type: {
+        type: String,
+        enum: ['Point'],
+        required: true,
+      },
+      coordinates: {
+        type: [Number],
+        required: true,
+      },
+      address: String,
+    },
+    tags: {
+      type: [String],
+      required: true,
+    },
+    images: {
+      type: [String],
+      required: true,
+    },
     rating: { type: Number, default: 5 },
     createdAt: { type: Date },
   },

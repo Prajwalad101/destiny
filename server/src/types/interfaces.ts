@@ -5,6 +5,10 @@ export interface IBusiness {
   description: string;
   rating: number;
   createdAt: Date;
+  businessHours: { open: string; close: string };
+  location: { type: string; coordinates: number[]; address: string };
+  tags: string[];
+  images: string[];
 }
 
 export interface IReview {
