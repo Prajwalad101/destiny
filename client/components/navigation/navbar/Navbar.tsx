@@ -28,12 +28,12 @@ function Navbar({ theme }: INavbar) {
       <AppLayout size="sm">
         {/* FOR SMALLER(<md) SCREENS */}
         <div className="flex items-center justify-between md:hidden">
+          {/* Hamburger Icon */}
           <BiMenu
             size={35}
             onClick={() => setOpen(!open)}
             className="cursor-pointer hover:text-gray-700"
           />
-          {/* Hamburger Icon */}
           <Logo>Logo</Logo>
           <AiOutlineSearch
             size={30}

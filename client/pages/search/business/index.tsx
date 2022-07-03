@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { dehydrate, QueryClient } from 'react-query';
 import BusinessCard from '../../../components/cards/business/BusinessCard';
 import { mockBusinessCardProps } from '../../../components/cards/business/BusinessCard.mocks';
 import AppLayout from '../../../components/layout/app/AppLayout';
@@ -6,7 +7,9 @@ import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
 import SortItems from '../../../components/sort/SortItems';
 import { mockSortItemsProps } from '../../../components/sort/SortItems.mocks';
-import useBusinesses from '../../../hooks/business/useBusinesses';
+import useBusinesses, {
+  fetchBusinesses,
+} from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
 const SearchBusiness: NextPageWithLayout = () => {
@@ -42,13 +45,24 @@ const SearchBusiness: NextPageWithLayout = () => {
   );
 };
 
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery('businesses', fetchBusinesses);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
+
 export default SearchBusiness;
 
-SearchBusiness.getLayout = (page) => (
-  // NavLayout is at the top because it's UI has to render seperately
-  <NavLayout>
-    <AppLayout>
-      <ProviderLayout>{page}</ProviderLayout>
-    </AppLayout>
-  </NavLayout>
+SearchBusiness.getLayout = (page, pageProps) => (
+  <ProviderLayout pageProps={pageProps}>
+    <NavLayout>
+      <AppLayout>{page}</AppLayout>
+    </NavLayout>
+  </ProviderLayout>
 );

@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 
-const fetchBusinesses = async () => {
-  const response = await fetch('/api/business');
+export const fetchBusinesses = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/business`);
   const data = await response.json();
 
   // check for error response
@@ -14,7 +14,6 @@ const fetchBusinesses = async () => {
 
 function useBusinesses() {
   const query = useQuery('businesses', fetchBusinesses);
-
   return query;
 }
 

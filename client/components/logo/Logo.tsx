@@ -1,9 +1,17 @@
+import Link from 'next/link';
+
 interface ILogo {
   children: React.ReactNode;
 }
 
 function Logo({ children }: ILogo) {
-  return <div className="text-lg">{children}</div>;
+  return (
+    <Link href="/">
+      <a>
+        <div className="text-lg">{children}</div>
+      </a>
+    </Link>
+  );
 }
 
 export default Logo;
