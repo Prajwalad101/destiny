@@ -3,14 +3,21 @@ import BusinessCard from '../../../components/cards/business/BusinessCard';
 import { mockBusinessCardProps } from '../../../components/cards/business/BusinessCard.mocks';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
+import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
 import SortItems from '../../../components/sort/SortItems';
 import { mockSortItemsProps } from '../../../components/sort/SortItems.mocks';
+import useBusinesses from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
-
   const { name, city } = router.query;
+
+  const businessQuery = useBusinesses();
+
+  if (businessQuery.isSuccess) {
+    console.log(businessQuery.data);
+  }
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
@@ -38,7 +45,10 @@ const SearchBusiness: NextPageWithLayout = () => {
 export default SearchBusiness;
 
 SearchBusiness.getLayout = (page) => (
+  // NavLayout is at the top because it's UI has to render seperately
   <NavLayout>
-    <AppLayout>{page}</AppLayout>
+    <AppLayout>
+      <ProviderLayout>{page}</ProviderLayout>
+    </AppLayout>
   </NavLayout>
 );
