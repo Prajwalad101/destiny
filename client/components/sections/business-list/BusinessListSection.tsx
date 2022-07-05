@@ -1,4 +1,5 @@
 import useBusinesses from '../../../hooks/business/useBusinesses';
+import BusinessCard from '../../cards/business/BusinessCard';
 
 function BusinessListSection() {
   const businessResult = useBusinesses();
@@ -12,16 +13,16 @@ function BusinessListSection() {
       return <p>Error: {businessResult.error.message}</p>;
     }
 
-    return <p>Error occurred while fetching businesses</p>;
+    return <p>Error: {businessResult.error}</p>;
   }
 
-  // const businessData = businessResult.data?.data;
+  const businessData = businessResult.data?.data;
 
   return (
     <div>
-      {/* {businessData?.map((business) => (
+      {businessData?.map((business) => (
         <BusinessCard business={business} key={business._id.toString()} />
-      ))} */}
+      ))}
     </div>
   );
 }

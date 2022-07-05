@@ -7,7 +7,7 @@ interface IRatingIcons {
 
 function RatingIcons({ avgRating, iconSize }: IRatingIcons) {
   // to check for a half star
-  const isDecimal = Number.isInteger(avgRating);
+  const isDecimal = !Number.isInteger(avgRating);
 
   // to calculate the number of full stars
   const fullRating = Math.floor(avgRating);
@@ -16,14 +16,16 @@ function RatingIcons({ avgRating, iconSize }: IRatingIcons) {
   // to calculate remaining stars
   const totalStars = 5;
 
-  // decrease total stars from each full and half star
+  // decrease total stars from each star
   let remaining = totalStars - ratingsArr.length;
-
   if (isDecimal) {
     remaining--;
   }
 
-  const remainingArr = Array.from(Array(remaining).keys());
+  let remainingArr: number[] = [];
+  if (remaining !== 0) {
+    remainingArr = Array.from(Array(remaining).keys());
+  }
 
   return (
     <div className="flex text-primaryred">
