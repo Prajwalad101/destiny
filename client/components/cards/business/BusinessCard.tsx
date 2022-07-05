@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
 import RatingIcons from '../../icons/ratings/RatingIcons';
 
-interface IBusinessCard {
+export interface IBusinessCard {
   business: IBusiness;
 }
 
