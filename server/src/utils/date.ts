@@ -25,3 +25,17 @@ export function setDate(timeStr: string) {
 
   return date;
 }
+
+/**
+ *
+ * @param currentDate the current Date
+ * @param time the time to set the date to
+ * @returns the new date object
+ */
+export const setTime = (currentDate: Date, time: string) => {
+  const date = new Date(currentDate);
+  date.setHours(Number(time.split(':')[0]));
+  date.setMinutes(Number(time.split(':')[1]));
+
+  return date;
+};
