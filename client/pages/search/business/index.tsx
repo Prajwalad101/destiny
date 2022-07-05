@@ -1,23 +1,17 @@
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
-import BusinessCard from '../../../components/cards/business/BusinessCard';
-import { mockBusinessCardProps } from '../../../components/cards/business/BusinessCard.mocks';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
+import BusinessListSection from '../../../components/sections/business-list/BusinessListSection';
 import SortItems from '../../../components/sort/SortItems';
 import { mockSortItemsProps } from '../../../components/sort/SortItems.mocks';
 import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
-const queryClient = new QueryClient();
-const STALE_TIME = 300000; // 5 min
-
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
   const { name, city } = router.query;
-
-  // const businessResult = useBusinesses(STALE_TIME);
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
@@ -34,18 +28,17 @@ const SearchBusiness: NextPageWithLayout = () => {
             <SortItems {...mockSortItemsProps.base} />
           </div>
         </div>
-        <div>
-          <BusinessCard {...mockBusinessCardProps.card1} />
-        </div>
+        <BusinessListSection />
+        <div>{/* <BusinessCard {...mockBusinessCardProps.card1} /> */}</div>
       </div>
     </div>
   );
 };
 
 export async function getServerSideProps() {
-  await queryClient.prefetchQuery('businesses', fetchBusinesses, {
-    staleTime: STALE_TIME,
-  });
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery('businesses', fetchBusinesses);
 
   return {
     props: {
