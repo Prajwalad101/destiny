@@ -30,11 +30,9 @@ function BusinessCard({ business }: IBusinessCard) {
               54
             </p>
           </div>
-          {/* TODO: CALCULATE ISOPEN OR CLOSED BASED ON BUSINESS HOURS */}
-
-          {/* <p className="text-[15px] font-medium text-secondarytext">
+          <p className="text-[15px] font-medium text-secondarytext">
             {business.isOpen ? 'Open now' : 'Closed'}
-          </p> */}
+          </p>
         </div>
         <p className="mb-4 text-sm text-secondarytext">
           {business.location.address}
@@ -42,7 +40,6 @@ function BusinessCard({ business }: IBusinessCard) {
         {/* Horizontal Line */}
         <div className="mb-3 hidden border-[1px] sm:block"></div>
         {/* Reviews */}
-        {/* TODO: IMPLEMENT REVIEWS */}
         {business.reviews.map((review) => (
           <div
             key={review._id.toString()}
