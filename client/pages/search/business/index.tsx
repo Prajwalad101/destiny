@@ -7,9 +7,7 @@ import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
 import SortItems from '../../../components/sort/SortItems';
 import { mockSortItemsProps } from '../../../components/sort/SortItems.mocks';
-import useBusinesses, {
-  fetchBusinesses,
-} from '../../../hooks/business/useBusinesses';
+import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
 const queryClient = new QueryClient();
@@ -19,7 +17,7 @@ const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
   const { name, city } = router.query;
 
-  const businessResult = useBusinesses(STALE_TIME);
+  // const businessResult = useBusinesses(STALE_TIME);
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
