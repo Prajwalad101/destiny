@@ -12,18 +12,15 @@ const reviewSchema = new Schema<IReview>(
       max: 5,
       required: [true, 'Rating cannot be empty'],
     },
-    likes: Number,
-    dislikes: Number,
+    likes: { type: Number, default: 0 },
+    dislikes: { type: Number, default: 0 },
     business: {
       type: Schema.Types.ObjectId,
       ref: 'Business',
       required: [true, 'A review must include a business'],
     },
   },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
-  }
+  { timestamps: true }
 );
 
 const Review = model<IReview>('Review', reviewSchema);
