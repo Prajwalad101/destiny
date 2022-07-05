@@ -12,15 +12,14 @@ import useBusinesses, {
 } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
+const queryClient = new QueryClient();
+const STALE_TIME = 300000; // 5 min
+
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
   const { name, city } = router.query;
 
-  const businessQuery = useBusinesses();
-
-  if (businessQuery.isSuccess) {
-    console.log(businessQuery.data);
-  }
+  const businessResult = useBusinesses(STALE_TIME);
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
@@ -46,9 +45,9 @@ const SearchBusiness: NextPageWithLayout = () => {
 };
 
 export async function getServerSideProps() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery('businesses', fetchBusinesses);
+  await queryClient.prefetchQuery('businesses', fetchBusinesses, {
+    staleTime: STALE_TIME,
+  });
 
   return {
     props: {

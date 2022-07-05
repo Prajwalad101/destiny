@@ -12,8 +12,10 @@ export const fetchBusinesses = async () => {
   return data;
 };
 
-function useBusinesses() {
-  const query = useQuery('businesses', fetchBusinesses);
+function useBusinesses(STALE_TIME: number) {
+  const query = useQuery('businesses', fetchBusinesses, {
+    staleTime: STALE_TIME,
+  });
   return query;
 }
 

@@ -1,4 +1,5 @@
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 interface IProviderLayout {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ function ProviderLayout({ children, pageProps }: IProviderLayout) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>{children}</Hydrate>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
