@@ -14,10 +14,12 @@ const businessSchema = new mongoose.Schema<IBusiness>(
     },
     businessHours: {
       open: {
-        type: String,
+        type: Date,
+        required: true,
       },
       close: {
-        type: String,
+        type: Date,
+        required: true,
       },
     },
     location: {

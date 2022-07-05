@@ -7,7 +7,7 @@ export interface IBusiness {
   description: string;
   rating: number;
   createdAt?: Date;
-  businessHours?: { open: string; close: string };
+  businessHours: { open: Date; close: Date };
   location: { type: string; coordinates: number[]; address?: string };
   tags: string[];
   images: string[];
