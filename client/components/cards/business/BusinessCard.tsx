@@ -26,8 +26,7 @@ function BusinessCard({ business }: IBusinessCard) {
           <div className="flex items-center gap-3">
             <RatingIcons avgRating={business.rating} />
             <p className="text-sm text-secondarytext">
-              {/* ({business.reviews.length}) */}
-              54
+              ({business.reviews.length})
             </p>
           </div>
           <p className="text-[15px] font-medium text-secondarytext">

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRef } from 'react';
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import { useContainerDimensions } from '../../../hooks/lib/useContainerDimensions';
 
 export interface IImageSlider {
@@ -22,24 +23,38 @@ function ImageSlider({ images }: IImageSlider) {
 
   return (
     <>
-      <div
-        className="hide-scrollbar flex h-[200px] w-full overflow-scroll scroll-smooth sm:w-56"
-        id="scroll"
-        ref={componentRef}
-      >
-        {images.map((image, index) => (
-          <div key={index} className="relative w-full shrink-0">
-            <Image
-              src={image}
-              alt="business-image"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        ))}
+      <div className="relative w-full sm:w-56">
+        <button
+          className="absolute top-[45%] left-2 z-10 text-white"
+          onClick={() => slideLeft('scroll', width)}
+        >
+          <BsArrowLeftCircleFill size={25} />
+        </button>
+        <button
+          className="absolute top-[45%] right-3 z-10 text-white"
+          onClick={() => slideRight('scroll', width)}
+        >
+          <BsArrowRightCircleFill size={25} />
+        </button>
+
+        {/* TODO: Make the id unique for every slider component */}
+        <div
+          className="hide-scrollbar relative flex h-[200px] overflow-hidden scroll-smooth"
+          id="scroll"
+          ref={componentRef}
+        >
+          {images.map((image, index) => (
+            <div key={index} className="relative w-full shrink-0">
+              <Image
+                src={image}
+                alt="business-image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <button onClick={() => slideLeft('scroll', width)}>Scroll Left</button>
-      <button onClick={() => slideRight('scroll', width)}>Scroll Right</button>
     </>
   );
 }
