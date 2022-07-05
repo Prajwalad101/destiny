@@ -7,12 +7,18 @@ const router = express.Router();
 router
   .route('/')
   .get(businessController.getAllBusinesses)
-  .post(businessController.createBusiness);
+  .post(
+    businessController.formatBusinessDate,
+    businessController.createBusiness
+  );
 
 router
   .route('/:id')
   .get(businessController.getBusiness)
-  .patch(businessController.updateBusiness)
+  .patch(
+    businessController.formatBusinessDate,
+    businessController.updateBusiness
+  )
   .delete(businessController.deleteBusiness);
 
 router.use('/:businessId/reviews', reviewRouter);

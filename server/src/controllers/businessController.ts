@@ -2,6 +2,29 @@ import { NextFunction, Request, Response } from 'express';
 import Business from '../models/businessModel';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
+import { setDate } from '../utils/date';
+
+// changes businessHours from string to date format with the same value
+const formatBusinessDate = (
+  req: Request,
+  _res: Response,
+  next: NextFunction
+) => {
+  if (!req.body.businessHours) {
+    next();
+  }
+
+  const businessHours = req.body.businessHours;
+  const { open, close } = businessHours;
+
+  const openDate = setDate(open);
+  const closeDate = setDate(close);
+
+  businessHours.open = openDate;
+  businessHours.close = closeDate;
+
+  next();
+};
 
 const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
   try {
@@ -76,6 +99,7 @@ const deleteBusiness = catchAsync(
 );
 
 export default {
+  formatBusinessDate,
   getAllBusinesses,
   getBusiness,
   createBusiness,
