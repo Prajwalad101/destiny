@@ -5,12 +5,7 @@ import catchAsync from '../utils/catchAsync';
 
 const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
   try {
-    const allBusiness = await Business.find().populate({
-      path: 'reviews',
-      select: 'review -business',
-      perDocumentLimit: 2,
-      options: { sort: { likes: -1, createdAt: -1 } },
-    });
+    const allBusiness = await Business.find();
     res.json({
       status: 'success',
       data: allBusiness,

@@ -72,6 +72,17 @@ businessSchema.virtual('isOpen').get(function () {
   return valid;
 });
 
+businessSchema.pre('find', function (next) {
+  this.populate({
+    path: 'reviews',
+    select: 'review -business',
+    perDocumentLimit: 2,
+    options: { sort: { likes: -1, createdAt: -1 } },
+  });
+
+  next();
+});
+
 const Business = mongoose.model<IBusiness>('Business', businessSchema);
 
 export default Business;
