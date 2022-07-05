@@ -1,5 +1,5 @@
+import { IBusiness } from '@destiny/types';
 import mongoose from 'mongoose';
-import { IBusiness } from '../types/interfaces';
 
 const businessSchema = new mongoose.Schema<IBusiness>(
   {

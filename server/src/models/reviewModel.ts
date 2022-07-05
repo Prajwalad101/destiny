@@ -1,5 +1,5 @@
+import { IReview } from '@destiny/types';
 import { model, Schema } from 'mongoose';
-import { IReview } from '../types/interfaces';
 
 const reviewSchema = new Schema<IReview>(
   {
