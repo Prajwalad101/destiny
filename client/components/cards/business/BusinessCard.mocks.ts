@@ -4,18 +4,21 @@ import { IBusinessCard } from './BusinessCard';
 const card1: IBusinessCard = {
   business: {
     _id: new mongoose.Types.ObjectId(),
-    name: 'Laughing Bird Resturant and Bar',
-    description: 'The best resturant',
+    name: 'Vidoo',
+    description: 'Primary hyperparathyroidism',
     createdAt: new Date(),
-    businessHours: { open: '9:15', close: '8:00' },
-    rating: 4.5,
+    businessHours: { open: '9:15', close: '21:00' },
     location: {
       type: 'Point',
-      coordinates: [123, 3232],
-      address: 'Naya Baneshwor, Kathmandu',
+      coordinates: [24.67964, 38.253338],
+      address: '52 Clove Alley',
     },
-    tags: ['resturant', 'business'],
-    images: ['/images/business/amer.jpg'],
+    tags: ['tmbq', 'rvz', 'evlem', 'opb'],
+    images: [
+      'http://dummyimage.com/138x100.png/ff4444/ffffff',
+      'http://dummyimage.com/183x100.png/5fa2dd/ffffff',
+      'http://dummyimage.com/145x100.png/dddddd/000000',
+    ],
     reviews: [
       {
         review: 'Nice ambience and great dining experience',
@@ -24,7 +27,8 @@ const card1: IBusinessCard = {
         business: new mongoose.Types.ObjectId(),
       },
     ],
-    isOpen: true,
+    total_rating: 32,
+    rating_count: 7,
   },
 };
 

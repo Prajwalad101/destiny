@@ -5,8 +5,8 @@ export interface IRecommendBusinessCard {
   name: string;
   location: string;
   image: string;
-  numReviews: number;
-  avgRating: number;
+  total_rating: number;
+  rating_count: number;
   status?: string;
 }
 
@@ -40,9 +40,12 @@ function RecommendedBusinessCard(props: IRecommendBusinessCard) {
 
         {/* BUSINESS RATING */}
         <div className="mb-2 flex gap-2 ">
-          <RatingIcons avgRating={props.avgRating} />
+          <RatingIcons
+            totalRating={props.total_rating}
+            ratingCount={props.rating_count}
+          />
           <span className="text-sm text-secondarytext">
-            ({props.numReviews})
+            ({props.rating_count})
           </span>
         </div>
 
