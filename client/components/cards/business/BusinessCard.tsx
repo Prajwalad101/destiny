@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/types';
+import { IBusiness, IReview } from '@destiny/types';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { checkIsOpen } from '../../../utils/api';
 import RatingIcons from '../../icons/ratings/RatingIcons';
@@ -7,6 +7,34 @@ import ImageSlider from '../../slider/image/ImageSlider';
 export interface IBusinessCard {
   business: IBusiness;
 }
+
+const Reviews = ({ reviews }: { reviews: IReview[] }) => {
+  if (reviews.length === 0) {
+    return (
+      <>
+        <p className="mb-2 text-secondarytext">No reviews found</p>
+        <p className="text-[10px] font-medium text-primaryred">
+          /╲/\╭[ ☉ ﹏ ☉ ]╮/\╱\
+        </p>
+      </>
+    );
+  }
+  return (
+    <>
+      {reviews.map((review) => (
+        <div
+          key={review._id.toString()}
+          className="mb-2 flex items-center gap-3"
+        >
+          <FaQuoteLeft size={15} />
+          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
+            &quot;{review.review}&quot;
+          </p>
+        </div>
+      ))}
+    </>
+  );
+};
 
 function BusinessCard({ business }: IBusinessCard) {
   return (
@@ -36,17 +64,7 @@ function BusinessCard({ business }: IBusinessCard) {
         {/* Horizontal Line */}
         <div className="mb-3 hidden border-[1px] sm:block"></div>
         {/* Reviews */}
-        {business.reviews.map((review) => (
-          <div
-            key={review._id.toString()}
-            className="mb-2 flex items-center gap-3"
-          >
-            <FaQuoteLeft size={15} />
-            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
-              &quot;{review.review}&quot;
-            </p>
-          </div>
-        ))}
+        <Reviews reviews={business.reviews} />
       </div>
     </div>
   );
