@@ -12,7 +12,6 @@ function BusinessListSection() {
     if (businessResult.error instanceof Error) {
       return <p>Error: {businessResult.error.message}</p>;
     }
-
     return <p>Error: {businessResult.error}</p>;
   }
 

@@ -1,7 +1,7 @@
 import { IBusiness } from '@destiny/types';
-import Image from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
 import RatingIcons from '../../icons/ratings/RatingIcons';
+import ImageSlider from '../../slider/image/ImageSlider';
 
 export interface IBusinessCard {
   business: IBusiness;
@@ -10,15 +10,8 @@ export interface IBusinessCard {
 function BusinessCard({ business }: IBusinessCard) {
   return (
     <div className="font-rubik sm:flex">
-      {/* Image */}
-      <div className="relative h-[200px] w-full sm:w-56">
-        <Image
-          src={business.images[0]}
-          alt={business.name}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
+      {/* Image Slider */}
+      <ImageSlider images={business.images} />
       {/* Body */}
       <div className="grow border-x-2 border-b-2 p-2 sm:border-l-0 sm:border-t-2 sm:p-3">
         <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
