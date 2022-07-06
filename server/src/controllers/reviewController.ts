@@ -36,9 +36,6 @@ const getReview = catchAsync(
 
 const createReview = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
-    // check if req already contains the business get reviews for
-    if (!req.body.business) req.body.business = req.params.businessId;
-
     const newReview = await Review.create(req.body);
 
     res.status(201).json({

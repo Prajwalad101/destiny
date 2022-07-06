@@ -43,8 +43,8 @@ const businessSchema = new mongoose.Schema<IBusiness>(
       type: [String],
       required: true,
     },
-    rating: { type: Number, default: 5 },
-    createdAt: { type: Date },
+    total_rating: { type: Number, default: 0 },
+    rating_count: { type: Number, default: 0 },
   },
   {
     toJSON: { virtuals: true },
