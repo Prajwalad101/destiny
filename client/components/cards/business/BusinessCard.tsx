@@ -1,5 +1,6 @@
 import { IBusiness } from '@destiny/types';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { checkIsOpen } from '../../../utils/api';
 import RatingIcons from '../../icons/ratings/RatingIcons';
 import ImageSlider from '../../slider/image/ImageSlider';
 
@@ -17,13 +18,16 @@ function BusinessCard({ business }: IBusinessCard) {
         <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
         <div className="mb-2 flex items-center gap-4">
           <div className="flex items-center gap-3">
-            <RatingIcons avgRating={business.rating} />
+            <RatingIcons
+              totalRating={business.total_rating}
+              ratingCount={business.rating_count}
+            />
             <p className="text-sm text-secondarytext">
               ({business.reviews.length})
             </p>
           </div>
           <p className="text-[15px] font-medium text-secondarytext">
-            {business.isOpen ? 'Open now' : 'Closed'}
+            {checkIsOpen(business.businessHours) ? 'Open now' : 'Closed'}
           </p>
         </div>
         <p className="mb-4 text-sm text-secondarytext">

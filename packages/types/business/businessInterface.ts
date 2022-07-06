@@ -12,7 +12,6 @@ export interface IBusiness {
   tags: string[];
   images: string[];
   reviews: IReview[];
-  isOpen: boolean;
   total_rating: number;
   rating_count: number;
 }

@@ -1,6 +1,5 @@
 import { IBusiness } from '@destiny/types';
 import mongoose from 'mongoose';
-import { setTime } from '../utils/date';
 
 const businessSchema = new mongoose.Schema<IBusiness>(
   {
@@ -56,20 +55,6 @@ businessSchema.virtual('reviews', {
   ref: 'Review',
   foreignField: 'business',
   localField: '_id',
-});
-
-businessSchema.virtual('isOpen').get(function () {
-  const openingTime = this.businessHours.open;
-  const closingTime = this.businessHours.close;
-
-  const currentDate = new Date();
-
-  const startDate = setTime(currentDate, openingTime);
-  const endDate = setTime(currentDate, closingTime);
-
-  const valid = startDate < currentDate && endDate > currentDate;
-
-  return valid;
 });
 
 businessSchema.pre('find', function (next) {
