@@ -1,13 +1,21 @@
 import { NextFunction, Request, Response } from 'express';
 import Business from '../models/businessModel';
+import { APIFeatures } from '../utils/apiFeatures';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
 
 const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
   try {
-    const allBusiness = await Business.find();
+    const features = new APIFeatures(Business.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+    const allBusiness = await features.query;
+
     res.json({
       status: 'success',
+      documentCount: allBusiness.length,
       data: allBusiness,
     });
   } catch (err) {

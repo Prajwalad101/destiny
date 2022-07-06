@@ -48,7 +48,8 @@ export const setBusinessId = catchAsync(
   async (req: Request, _res: Response, next: NextFunction) => {
     // if request body has no business property set,
     // create that property with businessId from params object
-    if (!req.body.business) req.body.business = req.params.businessId;
+    if (!req.body.business && req.params.businessId)
+      req.body.business = req.params.businessId;
 
     next();
   }

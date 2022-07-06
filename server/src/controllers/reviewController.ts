@@ -1,19 +1,26 @@
 import { NextFunction, Request, Response } from 'express';
 import Review from '../models/reviewModel';
+import { APIFeatures } from '../utils/apiFeatures';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
 
 const getAllReviews = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
-    // if businessId is passed on url, get reviews for that business
-    const filter = req.params.businessId
-      ? { business: req.params.businessId }
-      : {};
+    // if business exists on the body, filter based on that id
+    const businessId = req.body.business;
+    const filter = businessId ? { business: businessId } : {};
 
-    const review = await Review.find(filter);
+    const features = new APIFeatures(Review.find(filter), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const review = await features.query;
 
     res.status(200).json({
       status: 'success',
+      documentCount: review.length,
       data: review,
     });
   }
