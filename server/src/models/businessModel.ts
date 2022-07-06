@@ -68,6 +68,17 @@ businessSchema.pre('find', function (next) {
   next();
 });
 
+businessSchema.pre('findOne', function (next) {
+  this.populate({
+    path: 'reviews',
+    select: 'review likes createdAt -business',
+    options: { sort: '-likes' },
+    perDocumentLimit: 10,
+  });
+
+  next();
+});
+
 const Business = mongoose.model<IBusiness>('Business', businessSchema);
 
 export default Business;

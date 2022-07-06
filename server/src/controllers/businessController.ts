@@ -6,7 +6,9 @@ import catchAsync from '../utils/catchAsync';
 
 const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
   try {
-    const features = new APIFeatures(Business.find(), req.query)
+    const businessQuery = Business.find();
+
+    const features = new APIFeatures(businessQuery, req.query)
       .filter()
       .sort()
       .limitFields()
@@ -38,7 +40,7 @@ const createBusiness = catchAsync(
 
 const getBusiness = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const business = await Business.findById(req.params.id).populate('reviews');
+    const business = await Business.findById(req.params.id);
 
     if (!business) {
       return next(new AppError('No document found with that ID', 404));
