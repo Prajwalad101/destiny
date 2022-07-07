@@ -1,17 +1,20 @@
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
 import BusinessListSection from '../../../components/sections/business-list/BusinessListSection';
 import SortItems from '../../../components/sort/SortItems';
-import { mockSortItemsProps } from '../../../components/sort/SortItems.mocks';
+import { sortItemData } from '../../../data/sortBusiness.data';
 import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
   const { name, city } = router.query;
+
+  const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
 
   return (
     <div className="mt-5 flex gap-8 md:mt-10">
@@ -25,11 +28,14 @@ const SearchBusiness: NextPageWithLayout = () => {
           </h2>
           {/* Sort Menu */}
           <div className="w-72">
-            <SortItems {...mockSortItemsProps.base} />
+            <SortItems
+              sortItemData={sortItemData}
+              selectedSort={selectedSort}
+              setSelectedSort={setSelectedSort}
+            />
           </div>
         </div>
-        <BusinessListSection />
-        <div>{/* <BusinessCard {...mockBusinessCardProps.card1} /> */}</div>
+        <BusinessListSection selectedSort={selectedSort} />
       </div>
     </div>
   );
@@ -38,7 +44,16 @@ const SearchBusiness: NextPageWithLayout = () => {
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery('businesses', fetchBusinesses);
+  // to sort the initial query by the first item in the data
+  const initialSortField = sortItemData[0].sortField;
+
+  await queryClient.prefetchQuery(
+    ['businesses', initialSortField],
+    fetchBusinesses,
+    {
+      staleTime: 10000,
+    }
+  );
 
   return {
     props: {

@@ -1,8 +1,13 @@
+import { ISortItem } from '../../../data/sortBusiness.data';
 import useBusinesses from '../../../hooks/business/useBusinesses';
 import BusinessCard from '../../cards/business/BusinessCard';
 
-function BusinessListSection() {
-  const businessResult = useBusinesses();
+interface BusinessListSectionProps {
+  selectedSort: ISortItem;
+}
+
+function BusinessListSection({ selectedSort }: BusinessListSectionProps) {
+  const businessResult = useBusinesses(selectedSort);
 
   if (businessResult.isLoading) {
     return <span>Loading...</span>;
@@ -20,7 +25,9 @@ function BusinessListSection() {
   return (
     <div>
       {businessData?.map((business) => (
-        <BusinessCard business={business} key={business._id.toString()} />
+        <div key={business._id.toString()} className="mb-4">
+          <BusinessCard business={business} />
+        </div>
       ))}
     </div>
   );
