@@ -8,9 +8,11 @@
     "start:prod": "cross-env NODE_ENV=production nodemon --exec ts-node src/server.ts"
   },
   "dependencies": {
+    "@destiny/types": "1.0.0",
+    "@types/morgan": "^1.9.3",
     "express": "^4.18.1",
     "mongoose": "^6.3.8",
-    "@destiny/types": "1.0.0"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@swc/core": "^1.2.203",

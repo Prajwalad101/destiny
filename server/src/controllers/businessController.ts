@@ -4,8 +4,8 @@ import { APIFeatures } from '../utils/apiFeatures';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
 
-const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
-  try {
+const getAllBusinesses = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
     const businessQuery = Business.find();
 
     const features = new APIFeatures(businessQuery, req.query)
@@ -20,13 +20,8 @@ const getAllBusinesses = catchAsync(async (req: Request, res: Response) => {
       documentCount: allBusiness.length,
       data: allBusiness,
     });
-  } catch (err) {
-    res.status(200).json({
-      status: 'error',
-      message: err,
-    });
   }
-});
+);
 
 const createBusiness = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
