@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import ImageSlider, { IImageSlider } from './ImageSlider';
+import ImageSlider, { ImageSliderProps } from './ImageSlider';
 import { mockImageSliderProps } from './ImageSlider.mocks';
 
 export default {
@@ -16,4 +16,4 @@ export const Base = Template.bind({});
 
 Base.args = {
   ...mockImageSliderProps.base,
-} as IImageSlider;
+} as ImageSliderProps;
