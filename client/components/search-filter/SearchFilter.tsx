@@ -6,7 +6,7 @@ interface SearchFilterProps {
 
 function SearchFilter({ filterOption }: SearchFilterProps) {
   return (
-    <div className="hidden w-[300px] border-[1px] border-black font-rubik lg:block">
+    <div className="hidden h-max w-[300px] rounded-sm border-2 border-gray-400 font-rubik lg:block">
       <div className="flex w-full flex-col gap-y-5 p-5">
         <PriceFilter filterData={filterOption.price} filterType="price" />
         <SelectFilter
@@ -16,6 +16,10 @@ function SearchFilter({ filterOption }: SearchFilterProps) {
         <SelectFilter
           filterData={filterOption.features}
           filterType="features"
+        />
+        <SelectFilter
+          filterData={filterOption.distance}
+          filterType="distance"
         />
       </div>
     </div>
