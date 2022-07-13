@@ -19,6 +19,7 @@ function ImageSlider({ images }: ImageSliderProps) {
   const slideLeft = () => {
     // prevent slider position from decreasing below initial scroll position
     if (sliderPosition <= 0) {
+      setSliderPosition(0);
       return;
     }
 
@@ -32,7 +33,10 @@ function ImageSlider({ images }: ImageSliderProps) {
     // prevent slider position from increasing greater than the slider itself
     // image width subtracted from total slider width because the last item should not be scrollable
     const totalWidth = images.length * width;
-    if (sliderPosition >= totalWidth - width) {
+    const scrollableWidth = totalWidth - width;
+
+    if (sliderPosition >= scrollableWidth) {
+      setSliderPosition(scrollableWidth);
       return;
     }
 
@@ -41,6 +45,8 @@ function ImageSlider({ images }: ImageSliderProps) {
     }
     setSliderPosition(sliderPosition + width);
   };
+
+  console.log(sliderPosition);
 
   return (
     <>
