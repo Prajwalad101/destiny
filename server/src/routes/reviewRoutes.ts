@@ -2,6 +2,7 @@ import express from 'express';
 import reviewController from '../controllers/reviewController';
 import {
   deleteBusinessRating,
+  incrementBusinessRating,
   setBusinessId,
   updateBusinessRating,
 } from '../middlewares/review/reviewMiddleware';
@@ -15,7 +16,7 @@ router.use(setBusinessId);
 router
   .route('/')
   .get(reviewController.getAllReviews)
-  .post(updateBusinessRating, reviewController.createReview);
+  .post(incrementBusinessRating, reviewController.createReview);
 
 router
   .route('/:id')
