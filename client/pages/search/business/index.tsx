@@ -19,7 +19,7 @@ const SearchBusiness: NextPageWithLayout = () => {
   const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
 
   return (
-    <div className="mt-5 flex gap-8 md:mt-10">
+    <div className="mt-5 flex gap-10 md:mt-10">
       <SearchFilter filterOption={searchFilterData.resturants} />
       <div className="min-w-0 grow">
         <div className="mb-7 sm:mr-5 md:mb-10">
