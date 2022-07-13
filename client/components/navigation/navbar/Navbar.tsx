@@ -61,10 +61,10 @@ function Navbar({ theme }: INavbar) {
 
             {/* LOGIN BUTTONS */}
             <Button variant="secondary" theme={theme}>
-              Sign Up
+              <p>Sign Up</p>
             </Button>
             <Button variant="primary" theme={theme}>
-              Log In
+              <p>Log In</p>
             </Button>
           </div>
         </div>
