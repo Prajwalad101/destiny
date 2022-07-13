@@ -9,7 +9,6 @@ interface Data {
 
 export const fetchBusinesses = async ({ queryKey }: { queryKey: QueryKey }) => {
   const [, sortField] = queryKey;
-  console.log('Fetching businesses');
 
   const sortString = `sort=${sortField}`;
 
