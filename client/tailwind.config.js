@@ -19,5 +19,10 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant('child', '& > *');
+      addVariant('child-notlast', '&>*:not(:last-child)');
+    },
+  ],
 };
