@@ -1,49 +1,73 @@
-import { Types } from 'mongoose';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import { useContainerDimensions } from '../../../hooks/lib/useContainerDimensions';
+import { classNames } from '../../../utils/tailwind';
 
 export interface ImageSliderProps {
   images: string[];
-  id: Types.ObjectId;
 }
 
-const slideLeft = (id: string, width: number) => {
-  const slider = document.getElementById(id) as HTMLDivElement;
-  slider.scrollLeft = slider.scrollLeft - width;
-};
-
-const slideRight = (id: string, width: number) => {
-  const slider = document.getElementById(id) as HTMLDivElement;
-  slider.scrollLeft = slider.scrollLeft + width;
-};
-
-function ImageSlider({ id, images }: ImageSliderProps) {
+function ImageSlider({ images }: ImageSliderProps) {
   const componentRef = useRef<HTMLDivElement>(null);
   const { width } = useContainerDimensions(componentRef);
-  const businessId = id.toString();
+
+  const [sliderPosition, setSliderPosition] = useState(
+    componentRef.current ? componentRef.current.scrollLeft : 0
+  );
+
+  const slideLeft = () => {
+    // prevent slider position from decreasing below initial scroll position
+    if (sliderPosition <= 0) {
+      return;
+    }
+
+    if (componentRef.current) {
+      componentRef.current.scrollLeft = sliderPosition - width;
+    }
+    setSliderPosition(sliderPosition - width);
+  };
+
+  const slideRight = () => {
+    // prevent slider position from increasing greater than the slider itself
+    // image width subtracted from total slider width because the last item should not be scrollable
+    const totalWidth = images.length * width;
+    if (sliderPosition >= totalWidth - width) {
+      return;
+    }
+
+    if (componentRef.current) {
+      componentRef.current.scrollLeft = sliderPosition + width;
+    }
+    setSliderPosition(sliderPosition + width);
+  };
 
   return (
     <>
       <div className="relative w-full sm:w-56">
         <button
-          className="absolute top-[45%] left-2 z-10 text-white"
-          onClick={() => slideLeft(businessId, width)}
+          className={classNames(
+            sliderPosition === 0 ? 'cursor-default opacity-60' : '',
+            'absolute top-[45%] left-2 z-10 text-white'
+          )}
+          onClick={() => slideLeft()}
         >
           <BsArrowLeftCircleFill size={25} />
         </button>
         <button
-          className="absolute top-[45%] right-3 z-10 text-white"
-          onClick={() => slideRight(businessId, width)}
+          className={classNames(
+            sliderPosition >= images.length * width - width
+              ? 'cursor-default opacity-60'
+              : '',
+            'absolute top-[45%] right-3 z-10 text-white'
+          )}
+          onClick={() => slideRight()}
         >
           <BsArrowRightCircleFill size={25} />
         </button>
 
-        {/* TODO: Make the id unique for every slider component */}
         <div
           className="hide-scrollbar relative flex h-[200px] overflow-hidden scroll-smooth"
-          id={businessId}
           ref={componentRef}
         >
           {images.map((image, index) => (

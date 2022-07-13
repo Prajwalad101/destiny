@@ -40,7 +40,7 @@ function BusinessCard({ business }: IBusinessCard) {
   return (
     <div className="font-rubik sm:flex">
       {/* Image Slider */}
-      <ImageSlider images={business.images} id={business._id} />
+      <ImageSlider images={business.images} />
       {/* Body */}
       <div className="grow border-x-2 border-b-2 p-2 sm:border-l-0 sm:border-t-2 sm:p-3">
         <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
