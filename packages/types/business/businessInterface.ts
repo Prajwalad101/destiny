@@ -5,6 +5,7 @@ export interface IBusiness {
   _id: Types.ObjectId;
   name: string;
   description: string;
+  price: string;
   createdAt?: Date;
   businessHours: { open: string; close: string };
   location: { type: 'Point'; coordinates: number[]; address?: string };

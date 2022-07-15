@@ -12,6 +12,11 @@ const businessSchema = new mongoose.Schema<IBusiness>(
       type: String,
       required: [true, 'A business must contain a description'],
     },
+    price: {
+      type: String,
+      required: true,
+      enum: ['cheap', 'medium', 'high', 'exclusive'],
+    },
     businessHours: {
       open: {
         type: String,
