@@ -13,4 +13,5 @@ export interface IBusiness {
   reviews: IReview[];
   total_rating: number;
   rating_count: number;
+  avgRating: number;
 }
