@@ -3,10 +3,11 @@ import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 interface IRatingIcons {
   totalRating: number;
   ratingCount: number;
-  iconSize?: number;
 }
 
-function RatingIcons({ totalRating, ratingCount, iconSize }: IRatingIcons) {
+function RatingIcons({ totalRating, ratingCount }: IRatingIcons) {
+  const iconSize = 17;
+
   // if totalRatings or ratingCount is 0, render empty stars
   const emptyArr = Array.from(Array(5).keys());
 
@@ -42,7 +43,7 @@ function RatingIcons({ totalRating, ratingCount, iconSize }: IRatingIcons) {
   }
 
   return (
-    <div className="flex text-primaryred">
+    <div className="flex items-center gap-[2px] text-primaryred">
       {ratingsArr.map((num) => (
         <BsStarFill key={num} size={iconSize} />
       ))}
