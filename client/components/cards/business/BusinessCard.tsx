@@ -8,37 +8,9 @@ export interface IBusinessCard {
   business: IBusiness;
 }
 
-const Reviews = ({ reviews }: { reviews: IReview[] }) => {
-  if (reviews.length === 0) {
-    return (
-      <>
-        <p className="mb-2 text-secondarytext">No reviews found</p>
-        <p className="text-[10px] font-medium text-primaryred">
-          /╲/\╭[ ☉ ﹏ ☉ ]╮/\╱\
-        </p>
-      </>
-    );
-  }
-  return (
-    <>
-      {reviews.map((review) => (
-        <div
-          key={review._id.toString()}
-          className="mb-2 flex items-center gap-3"
-        >
-          <FaQuoteLeft size={15} />
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
-            &quot;{review.review}&quot;
-          </p>
-        </div>
-      ))}
-    </>
-  );
-};
-
 function BusinessCard({ business }: IBusinessCard) {
   return (
-    <div className="font-rubik sm:flex">
+    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
       {/* Image Slider */}
       <ImageSlider images={business.images} />
       {/* Body */}
@@ -51,7 +23,7 @@ function BusinessCard({ business }: IBusinessCard) {
               ratingCount={business.rating_count}
             />
             <p className="text-sm text-secondarytext">
-              ({business.reviews.length})
+              ({business.rating_count})
             </p>
           </div>
           <p className="text-[15px] font-medium text-secondarytext">
@@ -69,5 +41,34 @@ function BusinessCard({ business }: IBusinessCard) {
     </div>
   );
 }
+
+const Reviews = ({ reviews }: { reviews: IReview[] }) => {
+  if (reviews.length === 0) {
+    return (
+      <>
+        <p className="mb-2 text-secondarytext">No reviews found</p>
+        <p className="text-[10px] font-medium text-primaryred">
+          /╲/\╭[ ☉ ﹏ ☉ ]╮/\╱\
+        </p>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {reviews.map((review) => (
+        <div
+          key={review._id.toString()}
+          className="mb-2 flex items-center gap-3"
+        >
+          <FaQuoteLeft size={15} />
+          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
+            &quot;{review.review}&quot;
+          </p>
+        </div>
+      ))}
+    </>
+  );
+};
 
 export default BusinessCard;

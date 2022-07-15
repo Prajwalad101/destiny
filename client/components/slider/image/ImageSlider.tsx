@@ -46,8 +46,6 @@ function ImageSlider({ images }: ImageSliderProps) {
     setSliderPosition(sliderPosition + width);
   };
 
-  console.log(sliderPosition);
-
   return (
     <>
       <div className="relative w-full sm:w-56">
