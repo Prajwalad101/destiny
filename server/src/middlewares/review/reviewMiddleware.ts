@@ -14,12 +14,13 @@ export const incrementBusinessRating = catchAsync(
     // throw error if rating is not provided
     if (!req.body.rating) return next(new AppError('No rating found', 400));
 
-    // increment rating_count by one
-    // increment total_rating by new rating
-    await Business.findOneAndUpdate(
-      { _id: req.body.business },
-      { $inc: { rating_count: 1, total_rating: req.body.rating } }
-    );
+    const business = await Business.findById(req.body.business);
+    if (!business) return next();
+
+    business.rating_count += 1; //increment rating_count by 1
+    business.total_rating += req.body.rating; // increment total_rating by new rating
+    await business.save();
+
     next();
   }
 );
@@ -37,14 +38,15 @@ export const updateBusinessRating = catchAsync(
     const review = await Review.findById(req.params.id);
     if (!review) return next();
 
+    // increment new rating by the difference between new and previous rating
     const incrementBy = req.body.rating - review.rating;
-    console.log(incrementBy);
 
-    // increment total_rating by new rating
-    await Business.findOneAndUpdate(
-      { _id: req.body.business },
-      { $inc: { total_rating: incrementBy } }
-    );
+    const business = await Business.findById(req.body.business);
+    if (!business) return next();
+
+    business.total_rating += incrementBy; // increment or decrement total_rating (depends on incrementBy)
+    await business.save();
+
     next();
   }
 );
@@ -58,12 +60,13 @@ export const deleteBusinessRating = catchAsync(
 
     const rating = review.rating;
 
-    // decrement rating_count by one
-    // decrement total_rating by current rating
-    await Business.findOneAndUpdate(
-      { _id: review.business },
-      { $inc: { rating_count: -1, total_rating: -rating } }
-    );
+    const business = await Business.findById(review.business);
+    if (!business) return next();
+
+    business.rating_count -= 1; // decrement rating_count
+    business.total_rating -= rating; // decrement total_rating by the current rating
+    await business.save();
+
     next();
   }
 );
