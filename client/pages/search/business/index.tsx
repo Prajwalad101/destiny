@@ -12,15 +12,21 @@ import { sortItemData } from '../../../data/sortBusiness.data';
 import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
+export interface ISelectedFilters {
+  tags: string[];
+  price: string | null;
+}
+
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
   const { name, city } = router.query;
 
   const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
-  const [selectedFilters, setSelectedFilters] = useState<{
-    tags: string[];
-    price: string | null;
-  }>({ tags: [], price: null });
+  const [selectedFilters, setSelectedFilters] = useState<ISelectedFilters>({
+    tags: [],
+    price: null,
+  });
+  const [isFilter, setIsFilter] = useState(true); // is filter button clicked
 
   return (
     <div className="mt-5 flex gap-10 md:mt-10">
@@ -28,6 +34,7 @@ const SearchBusiness: NextPageWithLayout = () => {
         filterOption={searchFilterData.resturants}
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
+        setIsFilter={setIsFilter}
       />
       <div className="min-w-0 grow">
         <div className="mb-7 sm:mr-5 md:mb-10">
@@ -48,8 +55,10 @@ const SearchBusiness: NextPageWithLayout = () => {
           </div>
         </div>
         <BusinessListSection
-          selectedSort={selectedSort}
+          sortField={selectedSort.sortField}
           selectedFilters={selectedFilters}
+          isFilter={isFilter}
+          setIsFilter={setIsFilter}
         />
       </div>
     </div>
@@ -61,10 +70,11 @@ export async function getServerSideProps() {
 
   // to sort the initial query by the first item in the data
   const initialSortField = sortItemData[0].sortField;
+  const initialFilters = { tags: [], price: null };
 
   await queryClient.prefetchQuery(
-    ['businesses', initialSortField],
-    fetchBusinesses,
+    ['businesses', initialSortField, initialFilters],
+    () => fetchBusinesses(initialSortField, initialFilters),
     {
       staleTime: 10000,
     }

@@ -1,16 +1,25 @@
-/**
- * Truncates the text with ellipsis
- * @param {string} text - text to shorten
- * @param {number} length - length to shorten the text to
- * @example
- * truncateText('hello', 2);  // returns he...
- */
-export function truncateText(text: string, length: number) {
-  // Format only if the text is greater than the specified length
-  if (text.length <= length) {
-    return text;
+import { ISelectedFilters } from '../pages/search/business';
+
+export function buildBusinessQuery(
+  sortField: string,
+  filters: ISelectedFilters
+) {
+  let priceQuery = '',
+    tagsQuery = '';
+
+  const sortQuery = `sort=${sortField}`; // sortField is always defined
+
+  if (filters.price) {
+    priceQuery = `&price=${filters.price}`;
   }
 
-  const formattedText = text.slice(0, length) + '...';
-  return formattedText;
+  if (filters.tags.length !== 0) {
+    const tags = filters.tags.join(',');
+    tagsQuery = `&tags=${tags}`;
+  }
+
+  // sort=-avgRating&price=cheap&tags=delivery,events
+  const apiQuery = ''.concat(sortQuery, priceQuery, tagsQuery);
+
+  return apiQuery;
 }

@@ -1,17 +1,10 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ISelectedFilters } from '../../pages/search/business';
 
 interface CheckboxProps {
   filterName: string;
-  selectedFilters: {
-    tags: string[];
-    price: string | null;
-  };
-  setSelectedFilters: Dispatch<
-    SetStateAction<{
-      tags: string[];
-      price: string | null;
-    }>
-  >;
+  selectedFilters: ISelectedFilters;
+  setSelectedFilters: Dispatch<SetStateAction<ISelectedFilters>>;
 }
 
 function Checkbox({

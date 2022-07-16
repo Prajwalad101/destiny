@@ -4,9 +4,10 @@ export interface IButton {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary';
   theme: 'light' | 'dark';
+  onClick: () => void;
 }
 
-function Button({ children, variant, theme }: IButton) {
+function Button({ children, variant, theme, onClick }: IButton) {
   return (
     <button
       className={classNames(
@@ -18,6 +19,7 @@ function Button({ children, variant, theme }: IButton) {
           : 'bg-transparent hover:border-primaryred hover:bg-primaryred',
         'md rounded-md border-[1px] py-2 px-6 text-base transition-colors'
       )}
+      onClick={onClick}
     >
       {children}
     </button>

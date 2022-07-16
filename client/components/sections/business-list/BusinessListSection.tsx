@@ -1,20 +1,27 @@
-import { ISortItem } from '../../../data/sortBusiness.data';
+import { Dispatch, SetStateAction } from 'react';
 import useBusinesses from '../../../hooks/business/useBusinesses';
+import { ISelectedFilters } from '../../../pages/search/business';
 import BusinessCard from '../../cards/business/BusinessCard';
 
 interface BusinessListSectionProps {
-  selectedSort: ISortItem;
-  selectedFilters: {
-    tags: string[];
-    price: string | null;
-  };
+  sortField: string;
+  selectedFilters: ISelectedFilters;
+  isFilter: boolean;
+  setIsFilter: Dispatch<SetStateAction<boolean>>;
 }
 
 function BusinessListSection({
-  selectedSort,
+  sortField,
   selectedFilters,
+  isFilter,
+  setIsFilter,
 }: BusinessListSectionProps) {
-  const businessResult = useBusinesses(selectedSort, selectedFilters);
+  const businessResult = useBusinesses(
+    sortField,
+    selectedFilters,
+    isFilter,
+    setIsFilter
+  );
 
   if (businessResult.isLoading) {
     return <span>Loading...</span>;

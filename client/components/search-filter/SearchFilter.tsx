@@ -1,5 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { IFilterOptions } from '../../data/searchFilter.data';
+import { ISelectedFilters } from '../../pages/search/business';
 import Button from '../button/Button';
 import Checkbox from '../checkbox/Checkbox';
 
@@ -15,22 +16,16 @@ interface SelectFilterProps {
 
 interface SearchFilterProps {
   filterOption: IFilterOptions;
-  selectedFilters: {
-    tags: string[];
-    price: string | null;
-  };
-  setSelectedFilters: Dispatch<
-    SetStateAction<{
-      tags: string[];
-      price: string | null;
-    }>
-  >;
+  selectedFilters: ISelectedFilters;
+  setSelectedFilters: Dispatch<SetStateAction<ISelectedFilters>>;
+  setIsFilter: Dispatch<SetStateAction<boolean>>;
 }
 
 function SearchFilter({
   filterOption,
   selectedFilters,
   setSelectedFilters,
+  setIsFilter,
 }: SearchFilterProps) {
   const SelectFilter = ({ filterData, filterType }: SelectFilterProps) => {
     return (
@@ -100,7 +95,11 @@ function SearchFilter({
           />
         </div>
         <div className="mb-5 flex flex-col">
-          <Button variant="primary" theme="light">
+          <Button
+            variant="primary"
+            theme="light"
+            onClick={() => setIsFilter(true)}
+          >
             <p className="py-[1px]">Filter</p>
           </Button>
         </div>
