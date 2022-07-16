@@ -1,18 +1,37 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
+import {
+  QueryObserverResult,
+  RefetchOptions,
+  RefetchQueryFilters,
+} from 'react-query';
 import { ISortItem } from '../../data/sortBusiness.data';
+import { Data } from '../../hooks/business/useBusinesses';
 
 export interface ISortItems {
   sortItemData: ISortItem[];
   selectedSort: ISortItem;
   setSelectedSort: Dispatch<SetStateAction<ISortItem>>;
+  refetch:
+    | (<TPageData>(
+        _options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
+      ) => Promise<QueryObserverResult<Data, Error>>)
+    | null;
 }
 
 function SortItems({
   sortItemData,
   selectedSort,
   setSelectedSort,
+  refetch,
 }: ISortItems) {
+  useEffect(() => {
+    setTimeout(() => {
+      if (refetch) {
+        refetch();
+      }
+    }, 0);
+  }, [refetch, selectedSort]);
   return (
     <div className="flex shrink-0 items-center font-rubik">
       <p className="text-secondarytext">Sort By:</p>
@@ -31,7 +50,9 @@ function SortItems({
                 <li
                   key={item.id}
                   className="cursor-pointer whitespace-nowrap rounded-sm py-2 px-3 hover:bg-gray-200"
-                  onClick={() => setSelectedSort(item)}
+                  onClick={() => {
+                    setSelectedSort(item);
+                  }}
                 >
                   {item.name}
                 </li>

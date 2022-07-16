@@ -1,6 +1,12 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { dehydrate, QueryClient } from 'react-query';
+import {
+  dehydrate,
+  QueryClient,
+  QueryObserverResult,
+  RefetchOptions,
+  RefetchQueryFilters,
+} from 'react-query';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
@@ -9,7 +15,7 @@ import BusinessListSection from '../../../components/sections/business-list/Busi
 import SortItems from '../../../components/sort/SortItems';
 import searchFilterData from '../../../data/searchFilter.data';
 import { sortItemData } from '../../../data/sortBusiness.data';
-import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
+import { Data, fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
 export interface ISelectedFilters {
@@ -26,7 +32,23 @@ const SearchBusiness: NextPageWithLayout = () => {
     tags: [],
     price: null,
   });
-  const [isFilter, setIsFilter] = useState(true); // is filter button clicked
+  const [refetch, setRefetch] =
+    useState<
+      | null
+      | (<TPageData>(
+          _options?:
+            | (RefetchOptions & RefetchQueryFilters<TPageData>)
+            | undefined
+        ) => Promise<QueryObserverResult<Data, Error>>)
+    >(null);
+
+  const getRefetch = (
+    refetchFn: <TPageData>(
+      _options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
+    ) => Promise<QueryObserverResult<Data, Error>>
+  ) => {
+    setRefetch(() => refetchFn);
+  };
 
   return (
     <div className="mt-5 flex gap-10 md:mt-10">
@@ -34,7 +56,7 @@ const SearchBusiness: NextPageWithLayout = () => {
         filterOption={searchFilterData.resturants}
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
-        setIsFilter={setIsFilter}
+        refetch={refetch}
       />
       <div className="min-w-0 grow">
         <div className="mb-7 sm:mr-5 md:mb-10">
@@ -50,6 +72,7 @@ const SearchBusiness: NextPageWithLayout = () => {
                 sortItemData={sortItemData}
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
+                refetch={refetch}
               />
             </div>
           </div>
@@ -57,8 +80,7 @@ const SearchBusiness: NextPageWithLayout = () => {
         <BusinessListSection
           sortField={selectedSort.sortField}
           selectedFilters={selectedFilters}
-          isFilter={isFilter}
-          setIsFilter={setIsFilter}
+          getRefetch={getRefetch}
         />
       </div>
     </div>
@@ -73,7 +95,7 @@ export async function getServerSideProps() {
   const initialFilters = { tags: [], price: null };
 
   await queryClient.prefetchQuery(
-    ['businesses', initialSortField, initialFilters],
+    ['business', initialSortField, initialFilters],
     () => fetchBusinesses(initialSortField, initialFilters),
     {
       staleTime: 10000,

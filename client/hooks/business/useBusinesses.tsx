@@ -1,10 +1,9 @@
 import { IBusiness } from '@destiny/types';
-import { Dispatch, SetStateAction } from 'react';
 import { useQuery } from 'react-query';
 import { ISelectedFilters } from '../../pages/search/business';
 import { buildBusinessQuery } from '../../utils/text';
 
-interface Data {
+export interface Data {
   status: string;
   data: IBusiness[];
 }
@@ -29,19 +28,13 @@ export const fetchBusinesses = async (
   return data;
 };
 
-function useBusinesses(
-  sortField: string,
-  selectedFilters: ISelectedFilters,
-  isFilter: boolean,
-  setIsFilter: Dispatch<SetStateAction<boolean>>
-) {
+function useBusinesses(sortField: string, selectedFilters: ISelectedFilters) {
   const query = useQuery<Data, Error>(
-    ['businesses', sortField, selectedFilters],
+    ['business', sortField, selectedFilters],
     () => fetchBusinesses(sortField, selectedFilters),
     {
-      enabled: isFilter,
+      enabled: false, // only run when the filter button is clicked
       staleTime: 10000,
-      onSettled: () => setIsFilter(false),
     }
   );
   return query;
