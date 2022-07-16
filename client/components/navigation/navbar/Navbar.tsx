@@ -60,10 +60,22 @@ function Navbar({ theme }: INavbar) {
             </div>
 
             {/* LOGIN BUTTONS */}
-            <Button variant="secondary" theme={theme}>
+            <Button
+              variant="secondary"
+              theme={theme}
+              onClick={() => {
+                return;
+              }}
+            >
               <p>Sign Up</p>
             </Button>
-            <Button variant="primary" theme={theme}>
+            <Button
+              variant="primary"
+              theme={theme}
+              onClick={() => {
+                return;
+              }}
+            >
               <p>Log In</p>
             </Button>
           </div>

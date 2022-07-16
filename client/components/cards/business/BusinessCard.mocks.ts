@@ -29,6 +29,8 @@ const card1: IBusinessCard = {
     ],
     total_rating: 32,
     rating_count: 7,
+    price: 'medium',
+    avgRating: 4,
   },
 };
 
