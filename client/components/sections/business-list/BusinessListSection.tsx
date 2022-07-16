@@ -4,10 +4,17 @@ import BusinessCard from '../../cards/business/BusinessCard';
 
 interface BusinessListSectionProps {
   selectedSort: ISortItem;
+  selectedFilters: {
+    tags: string[];
+    price: string | null;
+  };
 }
 
-function BusinessListSection({ selectedSort }: BusinessListSectionProps) {
-  const businessResult = useBusinesses(selectedSort);
+function BusinessListSection({
+  selectedSort,
+  selectedFilters,
+}: BusinessListSectionProps) {
+  const businessResult = useBusinesses(selectedSort, selectedFilters);
 
   if (businessResult.isLoading) {
     return <span>Loading...</span>;

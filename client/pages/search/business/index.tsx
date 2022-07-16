@@ -17,10 +17,18 @@ const SearchBusiness: NextPageWithLayout = () => {
   const { name, city } = router.query;
 
   const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
+  const [selectedFilters, setSelectedFilters] = useState<{
+    tags: string[];
+    price: string | null;
+  }>({ tags: [], price: null });
 
   return (
     <div className="mt-5 flex gap-10 md:mt-10">
-      <SearchFilter filterOption={searchFilterData.resturants} />
+      <SearchFilter
+        filterOption={searchFilterData.resturants}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
       <div className="min-w-0 grow">
         <div className="mb-7 sm:mr-5 md:mb-10">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
@@ -39,7 +47,10 @@ const SearchBusiness: NextPageWithLayout = () => {
             </div>
           </div>
         </div>
-        <BusinessListSection selectedSort={selectedSort} />
+        <BusinessListSection
+          selectedSort={selectedSort}
+          selectedFilters={selectedFilters}
+        />
       </div>
     </div>
   );

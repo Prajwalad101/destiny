@@ -1,12 +1,86 @@
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { IFilterOptions } from '../../data/searchFilter.data';
 import Button from '../button/Button';
 import Checkbox from '../checkbox/Checkbox';
 
-interface SearchFilterProps {
-  filterOption: IFilterOptions;
+interface PriceFilterProps {
+  filterData: string[];
+  filterType: string;
 }
 
-function SearchFilter({ filterOption }: SearchFilterProps) {
+interface SelectFilterProps {
+  filterData: string[];
+  filterType: string;
+}
+
+interface SearchFilterProps {
+  filterOption: IFilterOptions;
+  selectedFilters: {
+    tags: string[];
+    price: string | null;
+  };
+  setSelectedFilters: Dispatch<
+    SetStateAction<{
+      tags: string[];
+      price: string | null;
+    }>
+  >;
+}
+
+function SearchFilter({
+  filterOption,
+  selectedFilters,
+  setSelectedFilters,
+}: SearchFilterProps) {
+  const SelectFilter = ({ filterData, filterType }: SelectFilterProps) => {
+    return (
+      <div>
+        <p className="mb-3 font-medium capitalize">{filterType}</p>
+        <div className="child-notlast:mb-2">
+          {filterData.map((filterName, index) => (
+            <div key={index} className="hover:text-secondarytext">
+              <Checkbox
+                filterName={filterName}
+                selectedFilters={selectedFilters}
+                setSelectedFilters={setSelectedFilters}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const PriceFilter = ({ filterData, filterType }: PriceFilterProps) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const { id } = e.target;
+
+      selectedFilters.price = id;
+      setSelectedFilters({ ...selectedFilters });
+    };
+    return (
+      <div>
+        <p className="mb-3 font-medium capitalize">{filterType}</p>
+        <div className="grid grid-cols-2 gap-y-2">
+          {filterData.map((filter, index) => (
+            <label htmlFor={filter} key={index}>
+              <div className="flex cursor-pointer gap-2 hover:text-secondarytext">
+                <input
+                  type="radio"
+                  id={filter}
+                  className="w-[18px] accent-primaryred"
+                  onChange={(e) => handleChange(e)}
+                  checked={selectedFilters.price === filter}
+                />
+                <p className="capitalize">{filter}</p>
+              </div>
+            </label>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="hidden h-max rounded-md bg-gray-100 font-rubik lg:block">
       <div className=" w-[340px] px-8 py-6">
@@ -36,53 +110,3 @@ function SearchFilter({ filterOption }: SearchFilterProps) {
 }
 
 export default SearchFilter;
-
-// INTERNAL COMPONENTS 🔽
-
-interface PriceFilterProps {
-  filterData: string[];
-  filterType: string;
-}
-
-interface SelectFilterProps {
-  filterData: string[];
-  filterType: string;
-}
-
-const PriceFilter = ({ filterData, filterType }: PriceFilterProps) => {
-  return (
-    <div>
-      <p className="mb-3 font-medium capitalize">{filterType}</p>
-      <div className="grid grid-cols-2 gap-y-2">
-        {filterData.map((filter, index) => (
-          <label htmlFor={filter} key={index}>
-            <div className="flex cursor-pointer gap-2 hover:text-secondarytext">
-              <input
-                type="radio"
-                id={filter}
-                name="filter"
-                className="w-[18px] accent-primaryred"
-              />
-              <p className="capitalize">{filter}</p>
-            </div>
-          </label>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const SelectFilter = ({ filterData, filterType }: SelectFilterProps) => {
-  return (
-    <div>
-      <p className="mb-3 font-medium capitalize">{filterType}</p>
-      <div className="child-notlast:mb-2">
-        {filterData.map((filterName, index) => (
-          <div key={index} className="hover:text-secondarytext">
-            <Checkbox filterName={filterName} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
