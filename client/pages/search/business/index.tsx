@@ -1,12 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import {
-  dehydrate,
-  QueryClient,
-  QueryObserverResult,
-  RefetchOptions,
-  RefetchQueryFilters,
-} from 'react-query';
+import { dehydrate, QueryClient } from 'react-query';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
@@ -15,7 +9,7 @@ import BusinessListSection from '../../../components/sections/business-list/Busi
 import SortItems from '../../../components/sort/SortItems';
 import searchFilterData from '../../../data/searchFilter.data';
 import { sortItemData } from '../../../data/sortBusiness.data';
-import { Data, fetchBusinesses } from '../../../hooks/business/useBusinesses';
+import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
 export interface ISelectedFilters {
@@ -27,28 +21,12 @@ const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
   const { name, city } = router.query;
 
+  const [isFilter, setIsFilter] = useState(true);
   const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
   const [selectedFilters, setSelectedFilters] = useState<ISelectedFilters>({
     tags: [],
     price: null,
   });
-  const [refetch, setRefetch] =
-    useState<
-      | null
-      | (<TPageData>(
-          _options?:
-            | (RefetchOptions & RefetchQueryFilters<TPageData>)
-            | undefined
-        ) => Promise<QueryObserverResult<Data, Error>>)
-    >(null);
-
-  const getRefetch = (
-    refetchFn: <TPageData>(
-      _options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
-    ) => Promise<QueryObserverResult<Data, Error>>
-  ) => {
-    setRefetch(() => refetchFn);
-  };
 
   return (
     <div className="mt-5 flex gap-10 md:mt-10">
@@ -56,7 +34,7 @@ const SearchBusiness: NextPageWithLayout = () => {
         filterOption={searchFilterData.resturants}
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
-        refetch={refetch}
+        setIsFilter={setIsFilter}
       />
       <div className="min-w-0 grow">
         <div className="mb-7 sm:mr-5 md:mb-10">
@@ -72,7 +50,7 @@ const SearchBusiness: NextPageWithLayout = () => {
                 sortItemData={sortItemData}
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
-                refetch={refetch}
+                setIsFilter={setIsFilter}
               />
             </div>
           </div>
@@ -80,7 +58,8 @@ const SearchBusiness: NextPageWithLayout = () => {
         <BusinessListSection
           sortField={selectedSort.sortField}
           selectedFilters={selectedFilters}
-          getRefetch={getRefetch}
+          isFilter={isFilter}
+          setIsFilter={setIsFilter}
         />
       </div>
     </div>

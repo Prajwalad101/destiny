@@ -1,37 +1,26 @@
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
-import {
-  QueryObserverResult,
-  RefetchOptions,
-  RefetchQueryFilters,
-} from 'react-query';
 import { ISortItem } from '../../data/sortBusiness.data';
-import { Data } from '../../hooks/business/useBusinesses';
 
 export interface ISortItems {
   sortItemData: ISortItem[];
   selectedSort: ISortItem;
   setSelectedSort: Dispatch<SetStateAction<ISortItem>>;
-  refetch:
-    | (<TPageData>(
-        _options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
-      ) => Promise<QueryObserverResult<Data, Error>>)
-    | null;
+  setIsFilter: Dispatch<SetStateAction<boolean>>;
 }
 
 function SortItems({
   sortItemData,
   selectedSort,
   setSelectedSort,
-  refetch,
+  setIsFilter,
 }: ISortItems) {
+  // when sortField state updates, fetch data
   useEffect(() => {
     setTimeout(() => {
-      if (refetch) {
-        refetch();
-      }
+      setIsFilter(true);
     }, 0);
-  }, [refetch, selectedSort]);
+  }, [setIsFilter, selectedSort]);
   return (
     <div className="flex shrink-0 items-center font-rubik">
       <p className="text-secondarytext">Sort By:</p>

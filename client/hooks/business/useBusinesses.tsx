@@ -28,12 +28,16 @@ export const fetchBusinesses = async (
   return data;
 };
 
-function useBusinesses(sortField: string, selectedFilters: ISelectedFilters) {
+function useBusinesses(
+  sortField: string,
+  selectedFilters: ISelectedFilters,
+  isFilter: boolean
+) {
   const query = useQuery<Data, Error>(
     ['business', sortField, selectedFilters],
     () => fetchBusinesses(sortField, selectedFilters),
     {
-      enabled: false, // only run when the filter button is clicked
+      enabled: isFilter, // only run when the filter button is clicked
       staleTime: 10000,
     }
   );

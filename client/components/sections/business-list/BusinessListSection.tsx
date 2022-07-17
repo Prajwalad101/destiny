@@ -1,43 +1,38 @@
 import { IBusiness } from '@destiny/types';
-import { useEffect, useState } from 'react';
-import {
-  QueryObserverResult,
-  RefetchOptions,
-  RefetchQueryFilters,
-} from 'react-query';
-import useBusinesses, { Data } from '../../../hooks/business/useBusinesses';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import useBusinesses from '../../../hooks/business/useBusinesses';
 import { ISelectedFilters } from '../../../pages/search/business';
 import BusinessCard from '../../cards/business/BusinessCard';
 
 interface BusinessListSectionProps {
   sortField: string;
   selectedFilters: ISelectedFilters;
-  getRefetch: (
-    _refetchFn: <TPageData>(
-      _options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
-    ) => Promise<QueryObserverResult<Data, Error>>
-  ) => void;
+  isFilter: boolean;
+  setIsFilter: Dispatch<SetStateAction<boolean>>;
 }
 
 function BusinessListSection({
   sortField,
   selectedFilters,
-  getRefetch,
+  isFilter,
+  setIsFilter,
 }: BusinessListSectionProps) {
   const [businessData, setBusinessData] = useState<IBusiness[] | null>(null);
-  const businessResult = useBusinesses(sortField, selectedFilters);
+  const businessResult = useBusinesses(sortField, selectedFilters, isFilter);
 
+  // when fetch settles, change the filter state back to false
   useEffect(() => {
-    getRefetch(businessResult.refetch);
-  }, [getRefetch, businessResult.refetch]);
+    setIsFilter(false);
+  }, [businessResult, setIsFilter]);
 
+  // only update data on success and button click
   useEffect(() => {
-    // only update data on success and if filter button is clicked
-    if (businessResult.isSuccess) {
+    if (businessResult.isSuccess && isFilter) {
       setBusinessData(businessResult.data?.data);
     }
-  }, [businessResult]);
+  }, [businessResult, isFilter]);
 
+  // render according to the fetch status
   if (businessResult.isLoading) {
     return <span>Loading...</span>;
   }
