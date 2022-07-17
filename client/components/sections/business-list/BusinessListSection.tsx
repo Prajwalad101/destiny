@@ -25,9 +25,9 @@ function BusinessListSection({
     setIsFilter(false);
   }, [businessResult, setIsFilter]);
 
-  // only update data on success and button click
+  // only update data on success
   useEffect(() => {
-    if (businessResult.isSuccess && isFilter) {
+    if (businessResult.isSuccess) {
       setBusinessData(businessResult.data?.data);
     }
   }, [businessResult, isFilter]);
