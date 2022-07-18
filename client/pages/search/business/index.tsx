@@ -1,13 +1,11 @@
-import { useRouter } from 'next/router';
+import { IBusiness } from '@destiny/types';
 import { useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
+import BusinessCard from '../../../components/cards/business/BusinessCard';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
+import SearchBusinessLayout from '../../../components/layout/pages/search-business/SearchBusinessLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
-import SearchFilter from '../../../components/search-filter/SearchFilter';
-import BusinessListSection from '../../../components/sections/business-list/BusinessListSection';
-import SortItems from '../../../components/sort/SortItems';
-import searchFilterData from '../../../data/searchFilter.data';
 import { sortItemData } from '../../../data/sortBusiness.data';
 import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
@@ -18,51 +16,17 @@ export interface ISelectedFilters {
 }
 
 const SearchBusiness: NextPageWithLayout = () => {
-  const router = useRouter();
-  const { name, city } = router.query;
-
-  const [isFilter, setIsFilter] = useState(true);
-  const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
-  const [selectedFilters, setSelectedFilters] = useState<ISelectedFilters>({
-    tags: [],
-    price: null,
-  });
-
+  const [businessData, setBusinessData] = useState<IBusiness[]>([]);
   return (
-    <div className="mt-5 flex gap-10 md:mt-10">
-      <SearchFilter
-        filterOption={searchFilterData.resturants}
-        selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
-        setIsFilter={setIsFilter}
-      />
-      <div className="min-w-0 grow">
-        <div className="mb-7 sm:mr-5 md:mb-10">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-            {/* Heading */}
-            <h2 className="font-merriweather text-2xl font-bold">
-              Top <span className="capitalize">{name}</span> in{' '}
-              <span className="capitalize">{city}</span>
-            </h2>
-            {/* Sort Menu */}
-            <div className="w-72">
-              <SortItems
-                sortItemData={sortItemData}
-                selectedSort={selectedSort}
-                setSelectedSort={setSelectedSort}
-                setIsFilter={setIsFilter}
-              />
-            </div>
+    <SearchBusinessLayout setBusinessData={setBusinessData}>
+      <>
+        {businessData?.map((business) => (
+          <div key={business._id.toString()} className="mb-4">
+            <BusinessCard business={business} />
           </div>
-        </div>
-        <BusinessListSection
-          sortField={selectedSort.sortField}
-          selectedFilters={selectedFilters}
-          isFilter={isFilter}
-          setIsFilter={setIsFilter}
-        />
-      </div>
-    </div>
+        ))}
+      </>
+    </SearchBusinessLayout>
   );
 };
 

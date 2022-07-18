@@ -1,22 +1,22 @@
 import { IBusiness } from '@destiny/types';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react';
 import useBusinesses from '../../../hooks/business/useBusinesses';
 import { ISelectedFilters } from '../../../pages/search/business';
 import BusinessCard from '../../cards/business/BusinessCard';
 
-interface BusinessListSectionProps {
+interface BusinessListProps {
   sortField: string;
   selectedFilters: ISelectedFilters;
   isFilter: boolean;
   setIsFilter: Dispatch<SetStateAction<boolean>>;
 }
 
-function BusinessListSection({
+function BusinessList({
   sortField,
   selectedFilters,
   isFilter,
   setIsFilter,
-}: BusinessListSectionProps) {
+}: BusinessListProps) {
   const [businessData, setBusinessData] = useState<IBusiness[] | null>(null);
   const businessResult = useBusinesses(sortField, selectedFilters, isFilter);
 
@@ -44,6 +44,14 @@ function BusinessListSection({
     return <p>Error: {businessResult.error}</p>;
   }
 
+  return <MemoizedBusinessCards businessData={businessData} />;
+}
+
+interface BusinessCardsProps {
+  businessData: IBusiness[] | null;
+}
+
+const BusinessCards = ({ businessData }: BusinessCardsProps) => {
   return (
     <div>
       {businessData?.map((business) => (
@@ -53,6 +61,8 @@ function BusinessListSection({
       ))}
     </div>
   );
-}
+};
 
-export default BusinessListSection;
+const MemoizedBusinessCards = memo(BusinessCards);
+
+export default BusinessList;
