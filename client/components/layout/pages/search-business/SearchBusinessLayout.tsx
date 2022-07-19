@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import searchFilterData from '../../../../data/searchFilter.data';
 import { sortItemData } from '../../../../data/sortBusiness.data';
 import useBusinesses from '../../../../hooks/business/useBusinesses';
-import { ISelectedFilters } from '../../../../pages/search/business';
+import { ISelectedFilters } from '../../../../types/interfaces';
 import SearchFilter from '../../../search-filter/SearchFilter';
 import SortItems from '../../../sort/SortItems';
 

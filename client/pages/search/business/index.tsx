@@ -10,11 +10,6 @@ import { sortItemData } from '../../../data/sortBusiness.data';
 import { fetchBusinesses } from '../../../hooks/business/useBusinesses';
 import { NextPageWithLayout } from '../../_app';
 
-export interface ISelectedFilters {
-  tags: string[];
-  price: string | null;
-}
-
 const SearchBusiness: NextPageWithLayout = () => {
   const [businessData, setBusinessData] = useState<IBusiness[]>([]);
   return (

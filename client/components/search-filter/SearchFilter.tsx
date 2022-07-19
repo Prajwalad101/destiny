@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { IFilterOptions } from '../../data/searchFilter.data';
-import { ISelectedFilters } from '../../pages/search/business';
+import { ISelectedFilters } from '../../types/interfaces';
 import Button from '../button/Button';
 import Checkbox from '../checkbox/Checkbox';
 
