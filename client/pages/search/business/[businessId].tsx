@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
+import ConditionalRender from '../../../components/conditional-render/ConditionalRender';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
@@ -15,29 +16,15 @@ const Business: NextPageWithLayout = () => {
   const businessId = query.businessId as string;
 
   const businessResult = useBusiness(businessId);
-
-  if (businessResult.isLoading) {
-    return <div>Loading data</div>;
-  }
-
-  if (businessResult.isError) {
-    return (
-      <div>
-        <h4>Error while fetching business data</h4>
-        <p>{businessResult.error.message}</p>
-      </div>
-    );
-  }
-
-  if (businessResult.isIdle) {
-    return <div>Idling</div>;
-  }
+  const { isLoading, isError } = businessResult;
 
   return (
-    <div>
-      <button onClick={() => router.back()}>GO BACK</button>
-      {businessResult.data?.data.name}
-    </div>
+    <ConditionalRender isLoading={isLoading} isError={isError}>
+      <div>
+        <button onClick={() => router.back()}>GO BACK</button>
+        {businessResult.data?.data.name}
+      </div>
+    </ConditionalRender>
   );
 };
 
