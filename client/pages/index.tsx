@@ -37,6 +37,7 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
+// navbar set to false, because navbar is rendered seperately inside the hero section
 Home.getLayout = (page) => <NavLayout navbar={false}>{page}</NavLayout>;
 
 export default Home;

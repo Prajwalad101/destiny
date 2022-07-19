@@ -1,4 +1,5 @@
 import { IBusiness, IReview } from '@destiny/types';
+import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { checkIsOpen } from '../../../utils/api';
 import RatingIcons from '../../icons/ratings/RatingIcons';
@@ -10,35 +11,38 @@ export interface IBusinessCard {
 
 function BusinessCard({ business }: IBusinessCard) {
   return (
-    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
-      {/* Image Slider */}
-      <ImageSlider images={business.images} />
-      {/* Body */}
-      <div className="grow border-x-2 border-b-2 p-2 sm:border-l-0 sm:border-t-2 sm:p-3">
-        <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
-        <div className="mb-2 flex items-center gap-4">
-          <div className="flex items-center gap-3">
-            <RatingIcons
-              totalRating={business.total_rating}
-              ratingCount={business.rating_count}
-            />
-            <p className="text-sm text-secondarytext">
-              ({business.rating_count})
+    <Link href={`/search/business/${business._id}`}>
+      <a>
+        <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
+          <ImageSlider images={business.images} />
+          {/* Body */}
+          <div className="grow border-x-2 border-b-2 p-2 sm:border-l-0 sm:border-t-2 sm:p-3">
+            <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
+            <div className="mb-2 flex items-center gap-4">
+              <div className="flex items-center gap-3">
+                <RatingIcons
+                  totalRating={business.total_rating}
+                  ratingCount={business.rating_count}
+                />
+                <p className="text-sm text-secondarytext">
+                  ({business.rating_count})
+                </p>
+              </div>
+              <p className="text-[15px] font-medium text-secondarytext">
+                {checkIsOpen(business.businessHours) ? 'Open now' : 'Closed'}
+              </p>
+            </div>
+            <p className="mb-4 text-sm text-secondarytext">
+              {business.location.address}
             </p>
+            {/* Horizontal Line */}
+            <div className="mb-3 hidden border-[1px] sm:block"></div>
+            {/* Reviews */}
+            <Reviews reviews={business.reviews} />
           </div>
-          <p className="text-[15px] font-medium text-secondarytext">
-            {checkIsOpen(business.businessHours) ? 'Open now' : 'Closed'}
-          </p>
         </div>
-        <p className="mb-4 text-sm text-secondarytext">
-          {business.location.address}
-        </p>
-        {/* Horizontal Line */}
-        <div className="mb-3 hidden border-[1px] sm:block"></div>
-        {/* Reviews */}
-        <Reviews reviews={business.reviews} />
-      </div>
-    </div>
+      </a>
+    </Link>
   );
 }
 
