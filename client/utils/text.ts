@@ -3,7 +3,7 @@ import { ISelectedFilters } from '../types/interfaces';
 export function buildBusinessQuery(
   sortField: string,
   filters: ISelectedFilters,
-  fieldsQuery: string
+  fields: string[]
 ) {
   let priceQuery = '',
     tagsQuery = '';
@@ -18,6 +18,8 @@ export function buildBusinessQuery(
     const tags = filters.tags.join(',');
     tagsQuery = `&tags=${tags}`;
   }
+
+  const fieldsQuery = '&fields=' + fields.join(',');
 
   // sort=-avgRating&price=cheap&tags=delivery,events
   const apiQuery = ''.concat(sortQuery, priceQuery, tagsQuery, fieldsQuery);

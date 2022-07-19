@@ -10,11 +10,10 @@ export interface Data {
 
 export const fetchBusinesses = async (
   sortField: string,
-  filters: ISelectedFilters
+  filters: ISelectedFilters,
+  fields: string[]
 ) => {
-  const fieldsQuery = '&fields=-description,-price,-tags,-total_rating';
-
-  const query = buildBusinessQuery(sortField, filters, fieldsQuery);
+  const query = buildBusinessQuery(sortField, filters, fields);
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}/api/business?${query}`
@@ -35,14 +34,18 @@ function useBusinesses(
   selectedFilters: ISelectedFilters,
   isFilter: boolean
 ) {
+  // ** when updating initialFields make sure to update on getServerSideProps also
+  const initialFields = ['-description', '-price', '-tags', '-total_rating'];
+
   const query = useQuery<Data, Error>(
-    ['business', sortField, selectedFilters],
-    () => fetchBusinesses(sortField, selectedFilters),
+    ['business', sortField, selectedFilters, initialFields],
+    () => fetchBusinesses(sortField, selectedFilters, initialFields),
     {
       enabled: isFilter, // only run when the filter button is clicked
-      staleTime: 10000,
+      staleTime: 1000 * 10,
     }
   );
+
   return query;
 }
 

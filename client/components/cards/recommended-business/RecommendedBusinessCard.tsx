@@ -40,10 +40,7 @@ function RecommendedBusinessCard(props: IRecommendBusinessCard) {
 
         {/* BUSINESS RATING */}
         <div className="mb-2 flex gap-2 ">
-          <RatingIcons
-            totalRating={props.total_rating}
-            ratingCount={props.rating_count}
-          />
+          <RatingIcons avgRating={props.total_rating / props.rating_count} />
           <span className="text-sm text-secondarytext">
             ({props.rating_count})
           </span>

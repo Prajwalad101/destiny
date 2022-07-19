@@ -10,7 +10,8 @@ import useBusiness, {
 import { NextPageWithLayout } from '../../_app';
 
 const Business: NextPageWithLayout = () => {
-  const { query } = useRouter();
+  const router = useRouter();
+  const { query } = router;
   const businessId = query.businessId as string;
 
   const businessResult = useBusiness(businessId);
@@ -32,7 +33,12 @@ const Business: NextPageWithLayout = () => {
     return <div>Idling</div>;
   }
 
-  return <div>{businessResult.data?.data.name}</div>;
+  return (
+    <div>
+      <button onClick={() => router.back()}>GO BACK</button>
+      {businessResult.data?.data.name}
+    </div>
+  );
 };
 
 export default Business;
@@ -46,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   await queryClient.prefetchQuery(
     ['business', businessId],
     () => fetchBusiness(businessId),
-    { staleTime: 10000 }
+    { staleTime: 1000 * 10 }
   );
 
   return {
@@ -59,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 Business.getLayout = (page, pageProps) => (
   <ProviderLayout pageProps={pageProps}>
     <NavLayout>
-      <AppLayout size="sm">{page}</AppLayout>
+      <AppLayout>{page}</AppLayout>
     </NavLayout>
   </ProviderLayout>
 );

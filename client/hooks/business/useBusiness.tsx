@@ -25,7 +25,7 @@ function useBusiness(businessId: string) {
   const query = useQuery<Data, Error>(
     ['business', businessId],
     () => fetchBusiness(businessId),
-    { staleTime: 10000 }
+    { staleTime: 1000 * 10 }
   );
 
   return query;
