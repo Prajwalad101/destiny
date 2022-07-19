@@ -1,6 +1,12 @@
+import { IBusiness } from '@destiny/types';
 import { useQuery } from 'react-query';
-import { Data, ISelectedFilters } from '../../types/interfaces';
+import { ISelectedFilters } from '../../types/interfaces';
 import { buildBusinessQuery } from '../../utils/text';
+
+export interface Data {
+  status: string;
+  data: IBusiness[];
+}
 
 export const fetchBusinesses = async (
   sortField: string,
