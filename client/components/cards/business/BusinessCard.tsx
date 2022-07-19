@@ -20,10 +20,7 @@ function BusinessCard({ business }: IBusinessCard) {
             <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
             <div className="mb-2 flex items-center gap-4">
               <div className="flex items-center gap-3">
-                <RatingIcons
-                  totalRating={business.total_rating}
-                  ratingCount={business.rating_count}
-                />
+                <RatingIcons avgRating={business.avgRating} />
                 <p className="text-sm text-secondarytext">
                   ({business.rating_count})
                 </p>

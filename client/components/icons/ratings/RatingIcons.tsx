@@ -1,17 +1,16 @@
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 
 interface IRatingIcons {
-  totalRating: number;
-  ratingCount: number;
+  avgRating: number;
 }
 
-function RatingIcons({ totalRating, ratingCount }: IRatingIcons) {
+function RatingIcons({ avgRating }: IRatingIcons) {
   const iconSize = 17;
 
   // if totalRatings or ratingCount is 0, render empty stars
   const emptyArr = Array.from(Array(5).keys());
 
-  if (totalRating === 0 || ratingCount === 0) {
+  if (avgRating === 0) {
     return (
       <div className="flex text-primaryred">
         {emptyArr.map((item) => (
@@ -20,7 +19,6 @@ function RatingIcons({ totalRating, ratingCount }: IRatingIcons) {
       </div>
     );
   }
-  const avgRating = totalRating / ratingCount;
   // to check for a half star
   const isDecimal = !Number.isInteger(avgRating);
 

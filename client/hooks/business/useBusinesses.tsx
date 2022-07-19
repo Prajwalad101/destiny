@@ -1,6 +1,6 @@
 import { IBusiness } from '@destiny/types';
 import { useQuery } from 'react-query';
-import { ISelectedFilters } from '../../pages/search/business';
+import { ISelectedFilters } from '../../types/interfaces';
 import { buildBusinessQuery } from '../../utils/text';
 
 export interface Data {
@@ -12,7 +12,10 @@ export const fetchBusinesses = async (
   sortField: string,
   filters: ISelectedFilters
 ) => {
-  const query = buildBusinessQuery(sortField, filters);
+  const fieldsQuery =
+    '&fields=-description,-price,-tags,-total_rating,-rating_count';
+
+  const query = buildBusinessQuery(sortField, filters, fieldsQuery);
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}/api/business?${query}`

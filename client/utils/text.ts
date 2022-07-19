@@ -1,8 +1,9 @@
-import { ISelectedFilters } from '../pages/search/business';
+import { ISelectedFilters } from '../types/interfaces';
 
 export function buildBusinessQuery(
   sortField: string,
-  filters: ISelectedFilters
+  filters: ISelectedFilters,
+  fieldsQuery: string
 ) {
   let priceQuery = '',
     tagsQuery = '';
@@ -19,7 +20,7 @@ export function buildBusinessQuery(
   }
 
   // sort=-avgRating&price=cheap&tags=delivery,events
-  const apiQuery = ''.concat(sortQuery, priceQuery, tagsQuery);
+  const apiQuery = ''.concat(sortQuery, priceQuery, tagsQuery, fieldsQuery);
 
   return apiQuery;
 }
