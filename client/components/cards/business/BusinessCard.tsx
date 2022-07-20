@@ -11,12 +11,12 @@ export interface IBusinessCard {
 
 function BusinessCard({ business }: IBusinessCard) {
   return (
-    <Link href={`/search/business/${business._id}`}>
-      <a>
-        <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
-          <ImageSlider images={business.images} />
-          {/* Body */}
-          <div className="grow border-x-2 border-b-2 p-2 sm:border-l-0 sm:border-t-2 sm:p-3">
+    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
+      <ImageSlider images={business.images} />
+      {/* Body */}
+      <Link href={`/search/business/${business._id}`}>
+        <a className="grow border-x-2 border-b-2 sm:border-l-0 sm:border-t-2">
+          <div className="p-2 sm:p-3">
             <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
             <div className="mb-2 flex items-center gap-4">
               <div className="flex items-center gap-3">
@@ -37,9 +37,9 @@ function BusinessCard({ business }: IBusinessCard) {
             {/* Reviews */}
             <Reviews reviews={business.reviews} />
           </div>
-        </div>
-      </a>
-    </Link>
+        </a>
+      </Link>
+    </div>
   );
 }
 
