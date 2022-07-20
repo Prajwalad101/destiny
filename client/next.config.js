@@ -10,7 +10,7 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['dummyimage.com'],
+    domains: ['dummyimage.com', 'images.unsplash.com'],
   },
 };
 
