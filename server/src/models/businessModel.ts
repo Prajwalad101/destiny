@@ -86,7 +86,7 @@ businessSchema.pre('find', function (next) {
 businessSchema.pre('findOne', function (next) {
   this.populate({
     path: 'reviews',
-    select: 'review likes createdAt -business',
+    select: '-business review rating likes dislikes createdAt',
     options: { sort: '-likes' },
     perDocumentLimit: 10,
   });
