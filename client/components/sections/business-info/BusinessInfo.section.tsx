@@ -56,7 +56,7 @@ function BusinessInfo({ business }: BusinessInfoProps) {
           Read More
         </span>
       </p>
-      <ImageScroll businessId={business._id} images={business.images} />
+      <ImageScroll id={business._id} images={business.images} />
     </div>
   );
 }

@@ -7,4 +7,5 @@ export interface IReview {
   likes?: number;
   dislikes?: number;
   business: Types.ObjectId;
+  createdAt: string;
 }

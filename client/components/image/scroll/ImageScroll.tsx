@@ -6,21 +6,21 @@ import { useContainerDimensions } from '../../../hooks/lib/useContainerDimension
 
 export interface ImageScrollProps {
   images: string[];
-  businessId: Types.ObjectId;
+  id: Types.ObjectId;
 }
 
-function ImageScroll({ images, businessId }: ImageScrollProps) {
-  const id = businessId.toString();
+function ImageScroll({ images, id }: ImageScrollProps) {
+  const elementId = id.toString();
   const componentRef = useRef<HTMLDivElement>(null);
   const { width: imageWidth } = useContainerDimensions(componentRef);
 
   const slideLeft = () => {
-    const slider = document.getElementById(id) as HTMLDivElement;
+    const slider = document.getElementById(elementId) as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft - imageWidth;
   };
 
   const slideRight = () => {
-    const slider = document.getElementById(id) as HTMLDivElement;
+    const slider = document.getElementById(elementId) as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft + imageWidth;
   };
 
@@ -43,12 +43,12 @@ function ImageScroll({ images, businessId }: ImageScrollProps) {
       {/* Images */}
       <div
         className="hide-scrollbar relative flex h-[160px] gap-4 overflow-x-hidden scroll-smooth"
-        id={id}
+        id={elementId}
       >
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative w-[200px] shrink-0"
+            className="relative w-[46%] shrink-0"
             ref={componentRef}
           >
             <Image
