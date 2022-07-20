@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
 import ConditionalRender from '../../../components/conditional-render/ConditionalRender';
@@ -18,12 +19,22 @@ const Business: NextPageWithLayout = () => {
   const businessResult = useBusiness(businessId);
   const { isLoading, isError } = businessResult;
 
+  const businessData = businessResult.data?.data;
+  if (businessData === undefined) {
+    return null;
+  }
+
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
-      <div>
-        <button onClick={() => router.back()}>GO BACK</button>
-        {businessResult.data?.data.name}
-      </div>
+      <>
+        <Image
+          alt={businessData.name}
+          src={businessData.images[0]}
+          width={300}
+          height={200}
+        />
+        <div>{businessResult.data?.data.name}</div>
+      </>
     </ConditionalRender>
   );
 };
@@ -52,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 Business.getLayout = (page, pageProps) => (
   <ProviderLayout pageProps={pageProps}>
     <NavLayout>
-      <AppLayout>{page}</AppLayout>
+      <AppLayout size="sm">{page}</AppLayout>
     </NavLayout>
   </ProviderLayout>
 );
