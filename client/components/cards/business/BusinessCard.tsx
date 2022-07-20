@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { checkIsOpen } from '../../../utils/api';
 import RatingIcons from '../../icons/ratings/RatingIcons';
-import ImageSlider from '../../slider/image/ImageSlider';
+import ImageSlider from '../../image/slider/ImageSlider';
 
 export interface IBusinessCard {
   business: IBusiness;
