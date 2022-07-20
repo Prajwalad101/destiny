@@ -12,10 +12,12 @@ export interface IBusinessCard {
 function BusinessCard({ business }: IBusinessCard) {
   return (
     <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
-      <ImageSlider images={business.images} />
+      <div>
+        <ImageSlider images={business.images} />
+      </div>
       {/* Body */}
       <Link href={`/search/business/${business._id}`}>
-        <a className="grow border-x-2 border-b-2 sm:border-l-0 sm:border-t-2">
+        <a className="min-w-0 grow border-x-2 border-b-2 sm:border-l-0 sm:border-t-2">
           <div className="p-2 sm:p-3">
             <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
             <div className="mb-2 flex items-center gap-4">
