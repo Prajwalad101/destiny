@@ -88,7 +88,7 @@ function ImageScroll({ images }: ImageScrollProps) {
         )}
         onClick={slideLeft}
       >
-        <BiArrowBack size={23} />
+        <BiArrowBack size={20} />
       </div>
       {/* Right button */}
       <div
@@ -98,7 +98,7 @@ function ImageScroll({ images }: ImageScrollProps) {
         )}
         onClick={slideRight}
       >
-        <BiArrowBack size={23} className="rotate-180" />
+        <BiArrowBack size={20} className="rotate-180" />
       </div>
       {/* Images */}
       <div
