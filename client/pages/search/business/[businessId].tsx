@@ -62,6 +62,7 @@ const reviewImages = [
   'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80',
   'https://images.unsplash.com/photo-1562967916-eb82221dfb92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
   'https://images.unsplash.com/photo-1562967916-eb82221dfb92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
+  'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80',
 ];
 
 function Reviews({ reviews }: { reviews: IReview[] }) {
@@ -88,7 +89,7 @@ function Reviews({ reviews }: { reviews: IReview[] }) {
             </div>
             <p className="mb-4">{review.review}</p>
             <div className="mb-4">
-              <ImageScroll images={reviewImages} id={review._id} />
+              <ImageScroll images={reviewImages} />
             </div>
             <div className="flex items-center gap-7">
               <div className="mb-4 flex items-center gap-2">
