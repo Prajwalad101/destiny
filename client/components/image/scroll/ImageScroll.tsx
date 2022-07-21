@@ -24,7 +24,8 @@ function ImageScroll({ images }: ImageScrollProps) {
 
     // 12 is the padding around container edge (scroll through that space too)
     const newPosition = scrollPos - containerWidth - 12;
-    imageContainerRef.current.scrollLeft = 0;
+
+    imageContainerRef.current.scrollLeft = newPosition;
     setScrollPos(newPosition);
   };
 
@@ -43,7 +44,13 @@ function ImageScroll({ images }: ImageScrollProps) {
   // prevent scroll value from getting greater or smaller than scroll menu container
   useEffect(() => {
     if (scrollPos <= 0) {
+      console.log('Setting scroll to start');
+
+      if (scrollPos !== 0) {
+        setScrollPos(0);
+      }
       setScrollStatus('start');
+      return;
     }
 
     // num of visible images on the screen width
@@ -57,9 +64,19 @@ function ImageScroll({ images }: ImageScrollProps) {
     const scrollableWidth = totalWidth - containerWidth; // width that can be scrolled
 
     if (scrollPos >= scrollableWidth) {
+      console.log('Setting scroll to end');
+      if (scrollPos !== scrollableWidth) {
+        setScrollPos(scrollableWidth);
+      }
+
       setScrollStatus('end');
+      return;
     }
+    // set a default scroll status as empty(between scrolls)
+    setScrollStatus('');
   }, [scrollPos, containerWidth, imageWidth, images.length]);
+
+  console.log('Scroll Pos', scrollPos);
 
   return (
     <div className="relative w-full sm:w-56">
