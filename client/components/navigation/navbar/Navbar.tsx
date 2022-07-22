@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
 import { useSidebar } from '../../../context/navigation.context';
-import { classNames } from '../../../utils/tailwind';
+import { classNames } from '../../../utils/css';
 import Button from '../../button/Button';
 import AppLayout from '../../layout/app/AppLayout';
 import Logo from '../../logo/Logo';

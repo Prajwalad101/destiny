@@ -1,4 +1,4 @@
-import { classNames } from '../../../utils/tailwind';
+import { classNames } from '../../../utils/css';
 
 interface IAppLayout {
   children: React.ReactNode;

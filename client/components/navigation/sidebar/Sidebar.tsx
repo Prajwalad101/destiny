@@ -2,7 +2,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
-import { classNames } from '../../../utils/tailwind';
+import { classNames } from '../../../utils/css';
 import ExploreTopicDropdownMobile from '../../dropdown/explore-topic-mobile/ExploreTopicDropdownMobile';
 
 function Sidebar() {

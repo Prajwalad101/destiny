@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import topicDropdownData from '../../../data/dropdown.data';
-import { classNames } from '../../../utils/tailwind';
+import { classNames } from '../../../utils/css';
 
 function ExploreTopicDropdownMobile() {
   const [selectedItem, setSelectedItem] = useState<string>();
