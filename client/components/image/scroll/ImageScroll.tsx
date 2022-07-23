@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { classNames } from '../../../utils/css';
+import { classNames, getCalculatedValue } from '../../../utils/css';
 
 interface ImageScrollProps {
   images: string[];
   minItems?: number;
 }
+
+// *additional css included on slider.css
 
 function ImageScroll({ images, minItems }: ImageScrollProps) {
   const scrollRef = useRef<HTMLInputElement>(null);
@@ -37,13 +39,13 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
     setScrollIndex(scrollIndex - 1);
   };
 
-  // sets a default items-per screen depending on props
+  // sets a default no-items depending on props
   useEffect(() => {
     if (!minItems) {
       return;
     }
 
-    scrollRef.current?.style.setProperty('--no-items', String(minItems));
+    scrollRef.current?.style.setProperty('--initial-items', String(minItems));
   }, [minItems]);
 
   // checks for end of the items list
@@ -51,9 +53,17 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
     if (!scrollRef.current) {
       return;
     }
+
     const itemsPerScreen = getComputedStyle(scrollRef.current).getPropertyValue(
       '--items-per-screen'
     );
+
+    // only works for addition of two values between parenthesis
+    const items = getCalculatedValue(itemsPerScreen);
+
+    if (!items) {
+      return true;
+    }
 
     const maxIndex = Math.ceil(images.length / parseInt(itemsPerScreen));
 
@@ -79,7 +89,7 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
               key={index}
               alt="image"
               layout="fill"
-              className="pl-1 pr-1"
+              className="slider-next-img"
             />
           </div>
         ))}
