@@ -43,10 +43,7 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
       return;
     }
 
-    scrollRef.current?.style.setProperty(
-      '--items-per-screen',
-      String(minItems)
-    );
+    scrollRef.current?.style.setProperty('--no-items', String(minItems));
   }, [minItems]);
 
   // checks for end of the items list
@@ -82,10 +79,7 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
               key={index}
               alt="image"
               layout="fill"
-              style={{
-                paddingLeft: '2px !important',
-                paddingRight: '2px !important',
-              }}
+              className="pl-1 pr-1"
             />
           </div>
         ))}

@@ -1,5 +1,6 @@
 .slider {
-  --items-per-screen: 3; /* default items-per-screen*/
+  --no-items: 3; /* Used to update --items-per-screen on media-queries */
+  --items-per-screen: var(--no-items); /* default items-per-screen */
   --slider-index: 0; /* this variable is modified on button click */
   transform: translateX(calc(var(--slider-index) * -100%));
   transition: transform 400ms ease-in-out;
@@ -12,24 +13,24 @@
 /* important is added to override properties on the style object */
 @media (min-width: 480px) {
   .slider {
-    --items-per-screen: 4 !important;
+    --items-per-screen: calc(var(--no-items) + 1);
   }
 }
 
 @media (min-width: 650px) {
   .slider {
-    --items-per-screen: 5 !important;
+    --items-per-screen: calc(var(--no-items) + 2);
   }
 }
 
 @media (min-width: 920px) {
   .slider {
-    --items-per-screen: 6 !important;
+    --items-per-screen: calc(var(--no-items) + 3);
   }
 }
 
 @media (min-width: 1100px) {
   .slider {
-    --items-per-screen: 7 !important;
+    --items-per-screen: calc(var(--no-items) + 4);
   }
 }
