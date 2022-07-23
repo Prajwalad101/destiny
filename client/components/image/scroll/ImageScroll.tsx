@@ -1,122 +1,134 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { useContainerDimensions } from '../../../hooks/lib/useContainerDimensions';
-import { classNames } from '../../../utils/tailwind';
+import { classNames } from '../../../utils/css';
 
-export interface ImageScrollProps {
+interface ImageScrollProps {
   images: string[];
+  minItems?: number;
 }
 
-function ImageScroll({ images }: ImageScrollProps) {
-  const imageRef = useRef<HTMLDivElement>(null);
-  const imageContainerRef = useRef<HTMLDivElement>(null);
+function ImageScroll({ images, minItems }: ImageScrollProps) {
+  const scrollRef = useRef<HTMLInputElement>(null);
+  const [scrollIndex, setScrollIndex] = useState(0); // slider always starts from beginning
 
-  const { width: imageWidth } = useContainerDimensions(imageRef);
-  const { width: containerWidth } = useContainerDimensions(imageContainerRef);
-  const [scrollPos, setScrollPos] = useState(0);
-  const [scrollStatus, setScrollStatus] = useState<string>('start');
+  const handleRight = () => {
+    if (!scrollRef.current) {
+      return;
+    }
+    scrollRef.current.style.setProperty(
+      '--slider-index',
+      String(scrollIndex + 1)
+    );
 
-  const slideLeft = () => {
-    if (!imageContainerRef.current) {
+    setScrollIndex(scrollIndex + 1);
+  };
+
+  const handleLeft = () => {
+    if (!scrollRef.current) {
       return;
     }
 
-    // 12 is the padding around container edge (scroll through that space too)
-    const newPosition = scrollPos - containerWidth - 12;
+    scrollRef.current.style.setProperty(
+      '--slider-index',
+      String(scrollIndex - 1)
+    );
 
-    imageContainerRef.current.scrollLeft = newPosition;
-    setScrollPos(newPosition);
+    setScrollIndex(scrollIndex - 1);
   };
 
-  const slideRight = () => {
-    if (!imageContainerRef.current) {
-      return;
-    }
-
-    // 12 is the padding around container edge (scroll through that space too)
-    const newPosition = scrollPos + containerWidth + 12;
-    imageContainerRef.current.scrollLeft = newPosition;
-
-    setScrollPos(newPosition);
-  };
-
-  // prevent scroll value from getting greater or smaller than scroll menu container
+  // sets a default items-per screen depending on props
   useEffect(() => {
-    if (scrollPos <= 0) {
-      console.log('Setting scroll to start');
-
-      if (scrollPos !== 0) {
-        setScrollPos(0);
-      }
-      setScrollStatus('start');
+    if (!minItems) {
       return;
     }
 
-    // num of visible images on the screen width
-    const noImagesPerContainer = Math.floor(containerWidth / imageWidth);
+    scrollRef.current?.style.setProperty(
+      '--items-per-screen',
+      String(minItems)
+    );
+  }, [minItems]);
 
-    // Math.ceil to account for odd number of images
-    const numContainers = Math.ceil(images.length / noImagesPerContainer);
-
-    const totalWidth = numContainers * containerWidth; // total width of the scroll menu
-
-    const scrollableWidth = totalWidth - containerWidth; // width that can be scrolled
-
-    if (scrollPos >= scrollableWidth) {
-      console.log('Setting scroll to end');
-      if (scrollPos !== scrollableWidth) {
-        setScrollPos(scrollableWidth);
-      }
-
-      setScrollStatus('end');
+  // checks for end of the items list
+  const isEnd = () => {
+    if (!scrollRef.current) {
       return;
     }
-    // set a default scroll status as empty(between scrolls)
-    setScrollStatus('');
-  }, [scrollPos, containerWidth, imageWidth, images.length]);
+    const itemsPerScreen = getComputedStyle(scrollRef.current).getPropertyValue(
+      '--items-per-screen'
+    );
 
-  console.log('Scroll Pos', scrollPos);
+    const maxIndex = Math.ceil(images.length / parseInt(itemsPerScreen));
+
+    // scrollIndex starts at 0
+    if (scrollIndex + 1 >= maxIndex) {
+      return true;
+    }
+
+    return false;
+  };
 
   return (
-    <div className="relative w-full sm:w-56">
-      {/* Left button */}
-      <div
-        className={classNames(
-          scrollStatus === 'start' ? 'hidden' : 'block',
-          'absolute top-[38%] left-2 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white'
-        )}
-        onClick={slideLeft}
-      >
-        <BiArrowBack size={20} />
-      </div>
-      {/* Right button */}
-      <div
-        className={classNames(
-          scrollStatus === 'end' ? 'hidden' : 'block',
-          'absolute top-[38%] right-2 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white'
-        )}
-        onClick={slideRight}
-      >
-        <BiArrowBack size={20} className="rotate-180" />
-      </div>
-      {/* Images */}
-      <div
-        className="hide-scrollbar relative flex h-[160px] gap-[2%] overflow-x-hidden scroll-smooth"
-        ref={imageContainerRef}
-      >
+    <div className="relative flex w-full overflow-hidden ">
+      {/* Scroll Component */}
+      <div className="slider flex w-full" ref={scrollRef}>
         {images.map((image, index) => (
-          <div key={index} className="relative w-[49%] shrink-0" ref={imageRef}>
+          <div
+            key={index}
+            className="slider-img relative aspect-square shrink-0"
+          >
             <Image
               src={image}
-              alt="business-image"
+              key={index}
+              alt="image"
               layout="fill"
-              objectFit="cover"
+              style={{
+                paddingLeft: '2px !important',
+                paddingRight: '2px !important',
+              }}
             />
           </div>
         ))}
       </div>
+      {/* Left Button */}
+      <div
+        className={classNames(
+          'absolute top-[50%] left-[5px] z-10 translate-y-[-50%]',
+          scrollIndex === 0 ? 'hidden' : 'block'
+        )}
+      >
+        <SlideButton onClick={handleLeft}>
+          <BiArrowBack size={20} />
+        </SlideButton>
+      </div>
+      {/* Right Button */}
+      <div
+        className={classNames(
+          'absolute top-[50%] right-[5px] z-10 translate-y-[-50%]',
+          isEnd() ? 'hidden' : 'block'
+        )}
+      >
+        <SlideButton onClick={handleRight}>
+          <BiArrowBack size={20} className="rotate-180" />
+        </SlideButton>
+      </div>
     </div>
+  );
+}
+
+interface SlideButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+function SlideButton({ children, onClick }: SlideButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      className="z-10 rounded-full bg-gray-50 p-2 hover:bg-primaryred hover:text-xl hover:text-white"
+    >
+      {children}
+    </button>
   );
 }
 

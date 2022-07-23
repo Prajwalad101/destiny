@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import { useContainerDimensions } from '../../../hooks/lib/useContainerDimensions';
-import { classNames } from '../../../utils/tailwind';
+import { classNames } from '../../../utils/css';
 
 export interface ImageSliderProps {
   images: string[];
