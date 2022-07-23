@@ -58,11 +58,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const reviewImages = [
-  'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80',
-  'https://images.unsplash.com/photo-1562967916-eb82221dfb92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
-  'https://images.unsplash.com/photo-1562967916-eb82221dfb92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
-  'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80',
+const images = [
+  'https://dummyimage.com/300.png/09f/fff&text=1',
+  'https://dummyimage.com/300.png/09f/fff&text=2',
+  'https://dummyimage.com/300.png/09f/fff&text=3',
+  'https://dummyimage.com/300.png/09f/fff&text=4',
+  'https://dummyimage.com/300.png/09f/fff&text=5',
+  'https://dummyimage.com/300.png/09f/fff&text=6',
+  'https://dummyimage.com/300.png/09f/fff&text=7',
+  'https://dummyimage.com/300.png/09f/fff&text=8',
+  'https://dummyimage.com/300.png/09f/fff&text=9',
 ];
 
 function Reviews({ reviews }: { reviews: IReview[] }) {
@@ -85,11 +90,13 @@ function Reviews({ reviews }: { reviews: IReview[] }) {
             </div>
             <div className="mb-2 flex items-center gap-3">
               <RatingIcons avgRating={review.rating} />
-              <span>{getRelativeDate(review.createdAt)}</span>
+              <span className="text-sm capitalize text-secondarytext">
+                {getRelativeDate(review.createdAt)}
+              </span>
             </div>
             <p className="mb-4">{review.review}</p>
             <div className="mb-4">
-              <ImageScroll images={reviewImages} />
+              <ImageScroll images={images} minItems={3} />
             </div>
             <div className="flex items-center gap-7">
               <div className="mb-4 flex items-center gap-2">
@@ -102,7 +109,7 @@ function Reviews({ reviews }: { reviews: IReview[] }) {
               <div className="mb-4 flex items-center gap-2">
                 <AiOutlineDislike
                   size={22}
-                  className="cursor-pointer hover:text-blue-500"
+                  className="cursor-pointer hover:text-primaryred"
                 />
               </div>
             </div>
