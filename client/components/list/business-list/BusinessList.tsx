@@ -1,7 +1,7 @@
 import { IBusiness } from '@destiny/types';
 import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react';
 import useBusinesses from '../../../hooks/business/useBusinesses';
-import { ISelectedFilters } from '../../../pages/search/business';
+import { ISelectedFilters } from '../../../types/interfaces';
 import BusinessCard from '../../cards/business/BusinessCard';
 
 interface BusinessListProps {

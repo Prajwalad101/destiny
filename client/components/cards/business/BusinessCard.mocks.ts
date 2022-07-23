@@ -25,6 +25,7 @@ const card1: IBusinessCard = {
         rating: 4,
         _id: new mongoose.Types.ObjectId(),
         business: new mongoose.Types.ObjectId(),
+        createdAt: '2021-08-01',
       },
     ],
     total_rating: 32,
