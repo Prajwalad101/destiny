@@ -7,7 +7,13 @@ interface IProviderLayout {
   pageProps: any;
 }
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function ProviderLayout({ children, pageProps }: IProviderLayout) {
   return (
