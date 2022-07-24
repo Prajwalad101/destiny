@@ -1,5 +1,6 @@
 import { IBusiness } from '@destiny/types';
 import Image from 'next/image';
+import { useState } from 'react';
 import { checkIsOpen } from '../../../../utils/api';
 import { truncateText } from '../../../../utils/text';
 import RatingIcons from '../../../icons/ratings/RatingIcons';
@@ -26,10 +27,10 @@ function BusinessInfo({ business }: BusinessInfoProps) {
     <div className="mt-4 font-rubik">
       <div className="mb-7 flex flex-col gap-5 md:flex-row">
         {/* Cover Image */}
-        <div className="relative h-[250px] w-full sm:h-[300px] md:max-w-[500px]">
+        <div className="relative h-[250px] w-full shrink-0 sm:h-[300px] md:w-[300px] lg:w-[450px]">
           <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
         </div>
-        <div>
+        <div className="">
           {/* Business Name */}
           <h4 className="mb-2 text-xl font-medium">{name}</h4>
           {/* avg rating, num reviews, open/closed */}
@@ -42,10 +43,12 @@ function BusinessInfo({ business }: BusinessInfoProps) {
           {/* Address */}
           <p className="mb-3 text-secondarytext">{location.address}</p>
           <Tags tags={tags} className="mb-3 flex gap-2" />
-          <Description description={description} />
+          <Description
+            description={description}
+            className="text-gray-700 md:h-[150px] md:overflow-y-auto"
+          />
         </div>
       </div>
-
       <ImageScroll noItems={images.length} initialItems={2} className="mb-8">
         {images.map((image, index) => (
           <div key={index} className="slider-img relative h-[150px] shrink-0">
@@ -116,15 +119,25 @@ function Description({
   description: _description,
   className = '',
 }: DescriptionProps) {
+  const [readMore, setReadMore] = useState(false);
+
   return (
     <div className={className}>
-      {truncateText(
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim, nihil dignissimos? Odio vitae dolor quasi eum eos sequi asperiores unde.',
-        20
-      )}
-      <span className="cursor-pointer text-primaryred  hover:text-red-600">
+      <span className="leading-[26px]">
+        {truncateText(
+          ' Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio laborum molestiae laboriosam illo adipisci asperiores cum nostrum, dolore debitis atque, ad porro est ipsam consectetur delectus fuga, ratione aut inventore natus possimus. Iste dolorem totam cupiditate quisquam repudiandae accusantium dignissimos unde inventore sit, asperiores laboriosam ea voluptatum voluptatibus, culpa dolorum animi in atque iusto, exercitationem rem! Rerum possimus, iste quod tempore facere ipsa. Maiores, quaerat! Veniam recusandae optio voluptate vitae, accusantium ea iure quo eveniet facere. Nemo assumenda accusantium quas doloribus excepturi dolore voluptate modi mollitia? Obcaecati dolorum ea sit quas. Error ex explicabo ipsam aliquid qui sapiente esse cum fugiat enim similique optio tempora, impedit consectetur natus odit nulla inventore, quod asperiores rem blanditiis cumque! Deleniti cupiditate dolores dicta facilis. Perferendis, doloribus, ipsum nemo, omnis cupiditate harum temporibus quae ipsam labore dolor nostrum voluptates distinctio magnam accusantium. Ex numquam aspernatur illo quibusdam atque similique tempora ea reprehenderit, autem, sunt hic laborum? Fugiat animi voluptatibus ullam, voluptate minima, distinctio natus placeat saepe sequi deserunt velit consectetur officia, eaque facere tempora qui vero consequatur repudiandae dolore ipsam est pariatur obcaecati! Maiores quas molestias voluptatem architecto sunt. Sed error consequatur provident atque earum eos autem ducimus adipisci repellat, magni velit iusto minus?',
+          40,
+          readMore
+        )}
+      </span>
+
+      <span
+        className="cursor-pointer text-primaryred  hover:text-red-600"
+        onClick={() => setReadMore(!readMore)}
+      >
         {' '}
-        Read More
+        {readMore && 'Read Less'}
+        {!readMore && 'Read More'}
       </span>
     </div>
   );
