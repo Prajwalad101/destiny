@@ -24,24 +24,29 @@ function BusinessInfo({ business }: BusinessInfoProps) {
 
   return (
     <div className="mt-4 font-rubik">
-      {/* Business Cover Image */}
-      <div className="relative mb-4 h-[200px] w-full">
-        <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
+      <div className="mb-7 flex flex-col gap-5 md:flex-row">
+        {/* Cover Image */}
+        <div className="relative h-[250px] w-full sm:h-[300px] md:max-w-[500px]">
+          <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
+        </div>
+        <div>
+          {/* Business Name */}
+          <h4 className="mb-2 text-xl font-medium">{name}</h4>
+          {/* avg rating, num reviews, open/closed */}
+          <BasicInfo
+            avgRating={avgRating}
+            rating_count={rating_count}
+            businessHours={businessHours}
+            className="mb-2 flex items-center gap-4"
+          />
+          {/* Address */}
+          <p className="mb-3 text-secondarytext">{location.address}</p>
+          <Tags tags={tags} className="mb-3 flex gap-2" />
+          <Description description={description} />
+        </div>
       </div>
-      {/* Business Name */}
-      <h4 className="mb-2 text-xl font-medium">{name}</h4>
-      {/* avg rating, num reviews, open/closed */}
-      <BasicInfo
-        avgRating={avgRating}
-        rating_count={rating_count}
-        businessHours={businessHours}
-        className="mb-2 flex items-center gap-4"
-      />
-      {/* Address */}
-      <p className="mb-3 text-secondarytext">{location.address}</p>
-      <Tags tags={tags} className="mb-3 flex gap-2" />
-      <Description description={description} className="mb-7" />
-      <ImageScroll noItems={images.length} initialItems={3} className="mb-8">
+
+      <ImageScroll noItems={images.length} initialItems={2} className="mb-8">
         {images.map((image, index) => (
           <div key={index} className="slider-img relative h-[150px] shrink-0">
             <Image
@@ -61,11 +66,13 @@ function BusinessInfo({ business }: BusinessInfoProps) {
   );
 }
 
+export default BusinessInfo;
+
 interface BasicInfoProps {
   avgRating: number;
   rating_count: number;
   businessHours: { open: string; close: string };
-  className: string;
+  className?: string;
 }
 function BasicInfo({
   avgRating,
@@ -86,7 +93,7 @@ function BasicInfo({
 
 interface TagsProps {
   tags: string[];
-  className: string;
+  className?: string;
 }
 function Tags({ tags, className = '' }: TagsProps) {
   return (
@@ -103,7 +110,7 @@ function Tags({ tags, className = '' }: TagsProps) {
 
 interface DescriptionProps {
   description: string;
-  className: string;
+  className?: string;
 }
 function Description({
   description: _description,
@@ -122,5 +129,3 @@ function Description({
     </div>
   );
 }
-
-export default BusinessInfo;
