@@ -28,7 +28,7 @@ const Business: NextPageWithLayout = () => {
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
       <BusinessInfo business={businessData} />
-      <div className="mt-8 mb-5 border-b-2 border-gray-200"></div>
+
       <BusinessReviews reviews={businessData.reviews} />
     </ConditionalRender>
   );
