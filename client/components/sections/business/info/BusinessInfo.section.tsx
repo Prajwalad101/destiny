@@ -30,10 +30,10 @@ function BusinessInfo({ business }: BusinessInfoProps) {
         <div className="relative h-[250px] w-full shrink-0 sm:h-[300px] md:w-[300px] lg:w-[450px]">
           <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
         </div>
-        <div className="">
+        <div>
           {/* Business Name */}
           <h4 className="mb-2 text-xl font-medium">{name}</h4>
-          {/* avg rating, num reviews, open/closed */}
+          {/* AvgRating, NumReviews Open/Closed */}
           <BasicInfo
             avgRating={avgRating}
             rating_count={rating_count}

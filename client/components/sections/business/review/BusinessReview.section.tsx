@@ -18,6 +18,19 @@ const images = [
 ];
 
 function BusinessReview({ reviews }: { reviews: IReview[] }) {
+  // ! Temporary Fix
+  const userProfileImg =
+    'https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
+
+  // If there are no reviews
+  if (reviews.length === 0) {
+    return (
+      <div className="flex justify-center">
+        <h2 className="font-rubik text-xl font-medium">No reviews found</h2>
+      </div>
+    );
+  }
+
   return (
     <div className="mb-5 font-rubik">
       <h4 className="mb-5 text-xl font-medium text-gray-700">Top Reviews</h4>
@@ -28,7 +41,7 @@ function BusinessReview({ reviews }: { reviews: IReview[] }) {
             <div className="mb-2 flex items-center gap-3">
               <Image
                 className="rounded-full"
-                src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                src={userProfileImg}
                 alt="user-profile"
                 width={35}
                 height={35}
