@@ -12,10 +12,7 @@ export interface IBusinessCard {
 
 function BusinessCard({ business }: IBusinessCard) {
   return (
-    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
-      {/* <div>
-        <ImageSlider images={business.images} />
-      </div> */}
+    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex ">
       <div className="shrink-0 sm:w-[224px]">
         <ImageScroll
           noItems={business.images.length}
@@ -24,42 +21,48 @@ function BusinessCard({ business }: IBusinessCard) {
         >
           {business.images.map((image, index) => (
             <div key={index} className="relative h-[200px] w-full shrink-0">
-              <Image
-                src={image}
-                alt="business-image"
-                layout="fill"
-                objectFit="cover"
-              />
+              <Link href={`/search/business/${business._id}`}>
+                <a>
+                  <Image
+                    src={image}
+                    alt="business-image"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </a>
+              </Link>
             </div>
           ))}
         </ImageScroll>
       </div>
       {/* Body */}
-      <Link href={`/search/business/${business._id}`}>
-        <a className="min-w-0 grow border-x-2 border-b-2 sm:border-l-0 sm:border-t-2">
-          <div className="p-2 sm:p-3">
-            <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
-            <div className="mb-2 flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <RatingIcons avgRating={business.avgRating} />
-                <p className="text-sm text-secondarytext">
-                  ({business.rating_count})
+      <div className="min-w-0 grow border-2 border-t-0 sm:border-t-2 sm:border-l-0">
+        <Link href={`/search/business/${business._id}`}>
+          <a>
+            <div className="p-2 sm:p-3">
+              <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
+              <div className="mb-2 flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <RatingIcons avgRating={business.avgRating} />
+                  <p className="text-sm text-secondarytext">
+                    ({business.rating_count})
+                  </p>
+                </div>
+                <p className="text-[15px] font-medium text-secondarytext">
+                  {checkIsOpen(business.businessHours) ? 'Open now' : 'Closed'}
                 </p>
               </div>
-              <p className="text-[15px] font-medium text-secondarytext">
-                {checkIsOpen(business.businessHours) ? 'Open now' : 'Closed'}
+              <p className="mb-4 text-sm text-secondarytext">
+                {business.location.address}
               </p>
+              {/* Horizontal Line */}
+              <div className="mb-3 hidden border-[1px] sm:block"></div>
+              {/* Reviews */}
+              <Reviews reviews={business.reviews} />
             </div>
-            <p className="mb-4 text-sm text-secondarytext">
-              {business.location.address}
-            </p>
-            {/* Horizontal Line */}
-            <div className="mb-3 hidden border-[1px] sm:block"></div>
-            {/* Reviews */}
-            <Reviews reviews={business.reviews} />
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </div>
     </div>
   );
 }
@@ -83,7 +86,9 @@ const Reviews = ({ reviews }: { reviews: IReview[] }) => {
           key={review._id.toString()}
           className="mb-2 flex items-center gap-3"
         >
-          <FaQuoteLeft size={15} />
+          <div>
+            <FaQuoteLeft size={10} />
+          </div>
           <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
             &quot;{review.review}&quot;
           </p>

@@ -66,7 +66,7 @@ function ImageScroll({
       items = 1;
     } else {
       // only works for addition of two values between parenthesis
-      getCalculatedValue(itemsPerScreen);
+      items = getCalculatedValue(itemsPerScreen);
     }
 
     if (!items) {
