@@ -65,7 +65,7 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
       return true;
     }
 
-    const maxIndex = Math.ceil(images.length / parseInt(itemsPerScreen));
+    const maxIndex = Math.ceil(images.length / items);
 
     // scrollIndex starts at 0
     if (scrollIndex + 1 >= maxIndex) {

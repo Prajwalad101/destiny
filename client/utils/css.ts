@@ -13,7 +13,7 @@ export function getCalculatedValue(value: string) {
 
   // if no matches found return original value
   if (!matches) {
-    return value;
+    return parseInt(value);
   }
 
   const string = matches[1];
