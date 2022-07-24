@@ -1,12 +1,12 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
-import BusinessReviews from '../../../components/cards/reviews/BusinessReviews';
 import ConditionalRender from '../../../components/conditional-render/ConditionalRender';
 import AppLayout from '../../../components/layout/app/AppLayout';
 import NavLayout from '../../../components/layout/navigation/NavLayout';
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
-import BusinessInfo from '../../../components/sections/business-info/BusinessInfo.section';
+import BusinessInfo from '../../../components/sections/business/info/BusinessInfo.section';
+import BusinessReview from '../../../components/sections/business/review/BusinessReview.section';
 import useBusiness, {
   fetchBusiness,
 } from '../../../hooks/business/useBusiness';
@@ -28,7 +28,7 @@ const Business: NextPageWithLayout = () => {
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
       <BusinessInfo business={businessData} />
-      <BusinessReviews reviews={businessData.reviews} />
+      <BusinessReview reviews={businessData.reviews} />
     </ConditionalRender>
   );
 };

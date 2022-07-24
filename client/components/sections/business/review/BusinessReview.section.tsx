@@ -1,9 +1,9 @@
 import { IReview } from '@destiny/types';
 import Image from 'next/image';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
-import { getRelativeDate } from '../../../utils/date';
-import RatingIcons from '../../icons/ratings/RatingIcons';
-import ImageScroll from '../../image/scroll/ImageScroll';
+import { getRelativeDate } from '../../../../utils/date';
+import RatingIcons from '../../../icons/ratings/RatingIcons';
+import ImageScroll from '../../../image/scroll/ImageScroll';
 
 const images = [
   'https://dummyimage.com/300.png/09f/fff&text=1',
@@ -17,14 +17,14 @@ const images = [
   'https://dummyimage.com/300.png/09f/fff&text=9',
 ];
 
-function BusinessReviews({ reviews }: { reviews: IReview[] }) {
+function BusinessReview({ reviews }: { reviews: IReview[] }) {
   return (
     <div className="mb-5 font-rubik">
       <h4 className="mb-5 text-xl font-medium text-gray-700">Top Reviews</h4>
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (
           <div key={review._id.toString()}>
-            {/* Use Profile */}
+            {/* User Profile */}
             <div className="mb-2 flex items-center gap-3">
               <Image
                 className="rounded-full"
@@ -96,4 +96,4 @@ function Feedback({ likes }: { likes: number | undefined }) {
   );
 }
 
-export default BusinessReviews;
+export default BusinessReview;

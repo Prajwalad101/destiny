@@ -1,9 +1,9 @@
 import { IBusiness } from '@destiny/types';
 import Image from 'next/image';
-import { checkIsOpen } from '../../../utils/api';
-import { truncateText } from '../../../utils/text';
-import RatingIcons from '../../icons/ratings/RatingIcons';
-import ImageScroll from '../../image/scroll/ImageScroll';
+import { checkIsOpen } from '../../../../utils/api';
+import { truncateText } from '../../../../utils/text';
+import RatingIcons from '../../../icons/ratings/RatingIcons';
+import ImageScroll from '../../../image/scroll/ImageScroll';
 
 interface BusinessInfoProps {
   business: IBusiness;
