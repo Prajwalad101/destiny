@@ -8,6 +8,7 @@ interface ImageScrollProps {
   initialItems?: number;
   children: React.ReactNode;
   className?: string;
+  slider?: boolean;
 }
 
 // * uses additional css from slider.css
@@ -17,6 +18,7 @@ function ImageScroll({
   initialItems,
   children,
   className = '',
+  slider = false,
 }: ImageScrollProps) {
   const scrollRef = useRef<HTMLInputElement>(null);
   const [scrollIndex, setScrollIndex] = useState(0); // slider always starts from beginning
@@ -57,8 +59,15 @@ function ImageScroll({
       '--items-per-screen'
     );
 
-    // only works for addition of two values between parenthesis
-    const items = getCalculatedValue(itemsPerScreen);
+    let items;
+
+    // if slider is true, no of items on the screen is always 1
+    if (slider) {
+      items = 1;
+    } else {
+      // only works for addition of two values between parenthesis
+      getCalculatedValue(itemsPerScreen);
+    }
 
     if (!items) {
       return;

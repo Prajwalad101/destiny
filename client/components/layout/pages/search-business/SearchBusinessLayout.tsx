@@ -23,6 +23,7 @@ function SearchBusinessLayout({
 
   const [businessData, setBusinessData] = useState(businessResult.data?.data);
 
+  // set data after a successful query
   useIsomorphicLayoutEffect(() => {
     if (businessResult.isSuccess) {
       setBusinessData(businessResult.data?.data);

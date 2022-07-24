@@ -1,9 +1,10 @@
 import { IBusiness, IReview } from '@destiny/types';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { checkIsOpen } from '../../../utils/api';
 import RatingIcons from '../../icons/ratings/RatingIcons';
-import ImageSlider from '../../image/slider/ImageSlider';
+import ImageScroll from '../../image/scroll/ImageScroll';
 
 export interface IBusinessCard {
   business: IBusiness;
@@ -12,8 +13,26 @@ export interface IBusinessCard {
 function BusinessCard({ business }: IBusinessCard) {
   return (
     <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
-      <div>
+      {/* <div>
         <ImageSlider images={business.images} />
+      </div> */}
+      <div className="shrink-0 sm:w-[224px]">
+        <ImageScroll
+          noItems={business.images.length}
+          initialItems={1}
+          slider={true}
+        >
+          {business.images.map((image, index) => (
+            <div key={index} className="relative h-[200px] w-full shrink-0">
+              <Image
+                src={image}
+                alt="business-image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          ))}
+        </ImageScroll>
       </div>
       {/* Body */}
       <Link href={`/search/business/${business._id}`}>
