@@ -56,7 +56,20 @@ function BusinessInfo({ business }: BusinessInfoProps) {
           Read More
         </span>
       </p>
-      <ImageScroll images={business.images} minItems={3} />
+      <ImageScroll noItems={business.images.length} initialItems={3}>
+        {business.images.map((image, index) => (
+          <div key={index} className="slider-img relative h-[150px] shrink-0">
+            <Image
+              src={image}
+              key={index}
+              alt="image"
+              layout="fill"
+              className="slider-next-img"
+              objectFit="cover"
+            />
+          </div>
+        ))}
+      </ImageScroll>
     </div>
   );
 }

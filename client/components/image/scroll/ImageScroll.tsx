@@ -1,16 +1,22 @@
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { classNames, getCalculatedValue } from '../../../utils/css';
 
 interface ImageScrollProps {
-  images: string[];
-  minItems?: number;
+  noItems: number;
+  initialItems?: number;
+  children: React.ReactNode;
+  className?: string;
 }
 
-// *additional css included on slider.css
+// * uses additional css from slider.css
 
-function ImageScroll({ images, minItems }: ImageScrollProps) {
+function ImageScroll({
+  noItems,
+  initialItems,
+  children,
+  className = '',
+}: ImageScrollProps) {
   const scrollRef = useRef<HTMLInputElement>(null);
   const [scrollIndex, setScrollIndex] = useState(0); // slider always starts from beginning
 
@@ -41,12 +47,15 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
 
   // sets a default no-items depending on props
   useEffect(() => {
-    if (!minItems) {
+    if (!initialItems) {
       return;
     }
 
-    scrollRef.current?.style.setProperty('--initial-items', String(minItems));
-  }, [minItems]);
+    scrollRef.current?.style.setProperty(
+      '--initial-items',
+      String(initialItems)
+    );
+  }, [initialItems]);
 
   // checks for end of the items list
   const isEnd = () => {
@@ -65,7 +74,7 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
       return true;
     }
 
-    const maxIndex = Math.ceil(images.length / items);
+    const maxIndex = Math.ceil(noItems / items);
 
     // scrollIndex starts at 0
     if (scrollIndex + 1 >= maxIndex) {
@@ -76,23 +85,25 @@ function ImageScroll({ images, minItems }: ImageScrollProps) {
   };
 
   return (
-    <div className="relative flex w-full overflow-hidden ">
+    <div
+      className={classNames('relative flex w-full overflow-hidden', className)}
+    >
       {/* Scroll Component */}
       <div className="slider flex w-full" ref={scrollRef}>
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="slider-img relative aspect-square shrink-0"
-          >
+        {/* Images */}
+        {children}
+        {/* {images.map((image, index) => (
+          <div key={index} className="slider-img relative h-[150px] shrink-0">
             <Image
               src={image}
               key={index}
               alt="image"
               layout="fill"
               className="slider-next-img"
+              objectFit="cover"
             />
           </div>
-        ))}
+        ))} */}
       </div>
       {/* Left Button */}
       <div

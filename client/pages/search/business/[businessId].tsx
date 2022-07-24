@@ -95,9 +95,27 @@ function Reviews({ reviews }: { reviews: IReview[] }) {
               </span>
             </div>
             <p className="mb-4">{review.review}</p>
-            <div className="mb-4">
-              <ImageScroll images={images} minItems={3} />
-            </div>
+            <ImageScroll
+              noItems={images.length}
+              initialItems={3}
+              className="mb-4"
+            >
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="slider-img relative h-[150px] shrink-0"
+                >
+                  <Image
+                    src={image}
+                    key={index}
+                    alt="image"
+                    layout="fill"
+                    className="slider-next-img"
+                    objectFit="cover"
+                  />
+                </div>
+              ))}
+            </ImageScroll>
             <div className="flex items-center gap-7">
               <div className="mb-4 flex items-center gap-2">
                 <AiOutlineLike
