@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
+import useIsomorphicLayoutEffect from '../../../hooks/useIsomorphicLayoutEffect';
 import { classNames, getCalculatedValue } from '../../../utils/css';
 
 interface ImageScrollProps {
@@ -19,6 +20,7 @@ function ImageScroll({
 }: ImageScrollProps) {
   const scrollRef = useRef<HTMLInputElement>(null);
   const [scrollIndex, setScrollIndex] = useState(0); // slider always starts from beginning
+  const [isScrollEnd, setIsScrollEnd] = useState(false);
 
   const handleRight = () => {
     if (!scrollRef.current) {
@@ -45,18 +47,6 @@ function ImageScroll({
     setScrollIndex(scrollIndex - 1);
   };
 
-  // sets a default no-items depending on props
-  useEffect(() => {
-    if (!initialItems) {
-      return;
-    }
-
-    scrollRef.current?.style.setProperty(
-      '--initial-items',
-      String(initialItems)
-    );
-  }, [initialItems]);
-
   // checks for end of the items list
   const isEnd = () => {
     if (!scrollRef.current) {
@@ -71,18 +61,37 @@ function ImageScroll({
     const items = getCalculatedValue(itemsPerScreen);
 
     if (!items) {
-      return true;
+      return;
     }
 
     const maxIndex = Math.ceil(noItems / items);
 
     // scrollIndex starts at 0
     if (scrollIndex + 1 >= maxIndex) {
-      return true;
+      setIsScrollEnd(true);
+      return;
     }
 
-    return false;
+    setIsScrollEnd(false);
+    return;
   };
+
+  // sets a default no-items depending on props
+  useEffect(() => {
+    if (!initialItems) {
+      return;
+    }
+
+    scrollRef.current?.style.setProperty(
+      '--initial-items',
+      String(initialItems)
+    );
+  }, [initialItems]);
+
+  // check for scroll end state before rendering
+  useIsomorphicLayoutEffect(() => {
+    isEnd();
+  }, [scrollIndex]);
 
   return (
     <div
@@ -92,18 +101,6 @@ function ImageScroll({
       <div className="slider flex w-full" ref={scrollRef}>
         {/* Images */}
         {children}
-        {/* {images.map((image, index) => (
-          <div key={index} className="slider-img relative h-[150px] shrink-0">
-            <Image
-              src={image}
-              key={index}
-              alt="image"
-              layout="fill"
-              className="slider-next-img"
-              objectFit="cover"
-            />
-          </div>
-        ))} */}
       </div>
       {/* Left Button */}
       <div
@@ -120,7 +117,7 @@ function ImageScroll({
       <div
         className={classNames(
           'absolute top-[50%] right-[5px] z-10 translate-y-[-50%]',
-          isEnd() ? 'hidden' : 'block'
+          isScrollEnd ? 'hidden' : 'block'
         )}
       >
         <SlideButton onClick={handleRight}>
