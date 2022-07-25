@@ -43,14 +43,20 @@ function Sidebar() {
       <div className="mb-5">
         <Link href={navLinks.writeReview}>
           <a>
-            <p className="mb-3 w-max cursor-pointer underline underline-offset-2 hover:text-gray-600">
+            <p
+              className="mb-3 w-max cursor-pointer underline underline-offset-2 hover:text-gray-600"
+              onClick={() => setOpen(!open)}
+            >
               Write a Review
             </p>
           </a>
         </Link>
         <Link href={navLinks.forBusiness}>
           <a>
-            <p className="w-max cursor-pointer underline underline-offset-2 hover:text-gray-600">
+            <p
+              className="w-max cursor-pointer underline underline-offset-2 hover:text-gray-600"
+              onClick={() => setOpen(!open)}
+            >
               For Businesses
             </p>
           </a>
