@@ -1,5 +1,5 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
-import AppLayout from '../../layout/app/AppLayout';
+import AppLayout from '../../../layout/app/AppLayout';
 
 interface IRecommended {
   title: string;
