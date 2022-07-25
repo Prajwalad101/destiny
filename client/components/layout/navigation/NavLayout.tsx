@@ -4,13 +4,12 @@ import Sidebar from '../../navigation/sidebar/Sidebar';
 
 interface INavLayout {
   children: React.ReactNode;
-  navbar?: boolean;
 }
 
-function NavLayout({ children, navbar = true }: INavLayout) {
+function NavLayout({ children }: INavLayout) {
   return (
     <NavigationProvider>
-      {navbar && <Navbar theme="light" />}
+      <Navbar theme="light" />
       <Sidebar />
       {children}
     </NavigationProvider>

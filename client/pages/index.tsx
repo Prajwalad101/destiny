@@ -1,8 +1,9 @@
 import BusinessCard from '../components/cards/recommended-business/RecommendedBusinessCard';
 import { mockRecommendBusinessCardProps } from '../components/cards/recommended-business/RecommendedBusinessCard.mocks';
-import NavLayout from '../components/layout/navigation/NavLayout';
+import Sidebar from '../components/navigation/sidebar/Sidebar';
 import HeroSection from '../components/sections/hero/HeroSection';
 import Recommended from '../components/sections/recommended/Recommend.section';
+import { NavigationProvider } from '../context/navigation.context';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
@@ -37,7 +38,12 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-// navbar set to false, because navbar is rendered seperately inside the hero section
-Home.getLayout = (page) => <NavLayout navbar={false}>{page}</NavLayout>;
+// since navbar should render behind background image, it is present inside the hero section
+Home.getLayout = (page) => (
+  <NavigationProvider>
+    <Sidebar />
+    {page}
+  </NavigationProvider>
+);
 
 export default Home;
