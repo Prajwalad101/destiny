@@ -1,15 +1,15 @@
 import BusinessCard from '../components/cards/recommended-business/RecommendedBusinessCard';
 import { mockRecommendBusinessCardProps } from '../components/cards/recommended-business/RecommendedBusinessCard.mocks';
 import Sidebar from '../components/navigation/sidebar/Sidebar';
-import HeroSection from '../components/sections/hero/HeroSection';
-import Recommended from '../components/sections/recommended/Recommend.section';
+import HomeHero from '../components/sections/home/hero/HomeHero.section';
+import Recommended from '../components/sections/home/recommended/Recommend.section';
 import { NavigationProvider } from '../context/navigation.context';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
   return (
     <div>
-      <HeroSection />
+      <HomeHero />
       <div>
         {/* Recommended Businesses */}
         <Recommended
