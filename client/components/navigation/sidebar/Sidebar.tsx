@@ -2,6 +2,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
+import dropdownData from '../../../data/dropdown.data';
 import { classNames } from '../../../utils/css';
 import ExploreTopicDropdownMobile from '../../dropdown/explore-topic-mobile/ExploreTopicDropdownMobile';
 
@@ -15,7 +16,7 @@ function Sidebar() {
         'absolute z-20 h-[100vh] w-[300px] overflow-scroll bg-gray-50 p-5 font-rubik transition-all duration-500 md:hidden'
       )}
     >
-      {/* LOGO SECTION */}
+      {/* Logo section */}
       <div className="mb-5 flex items-center justify-between">
         <h3>Logo</h3>
         <AiOutlineClose
@@ -25,7 +26,7 @@ function Sidebar() {
         />
       </div>
 
-      {/* SIGNUP SECTION */}
+      {/* Signup section */}
       <div className="mb-7 text-gray-700">
         <div className="mb-1 flex cursor-pointer items-center gap-2 rounded-md py-2 transition-all duration-300 hover:bg-gray-200 hover:pl-2">
           <IoMdPerson size={23} />
@@ -46,10 +47,21 @@ function Sidebar() {
         </p>
       </div>
 
-      {/* HORIZONTAL LINE */}
-      <div className="h-[1px] bg-gray-500"></div>
+      {/* Horizontal Line */}
+      <div className="h-[1px] bg-gray-500" />
+      <p className="mb-3 mt-4 text-lg font-medium">Explore</p>
 
-      <ExploreTopicDropdownMobile />
+      <div className="mt-5 font-rubik md:hidden">
+        {dropdownData.map((data, index) => (
+          <div key={index}>
+            <ExploreTopicDropdownMobile
+              topic={data.topic}
+              items={data.items}
+              onClick={() => setOpen(!open)}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

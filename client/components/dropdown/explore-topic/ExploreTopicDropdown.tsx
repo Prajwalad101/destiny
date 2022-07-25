@@ -2,12 +2,12 @@ import Link from 'next/link';
 import { RiArrowDownSLine } from 'react-icons/ri';
 import { IItem } from '../../../data/dropdown.data';
 
-interface IExploreTopicDropdown {
+interface ExploreTopicDropdownProps {
   topic: string;
   items: IItem[];
 }
 
-function ExploreTopicDropdown({ topic, items }: IExploreTopicDropdown) {
+function ExploreTopicDropdown({ topic, items }: ExploreTopicDropdownProps) {
   // to display items in two columns
   const evenItems = items.filter((_item, i) => i % 2 === 0 || i === 0);
   const oddItems = items.filter((_item, i) => i % 2 !== 0);
@@ -32,7 +32,7 @@ function ExploreTopicDropdown({ topic, items }: IExploreTopicDropdown) {
 
   return (
     <div className="relative capitalize">
-      {/* DROPDOWN HEADING */}
+      {/* Dropdown heading */}
       <div className="peer flex items-center gap-1 text-white hover:cursor-pointer">
         <p>{topic}</p>
         <RiArrowDownSLine size={25} />
@@ -40,7 +40,7 @@ function ExploreTopicDropdown({ topic, items }: IExploreTopicDropdown) {
 
       <div className="peer h-2" />
 
-      {/* DROPDOWN MENU */}
+      {/* Dropdown menu */}
       <div className="invisible absolute flex gap-x-10  rounded-sm bg-white p-4 opacity-0 transition-opacity delay-100 hover:visible hover:opacity-100 peer-hover:visible peer-hover:opacity-100">
         <div className="flex flex-col gap-y-3">
           {evenItems.map((item, index) => link(item, index))}
