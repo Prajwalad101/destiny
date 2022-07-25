@@ -1,17 +1,13 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import AppLayout from '../../layout/app/AppLayout';
 
-interface IRecommendedSection {
+interface IRecommended {
   title: string;
   description?: string;
   children: React.ReactNode;
 }
 
-function RecommendedSection({
-  title,
-  description,
-  children,
-}: IRecommendedSection) {
+function Recommended({ title, description, children }: IRecommended) {
   const slideLeft = () => {
     const slider = document.getElementById(title) as HTMLDivElement;
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -59,4 +55,4 @@ function RecommendedSection({
   );
 }
 
-export default RecommendedSection;
+export default Recommended;
