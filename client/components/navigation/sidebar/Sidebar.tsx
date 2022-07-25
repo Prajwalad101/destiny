@@ -1,8 +1,10 @@
+import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
 import dropdownData from '../../../data/dropdown.data';
+import { navLinks } from '../../../data/navigation.data';
 import { classNames } from '../../../utils/css';
 import ExploreTopicDropdownMobile from '../../dropdown/explore-topic-mobile/ExploreTopicDropdownMobile';
 
@@ -39,12 +41,20 @@ function Sidebar() {
       </div>
 
       <div className="mb-5">
-        <p className="mb-3 w-max cursor-pointer underline underline-offset-2 hover:text-gray-600">
-          Write a Review
-        </p>
-        <p className="w-max cursor-pointer underline underline-offset-2 hover:text-gray-600">
-          For Businesses
-        </p>
+        <Link href={navLinks.writeReview}>
+          <a>
+            <p className="mb-3 w-max cursor-pointer underline underline-offset-2 hover:text-gray-600">
+              Write a Review
+            </p>
+          </a>
+        </Link>
+        <Link href={navLinks.forBusiness}>
+          <a>
+            <p className="w-max cursor-pointer underline underline-offset-2 hover:text-gray-600">
+              For Businesses
+            </p>
+          </a>
+        </Link>
       </div>
 
       {/* Horizontal Line */}

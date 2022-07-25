@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
 import { useSidebar } from '../../../context/navigation.context';
+import { navLinks } from '../../../data/navigation.data';
 import { classNames } from '../../../utils/css';
 import Button from '../../button/Button';
 import AppLayout from '../../layout/app/AppLayout';
@@ -53,10 +54,14 @@ function Navbar({ theme }: INavbar) {
           {/* BUSINESS LINKS */}
           <div className="flex items-center gap-7 lg:gap-10">
             <div className="underline-offset-4 hover:underline">
-              <Link href="/">For Businesses</Link>
+              <Link href={navLinks.forBusiness}>
+                <a>For Businesses</a>
+              </Link>
             </div>
             <div className="underline-offset-4 hover:underline">
-              <Link href="/">Write a review</Link>
+              <Link href={navLinks.writeReview}>
+                <a>Write a review</a>
+              </Link>
             </div>
 
             {/* LOGIN BUTTONS */}
