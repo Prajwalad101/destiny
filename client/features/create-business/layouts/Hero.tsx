@@ -1,10 +1,10 @@
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
-import Button from '../../../button/Button';
-import AppLayout from '../../../layout/app/AppLayout';
-import Navbar from '../../../navigation/navbar/Navbar';
-import MainHeading from '../../../text/main-heading/MainHeading';
+import Button from '../../../components/button/Button';
+import AppLayout from '../../../components/layout/app/AppLayout';
+import MainHeading from '../../../components/text/main-heading/MainHeading';
+import Navbar from './Navbar';
 
-function ForBusinessHero() {
+function CreateBusinessHero() {
   return (
     <div>
       <div className="relative h-[650px] font-rubik md:h-[700px]">
@@ -71,4 +71,4 @@ function CallToAction() {
   );
 }
 
-export default ForBusinessHero;
+export default CreateBusinessHero;
