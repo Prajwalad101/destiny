@@ -7,7 +7,7 @@ import MainHeading from '../../../text/main-heading/MainHeading';
 function ForBusinessHero() {
   return (
     <div>
-      <div className="relative h-[700px] font-rubik">
+      <div className="relative h-[650px] font-rubik md:h-[700px]">
         {/* Background Image */}
         <div className="absolute inset-0 -z-10 hidden bg-for-business-main bg-cover bg-no-repeat md:block" />
         {/* Overlay */}
