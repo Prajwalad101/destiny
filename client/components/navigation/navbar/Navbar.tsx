@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
 import { useSidebar } from '../../../context/navigation.context';
 import { navLinks } from '../../../data/navigation.data';
+import usePreventBodyOverflow from '../../../hooks/usePreventBodyOverflow';
 import { classNames } from '../../../utils/css';
 import Button from '../../button/Button';
 import AppLayout from '../../layout/app/AppLayout';
@@ -16,13 +16,7 @@ interface INavbar {
 function Navbar({ theme }: INavbar) {
   const { open, setOpen } = useSidebar();
 
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [open]);
+  usePreventBodyOverflow(open);
 
   return (
     <div className="py-4 font-rubik shadow-md md:pt-7 md:shadow-none">
