@@ -16,7 +16,7 @@ module.exports = {
       },
       backgroundImage: {
         'main-img': "url('/images/img.jpg')",
-        'for-business-main': "url('/images/for-business.jpg')",
+        'for-business-main': "url('/images/for-business/main-img.jpg')",
       },
     },
   },
