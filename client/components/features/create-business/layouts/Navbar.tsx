@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
-import Button from '../../../components/button/Button';
-import AppLayout from '../../../components/layout/app/AppLayout';
-import Logo from '../../../components/logo/Logo';
-import { navLinks } from '../../../data/navigation.data';
-import { classNames } from '../../../utils/css';
+import { navLinks } from '../../../../data/navigation.data';
+import { classNames } from '../../../../utils/css';
+import Button from '../../../button/Button';
+import AppLayout from '../../../layout/app/AppLayout';
+import Logo from '../../../logo/Logo';
 
 interface ICreateBusinessNavbar {
   theme: 'light' | 'dark';

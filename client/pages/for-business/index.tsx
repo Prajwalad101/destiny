@@ -1,8 +1,8 @@
+import { cardData } from '../../components/features/create-business/data/InfoCardData';
+import CreateBusinessHero from '../../components/features/create-business/layouts/Hero';
+import EllipsisSeperator from '../../components/features/create-business/ui/EllipsisSeperator';
+import InfoCard from '../../components/features/create-business/ui/InfoCard';
 import AppLayout from '../../components/layout/app/AppLayout';
-import { cardData } from '../../features/create-business/data/InfoCardData';
-import CreateBusinessHero from '../../features/create-business/layouts/Hero';
-import EllipsisSeperator from '../../features/create-business/ui/EllipsisSeperator';
-import InfoCard from '../../features/create-business/ui/InfoCard';
 import { NextPageWithLayout } from '../_app';
 
 const ForBusiness: NextPageWithLayout = () => {

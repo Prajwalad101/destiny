@@ -1,7 +1,7 @@
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
-import Button from '../../../components/button/Button';
-import AppLayout from '../../../components/layout/app/AppLayout';
-import MainHeading from '../../../components/text/main-heading/MainHeading';
+import Button from '../../../button/Button';
+import AppLayout from '../../../layout/app/AppLayout';
+import MainHeading from '../../../text/main-heading/MainHeading';
 import Navbar from './Navbar';
 
 function CreateBusinessHero() {
