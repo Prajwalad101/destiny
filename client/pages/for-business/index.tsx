@@ -1,3 +1,4 @@
+import React from 'react';
 import { cardData } from '../../components/features/create-business/data/InfoCardData';
 import CreateBusinessHero from '../../components/features/create-business/layouts/Hero';
 import EllipsisSeperator from '../../components/features/create-business/ui/EllipsisSeperator';
@@ -12,10 +13,10 @@ const ForBusiness: NextPageWithLayout = () => {
       <AppLayout>
         <div className="md:my-20">
           {cardData.map((data, index) => (
-            <>
+            <React.Fragment key={index}>
               <InfoCard {...data} flip={index % 2 ? true : false} key={index} />
               <EllipsisSeperator />
-            </>
+            </React.Fragment>
           ))}
         </div>
       </AppLayout>
