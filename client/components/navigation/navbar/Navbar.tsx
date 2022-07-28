@@ -5,7 +5,8 @@ import { useSidebar } from '../../../context/navigation.context';
 import { navLinks } from '../../../data/navigation.data';
 import usePreventBodyOverflow from '../../../hooks/usePreventBodyOverflow';
 import { classNames } from '../../../utils/css';
-import Button from '../../button/Button';
+import PrimaryButton from '../../button/primary/PrimaryButton';
+import SecondaryButton from '../../button/secondary/SecondaryButton';
 import AppLayout from '../../layout/app/AppLayout';
 import Logo from '../../logo/Logo';
 
@@ -59,24 +60,12 @@ function Navbar({ theme }: INavbar) {
             </div>
 
             {/* LOGIN BUTTONS */}
-            <Button
-              variant="secondary"
-              theme={theme}
-              onClick={() => {
-                return;
-              }}
-            >
-              <p>Sign Up</p>
-            </Button>
-            <Button
-              variant="primary"
-              theme={theme}
-              onClick={() => {
-                return;
-              }}
-            >
-              <p>Log In</p>
-            </Button>
+            <SecondaryButton theme={theme}>
+              <p className="py-2 px-6">Sign Up</p>
+            </SecondaryButton>
+            <PrimaryButton>
+              <p className="py-2 px-6">Log In</p>
+            </PrimaryButton>
           </div>
         </div>
       </AppLayout>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { navLinks } from '../../../../data/navigation.data';
 import { classNames } from '../../../../utils/css';
-import Button from '../../../button/Button';
+import PrimaryButton from '../../../button/primary/PrimaryButton';
 import AppLayout from '../../../layout/app/AppLayout';
 import Logo from '../../../logo/Logo';
 
@@ -42,15 +42,9 @@ function CreateBusinessNavbar({ theme }: ICreateBusinessNavbar) {
               </Link>
             </div>
 
-            <Button
-              variant="primary"
-              theme={theme}
-              onClick={() => {
-                return;
-              }}
-            >
-              <p>Create listing</p>
-            </Button>
+            <PrimaryButton>
+              <p className="py-2 px-6">Create listing</p>
+            </PrimaryButton>
           </div>
         </div>
       </AppLayout>

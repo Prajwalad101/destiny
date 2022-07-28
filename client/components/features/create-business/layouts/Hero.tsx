@@ -1,5 +1,5 @@
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
-import Button from '../../../button/Button';
+import PrimaryButton from '../../../button/primary/PrimaryButton';
 import AppLayout from '../../../layout/app/AppLayout';
 import MainHeading from '../../../text/main-heading/MainHeading';
 import Navbar from './Navbar';
@@ -58,15 +58,9 @@ function CallToAction() {
       <p className="mb-4 font-semibold text-black">
         Set up your listing in minutes
       </p>
-      <Button
-        variant="primary"
-        theme="dark"
-        onClick={() => {
-          return;
-        }}
-      >
-        Register now
-      </Button>
+      <PrimaryButton>
+        <p className="px-6 py-2">Register now</p>
+      </PrimaryButton>
     </div>
   );
 }
