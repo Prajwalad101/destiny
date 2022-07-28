@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   cardData,
-  CreateBusinessHero,
   EllipsisSeperator,
+  Hero,
   InfoCard,
 } from '../../components/features/create-business';
 import AppLayout from '../../components/layout/app/AppLayout';
@@ -11,7 +11,7 @@ import { NextPageWithLayout } from '../_app';
 const CreateBusiness: NextPageWithLayout = () => {
   return (
     <div>
-      <CreateBusinessHero />
+      <Hero />
       <AppLayout>
         <div className="md:my-20">
           {cardData.map((data, index) => (

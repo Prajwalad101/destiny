@@ -5,12 +5,13 @@ import { classNames } from '../../../../utils/css';
 import PrimaryButton from '../../../button/primary/PrimaryButton';
 import AppLayout from '../../../layout/app/AppLayout';
 import Logo from '../../../logo/Logo';
+import links from '../data/link.data.json';
 
 interface ICreateBusinessNavbar {
-  theme: 'light' | 'dark';
+  theme?: 'light' | 'dark';
 }
 
-function CreateBusinessNavbar({ theme }: ICreateBusinessNavbar) {
+function Navbar({ theme = 'light' }: ICreateBusinessNavbar) {
   return (
     <div className="py-4 font-rubik shadow-md md:pt-7 md:shadow-none">
       <AppLayout size="sm">
@@ -42,9 +43,13 @@ function CreateBusinessNavbar({ theme }: ICreateBusinessNavbar) {
               </Link>
             </div>
 
-            <PrimaryButton>
-              <p className="py-2 px-6">Create listing</p>
-            </PrimaryButton>
+            <Link href={links.register}>
+              <a>
+                <PrimaryButton>
+                  <p className="py-2 px-6">Create listing</p>
+                </PrimaryButton>
+              </a>
+            </Link>
           </div>
         </div>
       </AppLayout>
@@ -52,4 +57,4 @@ function CreateBusinessNavbar({ theme }: ICreateBusinessNavbar) {
   );
 }
 
-export default CreateBusinessNavbar;
+export default Navbar;

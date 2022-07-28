@@ -1,10 +1,12 @@
+import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
 import PrimaryButton from '../../../button/primary/PrimaryButton';
 import AppLayout from '../../../layout/app/AppLayout';
 import MainHeading from '../../../text/main-heading/MainHeading';
+import links from '../data/link.data.json';
 import Navbar from './Navbar';
 
-function CreateBusinessHero() {
+function Hero() {
   return (
     <div>
       <div className="relative h-[650px] font-rubik md:h-[700px]">
@@ -58,11 +60,15 @@ function CallToAction() {
       <p className="mb-4 font-semibold text-black">
         Set up your listing in minutes
       </p>
-      <PrimaryButton>
-        <p className="px-6 py-2">Register now</p>
-      </PrimaryButton>
+      <Link href={links.register}>
+        <a>
+          <PrimaryButton>
+            <p className="px-6 py-2">Register now</p>
+          </PrimaryButton>
+        </a>
+      </Link>
     </div>
   );
 }
 
-export default CreateBusinessHero;
+export default Hero;
