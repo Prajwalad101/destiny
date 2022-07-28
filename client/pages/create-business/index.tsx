@@ -8,7 +8,7 @@ import {
 import AppLayout from '../../components/layout/app/AppLayout';
 import { NextPageWithLayout } from '../_app';
 
-const ForBusiness: NextPageWithLayout = () => {
+const CreateBusiness: NextPageWithLayout = () => {
   return (
     <div>
       <CreateBusinessHero />
@@ -26,4 +26,4 @@ const ForBusiness: NextPageWithLayout = () => {
   );
 };
 
-export default ForBusiness;
+export default CreateBusiness;
