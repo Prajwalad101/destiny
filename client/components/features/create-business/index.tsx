@@ -1,4 +1,5 @@
 import { cardData } from './data/info-card.data';
+import linkData from './data/link.data.json';
 import GetStartedLayout from './layouts/GetStarted';
 import Hero from './layouts/Hero';
 import Navbar from './layouts/Navbar';
@@ -12,4 +13,5 @@ export {
   Navbar,
   GetStartedLayout,
   cardData,
+  linkData,
 };

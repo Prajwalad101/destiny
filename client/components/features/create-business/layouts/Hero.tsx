@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
+import { linkData } from '..';
 import PrimaryButton from '../../../button/primary/PrimaryButton';
 import AppLayout from '../../../layout/app/AppLayout';
 import MainHeading from '../../../text/main-heading/MainHeading';
-import links from '../data/link.data.json';
+
 import Navbar from './Navbar';
 
 function Hero() {
@@ -60,7 +61,7 @@ function CallToAction() {
       <p className="mb-4 font-semibold text-black">
         Set up your listing in minutes
       </p>
-      <Link href={links.register}>
+      <Link href={linkData.getStarted}>
         <a>
           <PrimaryButton>
             <p className="px-6 py-2">Register now</p>

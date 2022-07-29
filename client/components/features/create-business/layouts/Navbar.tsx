@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { navLinks } from '../../../../data/navigation.data';
+import { linkData } from '..';
 import { classNames } from '../../../../utils/css';
 import PrimaryButton from '../../../button/primary/PrimaryButton';
 import AppLayout from '../../../layout/app/AppLayout';
 import Logo from '../../../logo/Logo';
-import links from '../data/link.data.json';
 
 interface ICreateBusinessNavbar {
   theme?: 'light' | 'dark';
@@ -36,14 +35,14 @@ function Navbar({ theme = 'light' }: ICreateBusinessNavbar) {
           {/* BUSINESS LINKS */}
           <div className="flex items-center gap-7 lg:gap-10">
             <div className="underline-offset-4 hover:underline">
-              <Link href={navLinks.writeReview}>
+              <Link href="">
                 <a>
                   Contact Us <span className="font-medium">(01-4164120)</span>
                 </a>
               </Link>
             </div>
 
-            <Link href={links.register}>
+            <Link href={linkData.getStarted}>
               <a>
                 <PrimaryButton>
                   <p className="py-2 px-6">Create listing</p>

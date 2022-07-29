@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { linkData } from '..';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 
 function GetStarted() {
@@ -26,9 +28,11 @@ function GetStarted() {
           Since, most of the steps involved are pretty simple, you should be
           done in a few minutes.
         </p>
-        <SecondaryButton className="h-[45px] w-full max-w-[400px]">
-          <p className="px-6 py-2">Let&apos;s get started</p>
-        </SecondaryButton>
+        <Link href={linkData.register}>
+          <SecondaryButton className="h-[45px] w-full max-w-[400px]">
+            <p className="px-6 py-2">Let&apos;s get started</p>
+          </SecondaryButton>
+        </Link>
       </div>
     </div>
   );
