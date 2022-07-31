@@ -23,6 +23,7 @@ function SecondaryButton({
         className
       )}
       onClick={onClick}
+      type="submit"
     >
       {children}
     </button>
