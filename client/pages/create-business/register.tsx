@@ -6,7 +6,9 @@ import {
   MyTextInput,
   Navbar,
 } from '../../components/features/create-business';
+import MyLabel from '../../components/features/create-business/components/Form/MyLabel';
 import MySelect from '../../components/features/create-business/components/Form/MySelect';
+import MySubLabel from '../../components/features/create-business/components/Form/MySubLabel';
 import AppLayout from '../../components/layout/app/AppLayout';
 import { classNames } from '../../utils/css';
 import { NextPageWithLayout } from '../_app';
@@ -105,7 +107,7 @@ const minutes = [
 
 function Step1() {
   return (
-    <div className="mt-10 font-rubik">
+    <div className="my-10 font-rubik">
       <h1 className="mb-5 text-2xl font-medium">
         First,
         <br /> Let&apos;s fill out some basic information
@@ -114,43 +116,46 @@ function Step1() {
 
       <Form className="child-notlast:mb-5">
         <div>
+          <MyLabel htmlFor="businessName">Business Name</MyLabel>
+          <MySubLabel className="mb-3">
+            Enter the full name of your business
+          </MySubLabel>
           <MyTextInput
             name="businessName"
             type="text"
             placeholder="eg: Shrestha Futsal"
-            label="Business Name"
-            subLabel="Enter the full name of your business"
+            className="max-w-2xl"
           />
         </div>
 
         <div>
-          <MyTextArea
-            name="description"
-            type="text"
-            label="Description"
-            subLabel=" Enter the description your business. Tell the customers about your
-            business and include some key features"
-          />
+          <MyLabel htmlFor="description">Description</MyLabel>
+          <MySubLabel className="mb-3">
+            Enter the description of your business. Tell the customers about
+            your business and include some key features
+          </MySubLabel>
+          <MyTextArea name="description" type="text" className="max-w-2xl" />
         </div>
 
         <div>
+          <MyLabel htmlFor="address">Address</MyLabel>
+          <MySubLabel className="mb-3">
+            Provide full address of your business. Make sure the address is
+            short and recognizable
+          </MySubLabel>
           <MyTextInput
             name="address"
             type="text"
             placeholder="eg: Shrestha Futsal"
-            label="Address"
-            subLabel="Provide full address of the business location. Make sure the address
-            is short and recognizable"
+            className="max-w-2xl"
           />
         </div>
 
         <div>
-          <label htmlFor="businessHours" className="text-lg font-medium">
-            Business Hours
-          </label>
-          <p className="mt-1 mb-3 text-gray-500">
+          <MyLabel htmlFor="businessHours">Business Hours</MyLabel>
+          <MySubLabel className="mb-3">
             Provide the time of day your business will stay open.
-          </p>
+          </MySubLabel>
           <div className="mb-3 flex items-center gap-3">
             <p className="font-medium">Open Hours</p>
             <MySelect name="businessHours.openHour[0]" className="w-16">
