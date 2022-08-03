@@ -14,7 +14,7 @@ const MyTextInput = ({ className = '', ...props }: MyTextInputProps) => {
         {...props}
         className={classNames(
           className,
-          'mb-2 w-full rounded-md bg-gray-200 px-3 py-2'
+          'mb-2 w-full rounded-md bg-gray-200 px-3 py-2.5'
         )}
       />
       {meta.touched && meta.error ? (

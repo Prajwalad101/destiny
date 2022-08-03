@@ -114,84 +114,104 @@ function Step1() {
       </h1>
       <ProgressStatus className="mb-10" />
 
-      <Form className="child-notlast:mb-5">
-        <div>
-          <MyLabel htmlFor="businessName">Business Name</MyLabel>
-          <MySubLabel className="mb-3">
-            Enter the full name of your business
-          </MySubLabel>
-          <MyTextInput
-            name="businessName"
-            type="text"
-            placeholder="eg: Shrestha Futsal"
-            className="max-w-2xl"
-          />
-        </div>
-
-        <div>
-          <MyLabel htmlFor="description">Description</MyLabel>
-          <MySubLabel className="mb-3">
-            Enter the description of your business. Tell the customers about
-            your business and include some key features
-          </MySubLabel>
-          <MyTextArea name="description" type="text" className="max-w-2xl" />
-        </div>
-
-        <div>
-          <MyLabel htmlFor="address">Address</MyLabel>
-          <MySubLabel className="mb-3">
-            Provide full address of your business. Make sure the address is
-            short and recognizable
-          </MySubLabel>
-          <MyTextInput
-            name="address"
-            type="text"
-            placeholder="eg: Shrestha Futsal"
-            className="max-w-2xl"
-          />
-        </div>
-
-        <div>
-          <MyLabel htmlFor="businessHours">Business Hours</MyLabel>
-          <MySubLabel className="mb-3">
-            Provide the time of day your business will stay open.
-          </MySubLabel>
-          <div className="mb-3 flex items-center gap-3">
-            <p className="font-medium">Open Hours</p>
-            <MySelect name="businessHours.openHour[0]" className="w-16">
-              {hours.map((hour) => (
-                <option value={hour} key={hour}>
-                  {hour}
-                </option>
-              ))}
-            </MySelect>
-            <div>:</div>
-            <MySelect name="businessHours.openHour[1]">
-              {minutes.map((minute) => (
-                <option value={minute} key={minute}>
-                  {minute}
-                </option>
-              ))}
-            </MySelect>
+      <Form className="w-2xl child-notlast:mb-5 md:w-full md:child-notlast:mb-16">
+        {/* Business Name */}
+        <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div>
+            <MyLabel htmlFor="businessName">Business Name</MyLabel>
+            <MySubLabel className="mb-3">
+              Enter the full name of your business
+            </MySubLabel>
           </div>
+          <div>
+            <MyTextInput
+              name="businessName"
+              type="text"
+              placeholder="eg: Shrestha Futsal"
+            />
+          </div>
+        </div>
 
-          <div className="flex items-center gap-3">
-            <p className="font-medium">Close Hours</p>
-            <MySelect name="businessHours.closeHour[0]" className="w-16">
-              {hours.map((hour) => (
-                <option value={hour} key={hour}>
-                  {hour}
-                </option>
-              ))}
-            </MySelect>
-            <div>:</div>
-            <MySelect name="businessHours.closeHour[1]">
-              {minutes.map((minute) => (
-                <option value={minute} key={minute}>
-                  {minute}
-                </option>
-              ))}
-            </MySelect>
+        {/* Description */}
+        <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div>
+            <MyLabel htmlFor="description">Description</MyLabel>
+            <MySubLabel className="mb-3">
+              Enter the description of your business. Tell the customers about
+              your business and include some key features
+            </MySubLabel>
+          </div>
+          <div>
+            <MyTextArea name="description" type="text" rows={5} />
+          </div>
+        </div>
+
+        {/* Address */}
+        <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div>
+            <MyLabel htmlFor="address">Address</MyLabel>
+            <MySubLabel className="mb-3">
+              Provide full address of your business. Make sure the address is
+              short and recognizable
+            </MySubLabel>
+          </div>
+          <div>
+            <MyTextInput
+              name="address"
+              type="text"
+              placeholder="eg: Shrestha Futsal"
+            />
+          </div>
+        </div>
+
+        {/* Business Hours */}
+        <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div>
+            <MyLabel htmlFor="businessHours">Business Hours</MyLabel>
+            <MySubLabel className="mb-3">
+              Provide the time of day your business will stay open.
+            </MySubLabel>
+          </div>
+          <div>
+            {/* Open Hours */}
+            <div className="mb-5 flex items-center gap-3">
+              <p className="font-medium">Open Hours</p>
+              <MySelect name="businessHours.openHour[0]" className="w-16">
+                {hours.map((hour) => (
+                  <option value={hour} key={hour}>
+                    {hour}
+                  </option>
+                ))}
+              </MySelect>
+              <div>:</div>
+              <MySelect name="businessHours.openHour[1]">
+                {minutes.map((minute) => (
+                  <option value={minute} key={minute}>
+                    {minute}
+                  </option>
+                ))}
+              </MySelect>
+            </div>
+
+            {/* Close Hours */}
+            <div className="flex items-center gap-3">
+              <p className="font-medium">Close Hours</p>
+              <MySelect name="businessHours.closeHour[0]" className="w-16">
+                {hours.map((hour) => (
+                  <option value={hour} key={hour}>
+                    {hour}
+                  </option>
+                ))}
+              </MySelect>
+              <div>:</div>
+              <MySelect name="businessHours.closeHour[1]">
+                {minutes.map((minute) => (
+                  <option value={minute} key={minute}>
+                    {minute}
+                  </option>
+                ))}
+              </MySelect>
+            </div>
           </div>
         </div>
 
