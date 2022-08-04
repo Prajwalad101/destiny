@@ -1,7 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { IFilterOptions } from '../../data/searchFilter.data';
 import { ISelectedFilters } from '../../types/interfaces';
-import Button from '../button/Button';
+import PrimaryButton from '../button/primary/PrimaryButton';
 import Checkbox from '../checkbox/Checkbox';
 
 interface PriceFilterProps {
@@ -95,13 +95,9 @@ function SearchFilter({
           />
         </div>
         <div className="mb-5 flex flex-col">
-          <Button
-            variant="primary"
-            theme="light"
-            onClick={() => setIsFilter(true)}
-          >
+          <PrimaryButton onClick={() => setIsFilter(true)}>
             <p className="py-[1px]">Filter</p>
-          </Button>
+          </PrimaryButton>
         </div>
       </div>
     </div>
