@@ -21,9 +21,6 @@ export const validationSchema = Yup.object({
   address: Yup.string()
     .max(40, 'Must be 40 characters or less')
     .required('This field is required'),
-  businessHours: Yup.object({
-    openWeek: Yup.string().required('This field is required'),
-  }),
 });
 
 export const hours = [

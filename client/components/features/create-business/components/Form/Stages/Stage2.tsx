@@ -7,18 +7,16 @@ import MySubLabel from '../MySubLabel';
 import MyTextArea from '../MyTextArea';
 import MyTextInput from '../MyTextInput';
 
-interface Stage1Props {
+interface Stage2Props {
   handleRight: () => void;
+  handleLeft: () => void;
   progressStatus: JSX.Element;
 }
 
-function Stage1({ handleRight, progressStatus }: Stage1Props) {
+function Stage2({ handleLeft, handleRight, progressStatus }: Stage2Props) {
   return (
     <div className="my-10 min-w-full font-rubik">
-      <h1 className="mb-5 text-2xl font-medium">
-        First,
-        <br /> Let&apos;s fill out some basic information
-      </h1>
+      <h1 className="mb-5 text-2xl font-medium">Stage 2</h1>
       {progressStatus}
 
       <div className="flex flex-col items-end">
@@ -123,13 +121,7 @@ function Stage1({ handleRight, progressStatus }: Stage1Props) {
             </div>
           </div>
         </Form>
-        <SecondaryButton
-          className="mt-16"
-          type="submit"
-          onClick={() => {
-            handleRight();
-          }}
-        >
+        <SecondaryButton className="mt-16" type="submit" onClick={handleRight}>
           <p className="px-10 py-2">Continue</p>
         </SecondaryButton>
       </div>
@@ -137,4 +129,4 @@ function Stage1({ handleRight, progressStatus }: Stage1Props) {
   );
 }
 
-export default Stage1;
+export default Stage2;
