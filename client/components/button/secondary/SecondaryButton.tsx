@@ -1,18 +1,18 @@
 import { classNames } from '../../../utils/css';
 
 interface SecondaryButtonProps {
-  children: React.ReactNode;
   theme?: 'light' | 'dark';
-  onClick?: () => void;
-  className?: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
+
+type ButtonProps = React.HTMLProps<HTMLButtonElement> & SecondaryButtonProps;
 
 function SecondaryButton({
   children,
   theme = 'light',
-  onClick,
   className = '',
-}: SecondaryButtonProps) {
+  ...props
+}: ButtonProps) {
   return (
     <button
       className={classNames(
@@ -22,8 +22,7 @@ function SecondaryButton({
         'md rounded-md border-[1px] bg-transparent text-base transition-colors hover:border-primaryred hover:bg-primaryred',
         className
       )}
-      onClick={onClick}
-      type="submit"
+      {...props}
     >
       {children}
     </button>
