@@ -1,6 +1,13 @@
-import { Form } from 'formik';
+import {
+  Form,
+  FormikProps,
+  FormikTouched,
+  FormikValues,
+  setNestedObjectValues,
+} from 'formik';
 import SecondaryButton from '../../../../../button/secondary/SecondaryButton';
 import { hours, minutes } from '../../../data/form.data';
+import { MyFormValues } from '../../../types/interfaces';
 import MyLabel from '../MyLabel';
 import MySelect from '../MySelect';
 import MySubLabel from '../MySubLabel';
@@ -10,9 +17,24 @@ import MyTextInput from '../MyTextInput';
 interface Stage1Props {
   handleRight: () => void;
   progressStatus: JSX.Element;
+  formik: FormikProps<MyFormValues>;
 }
 
-function Stage1({ handleRight, progressStatus }: Stage1Props) {
+function Stage1({ handleRight, progressStatus, formik }: Stage1Props) {
+  const validate = async () => {
+    const errors = await formik.validateForm();
+
+    const isEmpty = Object.keys(errors).length === 0;
+
+    if (isEmpty) return true; // if error object is empty, no errors are present(valid)
+
+    // touch all fields that have errors
+    formik.setTouched(
+      setNestedObjectValues<FormikTouched<FormikValues>>(errors, true)
+    );
+    return false;
+  };
+
   return (
     <div className="my-10 min-w-full font-rubik">
       <h1 className="mb-5 text-2xl font-medium">
@@ -126,8 +148,10 @@ function Stage1({ handleRight, progressStatus }: Stage1Props) {
         <SecondaryButton
           className="mt-16"
           type="submit"
-          onClick={() => {
-            handleRight();
+          onClick={async () => {
+            const isValid = await validate();
+
+            if (isValid) handleRight();
           }}
         >
           <p className="px-10 py-2">Continue</p>

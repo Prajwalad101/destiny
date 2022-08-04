@@ -23,21 +23,24 @@ const RegisterBusiness: NextPageWithLayout = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <FormSlider>
-          {(handleLeft, handleRight, progressStatus) => (
-            <>
-              <Stage1
-                handleRight={handleRight}
-                progressStatus={progressStatus}
-              />
-              <Stage2
-                handleRight={handleRight}
-                handleLeft={handleLeft}
-                progressStatus={progressStatus}
-              />
-            </>
-          )}
-        </FormSlider>
+        {(formik) => (
+          <FormSlider>
+            {(handleLeft, handleRight, progressStatus) => (
+              <>
+                <Stage1
+                  handleRight={handleRight}
+                  progressStatus={progressStatus}
+                  formik={formik}
+                />
+                <Stage2
+                  handleRight={handleRight}
+                  handleLeft={handleLeft}
+                  progressStatus={progressStatus}
+                />
+              </>
+            )}
+          </FormSlider>
+        )}
       </Formik>
     </>
   );
