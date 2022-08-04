@@ -13,7 +13,11 @@ interface Stage2Props {
   progressStatus: JSX.Element;
 }
 
-function Stage2({ handleLeft, handleRight, progressStatus }: Stage2Props) {
+function Stage2({
+  handleLeft: _handleLeft,
+  handleRight,
+  progressStatus,
+}: Stage2Props) {
   return (
     <div className="my-10 min-w-full font-rubik">
       <h1 className="mb-5 text-2xl font-medium">Stage 2</h1>
