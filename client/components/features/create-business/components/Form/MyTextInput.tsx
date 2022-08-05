@@ -8,7 +8,7 @@ const MyTextInput = ({ className = '', ...props }: MyTextInputProps) => {
   const [field, meta] = useField(props);
 
   return (
-    <>
+    <div>
       <input
         {...field}
         {...props}
@@ -20,7 +20,7 @@ const MyTextInput = ({ className = '', ...props }: MyTextInputProps) => {
       {meta.touched && meta.error ? (
         <div className="text-sm text-primaryred">*{meta.error}</div>
       ) : null}
-    </>
+    </div>
   );
 };
 

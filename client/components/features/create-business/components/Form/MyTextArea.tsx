@@ -8,7 +8,7 @@ const MyTextArea = ({ className = '', ...props }: MyTextAreaProps) => {
   const [field, meta] = useField(props);
 
   return (
-    <>
+    <div>
       <textarea
         {...field}
         {...props}
@@ -20,7 +20,7 @@ const MyTextArea = ({ className = '', ...props }: MyTextAreaProps) => {
       {meta.touched && meta.error ? (
         <p className="text-sm text-primaryred">*{meta.error}</p>
       ) : null}
-    </>
+    </div>
   );
 };
 
