@@ -14,13 +14,13 @@ import MySubLabel from '../MySubLabel';
 import MyTextArea from '../MyTextArea';
 import MyTextInput from '../MyTextInput';
 
-interface Stage1Props {
+interface FormStep1Props {
   handleRight: () => void;
   progressStatus: JSX.Element;
   formik: FormikProps<MyFormValues>;
 }
 
-function Stage1({ handleRight, progressStatus, formik }: Stage1Props) {
+function FormStep1({ handleRight, progressStatus, formik }: FormStep1Props) {
   const validate = async () => {
     const errors = await formik.validateForm();
 
@@ -161,4 +161,4 @@ function Stage1({ handleRight, progressStatus, formik }: Stage1Props) {
   );
 }
 
-export default Stage1;
+export default FormStep1;

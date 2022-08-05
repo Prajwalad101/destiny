@@ -7,17 +7,17 @@ import MySubLabel from '../MySubLabel';
 import MyTextArea from '../MyTextArea';
 import MyTextInput from '../MyTextInput';
 
-interface Stage2Props {
+interface FormStep2Props {
   handleRight: () => void;
   handleLeft: () => void;
   progressStatus: JSX.Element;
 }
 
-function Stage2({
+function FormStep2({
   handleLeft: _handleLeft,
   handleRight,
   progressStatus,
-}: Stage2Props) {
+}: FormStep2Props) {
   return (
     <div className="my-10 min-w-full font-rubik">
       <h1 className="mb-5 text-2xl font-medium">Stage 2</h1>
@@ -133,4 +133,4 @@ function Stage2({
   );
 }
 
-export default Stage2;
+export default FormStep2;

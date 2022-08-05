@@ -1,13 +1,13 @@
 import { Formik } from 'formik';
-import { Navbar } from '../../components/features/create-business';
-import Stage1 from '../../components/features/create-business/components/Form/Stages/Stage1';
-import Stage2 from '../../components/features/create-business/components/Form/Stages/Stage2';
 import {
+  FormSlider,
+  FormStep1,
+  FormStep2,
   initialValues,
+  MyFormValues,
+  Navbar,
   validationSchema,
-} from '../../components/features/create-business/data/form.data';
-import FormSlider from '../../components/features/create-business/layouts/FormSlider';
-import { MyFormValues } from '../../components/features/create-business/types/interfaces';
+} from '../../components/features/create-business';
 import AppLayout from '../../components/layout/app/AppLayout';
 import { NextPageWithLayout } from '../_app';
 
@@ -27,12 +27,12 @@ const RegisterBusiness: NextPageWithLayout = () => {
           <FormSlider>
             {(handleLeft, handleRight, progressStatus) => (
               <>
-                <Stage1
+                <FormStep1
                   handleRight={handleRight}
                   progressStatus={progressStatus}
                   formik={formik}
                 />
-                <Stage2
+                <FormStep2
                   handleRight={handleRight}
                   handleLeft={handleLeft}
                   progressStatus={progressStatus}
