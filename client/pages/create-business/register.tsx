@@ -1,8 +1,6 @@
 import { Formik } from 'formik';
 import {
-  FormSlider,
-  FormStep1,
-  FormStep2,
+  FormContainer,
   initialValues,
   MyFormValues,
   Navbar,
@@ -23,24 +21,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {(formik) => (
-          <FormSlider>
-            {(handleLeft, handleRight, progressStatus) => (
-              <>
-                <FormStep1
-                  handleRight={handleRight}
-                  progressStatus={progressStatus}
-                  formik={formik}
-                />
-                <FormStep2
-                  handleRight={handleRight}
-                  handleLeft={handleLeft}
-                  progressStatus={progressStatus}
-                />
-              </>
-            )}
-          </FormSlider>
-        )}
+        <FormContainer />
       </Formik>
     </>
   );

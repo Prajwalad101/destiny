@@ -1,34 +1,28 @@
 import { Form } from 'formik';
-import SecondaryButton from '../../../../../button/secondary/SecondaryButton';
-import { hours, minutes } from '../../../data/form.data';
-import MyLabel from '../MyLabel';
-import MySelect from '../MySelect';
-import MySubLabel from '../MySubLabel';
-import MyTextArea from '../MyTextArea';
-import MyTextInput from '../MyTextInput';
+import SecondaryButton from '../../../button/secondary/SecondaryButton';
+import MyLabel from '../components/Form/MyLabel';
+import MySelect from '../components/Form/MySelect';
+import MySubLabel from '../components/Form/MySubLabel';
+import MyTextArea from '../components/Form/MyTextArea';
+import MyTextInput from '../components/Form/MyTextInput';
+import { hours, minutes } from '../data/form.data';
 
-interface FormStep2Props {
-  handleRight: () => void;
-  handleLeft: () => void;
-  progressStatus: JSX.Element;
-}
-
-function FormStep2({
-  handleLeft: _handleLeft,
-  handleRight,
-  progressStatus,
-}: FormStep2Props) {
+function FormContainer() {
   return (
     <div className="my-10 min-w-full font-rubik">
-      <h1 className="mb-5 text-2xl font-medium">Stage 2</h1>
-      {progressStatus}
+      <h1 className="mb-2 text-[26px] font-medium">
+        Business Registration Form
+      </h1>
+      <p className="mb-10 text-gray-500 md:mb-16">
+        Fill out all the required fields to create your business
+      </p>
 
       <div className="flex flex-col items-end">
         <Form className="w-2xl child-notlast:mb-5 md:w-full md:child-notlast:mb-16">
           {/* Business Name */}
-          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
             <div className="mb-5">
-              <MyLabel htmlFor="businessName">Business Name</MyLabel>
+              <MyLabel htmlFor="businessName">Name</MyLabel>
               <MySubLabel className="mb-3">
                 Enter the full name of your business
               </MySubLabel>
@@ -43,7 +37,7 @@ function FormStep2({
           </div>
 
           {/* Description */}
-          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
             <div className="mb-5">
               <MyLabel htmlFor="description">Description</MyLabel>
               <MySubLabel className="mb-3">
@@ -57,7 +51,7 @@ function FormStep2({
           </div>
 
           {/* Address */}
-          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
             <div className="mb-5">
               <MyLabel htmlFor="address">Address</MyLabel>
               <MySubLabel className="mb-3">
@@ -75,9 +69,9 @@ function FormStep2({
           </div>
 
           {/* Business Hours */}
-          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr]">
+          <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
             <div className="mb-5">
-              <MyLabel htmlFor="businessHours">Business Hours</MyLabel>
+              <MyLabel htmlFor="businessHours">Hours</MyLabel>
               <MySubLabel className="mb-3">
                 Provide the time of day your business will stay open.
               </MySubLabel>
@@ -125,12 +119,12 @@ function FormStep2({
             </div>
           </div>
         </Form>
-        <SecondaryButton className="mt-16" type="submit" onClick={handleRight}>
-          <p className="px-10 py-2">Continue</p>
+        <SecondaryButton className="mt-16" type="submit">
+          <p className="px-10 py-2">Submit</p>
         </SecondaryButton>
       </div>
     </div>
   );
 }
 
-export default FormStep2;
+export default FormContainer;
