@@ -1,20 +1,20 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { IItem } from '../../../data/dropdown.data';
+import { IBusinessSubCategory } from '../../../types/interfaces';
 import { classNames } from '../../../utils/css';
 
-interface ExploreTopicDropdownMobileProps {
+interface BusinessCategoriesMobileProps {
   topic: string;
-  items: IItem[];
+  subCategories: IBusinessSubCategory[];
   onClick: () => void;
 }
 
-function ExploreTopicDropdownMobile({
+function BusinessCategoriesMobile({
   topic,
-  items,
+  subCategories,
   onClick,
-}: ExploreTopicDropdownMobileProps) {
+}: BusinessCategoriesMobileProps) {
   const [selectedItem, setSelectedItem] = useState<string>(); // to track if displaying sub items
 
   const handleItemClick = (item: string) => {
@@ -27,12 +27,12 @@ function ExploreTopicDropdownMobile({
   };
 
   //! FIX: Change the static city variable
-  const link = (item: IItem, index: number) => (
+  const link = (item: IBusinessSubCategory, index: number) => (
     <Link
       key={index}
       href={{
         pathname: '/search/business',
-        query: { name: item.title, city: 'kathmandu' },
+        query: { name: item.name, city: 'kathmandu' },
       }}
     >
       <div
@@ -45,7 +45,7 @@ function ExploreTopicDropdownMobile({
         {/* Sub item */}
         <div className="flex items-center gap-3 text-gray-700 hover:text-black">
           <div className="group-hover:text-primaryred">{item.icon}</div>
-          <p className="capitalize">{item.title}</p>
+          <p className="capitalize">{item.name}</p>
         </div>
       </div>
     </Link>
@@ -74,10 +74,10 @@ function ExploreTopicDropdownMobile({
           'ml-6 transition-opacity duration-500 ease-linear'
         )}
       >
-        {items.map((item, index) => link(item, index))}
+        {subCategories.map((item, index) => link(item, index))}
       </div>
     </>
   );
 }
 
-export default ExploreTopicDropdownMobile;
+export default BusinessCategoriesMobile;

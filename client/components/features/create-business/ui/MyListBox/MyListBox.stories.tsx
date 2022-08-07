@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { mockList } from '../../data/form.data';
 import MyListBox from './MyListBox';
-import { mockList } from './MyListBox.mocks';
 
 export default {
   title: 'components/Listbox',

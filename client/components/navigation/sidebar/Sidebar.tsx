@@ -3,10 +3,10 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
-import dropdownData from '../../../data/dropdown.data';
+import { businessCategories } from '../../../data/business/categories.data';
 import { navLinks } from '../../../data/navigation.data';
 import { classNames } from '../../../utils/css';
-import ExploreTopicDropdownMobile from '../../dropdown/explore-topic-mobile/ExploreTopicDropdownMobile';
+import BusinessCategoriesMobile from '../../dropdown/explore-topic-mobile/BusinessCategoriesMobile';
 
 function Sidebar() {
   const { open, setOpen } = useSidebar();
@@ -68,11 +68,11 @@ function Sidebar() {
       <p className="mb-3 mt-4 text-lg font-medium">Explore</p>
 
       <div className="mt-5 font-rubik md:hidden">
-        {dropdownData.map((data, index) => (
+        {businessCategories.map((data, index) => (
           <div key={index}>
-            <ExploreTopicDropdownMobile
-              topic={data.topic}
-              items={data.items}
+            <BusinessCategoriesMobile
+              topic={data.name}
+              subCategories={data.subCategories}
               onClick={() => setOpen(!open)}
             />
           </div>

@@ -16,3 +16,8 @@ export interface IBusiness {
   rating_count: number;
   avgRating: number;
 }
+
+export interface IBusinessCategory {
+  name: string;
+  subCategories: string[];
+}

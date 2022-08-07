@@ -3,10 +3,9 @@ import { Fragment, useState } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../utils/css';
-import { IMockList } from './MyListBox.mocks';
 
 interface MyListBoxProps {
-  list: IMockList[];
+  list: { id: number; name: string }[];
 }
 
 function MyListBox({ list }: MyListBoxProps) {

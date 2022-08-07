@@ -1,4 +1,5 @@
 import { Form } from 'formik';
+import { businessCategories } from '../../../../data/business/categories.data';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 import MyLabel from '../components/Form/MyLabel';
 import MySelect from '../components/Form/MySelect';
@@ -6,6 +7,7 @@ import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
 import { hours, minutes } from '../data/form.data';
+import MyListBox from '../ui/MyListBox/MyListBox';
 
 function FormContainer() {
   return (
@@ -73,6 +75,7 @@ function FormContainer() {
                 Select one of the category your business falls under
               </MySubLabel>
             </div>
+            <MyListBox list={businessCategories} />
           </FieldLayout>
         </Form>
         <SecondaryButton className="mt-16" type="submit">

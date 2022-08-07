@@ -1,5 +1,5 @@
-import dropdownData from '../../../../data/dropdown.data';
-import ExploreTopicDropdown from '../../../dropdown/explore-topic/ExploreTopicDropdown';
+import { businessCategories } from '../../../../data/business/categories.data';
+import BusinessCategoryDropdown from '../../../dropdown/businessCategories/BusinessCategories';
 import AppLayout from '../../../layout/app/AppLayout';
 import Navbar from '../../../navigation/navbar/Navbar';
 import Searchbar from '../../../search-bar/Searchbar';
@@ -29,9 +29,12 @@ function HomeHero() {
 
           {/* DROPDOWN ITEMS */}
           <div className="mt-5 hidden gap-5 font-rubik md:flex">
-            {dropdownData.map((data, index) => (
-              <div key={index}>
-                <ExploreTopicDropdown topic={data.topic} items={data.items} />
+            {businessCategories.map((data) => (
+              <div key={data.id}>
+                <BusinessCategoryDropdown
+                  name={data.name}
+                  subCategories={data.subCategories}
+                />
               </div>
             ))}
           </div>

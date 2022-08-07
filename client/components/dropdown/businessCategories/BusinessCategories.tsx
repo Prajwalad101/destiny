@@ -1,29 +1,34 @@
 import Link from 'next/link';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { IItem } from '../../../data/dropdown.data';
+import { IBusinessSubCategory } from '../../../types/interfaces';
 
-interface ExploreTopicDropdownProps {
-  topic: string;
-  items: IItem[];
+interface BusinessCategoryDropdownProps {
+  name: string;
+  subCategories: IBusinessSubCategory[];
 }
 
-function ExploreTopicDropdown({ topic, items }: ExploreTopicDropdownProps) {
+function BusinessCategories({
+  name,
+  subCategories,
+}: BusinessCategoryDropdownProps) {
   // to display items in two columns
-  const evenItems = items.filter((_item, i) => i % 2 === 0 || i === 0);
-  const oddItems = items.filter((_item, i) => i % 2 !== 0);
+  const evenItems = subCategories.filter(
+    (_subCategory, i) => i % 2 === 0 || i === 0
+  );
+  const oddItems = subCategories.filter((_subCategory, i) => i % 2 !== 0);
 
   //! FIX: Change the static city variable
-  const link = (item: IItem, index: number) => (
+  const link = (item: IBusinessSubCategory, index: number) => (
     <Link
       key={index}
       href={{
         pathname: '/search/business',
-        query: { name: item.title, city: 'kathmandu' },
+        query: { name: item.name, city: 'kathmandu' },
       }}
     >
       <a>
         <div className="flex items-center gap-3 hover:cursor-pointer hover:text-gray-600">
-          <p className="whitespace-nowrap">{item.title}</p>
+          <p className="whitespace-nowrap">{item.name}</p>
           {item.icon}
         </div>
       </a>
@@ -34,7 +39,7 @@ function ExploreTopicDropdown({ topic, items }: ExploreTopicDropdownProps) {
     <div className="relative capitalize">
       {/* Dropdown heading */}
       <div className="peer flex items-center gap-1 text-white hover:cursor-pointer">
-        <p>{topic}</p>
+        <p>{name}</p>
         <RiArrowDownSLine size={25} />
       </div>
 
@@ -54,4 +59,4 @@ function ExploreTopicDropdown({ topic, items }: ExploreTopicDropdownProps) {
   );
 }
 
-export default ExploreTopicDropdown;
+export default BusinessCategories;
