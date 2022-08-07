@@ -75,12 +75,12 @@ function FormContainer() {
                 Select one of the category your business falls on
               </MySubLabel>
             </div>
-            <MyListBox list={businessCategories} />
+            <MyListBox list={businessCategories} name="category" />
           </FieldLayout>
+          <SecondaryButton className="mt-16" type="submit">
+            <p className="px-10 py-2">Submit</p>
+          </SecondaryButton>
         </Form>
-        <SecondaryButton className="mt-16" type="submit">
-          <p className="px-10 py-2">Submit</p>
-        </SecondaryButton>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { businessCategories } from '../../../../data/business/categories.data';
 import { MyFormValues } from '../types/interfaces';
 
 // Formik Initial values
@@ -9,6 +10,7 @@ export const initialValues: MyFormValues = {
     openHour: ['9', '00'],
     closeHour: ['21', '00'],
   },
+  category: businessCategories[0].name,
 };
 
 export const hours = [

@@ -11,4 +11,5 @@ export interface MyFormValues {
     openHour: [string, string];
     closeHour: [string, string];
   };
+  category: string;
 }
