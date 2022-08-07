@@ -58,7 +58,7 @@ export const businessCategories: IBusinessCategoryDropdown[] = [
   },
   {
     id: 4,
-    name: 'more',
+    name: 'others',
     subCategories: [
       { name: 'entertainment', icon: <TbRollercoaster size={iconSize} /> },
       { name: 'shopping', icon: <FiShoppingBag size={iconSize} /> },

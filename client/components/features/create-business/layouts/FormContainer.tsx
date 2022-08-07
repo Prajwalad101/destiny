@@ -72,7 +72,7 @@ function FormContainer() {
             <div className="mb-5">
               <MyLabel htmlFor="category">Category</MyLabel>
               <MySubLabel>
-                Select one of the category your business falls under
+                Select one of the category your business falls on
               </MySubLabel>
             </div>
             <MyListBox list={businessCategories} />
