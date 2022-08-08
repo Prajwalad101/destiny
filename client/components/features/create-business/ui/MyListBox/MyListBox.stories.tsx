@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { mockList } from '../../data/form.data';
+import { businessCategories } from '../../../../../data/business/categories.data';
 import MyListBox from './MyListBox';
 
 export default {
@@ -13,4 +13,4 @@ const Template: ComponentStory<typeof MyListBox> = (args) => (
 
 export const Base = Template.bind({});
 
-Base.args = { list: mockList };
+Base.args = { list: businessCategories };
