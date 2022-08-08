@@ -4,32 +4,42 @@ import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../utils/css';
 
+type childrenRenderFunc = (
+  _name: string,
+  _active: boolean,
+  _selected: boolean
+) => JSX.Element;
+
+type buttonRenderFunc = (_name: string) => JSX.Element;
+
 interface MyListBoxProps {
+  list: { id: number; name: string }[];
   name?: string;
-  list: { id?: number; name: string }[];
   width?: number;
-  children?: (
-    _name: string,
-    _active: boolean,
-    _selected: boolean
-  ) => JSX.Element;
+  button?: buttonRenderFunc;
+  children?: childrenRenderFunc;
 }
 
-function MyListBox({ width, name, list, children }: MyListBoxProps) {
+function MyListBox({ width, name, list, button, children }: MyListBoxProps) {
   const [selectedItem, setSelectedItem] = useState(list[0]);
 
   return (
     <div className="w-72 font-rubik" style={{ width: width }}>
       <Listbox value={selectedItem} onChange={setSelectedItem} name={name}>
         <div className="relative">
-          <Listbox.Button className="relative w-full rounded-md px-5 py-2 text-left ring-1 ring-black/40">
-            <span className="block truncate capitalize">
-              {selectedItem.name}
-            </span>
-            <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
-              <HiOutlineSelector size={20} className="text-gray-400" />
-            </span>
-          </Listbox.Button>
+          {button ? (
+            button(selectedItem.name)
+          ) : (
+            <Listbox.Button className="relative w-full rounded-md px-5 py-2 text-left ring-1 ring-black/40">
+              <span className="block truncate capitalize">
+                {selectedItem.name}
+              </span>
+              <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
+                <HiOutlineSelector size={20} className="text-gray-400" />
+              </span>
+            </Listbox.Button>
+          )}
+
           <Transition
             as={Fragment}
             leave="transition ease-in duration-100"
