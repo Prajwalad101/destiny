@@ -6,7 +6,7 @@ import MyLabel from '../components/Form/MyLabel';
 import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
-import { hours } from '../data/form.data';
+import { hours } from '../data/formData';
 import MyListBox from '../ui/MyListBox/MyListBox';
 
 function FormContainer() {
