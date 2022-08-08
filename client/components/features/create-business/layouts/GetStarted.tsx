@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { linkData } from '..';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 
-function GetStarted() {
+function GetStartedLayout() {
   return (
     <div className="mt-10 flex flex-col items-center font-rubik md:flex-row-reverse md:items-end md:justify-between">
       <div className="w-[100%] max-w-[300px] md:max-w-[370px]">
@@ -38,4 +38,4 @@ function GetStarted() {
   );
 }
 
-export default GetStarted;
+export default GetStartedLayout;
