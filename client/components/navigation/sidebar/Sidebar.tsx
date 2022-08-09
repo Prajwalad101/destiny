@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
-import { businessCategories } from '../../../data/business/categories.data';
+import businessCategories from '../../../data/business/categoriesData';
 import { navLinks } from '../../../data/navigation.data';
 import { classNames } from '../../../utils/css';
 import BusinessCategoriesMobile from '../../dropdown/explore-topic-mobile/BusinessCategoriesMobile';

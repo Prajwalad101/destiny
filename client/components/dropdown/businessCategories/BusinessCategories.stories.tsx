@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { businessCategories } from '../../../data/business/categories.data';
+import businessCategories from '../../../data/business/categoriesData';
 import {
   default as BusinessCategoriesDropdown,
   default as ExploreTopicDropdown,

@@ -1,4 +1,4 @@
-import { businessCategories } from '../../../../data/business/categories.data';
+import businessCategories from '../../../../data/business/categoriesData';
 import BusinessCategoryDropdown from '../../../dropdown/businessCategories/BusinessCategories';
 import AppLayout from '../../../layout/app/AppLayout';
 import Navbar from '../../../navigation/navbar/Navbar';

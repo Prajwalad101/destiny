@@ -1,4 +1,4 @@
-import { businessCategories } from '../../../../data/business/categories.data';
+import businessCategories from '../../../../data/business/categoriesData';
 import { MyFormValues } from '../types/interfaces';
 
 // Formik Initial values
@@ -57,3 +57,9 @@ export const minutes = [
 ];
 
 export const timeOfDay = [{ name: 'AM' }, { name: 'PM' }];
+
+// export const businessFeatures = [
+//   { type: businessCategories[0].subCategories[0].name, features: [
+//     ""
+//   ] },
+// ];

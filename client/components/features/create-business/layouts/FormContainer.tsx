@@ -1,5 +1,5 @@
 import { Form } from 'formik';
-import { businessCategories } from '../../../../data/business/categories.data';
+import businessCategories from '../../../../data/business/categoriesData';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 import MyLabel from '../components/Form/MyLabel';
 import MySubLabel from '../components/Form/MySubLabel';

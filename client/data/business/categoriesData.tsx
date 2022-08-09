@@ -14,16 +14,35 @@ import { MdOutlineFastfood, MdOutlineSportsTennis } from 'react-icons/md';
 import { RiCake3Fill, RiHotelLine } from 'react-icons/ri';
 import { TbRollercoaster } from 'react-icons/tb';
 import { IBusinessCategoryDropdown } from '../../types/interfaces';
+import businessFeatures from './featuresData';
 
 const iconSize = 20;
 
-export const businessCategories: IBusinessCategoryDropdown[] = [
+// resturant features
+const {
+  delivery,
+  reservations,
+  events,
+  goodForKids,
+  liveMusic,
+  outdoorDining,
+} = businessFeatures;
+
+const businessCategories: IBusinessCategoryDropdown[] = [
   {
     name: 'food and drinks',
     subCategories: [
       {
         name: 'resturants',
         icon: <FaPizzaSlice size={17} />,
+        features: [
+          delivery,
+          reservations,
+          events,
+          goodForKids,
+          liveMusic,
+          outdoorDining,
+        ],
       },
       { name: 'cafes', icon: <BiCoffeeTogo size={iconSize} /> },
       { name: 'fast foods', icon: <MdOutlineFastfood size={iconSize} /> },
@@ -63,3 +82,5 @@ export const businessCategories: IBusinessCategoryDropdown[] = [
     ],
   },
 ];
+
+export default businessCategories;
