@@ -97,7 +97,7 @@ function FormContainer() {
 
         {/* Category */}
         <FieldLayout>
-          <div className="mb-5">
+          <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="category">Category</MyLabel>
             <MySubLabel>
               Select one of the category your business falls on
@@ -105,6 +105,16 @@ function FormContainer() {
           </div>
           <MyListBox list={businessCategories} inputName="category" />
         </FieldLayout>
+
+        {/* Features */}
+        <FieldLayout>
+          <div>
+            <MyLabel htmlFor="features">Features</MyLabel>
+            <MySubLabel>Select the features your business provides</MySubLabel>
+          </div>
+        </FieldLayout>
+
+        {/* Submit Button */}
         <SecondaryButton className="mt-16" type="submit">
           <p className="px-10 py-2">Submit</p>
         </SecondaryButton>

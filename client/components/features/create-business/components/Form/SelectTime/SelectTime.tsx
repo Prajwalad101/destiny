@@ -1,6 +1,5 @@
 import { Listbox } from '@headlessui/react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import { classNames } from '../../../../../../utils/css';
 import MyListBox from '../MyListBox/MyListBox';
 
 type list = { id: number; name: string }[];
@@ -37,7 +36,7 @@ const SelectHour = ({ list, inputName }: SelectorProps) => {
         inputName={hourInputName}
         width={90}
         button={(selectedHour) => (
-          <Listbox.Button className="relative w-full rounded-l-md border-[1px] px-5 py-2 text-left">
+          <Listbox.Button className="relative w-full rounded-l-md border-[1px] border-gray-400 px-5 py-2 text-left">
             <>
               <span className="block truncate capitalize">{selectedHour}</span>
               <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
@@ -60,7 +59,7 @@ const SelectMinute = ({ list, inputName }: SelectorProps) => {
       inputName={minuteInputName}
       width={90}
       button={(selectedMinute) => (
-        <Listbox.Button className="relative w-full border-[1px] px-5 py-2 text-left">
+        <Listbox.Button className="relative w-full border-[1px] border-gray-400 px-5 py-2 text-left">
           <>
             <span className="block truncate capitalize">{selectedMinute}</span>
             <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
@@ -82,22 +81,11 @@ const SelectTimeOfDay = ({ list, inputName }: SelectorProps) => {
       inputName={timeOfDayInputName}
       width={70}
       button={(selectedTimeOfDay) => (
-        <Listbox.Button className="relative w-full rounded-r-md border-[1px] border-l-0 px-5 py-2 text-left">
+        <Listbox.Button className="relative w-full rounded-r-md border-[1px] border-l-0 border-gray-400 px-5 py-2 text-left">
           <span className="block truncate capitalize">{selectedTimeOfDay}</span>
         </Listbox.Button>
       )}
-    >
-      {(name, selected) => (
-        <span
-          className={classNames(
-            selected ? 'font-medium' : 'font-normal',
-            'capitalize'
-          )}
-        >
-          {name}
-        </span>
-      )}
-    </MyListBox>
+    />
   );
 };
 export default SelectTime;

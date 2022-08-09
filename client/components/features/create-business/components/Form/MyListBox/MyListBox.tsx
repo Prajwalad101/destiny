@@ -4,12 +4,6 @@ import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../../utils/css';
 
-type childrenRenderFunc = (
-  _name: string,
-  _active: boolean,
-  _selected: boolean
-) => JSX.Element;
-
 type buttonRenderFunc = (_name: string) => JSX.Element;
 
 interface MyListBoxProps {
@@ -17,20 +11,18 @@ interface MyListBoxProps {
   inputName?: string;
   width?: number;
   button?: buttonRenderFunc;
-  children?: childrenRenderFunc;
 }
 
 function MyListBox({
-  width,
+  width = 288, // default width
   inputName,
   list,
   button,
-  children,
 }: MyListBoxProps) {
   const [selectedItem, setSelectedItem] = useState(list[0]);
 
   return (
-    <div className="w-72 font-rubik" style={{ width: width }}>
+    <div className="font-rubik" style={{ width: width }}>
       <Listbox value={selectedItem} onChange={setSelectedItem} name={inputName}>
         <div className="relative">
           {button ? (
@@ -64,33 +56,28 @@ function MyListBox({
                     )
                   }
                 >
-                  {({ active, selected }) =>
-                    // implement render props to make listbox accept custom listbox items
-                    children ? (
-                      children(listItem.name, selected, active)
-                    ) : (
-                      <>
-                        <span
-                          className={classNames(
-                            selected ? 'font-medium' : 'font-normal',
-                            'capitalize'
-                          )}
-                        >
-                          {listItem.name}
-                        </span>
-                        {selected && (
-                          <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-3">
-                            <BsCheck2
-                              size={20}
-                              className={classNames(
-                                active ? 'text-white' : 'text-blue-700'
-                              )}
-                            />
-                          </span>
+                  {({ active, selected }) => (
+                    <>
+                      <span
+                        className={classNames(
+                          selected ? 'font-medium' : 'font-normal',
+                          'capitalize'
                         )}
-                      </>
-                    )
-                  }
+                      >
+                        {listItem.name}
+                      </span>
+                      {selected && width > 100 && (
+                        <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-3">
+                          <BsCheck2
+                            size={20}
+                            className={classNames(
+                              active ? 'text-white' : 'text-blue-700'
+                            )}
+                          />
+                        </span>
+                      )}
+                    </>
+                  )}
                 </Listbox.Option>
               ))}
             </Listbox.Options>
