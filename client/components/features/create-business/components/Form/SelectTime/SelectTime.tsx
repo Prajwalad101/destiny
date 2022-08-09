@@ -39,16 +39,18 @@ const SelectHour = ({ list, inputName }: SelectorProps) => {
         listState={{ selected: selectedHour, setSelected: setSelectedHour }}
         inputName={hourInputName}
         width={90}
-        button={(selectedHour) => (
+        button={
           <Listbox.Button className="relative w-full rounded-l-md border-[1px] border-gray-400 px-5 py-2 text-left">
             <>
-              <span className="block truncate capitalize">{selectedHour}</span>
+              <span className="block truncate capitalize">
+                {selectedHour.name}
+              </span>
               <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
                 <HiOutlineSelector size={17} className="text-gray-400" />
               </span>
             </>
           </Listbox.Button>
-        )}
+        }
       />
     </>
   );
@@ -65,16 +67,18 @@ const SelectMinute = ({ list, inputName }: SelectorProps) => {
       listState={{ selected: selectedMinute, setSelected: setSelectedMinute }}
       inputName={minuteInputName}
       width={90}
-      button={(selectedMinute) => (
+      button={
         <Listbox.Button className="relative w-full border-[1px] border-gray-400 px-5 py-2 text-left">
           <>
-            <span className="block truncate capitalize">{selectedMinute}</span>
+            <span className="block truncate capitalize">
+              {selectedMinute.name}
+            </span>
             <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
               <HiOutlineSelector size={17} className="text-gray-400" />
             </span>
           </>
         </Listbox.Button>
-      )}
+      }
     />
   );
 };
@@ -93,11 +97,13 @@ const SelectTimeOfDay = ({ list, inputName }: SelectorProps) => {
       }}
       inputName={timeOfDayInputName}
       width={70}
-      button={(selectedTimeOfDay) => (
+      button={
         <Listbox.Button className="relative w-full rounded-r-md border-[1px] border-l-0 border-gray-400 px-5 py-2 text-left">
-          <span className="block truncate capitalize">{selectedTimeOfDay}</span>
+          <span className="block truncate capitalize">
+            {selectedTimeOfDay.name}
+          </span>
         </Listbox.Button>
-      )}
+      }
     />
   );
 };

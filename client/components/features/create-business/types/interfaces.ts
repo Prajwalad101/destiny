@@ -12,4 +12,5 @@ export interface MyFormValues {
     close: { hour: string; minute: string; timeOfDay: 'AM' | 'PM' };
   };
   category: string;
+  subCategory: string;
 }

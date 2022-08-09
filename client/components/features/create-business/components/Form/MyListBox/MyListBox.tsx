@@ -4,7 +4,6 @@ import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../../utils/css';
 
-type ButtonRenderFunc = (_name: string) => JSX.Element;
 type ListState = {
   selected: {
     name: string;
@@ -21,7 +20,7 @@ interface MyListBoxProps {
   listState: ListState;
   inputName?: string;
   width?: number;
-  button?: ButtonRenderFunc;
+  button?: JSX.Element;
 }
 
 function MyListBox({
@@ -31,8 +30,6 @@ function MyListBox({
   width = 250, // default width
   button,
 }: MyListBoxProps) {
-  console.log(listState);
-
   return (
     <div className="font-rubik" style={{ width: width }}>
       <Listbox
@@ -42,7 +39,7 @@ function MyListBox({
       >
         <div className="relative">
           {button ? (
-            button(listState.selected.name)
+            button
           ) : (
             <Listbox.Button className="relative w-full rounded-md px-5 py-2 text-left ring-1 ring-black/40">
               <span className="block truncate capitalize">
