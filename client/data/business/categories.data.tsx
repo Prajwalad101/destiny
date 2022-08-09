@@ -19,7 +19,6 @@ const iconSize = 20;
 
 export const businessCategories: IBusinessCategoryDropdown[] = [
   {
-    id: 1,
     name: 'food and drinks',
     subCategories: [
       {
@@ -36,7 +35,6 @@ export const businessCategories: IBusinessCategoryDropdown[] = [
     ],
   },
   {
-    id: 2,
     name: 'sports and fitness',
     subCategories: [
       { name: 'gyms', icon: <GiWeightLiftingUp size={iconSize} /> },
@@ -47,7 +45,6 @@ export const businessCategories: IBusinessCategoryDropdown[] = [
     ],
   },
   {
-    id: 3,
     name: 'home services',
     subCategories: [
       { name: 'plumbing', icon: <GiTeePipe size={iconSize} /> },
@@ -57,7 +54,6 @@ export const businessCategories: IBusinessCategoryDropdown[] = [
     ],
   },
   {
-    id: 4,
     name: 'others',
     subCategories: [
       { name: 'entertainment', icon: <TbRollercoaster size={iconSize} /> },

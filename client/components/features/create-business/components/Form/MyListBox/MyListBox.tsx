@@ -1,36 +1,52 @@
 import { Listbox, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Dispatch, Fragment, SetStateAction } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../../utils/css';
 
-type buttonRenderFunc = (_name: string) => JSX.Element;
+type ButtonRenderFunc = (_name: string) => JSX.Element;
+type ListState = {
+  selected: {
+    name: string;
+  };
+  setSelected: Dispatch<
+    SetStateAction<{
+      name: string;
+    }>
+  >;
+};
 
 interface MyListBoxProps {
-  list: { id: number; name: string }[];
+  list: { name: string }[];
+  listState: ListState;
   inputName?: string;
   width?: number;
-  button?: buttonRenderFunc;
+  button?: ButtonRenderFunc;
 }
 
 function MyListBox({
-  width = 288, // default width
-  inputName,
   list,
+  listState,
+  inputName,
+  width = 250, // default width
   button,
 }: MyListBoxProps) {
-  const [selectedItem, setSelectedItem] = useState(list[0]);
+  console.log(listState);
 
   return (
     <div className="font-rubik" style={{ width: width }}>
-      <Listbox value={selectedItem} onChange={setSelectedItem} name={inputName}>
+      <Listbox
+        value={listState.selected}
+        onChange={listState.setSelected}
+        name={inputName}
+      >
         <div className="relative">
           {button ? (
-            button(selectedItem.name)
+            button(listState.selected.name)
           ) : (
             <Listbox.Button className="relative w-full rounded-md px-5 py-2 text-left ring-1 ring-black/40">
               <span className="block truncate capitalize">
-                {selectedItem.name}
+                {listState.selected.name}
               </span>
               <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
                 <HiOutlineSelector size={20} className="text-gray-400" />
@@ -47,7 +63,7 @@ function MyListBox({
             <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
               {list.map((listItem, index) => (
                 <Listbox.Option
-                  key={listItem.id || index}
+                  key={index}
                   value={listItem}
                   className={({ active }) =>
                     classNames(

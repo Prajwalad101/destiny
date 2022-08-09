@@ -1,13 +1,14 @@
 import { Listbox } from '@headlessui/react';
+import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
 import MyListBox from '../MyListBox/MyListBox';
 
-type list = { id: number; name: string }[];
+type List = { name: string }[];
 
 interface SelectTimeProps {
-  hours: list;
-  minutes: list;
-  timeOfDay: list;
+  hours: List;
+  minutes: List;
+  timeOfDay: List;
   inputName: string;
 }
 
@@ -23,16 +24,19 @@ function SelectTime({ hours, minutes, timeOfDay, inputName }: SelectTimeProps) {
 }
 
 interface SelectorProps {
-  list: { id: number; name: string }[];
+  list: List;
   inputName: string;
 }
 
 const SelectHour = ({ list, inputName }: SelectorProps) => {
+  const [selectedHour, setSelectedHour] = useState(list[0]);
+
   const hourInputName = inputName.concat('.hour');
   return (
     <>
       <MyListBox
         list={list}
+        listState={{ selected: selectedHour, setSelected: setSelectedHour }}
         inputName={hourInputName}
         width={90}
         button={(selectedHour) => (
@@ -51,11 +55,14 @@ const SelectHour = ({ list, inputName }: SelectorProps) => {
 };
 
 const SelectMinute = ({ list, inputName }: SelectorProps) => {
+  const [selectedMinute, setSelectedMinute] = useState(list[0]);
+
   const minuteInputName = inputName.concat('.minute');
 
   return (
     <MyListBox
       list={list}
+      listState={{ selected: selectedMinute, setSelected: setSelectedMinute }}
       inputName={minuteInputName}
       width={90}
       button={(selectedMinute) => (
@@ -73,11 +80,17 @@ const SelectMinute = ({ list, inputName }: SelectorProps) => {
 };
 
 const SelectTimeOfDay = ({ list, inputName }: SelectorProps) => {
+  const [selectedTimeOfDay, setSelectedTimeOfDay] = useState(list[0]);
+
   const timeOfDayInputName = inputName.concat('.timeOfDay');
 
   return (
     <MyListBox
       list={list}
+      listState={{
+        selected: selectedTimeOfDay,
+        setSelected: setSelectedTimeOfDay,
+      }}
       inputName={timeOfDayInputName}
       width={70}
       button={(selectedTimeOfDay) => (

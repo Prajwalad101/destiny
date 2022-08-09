@@ -5,10 +5,9 @@ export interface ISelectedFilters {
   price: string | null;
 }
 
-// dropdown menu to explore business by category
+// implement a different subcategory on dropdown items
 export interface IBusinessCategoryDropdown
   extends Omit<IBusinessCategory, 'subCategories'> {
-  id: number;
   subCategories: IBusinessSubCategory[];
 }
 

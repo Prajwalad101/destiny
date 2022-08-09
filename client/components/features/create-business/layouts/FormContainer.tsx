@@ -2,10 +2,10 @@ import { Form } from 'formik';
 import { businessCategories } from '../../../../data/business/categories.data';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 import MyLabel from '../components/Form/MyLabel';
-import MyListBox from '../components/Form/MyListBox/MyListBox';
 import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
+import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
 import SelectTime from '../components/Form/SelectTime/SelectTime';
 import { hours, minutes, timeOfDay } from '../data/formData';
 
@@ -103,15 +103,16 @@ function FormContainer() {
               Select one of the category your business falls on
             </MySubLabel>
           </div>
-          <MyListBox list={businessCategories} inputName="category" />
+          <SelectCategory categories={businessCategories} />
         </FieldLayout>
 
         {/* Features */}
         <FieldLayout>
-          <div>
+          <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="features">Features</MyLabel>
             <MySubLabel>Select the features your business provides</MySubLabel>
           </div>
+          {/* <MyListBox list={} /> */}
         </FieldLayout>
 
         {/* Submit Button */}
