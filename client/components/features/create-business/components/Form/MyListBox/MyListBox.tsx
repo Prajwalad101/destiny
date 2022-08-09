@@ -14,18 +14,24 @@ type buttonRenderFunc = (_name: string) => JSX.Element;
 
 interface MyListBoxProps {
   list: { id: number; name: string }[];
-  name?: string;
+  inputName?: string;
   width?: number;
   button?: buttonRenderFunc;
   children?: childrenRenderFunc;
 }
 
-function MyListBox({ width, name, list, button, children }: MyListBoxProps) {
+function MyListBox({
+  width,
+  inputName,
+  list,
+  button,
+  children,
+}: MyListBoxProps) {
   const [selectedItem, setSelectedItem] = useState(list[0]);
 
   return (
     <div className="w-72 font-rubik" style={{ width: width }}>
-      <Listbox value={selectedItem} onChange={setSelectedItem} name={name}>
+      <Listbox value={selectedItem} onChange={setSelectedItem} name={inputName}>
         <div className="relative">
           {button ? (
             button(selectedItem.name)

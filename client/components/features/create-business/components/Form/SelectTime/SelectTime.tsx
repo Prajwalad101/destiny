@@ -9,33 +9,33 @@ interface SelectTimeProps {
   hours: list;
   minutes: list;
   timeOfDay: list;
-  name: string;
+  inputName: string;
 }
 
-function SelectTime({ hours, minutes, timeOfDay, name }: SelectTimeProps) {
+function SelectTime({ hours, minutes, timeOfDay, inputName }: SelectTimeProps) {
   return (
     <div className="flex items-center font-rubik">
-      <SelectHour list={hours} name={name} />
+      <SelectHour list={hours} inputName={inputName} />
       <span className="px-1 text-2xl">:</span>
-      <SelectMinute list={minutes} name={name} />
-      <SelectTimeOfDay list={timeOfDay} name={name} />
+      <SelectMinute list={minutes} inputName={inputName} />
+      <SelectTimeOfDay list={timeOfDay} inputName={inputName} />
     </div>
   );
 }
 
 interface SelectorProps {
   list: { id: number; name: string }[];
-  name: string;
+  inputName: string;
 }
 
-const SelectHour = ({ list, name }: SelectorProps) => {
-  const hourInputName = name.concat('.hour');
+const SelectHour = ({ list, inputName }: SelectorProps) => {
+  const hourInputName = inputName.concat('.hour');
   return (
     <>
       <MyListBox
         list={list}
+        inputName={hourInputName}
         width={90}
-        name={hourInputName}
         button={(selectedHour) => (
           <Listbox.Button className="relative w-full rounded-l-md border-[1px] px-5 py-2 text-left">
             <>
@@ -51,14 +51,14 @@ const SelectHour = ({ list, name }: SelectorProps) => {
   );
 };
 
-const SelectMinute = ({ list, name }: SelectorProps) => {
-  const minuteInputName = name.concat('.minute');
+const SelectMinute = ({ list, inputName }: SelectorProps) => {
+  const minuteInputName = inputName.concat('.minute');
 
   return (
     <MyListBox
       list={list}
+      inputName={minuteInputName}
       width={90}
-      name={minuteInputName}
       button={(selectedMinute) => (
         <Listbox.Button className="relative w-full border-[1px] px-5 py-2 text-left">
           <>
@@ -73,14 +73,14 @@ const SelectMinute = ({ list, name }: SelectorProps) => {
   );
 };
 
-const SelectTimeOfDay = ({ list, name }: SelectorProps) => {
-  const timeOfDayInputName = name.concat('.timeOfDay');
+const SelectTimeOfDay = ({ list, inputName }: SelectorProps) => {
+  const timeOfDayInputName = inputName.concat('.timeOfDay');
 
   return (
     <MyListBox
       list={list}
+      inputName={timeOfDayInputName}
       width={70}
-      name={timeOfDayInputName}
       button={(selectedTimeOfDay) => (
         <Listbox.Button className="relative w-full rounded-r-md border-[1px] border-l-0 px-5 py-2 text-left">
           <span className="block truncate capitalize">{selectedTimeOfDay}</span>
