@@ -65,7 +65,7 @@ function FormContainer() {
 
         {/* Business Hours */}
         <FieldLayout>
-          <div className="mb-5">
+          <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="businessHours">Hours</MyLabel>
             <MySubLabel className="mb-3">
               Provide the time of day your business will stay open.
