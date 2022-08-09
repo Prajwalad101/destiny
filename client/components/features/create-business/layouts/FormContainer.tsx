@@ -112,7 +112,6 @@ function FormContainer() {
             <MyLabel htmlFor="features">Features</MyLabel>
             <MySubLabel>Select the features your business provides</MySubLabel>
           </div>
-          {/* <MyListBox list={} /> */}
         </FieldLayout>
 
         {/* Submit Button */}
