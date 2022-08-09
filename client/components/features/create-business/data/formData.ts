@@ -54,3 +54,8 @@ export const minutes = [
   { id: 11, name: '50' },
   { id: 12, name: '55' },
 ];
+
+export const timeOfDay = [
+  { id: 1, name: 'AM' },
+  { id: 2, name: 'PM' },
+];

@@ -1,14 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { hours, minutes } from '../../data/formData';
-import CombinedListBox from './SelectTime';
+import { hours, minutes } from '../../../data/formData';
+import SelectTime from './SelectTime';
 
 export default {
   title: 'components/CombinedListBox',
-  component: CombinedListBox,
-} as ComponentMeta<typeof CombinedListBox>;
+  component: SelectTime,
+} as ComponentMeta<typeof SelectTime>;
 
-const Template: ComponentStory<typeof CombinedListBox> = (args) => (
-  <CombinedListBox {...args} />
+const Template: ComponentStory<typeof SelectTime> = (args) => (
+  <SelectTime {...args} />
 );
 
 export const Base = Template.bind({});

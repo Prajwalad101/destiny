@@ -1,13 +1,13 @@
 import { Form } from 'formik';
 import { businessCategories } from '../../../../data/business/categories.data';
-import { classNames } from '../../../../utils/css';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 import MyLabel from '../components/Form/MyLabel';
+import MyListBox from '../components/Form/MyListBox/MyListBox';
 import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
-import { hours } from '../data/formData';
-import MyListBox from '../ui/MyListBox/MyListBox';
+import SelectTime from '../components/Form/SelectTime/SelectTime';
+import { hours, minutes, timeOfDay } from '../data/formData';
 
 function FormContainer() {
   return (
@@ -93,22 +93,6 @@ const FieldLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 const SelectBusinessHours = () => {
-  const ListItem = ({
-    children,
-    selected,
-  }: {
-    children: React.ReactNode;
-    selected: boolean;
-  }) => (
-    <span
-      className={classNames(
-        selected ? 'font-medium' : 'font-normal',
-        'capitalize'
-      )}
-    >
-      {children}
-    </span>
-  );
   return (
     <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
       <div className="mb-5">
@@ -119,35 +103,15 @@ const SelectBusinessHours = () => {
       </div>
       <div className="gap-10 lg:flex">
         {/* Open */}
-        <div className="mb-5 flex items-center gap-3 lg:mb-0">
-          <p className="font-medium">Open</p>
-          <MyListBox list={hours} width={80} name="businessHours.openHour[0]">
-            {(itemName, selected) => (
-              <ListItem selected={selected}>{itemName}</ListItem>
-            )}
-          </MyListBox>
-          <div>:</div>
-          <MyListBox list={hours} width={80} name="businessHours.openHour[1]">
-            {(itemName, selected) => (
-              <ListItem selected={selected}>{itemName}</ListItem>
-            )}
-          </MyListBox>
+        <div className="mb-5 lg:mb-0">
+          <p className="mb-1 text-sm font-medium text-gray-700">Open</p>
+          <SelectTime hours={hours} minutes={minutes} timeOfDay={timeOfDay} />
         </div>
 
         {/* Close */}
-        <div className="flex items-center gap-3">
-          <p className="font-medium">Close</p>
-          <MyListBox list={hours} width={80} name="businessHours.closeHour[0]">
-            {(itemName, selected) => (
-              <ListItem selected={selected}>{itemName}</ListItem>
-            )}
-          </MyListBox>
-          <div>:</div>
-          <MyListBox list={hours} width={80} name="businessHours.closeHour[1]">
-            {(itemName, selected) => (
-              <ListItem selected={selected}>{itemName}</ListItem>
-            )}
-          </MyListBox>
+        <div className="mb-5 lg:mb-0">
+          <p className="mb-1 text-sm font-medium text-gray-700">Close</p>
+          <SelectTime hours={hours} minutes={minutes} timeOfDay={timeOfDay} />
         </div>
       </div>
     </div>
