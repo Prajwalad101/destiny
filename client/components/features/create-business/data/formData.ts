@@ -7,8 +7,8 @@ export const initialValues: MyFormValues = {
   description: '',
   address: '',
   businessHours: {
-    openHour: ['9', '00'],
-    closeHour: ['21', '00'],
+    open: { hour: '9', minute: '30', timeOfDay: 'AM' },
+    close: { hour: '10', minute: '00', timeOfDay: 'PM' },
   },
   category: businessCategories[0].name,
 };

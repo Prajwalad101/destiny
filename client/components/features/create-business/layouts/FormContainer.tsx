@@ -64,7 +64,36 @@ function FormContainer() {
         </FieldLayout>
 
         {/* Business Hours */}
-        <SelectBusinessHours />
+        <FieldLayout>
+          <div className="mb-5">
+            <MyLabel htmlFor="businessHours">Hours</MyLabel>
+            <MySubLabel className="mb-3">
+              Provide the time of day your business will stay open.
+            </MySubLabel>
+          </div>
+          <div className="gap-10 lg:flex">
+            {/* Open */}
+            <div className="mb-5 lg:mb-0">
+              <p className="mb-1 text-sm font-medium text-gray-700">Open</p>
+              <SelectTime
+                hours={hours}
+                minutes={minutes}
+                timeOfDay={timeOfDay}
+                name="businessHours.open"
+              />
+            </div>
+            {/* Close */}
+            <div className="mb-5 lg:mb-0">
+              <p className="mb-1 text-sm font-medium text-gray-700">Close</p>
+              <SelectTime
+                hours={hours}
+                minutes={minutes}
+                timeOfDay={timeOfDay}
+                name="businessHours.open"
+              />
+            </div>
+          </div>
+        </FieldLayout>
 
         {/* Category */}
         <FieldLayout>
@@ -88,32 +117,6 @@ const FieldLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
       {children}
-    </div>
-  );
-};
-
-const SelectBusinessHours = () => {
-  return (
-    <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
-      <div className="mb-5">
-        <MyLabel htmlFor="businessHours">Hours</MyLabel>
-        <MySubLabel className="mb-3">
-          Provide the time of day your business will stay open.
-        </MySubLabel>
-      </div>
-      <div className="gap-10 lg:flex">
-        {/* Open */}
-        <div className="mb-5 lg:mb-0">
-          <p className="mb-1 text-sm font-medium text-gray-700">Open</p>
-          <SelectTime hours={hours} minutes={minutes} timeOfDay={timeOfDay} />
-        </div>
-
-        {/* Close */}
-        <div className="mb-5 lg:mb-0">
-          <p className="mb-1 text-sm font-medium text-gray-700">Close</p>
-          <SelectTime hours={hours} minutes={minutes} timeOfDay={timeOfDay} />
-        </div>
-      </div>
     </div>
   );
 };

@@ -8,8 +8,8 @@ export interface MyFormValues {
   description: string;
   address: string;
   businessHours: {
-    openHour: [string, string];
-    closeHour: [string, string];
+    open: { hour: string; minute: string; timeOfDay: 'AM' | 'PM' };
+    close: { hour: string; minute: string; timeOfDay: 'AM' | 'PM' };
   };
   category: string;
 }

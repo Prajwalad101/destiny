@@ -9,29 +9,33 @@ interface SelectTimeProps {
   hours: list;
   minutes: list;
   timeOfDay: list;
+  name: string;
 }
 
-function SelectTime({ hours, minutes, timeOfDay }: SelectTimeProps) {
+function SelectTime({ hours, minutes, timeOfDay, name }: SelectTimeProps) {
   return (
     <div className="flex items-center font-rubik">
-      <SelectHour list={hours} />
+      <SelectHour list={hours} name={name} />
       <span className="px-1 text-2xl">:</span>
-      <SelectMinute list={minutes} />
-      <SelectTimeOfDay list={timeOfDay} />
+      <SelectMinute list={minutes} name={name} />
+      <SelectTimeOfDay list={timeOfDay} name={name} />
     </div>
   );
 }
 
 interface SelectorProps {
   list: { id: number; name: string }[];
+  name: string;
 }
 
-const SelectHour = ({ list }: SelectorProps) => {
+const SelectHour = ({ list, name }: SelectorProps) => {
+  const hourInputName = name.concat('.hour');
   return (
     <>
       <MyListBox
         list={list}
         width={90}
+        name={hourInputName}
         button={(selectedHour) => (
           <Listbox.Button className="relative w-full rounded-l-md border-[1px] px-5 py-2 text-left">
             <>
@@ -47,11 +51,14 @@ const SelectHour = ({ list }: SelectorProps) => {
   );
 };
 
-const SelectMinute = ({ list }: SelectorProps) => {
+const SelectMinute = ({ list, name }: SelectorProps) => {
+  const minuteInputName = name.concat('.minute');
+
   return (
     <MyListBox
       list={list}
       width={90}
+      name={minuteInputName}
       button={(selectedMinute) => (
         <Listbox.Button className="relative w-full border-[1px] px-5 py-2 text-left">
           <>
@@ -66,11 +73,14 @@ const SelectMinute = ({ list }: SelectorProps) => {
   );
 };
 
-const SelectTimeOfDay = ({ list }: SelectorProps) => {
+const SelectTimeOfDay = ({ list, name }: SelectorProps) => {
+  const timeOfDayInputName = name.concat('.timeOfDay');
+
   return (
     <MyListBox
       list={list}
       width={70}
+      name={timeOfDayInputName}
       button={(selectedTimeOfDay) => (
         <Listbox.Button className="relative w-full rounded-r-md border-[1px] border-l-0 px-5 py-2 text-left">
           <span className="block truncate capitalize">{selectedTimeOfDay}</span>
