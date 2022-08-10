@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { IBusinessSubCategory } from '../../../types/interfaces';
+import { IBusinessSubcategoryDropdown } from '../../../types/interfaces';
 import { classNames } from '../../../utils/css';
 
 interface BusinessCategoriesMobileProps {
   topic: string;
-  subCategories: IBusinessSubCategory[];
+  subCategories: IBusinessSubcategoryDropdown[];
   onClick: () => void;
 }
 
@@ -27,7 +27,7 @@ function BusinessCategoriesMobile({
   };
 
   //! FIX: Change the static city variable
-  const link = (item: IBusinessSubCategory, index: number) => (
+  const link = (item: IBusinessSubcategoryDropdown, index: number) => (
     <Link
       key={index}
       href={{

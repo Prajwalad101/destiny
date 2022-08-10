@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
 import {
   IBusinessCategoryDropdown,
-  IBusinessSubCategory,
+  IBusinessSubcategoryDropdown,
 } from '../../../../../../types/interfaces';
 import MyListBox from '../MyListBox/MyListBox';
 
@@ -14,7 +14,7 @@ interface SelectCategoryProps {
 function SelectCategory({ categories }: SelectCategoryProps) {
   const [selectedCategory, setSelectedCategory] = useState<{
     name: string;
-    subCategories?: IBusinessSubCategory[];
+    subCategories?: IBusinessSubcategoryDropdown[];
   }>(categories[0]);
 
   // subcategories of the currently selected category

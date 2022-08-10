@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { IBusinessSubCategory } from '../../../types/interfaces';
+import { IBusinessSubcategoryDropdown } from '../../../types/interfaces';
 
 interface BusinessCategoryDropdownProps {
   name: string;
-  subCategories: IBusinessSubCategory[];
+  subCategories: IBusinessSubcategoryDropdown[];
 }
 
 function BusinessCategories({
@@ -18,7 +18,7 @@ function BusinessCategories({
   const oddItems = subCategories.filter((_subCategory, i) => i % 2 !== 0);
 
   //! FIX: Change the static city variable
-  const link = (item: IBusinessSubCategory, index: number) => (
+  const link = (item: IBusinessSubcategoryDropdown, index: number) => (
     <Link
       key={index}
       href={{

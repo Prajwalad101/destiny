@@ -29,8 +29,8 @@ function HomeHero() {
 
           {/* DROPDOWN ITEMS */}
           <div className="mt-5 hidden gap-5 font-rubik md:flex">
-            {businessCategories.map((data) => (
-              <div key={data.id}>
+            {businessCategories.map((data, index) => (
+              <div key={index}>
                 <BusinessCategoryDropdown
                   name={data.name}
                   subCategories={data.subCategories}

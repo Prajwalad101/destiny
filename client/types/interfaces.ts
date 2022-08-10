@@ -8,7 +8,7 @@ export interface IBusinessCategoryDropdown {
   subCategories: IBusinessSubcategoryDropdown[];
 }
 
-interface IBusinessSubcategoryDropdown {
+export interface IBusinessSubcategoryDropdown {
   name: string;
   features?: string[];
   icon: JSX.Element;
