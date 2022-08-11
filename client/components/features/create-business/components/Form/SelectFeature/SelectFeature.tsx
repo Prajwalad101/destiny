@@ -1,4 +1,4 @@
-import { ListState } from '../../../types/listState';
+import { ListState } from '../../../types/ListStateType';
 import MyListBox from '../MyListBox/MyListBox';
 
 interface SelectFeatureProps {
@@ -9,7 +9,11 @@ interface SelectFeatureProps {
 function SelectFeature({ currentFeatures, featureState }: SelectFeatureProps) {
   return (
     <div>
-      <MyListBox list={currentFeatures} listState={featureState} />
+      <MyListBox
+        list={currentFeatures}
+        listState={featureState}
+        inputName="feature"
+      />
     </div>
   );
 }

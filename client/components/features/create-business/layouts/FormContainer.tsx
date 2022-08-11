@@ -95,7 +95,7 @@ function FormContainer() {
           </div>
         </FieldLayout>
 
-        {/* Category  & Features*/}
+        {/* Category & Features*/}
         <SelectCategoryLayout />
 
         {/* Submit Button */}

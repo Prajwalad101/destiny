@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../../utils/css';
-import { ListState } from '../../../types/listState';
+import { ListState } from '../../../types/ListStateType';
 
 interface MyListBoxProps {
   list: { name: string }[];

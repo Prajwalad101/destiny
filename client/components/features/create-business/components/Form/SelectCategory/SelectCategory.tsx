@@ -2,7 +2,7 @@ import { Listbox } from '@headlessui/react';
 import { HiOutlineSelector } from 'react-icons/hi';
 import businessCategories from '../../../../../../data/business/categoriesData';
 import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
-import { ListState } from '../../../types/listState';
+import { ListState } from '../../../types/ListStateType';
 import MyListBox from '../MyListBox/MyListBox';
 
 interface SelectCategoryProps {

@@ -13,4 +13,5 @@ export interface MyFormValues {
   };
   category: string;
   subCategory: string;
+  feature: string;
 }

@@ -13,16 +13,18 @@ function SelectCategoryLayout() {
     subCategories?: IBusinessSubcategoryDropdown[];
   }>(businessCategories[0]);
 
-  // subcategories of the currently selected category
+  // subcategories for currently selected category
   const currentSubCategories = useMemo(
     () => selectedCategory.subCategories || [],
     [selectedCategory]
   );
 
-  const [selectedSubCategory, setSelectedSubCategory] = useState(
-    currentSubCategories[0]
-  );
+  const [selectedSubCategory, setSelectedSubCategory] = useState<{
+    name: string;
+    features?: { name: string }[];
+  }>(currentSubCategories[0]);
 
+  // features for currently selected subcategory
   const currentFeatures = useMemo(
     () => selectedSubCategory.features || [],
     [selectedSubCategory]
