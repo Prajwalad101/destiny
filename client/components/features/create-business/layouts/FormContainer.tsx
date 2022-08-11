@@ -4,10 +4,10 @@ import MyLabel from '../components/Form/MyLabel';
 import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
+import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
 import SelectTime from '../components/Form/SelectTime/SelectTime';
 import { hours, minutes, timeOfDay } from '../data/formData';
 import FieldLayout from './FieldLayout';
-import SelectCategoryLayout from './SelectCategoryLayout';
 
 function FormContainer() {
   return (
@@ -96,7 +96,7 @@ function FormContainer() {
         </FieldLayout>
 
         {/* Category & Features*/}
-        <SelectCategoryLayout />
+        <SelectCategory />
 
         {/* Submit Button */}
         <SecondaryButton className="mt-16" type="submit">
