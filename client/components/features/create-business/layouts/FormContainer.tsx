@@ -1,13 +1,13 @@
 import { Form } from 'formik';
-import businessCategories from '../../../../data/business/categoriesData';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
 import MyLabel from '../components/Form/MyLabel';
 import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
-import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
 import SelectTime from '../components/Form/SelectTime/SelectTime';
 import { hours, minutes, timeOfDay } from '../data/formData';
+import FieldLayout from './FieldLayout';
+import SelectCategoryLayout from './SelectCategoryLayout';
 
 function FormContainer() {
   return (
@@ -22,7 +22,7 @@ function FormContainer() {
       <Form className="w-2xl child-notlast:mb-5 md:w-full md:child-notlast:mb-16">
         {/* Business Name */}
         <FieldLayout>
-          <div className="mb-5">
+          <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="businessName">Name</MyLabel>
             <MySubLabel className="mb-3">
               Enter the full name of your business
@@ -37,7 +37,7 @@ function FormContainer() {
 
         {/* Description */}
         <FieldLayout>
-          <div className="mb-5">
+          <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="description">Description</MyLabel>
             <MySubLabel className="mb-3">
               Enter the description of your business. Tell the customers about
@@ -49,7 +49,7 @@ function FormContainer() {
 
         {/* Address */}
         <FieldLayout>
-          <div className="mb-5">
+          <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="address">Address</MyLabel>
             <MySubLabel>
               Provide full address of your business. Make sure the address is
@@ -95,24 +95,8 @@ function FormContainer() {
           </div>
         </FieldLayout>
 
-        {/* Category */}
-        <FieldLayout>
-          <div className="mb-5 lg:mb-0">
-            <MyLabel htmlFor="category">Category</MyLabel>
-            <MySubLabel>
-              Select one of the category your business falls on
-            </MySubLabel>
-          </div>
-          <SelectCategory categories={businessCategories} />
-        </FieldLayout>
-
-        {/* Features */}
-        <FieldLayout>
-          <div className="mb-5 lg:mb-0">
-            <MyLabel htmlFor="features">Features</MyLabel>
-            <MySubLabel>Select the features your business provides</MySubLabel>
-          </div>
-        </FieldLayout>
+        {/* Category  & Features*/}
+        <SelectCategoryLayout />
 
         {/* Submit Button */}
         <SecondaryButton className="mt-16" type="submit">
@@ -122,13 +106,5 @@ function FormContainer() {
     </div>
   );
 }
-
-const FieldLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="grid-cols-2 gap-10 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
-      {children}
-    </div>
-  );
-};
 
 export default FormContainer;

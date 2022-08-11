@@ -10,6 +10,6 @@ export interface IBusinessCategoryDropdown {
 
 export interface IBusinessSubcategoryDropdown {
   name: string;
-  features?: string[];
-  icon: JSX.Element;
+  features?: { name: string }[];
+  icon?: JSX.Element;
 }

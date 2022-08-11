@@ -1,19 +1,9 @@
 import { Listbox, Transition } from '@headlessui/react';
-import { Dispatch, Fragment, SetStateAction } from 'react';
+import { Fragment } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../../utils/css';
-
-type ListState = {
-  selected: {
-    name: string;
-  };
-  setSelected: Dispatch<
-    SetStateAction<{
-      name: string;
-    }>
-  >;
-};
+import { ListState } from '../../../types/listState';
 
 interface MyListBoxProps {
   list: { name: string }[];
