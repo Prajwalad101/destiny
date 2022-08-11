@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
-
 type ListItem = { name: string };
 
 type ListState = {
   selected: ListItem | ListItem[];
-  setSelected: (({ name }: ListItem) => void) | ((items: ListItem[]) => void);
+  // union function type used to assign a different functions to setSelected
+  setSelected: ((_item: ListItem) => void) | ((_items: ListItem[]) => void);
 };
 
-export type { ListState };
+export type { ListState, ListItem };

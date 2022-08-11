@@ -118,7 +118,7 @@ function SelectCategory() {
       {/* Select Features */}
       <FieldLayout>
         <div className="mb-5 lg:mb-0">
-          <MyLabel htmlFor="features">Features</MyLabel>
+          <MyLabel htmlFor="features[0]">Features</MyLabel>
           <MySubLabel>Select the features your business provides</MySubLabel>
         </div>
         <MyListBox

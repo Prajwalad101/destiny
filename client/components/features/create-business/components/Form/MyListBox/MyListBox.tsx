@@ -1,9 +1,10 @@
 import { Listbox, Transition } from '@headlessui/react';
+import { useField } from 'formik';
 import { Fragment } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { classNames } from '../../../../../../utils/css';
-import { ListState } from '../../../types/ListStateType';
+import { ListItem, ListState } from '../../../types/ListStateType';
 
 interface MyListBoxProps {
   list: { name: string }[];
@@ -17,17 +18,23 @@ interface MyListBoxProps {
 function MyListBox({
   list,
   listState,
-  inputName,
+  inputName = '',
   width = 250, // default width
   button,
   multiple = false,
 }: MyListBoxProps) {
+  const [_field, _meta, helpers] = useField(inputName);
+
+  const handleChange = (newValue: ListItem) => {
+    listState.setSelected(newValue); // update headlessUI state
+    helpers.setValue(newValue.name); // update formik state
+  };
+
   return (
     <div className="font-rubik" style={{ width: width }}>
       <Listbox
         value={listState.selected}
-        onChange={listState.setSelected}
-        name={inputName}
+        onChange={handleChange}
         multiple={multiple}
       >
         <div className="relative">
