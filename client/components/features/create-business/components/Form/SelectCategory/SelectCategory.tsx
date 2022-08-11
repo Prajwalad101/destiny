@@ -118,13 +118,13 @@ function SelectCategory() {
       {/* Select Features */}
       <FieldLayout>
         <div className="mb-5 lg:mb-0">
-          <MyLabel htmlFor="features[0]">Features</MyLabel>
+          <MyLabel htmlFor="features">Features</MyLabel>
           <MySubLabel>Select the features your business provides</MySubLabel>
         </div>
         <MyListBox
           list={currentFeatures}
           listState={featureState}
-          inputName="feature"
+          inputName="features"
           multiple={true}
         />
       </FieldLayout>

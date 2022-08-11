@@ -25,9 +25,16 @@ function MyListBox({
 }: MyListBoxProps) {
   const [_field, _meta, helpers] = useField(inputName);
 
+  // updates listbox and formik state
   const handleChange = (newValue: ListItem) => {
     listState.setSelected(newValue); // update headlessUI state
-    helpers.setValue(newValue.name); // update formik state
+
+    if (Array.isArray(newValue)) {
+      const values = newValue.map((item) => item.name); // extract values from name property
+      helpers.setValue(values); // set the entire array as field
+    } else {
+      helpers.setValue(newValue.name);
+    }
   };
 
   return (
