@@ -44,41 +44,106 @@ const businessCategories: IBusinessCategoryDropdown[] = [
           { name: outdoorDining },
         ],
       },
-      { name: 'cafes', icon: <BiCoffeeTogo size={iconSize} /> },
-      { name: 'fast foods', icon: <MdOutlineFastfood size={iconSize} /> },
-      { name: 'hotels', icon: <RiHotelLine size={iconSize} /> },
+      {
+        name: 'cafes',
+        icon: <BiCoffeeTogo size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'fast foods',
+        icon: <MdOutlineFastfood size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'hotels',
+        icon: <RiHotelLine size={iconSize} />,
+        features: [{ name: '' }],
+      },
       {
         name: 'bakery',
         icon: <RiCake3Fill size={iconSize} />,
+        features: [{ name: '' }],
       },
     ],
   },
   {
     name: 'sports and fitness',
     subCategories: [
-      { name: 'gyms', icon: <GiWeightLiftingUp size={iconSize} /> },
-      { name: 'futsal', icon: <BiFootball size={iconSize} /> },
-      { name: 'tennis', icon: <MdOutlineSportsTennis size={iconSize} /> },
-      { name: 'zumba', icon: <BsMusicNote size={17} /> },
-      { name: 'swimming', icon: <FaSwimmingPool size={iconSize} /> },
+      {
+        name: 'gyms',
+        icon: <GiWeightLiftingUp size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'futsal',
+        icon: <BiFootball size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'tennis',
+        icon: <MdOutlineSportsTennis size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'zumba',
+        icon: <BsMusicNote size={17} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'swimming',
+        icon: <FaSwimmingPool size={iconSize} />,
+        features: [{ name: '' }],
+      },
     ],
   },
   {
     name: 'home services',
     subCategories: [
-      { name: 'plumbing', icon: <GiTeePipe size={iconSize} /> },
-      { name: 'electricity', icon: <GiWireCoil size={iconSize} /> },
-      { name: 'cleaning', icon: <GiVacuumCleaner size={iconSize} /> },
-      { name: 'repairs', icon: <GiAutoRepair size={iconSize} /> },
+      {
+        name: 'plumbing',
+        icon: <GiTeePipe size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'electricity',
+        icon: <GiWireCoil size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'cleaning',
+        icon: <GiVacuumCleaner size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'repairs',
+        icon: <GiAutoRepair size={iconSize} />,
+        features: [{ name: '' }],
+      },
     ],
   },
   {
     name: 'others',
     subCategories: [
-      { name: 'entertainment', icon: <TbRollercoaster size={iconSize} /> },
-      { name: 'shopping', icon: <FiShoppingBag size={iconSize} /> },
-      { name: 'essentials', icon: <AiOutlineShoppingCart size={iconSize} /> },
-      { name: 'vehicles', icon: <AiFillCar size={iconSize} /> },
+      {
+        name: 'entertainment',
+        icon: <TbRollercoaster size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'shopping',
+        icon: <FiShoppingBag size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'essentials',
+        icon: <AiOutlineShoppingCart size={iconSize} />,
+        features: [{ name: '' }],
+      },
+      {
+        name: 'vehicles',
+        icon: <AiFillCar size={iconSize} />,
+        features: [{ name: '' }],
+      },
     ],
   },
 ];
