@@ -11,6 +11,7 @@ interface MyListBoxProps {
   inputName?: string;
   width?: number;
   button?: JSX.Element;
+  multiple?: boolean;
 }
 
 function MyListBox({
@@ -19,6 +20,7 @@ function MyListBox({
   inputName,
   width = 250, // default width
   button,
+  multiple = false,
 }: MyListBoxProps) {
   return (
     <div className="font-rubik" style={{ width: width }}>
@@ -26,6 +28,7 @@ function MyListBox({
         value={listState.selected}
         onChange={listState.setSelected}
         name={inputName}
+        multiple={multiple}
       >
         <div className="relative">
           {button ? (
@@ -33,7 +36,12 @@ function MyListBox({
           ) : (
             <Listbox.Button className="relative w-full rounded-md px-5 py-2 text-left ring-1 ring-black/40">
               <span className="block truncate capitalize">
-                {listState.selected.name}
+                {Array.isArray(listState.selected)
+                  ? // If selected is array show multiple values in the array
+                    listState.selected.map((item) => item.name).join(', ')
+                  : // else show the selected value
+                    listState.selected.name}
+                {/* {listState.selected..name} */}
               </span>
               <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
                 <HiOutlineSelector size={20} className="text-gray-400" />

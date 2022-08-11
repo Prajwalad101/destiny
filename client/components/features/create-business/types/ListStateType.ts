@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
+
+type ListItem = { name: string };
+
 type ListState = {
-  selected: {
-    name: string;
-  };
-  // eslint-disable-next-line no-unused-vars
-  setSelected: ({ name }: { name: string }) => void;
+  selected: ListItem | ListItem[];
+  setSelected: (({ name }: ListItem) => void) | ((items: ListItem[]) => void);
 };
 
 export type { ListState };

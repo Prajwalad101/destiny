@@ -31,7 +31,9 @@ function SelectCategory() {
     [selectedSubCategory]
   );
 
-  const [selectedFeatures, setSelectedFeatures] = useState(currentFeatures[0]);
+  const [selectedFeatures, setSelectedFeatures] = useState([
+    currentFeatures[0],
+  ]);
 
   // update subcategories when different category is selected
   useEffect(() => {
@@ -40,7 +42,7 @@ function SelectCategory() {
 
   // update features when different sub category is selected
   useEffect(() => {
-    setSelectedFeatures(currentFeatures[0]);
+    setSelectedFeatures([currentFeatures[0]]);
   }, [currentFeatures]);
 
   const categoryState = {
@@ -123,6 +125,7 @@ function SelectCategory() {
           list={currentFeatures}
           listState={featureState}
           inputName="feature"
+          multiple={true}
         />
       </FieldLayout>
     </>
