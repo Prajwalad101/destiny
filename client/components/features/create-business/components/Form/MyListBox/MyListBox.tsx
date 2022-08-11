@@ -26,9 +26,18 @@ function MyListBox({
   const [_field, _meta, helpers] = useField(inputName);
 
   // updates listbox and formik state
-  const handleChange = (newValue: ListItem) => {
-    listState.setSelected(newValue); // update headlessUI state
+  const handleChange = (newValue: ListItem | ListItem[]) => {
+    /* setSelected can be any of the functions defined by listItem
+      since, we know those functions ONLY vary by parameter types,
+      we can assert a new function type to setSelected
+    */
+    const setSelected = listState.setSelected as (
+      _value: ListItem | ListItem[]
+    ) => void;
 
+    setSelected(newValue);
+
+    // newValue can also be an array
     if (Array.isArray(newValue)) {
       const values = newValue.map((item) => item.name); // extract values from name property
       helpers.setValue(values); // set the entire array as field
