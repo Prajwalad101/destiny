@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import ImageScroll from '../../../../../image/scroll/ImageScroll';
 import MyLabel from '../MyLabel';
 import MySubLabel from '../MySubLabel';
@@ -9,46 +9,91 @@ interface SelectImage {
   inputName: string;
 }
 
+const imageTypeRegex = /image\/(png|jpg|jpeg)/i;
+
 function SelectImage({ inputName }: SelectImage) {
-  const [selectedImages, setSelectedImages] = useState<File[]>();
-  const [imagePreview, setImagePreview] = useState<string[]>();
+  const [imageFiles, setImageFiles] = useState<File[]>();
+  const [images, setImages] = useState<string[]>();
 
-  const [_field, _meta, helpers] = useField(inputName);
+  const [_field, _meta, handler] = useField(inputName);
 
-  // convert filelist to image urls in order to be rendered
-  useEffect(() => {
-    if (!selectedImages) return;
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    // check for null value
+    if (!e.target.files) return;
 
-    const imageUrls: string[] = [];
+    // get the selected files from event
+    const files = e.target.files;
+    const filesArr = Array.from(files); // to perform array methods
+    const validImageFiles: File[] = [];
 
-    // create objectURLs for multiple image files
-    selectedImages.forEach((image) => {
-      const objectURL = URL.createObjectURL(image);
-      imageUrls.unshift(objectURL);
+    // filter for images for valid file path
+
+    filesArr.forEach((file) => {
+      if (file.type.match(imageTypeRegex)) {
+        validImageFiles.push(file);
+      }
     });
 
-    setImagePreview(imageUrls);
-
-    // free memory whenever component is unmounted
-    return () => {
-      imageUrls.forEach((imageURL) => {
-        URL.revokeObjectURL(imageURL);
-      });
-    };
-  }, [selectedImages]);
-
-  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) {
+    // update image file state
+    if (validImageFiles.length) {
+      setImageFiles(validImageFiles);
+      handler.setValue(validImageFiles);
       return;
     }
 
-    // convert to array to perform array methods
-    const filesArr = Array.from(e.target.files);
-    setSelectedImages(filesArr);
-
-    // update formik state
-    helpers.setValue(e.target.files);
+    // no files are of valid type
+    alert('Selected images are not of valid type');
   };
+
+  useEffect(() => {
+    const fileReaders: FileReader[] = [];
+    let isCancel = false;
+
+    // check for undefined
+    if (imageFiles?.length) {
+      const promises = imageFiles.map((file) => {
+        return new Promise<string>((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReaders.push(fileReader);
+          fileReader.onload = (e) => {
+            const result = e.target?.result;
+            if (result) {
+              resolve(result.toString());
+            }
+          };
+          fileReader.onabort = () => {
+            reject(new Error('File reading aborted'));
+          };
+
+          fileReader.onerror = () => {
+            reject(new Error('Failed to read file'));
+          };
+
+          fileReader.readAsDataURL(file);
+        });
+      });
+
+      // update state after all files have finished loading
+      Promise.all(promises)
+        .then((images) => {
+          if (!isCancel) {
+            setImages(images);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      return () => {
+        isCancel = true;
+        fileReaders.forEach((fileReader) => {
+          if (fileReader.readyState === 1) {
+            fileReader.abort();
+          }
+        });
+      };
+    }
+  }, [imageFiles]);
 
   return (
     <>
@@ -62,7 +107,7 @@ function SelectImage({ inputName }: SelectImage) {
         <input
           type="file"
           id="image"
-          onChange={handleSelect}
+          onChange={changeHandler}
           accept="image/*"
           multiple
           hidden
@@ -75,14 +120,14 @@ function SelectImage({ inputName }: SelectImage) {
         </label>
         <p className="mt-3 text-gray-500">Select up to max of 10 images</p>
 
-        {imagePreview && (
+        {images && (
           <div className="flex w-full">
             <ImageScroll
-              noItems={imagePreview.length}
+              noItems={images.length}
               initialItems={2}
               className="mb-4"
             >
-              {imagePreview.map((image, index) => (
+              {images.map((image, index) => (
                 <div
                   key={index}
                   className="slider-img relative h-[150px] shrink-0"
