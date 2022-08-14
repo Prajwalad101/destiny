@@ -5,6 +5,7 @@ import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
 import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
+import SelectImage from '../components/Form/SelectImage/SelectImage';
 import SelectTime from '../components/Form/SelectTime/SelectTime';
 import { hours, minutes, timeOfDay } from '../data/formData';
 import FieldLayout from './FieldLayout';
@@ -98,9 +99,14 @@ function FormContainer() {
         {/* Category & Features*/}
         <SelectCategory />
 
+        {/* Images */}
+        <FieldLayout>
+          <SelectImage />
+        </FieldLayout>
+
         {/* Submit Button */}
-        <SecondaryButton className="mt-16" type="submit">
-          <p className="px-10 py-2">Submit</p>
+        <SecondaryButton className="mt-16 px-10 py-2" type="submit">
+          Submit
         </SecondaryButton>
       </Form>
     </div>

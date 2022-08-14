@@ -44,8 +44,8 @@ function Navbar({ theme = 'light' }: ICreateBusinessNavbar) {
 
             <Link href={linkData.getStarted}>
               <a>
-                <PrimaryButton>
-                  <p className="py-2 px-6">Create listing</p>
+                <PrimaryButton className="px-6 py-2">
+                  Create Listing
                 </PrimaryButton>
               </a>
             </Link>
