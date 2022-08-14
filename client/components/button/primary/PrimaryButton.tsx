@@ -11,13 +11,11 @@ function PrimaryButton({
   onClick,
   className = '',
 }: PrimaryButtonProps) {
-  if (!className) className = 'h-[41px]'; // set default styles if none specified
-
   return (
     <button
       className={classNames(
         className,
-        'md rounded-md border-[1px] border-primaryred bg-primaryred text-base text-white transition-colors hover:border-red-500 hover:bg-red-500'
+        'rounded-md border-[1px] border-primaryred bg-primaryred text-base text-white transition-colors hover:border-red-500 hover:bg-red-500'
       )}
       onClick={onClick}
     >
