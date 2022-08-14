@@ -101,7 +101,7 @@ function FormContainer() {
 
         {/* Images */}
         <FieldLayout>
-          <SelectImage />
+          <SelectImage inputName="images" />
         </FieldLayout>
 
         {/* Submit Button */}

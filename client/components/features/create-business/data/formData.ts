@@ -13,6 +13,7 @@ export const initialValues: MyFormValues = {
   category: businessCategories[0].name,
   subCategory: businessCategories[0].subCategories[0].name,
   features: [businessCategories[0].subCategories[0].features[0].name],
+  images: [],
 };
 
 export const hours = [

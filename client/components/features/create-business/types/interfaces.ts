@@ -14,4 +14,5 @@ export interface MyFormValues {
   category: string;
   subCategory: string;
   features: string[];
+  images: FileList;
 }

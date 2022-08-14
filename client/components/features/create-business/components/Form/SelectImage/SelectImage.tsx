@@ -1,13 +1,21 @@
+import { useField } from 'formik';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import ImageScroll from '../../../../../image/scroll/ImageScroll';
 import MyLabel from '../MyLabel';
 import MySubLabel from '../MySubLabel';
 
-function SelectImage() {
+interface SelectImage {
+  inputName: string;
+}
+
+function SelectImage({ inputName }: SelectImage) {
   const [selectedImages, setSelectedImages] = useState<File[]>();
   const [imagePreview, setImagePreview] = useState<string[]>();
 
+  const [_field, _meta, helpers] = useField(inputName);
+
+  // convert filelist to image urls in order to be rendered
   useEffect(() => {
     if (!selectedImages) return;
 
@@ -30,11 +38,16 @@ function SelectImage() {
   }, [selectedImages]);
 
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      // convert to array to perform array methods
-      const filesArr = Array.from(e.target.files);
-      setSelectedImages(filesArr);
+    if (!e.target.files || e.target.files.length === 0) {
+      return;
     }
+
+    // convert to array to perform array methods
+    const filesArr = Array.from(e.target.files);
+    setSelectedImages(filesArr);
+
+    // update formik state
+    helpers.setValue(e.target.files);
   };
 
   return (
