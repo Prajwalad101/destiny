@@ -5,7 +5,9 @@ import MySubLabel from '../components/Form/MySubLabel';
 import MyTextArea from '../components/Form/MyTextArea';
 import MyTextInput from '../components/Form/MyTextInput';
 import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
+import SelectFeature from '../components/Form/SelectFeature/SelectFeature';
 import SelectImage from '../components/Form/SelectImage/SelectImage';
+import SelectSubCategory from '../components/Form/SelectSubCategory/SelectSubCategory';
 import SelectTime from '../components/Form/SelectTime/SelectTime';
 import { hours, minutes, timeOfDay } from '../data/formData';
 import FieldLayout from './FieldLayout';
@@ -97,7 +99,26 @@ function FormContainer() {
         </FieldLayout>
 
         {/* Category & Features*/}
-        <SelectCategory />
+        <FieldLayout>
+          <div className="mb-5 lg:mb-0">
+            <MyLabel htmlFor="category">Category</MyLabel>
+            <MySubLabel>
+              Select one of the category your business falls on
+            </MySubLabel>
+          </div>
+          <div className="flex">
+            <SelectCategory />
+            <SelectSubCategory />
+          </div>
+        </FieldLayout>
+
+        <FieldLayout>
+          <div className="mb-5 lg:mb-0">
+            <MyLabel htmlFor="features">Features</MyLabel>
+            <MySubLabel>Select the features your business provides</MySubLabel>
+          </div>
+          <SelectFeature />
+        </FieldLayout>
 
         {/* Images */}
         <FieldLayout>

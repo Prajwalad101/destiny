@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import businessCategories from '../../../../../../data/business/categoriesData';
 import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
 import { MyFormValues } from '../../../types/interfaces';
-import MyLabel from '../MyLabel';
 import MyListBox from '../MyListBox/MyListBox';
-import MySubLabel from '../MySubLabel';
 
 function SelectFeature() {
   // avoid accidentally mutating original array
@@ -49,21 +47,15 @@ function SelectFeature() {
   }
 
   return (
-    <>
-      <div className="mb-5 lg:mb-0">
-        <MyLabel htmlFor="features">Features</MyLabel>
-        <MySubLabel>Select the features your business provides</MySubLabel>
-      </div>
-      <MyListBox
-        list={features}
-        listState={{
-          selected: selectedFeature,
-          setSelected: setSelectedFeature,
-        }}
-        inputName="features"
-        multiple={true}
-      />
-    </>
+    <MyListBox
+      list={features}
+      listState={{
+        selected: selectedFeature,
+        setSelected: setSelectedFeature,
+      }}
+      inputName="features"
+      multiple={true}
+    />
   );
 }
 
