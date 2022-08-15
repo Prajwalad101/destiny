@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
 import businessCategories from '../../../../../../data/business/categoriesData';
 import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
+import { MyFormValues } from '../../../types/interfaces';
 import MyListBox from '../MyListBox/MyListBox';
 
 function SelectSubCategory() {
   const {
+    setFieldValue,
     values: { category },
-  } = useFormikContext();
+  } = useFormikContext<MyFormValues>();
 
   // currently selected business category
   const businessCategory = businessCategories.filter(
@@ -29,11 +31,12 @@ function SelectSubCategory() {
 
   // update subcategories when category changes
   useEffect(() => {
-    console.log(businessCategory.subCategories);
+    const { subCategories } = businessCategory;
 
-    setSubCategories(businessCategory.subCategories);
-    setSelectedSubCategory(businessCategory.subCategories[0]); // reset selected subcategory
-  }, [category, businessCategory]);
+    setSubCategories(subCategories);
+    setSelectedSubCategory(subCategories[0]); // update selected subcategory
+    setFieldValue('subCategory', subCategories[0].name); // update formik state
+  }, [category, businessCategory, setFieldValue]);
 
   // state object for listbox
   const listState = {
