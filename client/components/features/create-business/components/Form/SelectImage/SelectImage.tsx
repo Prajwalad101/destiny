@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 import Image from 'next/image';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, memo, useEffect, useState } from 'react';
 import ImageScroll from '../../../../../image/scroll/ImageScroll';
 import MyLabel from '../MyLabel';
 import MySubLabel from '../MySubLabel';
@@ -11,7 +11,7 @@ interface SelectImage {
 
 const imageTypeRegex = /image\/(png|jpg|jpeg)/i;
 
-function SelectImage({ inputName }: SelectImage) {
+const SelectImage = ({ inputName }: SelectImage) => {
   const [imageFiles, setImageFiles] = useState<File[]>();
   const [images, setImages] = useState<string[]>();
 
@@ -118,36 +118,36 @@ function SelectImage({ inputName }: SelectImage) {
         >
           Upload
         </label>
-        <p className="mt-3 text-gray-500">Select up to max of 10 images</p>
-
-        {images && (
-          <div className="flex w-full">
-            <ImageScroll
-              noItems={images.length}
-              initialItems={2}
-              className="mb-4"
-            >
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className="slider-img relative h-[150px] shrink-0"
-                >
-                  <Image
-                    src={image}
-                    key={index}
-                    alt="image"
-                    layout="fill"
-                    className="slider-next-img"
-                    objectFit="cover"
-                  />
-                </div>
-              ))}
-            </ImageScroll>
-          </div>
-        )}
+        <p className="my-3 text-gray-500">Select up to max of 10 images</p>
+        <MemoizedImages images={images} />
       </div>
     </>
   );
-}
+};
+
+const Images = ({ images }: { images: string[] | undefined }) => {
+  if (!images) return <></>;
+
+  return (
+    <div className="flex w-full">
+      <ImageScroll noItems={images.length} initialItems={2} className="mb-4">
+        {images.map((image, index) => (
+          <div key={index} className="slider-img relative h-[150px] shrink-0">
+            <Image
+              src={image}
+              key={index}
+              alt="image"
+              layout="fill"
+              className="slider-next-img"
+              objectFit="cover"
+            />
+          </div>
+        ))}
+      </ImageScroll>
+    </div>
+  );
+};
+
+const MemoizedImages = memo(Images);
 
 export default SelectImage;
