@@ -8,47 +8,55 @@ import { MyFormValues } from '../../../types/interfaces';
 import MyListBox from '../MyListBox/MyListBox';
 
 function SelectSubCategory() {
+  // avoid accidentally mutating original array
+  const categories = [...businessCategories];
+
   const {
     setFieldValue,
     values: { category },
   } = useFormikContext<MyFormValues>();
 
   // currently selected business category
-  const businessCategory = businessCategories.filter(
+  const businessCategory = categories.find(
     (businessCategory) => businessCategory.name === category
-  )[0];
+  );
 
   // list of subCategories
   const [subCategories, setSubCategories] = useState<
-    IBusinessSubcategoryDropdown[]
-  >(businessCategory.subCategories);
+    IBusinessSubcategoryDropdown[] | undefined
+  >(businessCategory?.subCategories);
 
   // currently selected subCategory
-  const [selectedSubCategory, setSelectedSubCategory] = useState<{
-    name: string;
-    features?: { name: string }[];
-  }>(businessCategory.subCategories[0]);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<
+    | {
+        name: string;
+        features?: { name: string }[];
+      }
+    | undefined
+  >(businessCategory?.subCategories[0]);
 
   // update subcategories when category changes
   useEffect(() => {
-    const { subCategories } = businessCategory;
+    const subCategories = businessCategory?.subCategories;
+    if (!subCategories) return;
 
     setSubCategories(subCategories);
     setSelectedSubCategory(subCategories[0]); // update selected subcategory
     setFieldValue('subCategory', subCategories[0].name); // update formik state
   }, [category, businessCategory, setFieldValue]);
 
-  // state object for listbox
-  const listState = {
-    selected: selectedSubCategory,
-    setSelected: setSelectedSubCategory,
-  };
+  if (!subCategories || !selectedSubCategory) {
+    return <></>;
+  }
 
   return (
     <div>
       <MyListBox
         list={subCategories}
-        listState={listState}
+        listState={{
+          selected: selectedSubCategory,
+          setSelected: setSelectedSubCategory,
+        }}
         width={140}
         inputName="subCategory"
         button={
