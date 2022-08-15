@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import businessCategories from '../../../../../../data/business/categoriesData';
 import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
 import { MyFormValues } from '../../../types/interfaces';
+import { ListItem } from '../../../types/ListStateType';
 import MyListBox from '../MyListBox/MyListBox';
 
 function SelectFeature() {
@@ -28,9 +29,9 @@ function SelectFeature() {
 
   const [features, setFeatures] = useState(businessSubCategory?.features);
 
-  const [selectedFeature, setSelectedFeature] = useState(
-    businessSubCategory?.features[0]
-  );
+  const [selectedFeatures, setSelectedFeatures] = useState([
+    businessSubCategory?.features[0],
+  ]);
 
   // perform updates when subcategory changes
   useEffect(() => {
@@ -38,11 +39,16 @@ function SelectFeature() {
     if (!features) return;
 
     setFeatures(features);
-    setSelectedFeature(features[0]);
+    setSelectedFeatures([features[0]]);
     setFieldValue('features', features[0]);
   }, [subCategory, businessSubCategory, setFieldValue]);
 
-  if (!features || !selectedFeature) {
+  // check if selectedFeatures contain any undefined values
+  const isUndefined = selectedFeatures.some((item) => {
+    if (item === undefined) return true;
+  });
+
+  if (!features || isUndefined) {
     return <></>;
   }
 
@@ -50,8 +56,8 @@ function SelectFeature() {
     <MyListBox
       list={features}
       listState={{
-        selected: selectedFeature,
-        setSelected: setSelectedFeature,
+        selected: selectedFeatures as ListItem[],
+        setSelected: setSelectedFeatures,
       }}
       inputName="features"
       multiple={true}
