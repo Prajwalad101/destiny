@@ -1,10 +1,8 @@
+import { MyFormValues, MyListBox } from '@features/create-business';
+import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
-import businessCategories from '../../../../../../data/business/categoriesData';
-import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
-import { MyFormValues } from '../../../types/interfaces';
-import { ListItem } from '../../../types/ListStateType';
-import MyListBox from '../MyListBox/MyListBox';
+import { IBusinessSubcategoryDropdown } from 'types/interfaces';
 
 function SelectFeature() {
   // avoid accidentally mutating original array
@@ -56,7 +54,7 @@ function SelectFeature() {
     <MyListBox
       list={features}
       listState={{
-        selected: selectedFeatures as ListItem[],
+        selected: selectedFeatures as ListboxItem[],
         setSelected: setSelectedFeatures,
       }}
       inputName="features"

@@ -1,9 +1,9 @@
+import { MyListBox } from '@features/create-business';
 import { Listbox } from '@headlessui/react';
+import businessCategories from 'data/business/categoriesData';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import businessCategories from '../../../../../../data/business/categoriesData';
-import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
-import MyListBox from '../MyListBox/MyListBox';
+import { IBusinessSubcategoryDropdown } from 'types/interfaces';
 
 function SelectCategory() {
   const [selectedCategory, setSelectedCategory] = useState<{

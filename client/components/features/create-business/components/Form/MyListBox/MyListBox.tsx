@@ -1,14 +1,17 @@
+import {
+  ListboxItem,
+  ListboxState,
+} from '@components/features/create-business';
 import { Listbox, Transition } from '@headlessui/react';
 import { useField } from 'formik';
 import { Fragment } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
-import { classNames } from '../../../../../../utils/css';
-import { ListItem, ListState } from '../../../types/ListStateType';
+import { classNames } from 'utils/css';
 
 interface MyListBoxProps {
   list: { name: string }[];
-  listState: ListState;
+  listState: ListboxState;
   inputName?: string;
   width?: number;
   button?: JSX.Element;
@@ -26,13 +29,13 @@ function MyListBox({
   const [_field, _meta, helpers] = useField(inputName);
 
   // updates listbox and formik state
-  const handleChange = (newValue: ListItem | ListItem[]) => {
+  const handleChange = (newValue: ListboxItem | ListboxItem[]) => {
     /* setSelected can be any of the functions defined by listItem.
       since, we know those functions ONLY vary by parameter types,
       we can assert a new function type to setSelected
     */
     const setSelected = listState.setSelected as (
-      _value: ListItem | ListItem[]
+      _value: ListboxItem | ListboxItem[]
     ) => void;
 
     setSelected(newValue);

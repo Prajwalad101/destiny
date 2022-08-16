@@ -1,11 +1,9 @@
+import PrimaryButton from '@components/button/primary/PrimaryButton';
+import AppLayout from '@components/layout/app/AppLayout';
+import MainHeading from '@components/text/main-heading/MainHeading';
+import { linkData, Navbar } from '@features/create-business';
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
-import { linkData } from '..';
-import PrimaryButton from '../../../button/primary/PrimaryButton';
-import AppLayout from '../../../layout/app/AppLayout';
-import MainHeading from '../../../text/main-heading/MainHeading';
-
-import Navbar from './Navbar';
 
 function Hero() {
   return (

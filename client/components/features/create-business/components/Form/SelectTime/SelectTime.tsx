@@ -1,7 +1,7 @@
+import { MyListBox } from '@features/create-business';
 import { Listbox } from '@headlessui/react';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import MyListBox from '../MyListBox/MyListBox';
 
 type List = { name: string }[];
 

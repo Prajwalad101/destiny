@@ -1,5 +1,5 @@
 import { FieldHookConfig, useField } from 'formik';
-import { classNames } from '../../../../../../utils/css';
+import { classNames } from 'utils/css';
 
 type MyTextInputProps = React.HTMLProps<HTMLInputElement> &
   FieldHookConfig<string>;

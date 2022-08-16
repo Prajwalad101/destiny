@@ -1,17 +1,16 @@
+import ImageScroll from '@components/image/scroll/ImageScroll';
+import { MyLabel, MySubLabel } from '@features/create-business';
 import { useField } from 'formik';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
-import ImageScroll from '../../../../../image/scroll/ImageScroll';
-import MyLabel from '../MyLabel/MyLabel';
-import MySubLabel from '../MySubLabel/MySubLabel';
 
-interface SelectImage {
+interface SelectImageProps {
   inputName: string;
 }
 
 const imageTypeRegex = /image\/(png|jpg|jpeg)/i;
 
-const SelectImage = ({ inputName }: SelectImage) => {
+const SelectImage = ({ inputName }: SelectImageProps) => {
   const [imageFiles, setImageFiles] = useState<File[]>();
   const [images, setImages] = useState<string[]>();
 

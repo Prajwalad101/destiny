@@ -1,10 +1,10 @@
+import PrimaryButton from '@components/button/primary/PrimaryButton';
+import AppLayout from '@components/layout/app/AppLayout';
+import Logo from '@components/logo/Logo';
+import { linkData } from '@features/create-business';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { linkData } from '..';
-import { classNames } from '../../../../utils/css';
-import PrimaryButton from '../../../button/primary/PrimaryButton';
-import AppLayout from '../../../layout/app/AppLayout';
-import Logo from '../../../logo/Logo';
+import { classNames } from 'utils/css';
 
 interface ICreateBusinessNavbar {
   theme?: 'light' | 'dark';

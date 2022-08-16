@@ -1,6 +1,6 @@
+import { MyListBox } from '@features/create-business';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import businessCategories from '../../../../../../data/business/categoriesData';
-import MyListBox from './MyListBox';
+import businessCategories from 'data/business/categoriesData';
 
 export default {
   title: 'components/Listbox',

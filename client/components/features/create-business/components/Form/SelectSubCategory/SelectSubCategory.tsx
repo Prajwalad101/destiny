@@ -1,11 +1,10 @@
+import { MyFormValues, MyListBox } from '@features/create-business';
 import { Listbox } from '@headlessui/react';
+import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import businessCategories from '../../../../../../data/business/categoriesData';
-import { IBusinessSubcategoryDropdown } from '../../../../../../types/interfaces';
-import { MyFormValues } from '../../../types/interfaces';
-import MyListBox from '../MyListBox/MyListBox';
+import { IBusinessSubcategoryDropdown } from 'types/interfaces';
 
 function SelectSubCategory() {
   // avoid accidentally mutating original array

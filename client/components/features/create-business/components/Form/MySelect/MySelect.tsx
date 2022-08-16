@@ -1,6 +1,6 @@
 import { FieldHookConfig, useField } from 'formik';
 import { ClassAttributes, InputHTMLAttributes } from 'react';
-import { classNames } from '../../../../../../utils/css';
+import { classNames } from 'utils/css';
 
 const MySelect = ({
   className = '',

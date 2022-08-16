@@ -1,13 +1,13 @@
-import { Formik } from 'formik';
 import {
   FormContainer,
-  initialValues,
+  formData,
   MyFormValues,
   Navbar,
   validationSchema,
-} from '../../components/features/create-business';
-import AppLayout from '../../components/layout/app/AppLayout';
-import { NextPageWithLayout } from '../_app';
+} from '@features/create-business';
+import AppLayout from 'components/layout/app/AppLayout';
+import { Formik } from 'formik';
+import { NextPageWithLayout } from 'pages/_app';
 
 const RegisterBusiness: NextPageWithLayout = () => {
   const handleSubmit = (values: MyFormValues) => {
@@ -17,7 +17,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={formData.initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
         validateOnChange={false}

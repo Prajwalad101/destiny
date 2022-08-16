@@ -1,7 +1,7 @@
+import SecondaryButton from '@components/button/secondary/SecondaryButton';
+import { linkData } from '@features/create-business';
 import Image from 'next/image';
 import Link from 'next/link';
-import { linkData } from '..';
-import SecondaryButton from '../../../button/secondary/SecondaryButton';
 
 function GetStartedLayout() {
   return (

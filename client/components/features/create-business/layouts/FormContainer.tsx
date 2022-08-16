@@ -1,16 +1,20 @@
+import SecondaryButton from '@components/button/secondary/SecondaryButton';
+import {
+  FieldLayout,
+  formData,
+  MyLabel,
+  MySubLabel,
+  MyTextArea,
+  MyTextInput,
+  SelectCategory,
+  SelectFeature,
+  SelectImage,
+  SelectSubCategory,
+  SelectTime,
+} from '@features/create-business';
 import { Form } from 'formik';
-import SecondaryButton from '../../../button/secondary/SecondaryButton';
-import MyLabel from '../components/Form/MyLabel/MyLabel';
-import MySubLabel from '../components/Form/MySubLabel/MySubLabel';
-import MyTextArea from '../components/Form/MyTextArea/MyTextArea';
-import MyTextInput from '../components/Form/MyTextInput/MyTextInput';
-import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
-import SelectFeature from '../components/Form/SelectFeature/SelectFeature';
-import SelectImage from '../components/Form/SelectImage/SelectImage';
-import SelectSubCategory from '../components/Form/SelectSubCategory/SelectSubCategory';
-import SelectTime from '../components/Form/SelectTime/SelectTime';
-import { hours, minutes, timeOfDay } from '../data/formData';
-import FieldLayout from './FieldLayout';
+
+const { hours, minutes, timeOfDay } = formData;
 
 function FormContainer() {
   return (

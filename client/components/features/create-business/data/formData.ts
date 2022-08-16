@@ -1,8 +1,8 @@
-import businessCategories from '../../../../data/business/categoriesData';
-import { MyFormValues } from '../types/interfaces';
+import { MyFormValues } from '@features/create-business';
+import businessCategories from 'data/business/categoriesData';
 
 // Formik Initial values
-export const initialValues: MyFormValues = {
+const initialValues: MyFormValues = {
   businessName: '',
   description: '',
   address: '',
@@ -16,7 +16,7 @@ export const initialValues: MyFormValues = {
   images: [],
 };
 
-export const hours = [
+const hours = [
   { name: '1' },
   { name: '2' },
   { name: '3' },
@@ -43,7 +43,7 @@ export const hours = [
   { name: '24' },
 ];
 
-export const minutes = [
+const minutes = [
   { name: '00' },
   { name: '05' },
   { name: '10' },
@@ -58,4 +58,6 @@ export const minutes = [
   { name: '55' },
 ];
 
-export const timeOfDay = [{ name: 'AM' }, { name: 'PM' }];
+const timeOfDay = [{ name: 'AM' }, { name: 'PM' }];
+
+export const formData = { initialValues, hours, minutes, timeOfDay };
