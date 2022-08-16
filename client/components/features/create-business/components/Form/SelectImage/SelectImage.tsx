@@ -2,8 +2,8 @@ import { useField } from 'formik';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 import ImageScroll from '../../../../../image/scroll/ImageScroll';
-import MyLabel from '../MyLabel';
-import MySubLabel from '../MySubLabel';
+import MyLabel from '../MyLabel/MyLabel';
+import MySubLabel from '../MySubLabel/MySubLabel';
 
 interface SelectImage {
   inputName: string;

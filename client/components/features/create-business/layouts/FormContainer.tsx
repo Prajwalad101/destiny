@@ -1,9 +1,9 @@
 import { Form } from 'formik';
 import SecondaryButton from '../../../button/secondary/SecondaryButton';
-import MyLabel from '../components/Form/MyLabel';
-import MySubLabel from '../components/Form/MySubLabel';
-import MyTextArea from '../components/Form/MyTextArea';
-import MyTextInput from '../components/Form/MyTextInput';
+import MyLabel from '../components/Form/MyLabel/MyLabel';
+import MySubLabel from '../components/Form/MySubLabel/MySubLabel';
+import MyTextArea from '../components/Form/MyTextArea/MyTextArea';
+import MyTextInput from '../components/Form/MyTextInput/MyTextInput';
 import SelectCategory from '../components/Form/SelectCategory/SelectCategory';
 import SelectFeature from '../components/Form/SelectFeature/SelectFeature';
 import SelectImage from '../components/Form/SelectImage/SelectImage';

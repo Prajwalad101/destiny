@@ -27,7 +27,7 @@ function MyListBox({
 
   // updates listbox and formik state
   const handleChange = (newValue: ListItem | ListItem[]) => {
-    /* setSelected can be any of the functions defined by listItem
+    /* setSelected can be any of the functions defined by listItem.
       since, we know those functions ONLY vary by parameter types,
       we can assert a new function type to setSelected
     */
