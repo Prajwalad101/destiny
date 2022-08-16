@@ -20,6 +20,8 @@ const RegisterBusiness: NextPageWithLayout = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
+        validateOnChange={false}
+        validateOnBlur={true}
       >
         <FormContainer />
       </Formik>
