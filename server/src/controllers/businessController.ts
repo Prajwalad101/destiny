@@ -33,6 +33,8 @@ const getAllBusinesses = catchAsync(
 
 const createBusiness = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
+    const _files = req.files as Express.Multer.File[];
+
     const business = await Business.create(req.body);
     res.status(201).json({
       status: 'success',
