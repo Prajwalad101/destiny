@@ -1,7 +1,7 @@
-import PrimaryButton from '@components/button/primary/PrimaryButton';
-import AppLayout from '@components/layout/app/AppLayout';
-import MainHeading from '@components/text/main-heading/MainHeading';
 import { linkData, Navbar } from '@features/create-business';
+import PrimaryButton from 'components/button/primary/PrimaryButton';
+import AppLayout from 'components/layout/app/AppLayout';
+import MainHeading from 'components/text/main-heading/MainHeading';
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
 

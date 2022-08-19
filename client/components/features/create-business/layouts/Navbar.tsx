@@ -1,7 +1,7 @@
-import PrimaryButton from '@components/button/primary/PrimaryButton';
-import AppLayout from '@components/layout/app/AppLayout';
-import Logo from '@components/logo/Logo';
 import { linkData } from '@features/create-business';
+import PrimaryButton from 'components/button/primary/PrimaryButton';
+import AppLayout from 'components/layout/app/AppLayout';
+import Logo from 'components/logo/Logo';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { classNames } from 'utils/css';

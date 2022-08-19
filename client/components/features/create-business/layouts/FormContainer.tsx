@@ -1,4 +1,3 @@
-import SecondaryButton from '@components/button/secondary/SecondaryButton';
 import {
   FieldLayout,
   formData,
@@ -12,6 +11,7 @@ import {
   SelectSubCategory,
   SelectTime,
 } from '@features/create-business';
+import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { Form } from 'formik';
 
 const { hours, minutes, timeOfDay } = formData;

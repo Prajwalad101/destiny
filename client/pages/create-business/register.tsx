@@ -1,4 +1,3 @@
-import { buildFormData } from '@components/features/create-business/utils/objects/buildFormData';
 import {
   FormContainer,
   formData,
@@ -6,6 +5,7 @@ import {
   useSubmitForm,
   validationSchema,
 } from '@features/create-business';
+import { buildFormData } from 'components/features/create-business/utils/objects/buildFormData';
 import { Formik } from 'formik';
 import { NextPageWithLayout } from 'pages/_app';
 

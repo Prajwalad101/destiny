@@ -1,5 +1,5 @@
-import ImageScroll from '@components/image/scroll/ImageScroll';
 import { MyLabel, MySubLabel } from '@features/create-business';
+import ImageScroll from 'components/image/scroll/ImageScroll';
 import { useField } from 'formik';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
