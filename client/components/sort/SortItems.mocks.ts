@@ -1,4 +1,4 @@
-import { sortItemData } from '../../data/sortBusiness.data';
+import { sortItemData } from '../../data/sortItem';
 import { ISortItems } from './SortItems';
 
 const base: ISortItems = {

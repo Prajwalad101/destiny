@@ -1,8 +1,8 @@
+import { navLinks } from 'data/navLinks';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
 import { useSidebar } from '../../../context/navigation.context';
-import { navLinks } from '../../../data/navigation.data';
 import usePreventBodyOverflow from '../../../hooks/usePreventBodyOverflow';
 import { classNames } from '../../../utils/css';
 import PrimaryButton from '../../button/primary/PrimaryButton';

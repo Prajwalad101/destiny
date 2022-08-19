@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { IFilterOptions } from '../../data/searchFilter.data';
+import { IFilterOptions } from '../../data/searchFilter';
 import { ISelectedFilters } from '../../types/interfaces';
 import PrimaryButton from '../button/primary/PrimaryButton';
 import Checkbox from '../checkbox/Checkbox';

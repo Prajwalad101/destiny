@@ -6,8 +6,8 @@ import SearchBusinessLayout from '../../../components/layout/pages/search-busine
 import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
 import SearchFilter from '../../../components/search-filter/SearchFilter';
 import SortItems from '../../../components/sort/SortItems';
-import searchFilterData from '../../../data/searchFilter.data';
-import { sortItemData } from '../../../data/sortBusiness.data';
+import searchFilterData from '../../../data/searchFilter';
+import { sortItemData } from '../../../data/sortItem';
 import useBusinesses, {
   fetchBusinesses,
 } from '../../../hooks/business/useBusinesses';
