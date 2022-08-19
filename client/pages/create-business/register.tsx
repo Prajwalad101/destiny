@@ -2,10 +2,13 @@ import {
   FormContainer,
   formData,
   MyFormValues,
+  Navbar,
   useSubmitForm,
   validationSchema,
 } from '@features/create-business';
 import { buildFormData } from 'components/features/create-business/utils/objects/buildFormData';
+import AppLayout from 'components/layout/app/AppLayout';
+import ProviderLayout from 'components/layout/provider/ProviderLayout.';
 import { Formik } from 'formik';
 import { NextPageWithLayout } from 'pages/_app';
 
@@ -39,5 +42,14 @@ const RegisterBusiness: NextPageWithLayout = () => {
     </>
   );
 };
+
+RegisterBusiness.getLayout = (page) => (
+  <>
+    <ProviderLayout>
+      <Navbar />
+      <AppLayout size="sm">{page}</AppLayout>
+    </ProviderLayout>
+  </>
+);
 
 export default RegisterBusiness;
