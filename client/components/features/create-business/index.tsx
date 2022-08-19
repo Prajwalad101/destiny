@@ -1,4 +1,3 @@
-import GetStarted from 'pages/create-business/get-started';
 import MyLabel from './components/Form/MyLabel/MyLabel';
 import MyListBox from './components/Form/MyListBox/MyListBox';
 import MySelect from './components/Form/MySelect/MySelect';
@@ -13,6 +12,7 @@ import SelectTime from './components/Form/SelectTime/SelectTime';
 import { formData } from './data/formData';
 import { cardData } from './data/infoCardData';
 import linkData from './data/linkData.json';
+import useSubmitForm from './hooks/useSubmitForm';
 import FieldLayout from './layouts/FieldLayout';
 import FormContainer from './layouts/FormContainer';
 import GetStartedLayout from './layouts/GetStarted';
@@ -23,31 +23,33 @@ import { MyFormValues } from './types/interfaces';
 import { ListboxItem, ListboxState } from './types/ListboxStateType';
 import EllipsisSeperator from './ui/EllipsisSeperator';
 import InfoCard from './ui/InfoCard';
+import { objectUtils } from './utils/objects';
 
+// -----COMPONENTS-----
 export {
-  GetStarted,
-  FieldLayout,
   MyLabel,
   MyListBox,
   MySelect,
   MySubLabel,
   MyTextArea,
+  MyTextInput,
   SelectCategory,
   SelectFeature,
   SelectImage,
   SelectSubCategory,
   SelectTime,
-  MyTextInput,
-  Navbar,
-  FormContainer,
-  GetStartedLayout,
-  EllipsisSeperator,
-  Hero,
-  InfoCard,
-  validationSchema,
-  cardData,
-  formData,
-  linkData,
 };
-// types
+// -----UI-----
+export { EllipsisSeperator, InfoCard };
+// -----LAYOUTS-----
+export { FieldLayout, FormContainer, GetStartedLayout, Hero, Navbar };
+// -----SCHEMA-----
+export { validationSchema };
+// -----DATA-----
+export { cardData, formData, linkData };
+// -----HOOKS-----
+export { useSubmitForm };
+// -----UTILS-----
+export { objectUtils };
+// -----TYPES-----
 export type { MyFormValues, ListboxState, ListboxItem };
