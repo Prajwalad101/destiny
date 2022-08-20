@@ -18,12 +18,13 @@ interface MyListBoxProps {
 function MyListBox({
   list,
   listState,
-  inputName = '',
+  inputName,
   width = 250, // default width
   button,
   multiple = false,
 }: MyListBoxProps) {
-  const [_field, _meta, helpers] = useField(inputName);
+  // if no inputName given, pass a non existing field
+  const [_field, _meta, helpers] = useField(inputName || 'doesnotexist');
 
   // updates listbox and formik state
   const handleChange = (newValue: ListboxItem | ListboxItem[]) => {
@@ -37,10 +38,12 @@ function MyListBox({
 
     setSelected(newValue);
 
-    // newValue can also be an array
+    // only update formik state if inputName is passed
+    if (!inputName) return;
     if (Array.isArray(newValue)) {
+      // newValue can also be an array
       const values = newValue.map((item) => item.name); // extract values from name property
-      helpers.setValue(values); // set the entire array as field
+      helpers.setValue(values);
     } else {
       helpers.setValue(newValue.name);
     }

@@ -84,7 +84,7 @@ function FormContainer() {
             {/* Close */}
             <div className="mb-5 lg:mb-0">
               <p className="mb-1 text-sm font-medium text-gray-700">Close</p>
-              <SelectTime inputName="businessHours.open" />
+              <SelectTime inputName="businessHours.close" />
             </div>
           </div>
         </FieldLayout>
