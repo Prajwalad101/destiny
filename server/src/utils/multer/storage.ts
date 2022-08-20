@@ -6,7 +6,11 @@ export const storage = (path: string) => {
       cb(null, path);
     },
     filename: (req, file, cb) => {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+      const currentDate = new Date().toISOString().split('T')[0];
+      //! Suffix might not be 100% unique
+      const uniqueSuffix =
+        currentDate + '-' + Date.now() + Math.round(Math.random() * 1e9);
+
       cb(null, file.fieldname + '-' + uniqueSuffix);
     },
   });

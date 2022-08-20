@@ -8,13 +8,13 @@ const router = express.Router();
 
 // parse formData
 const upload = multer({
-  storage: multerUtils.storage('./public/images/business/'),
+  storage: multerUtils.storage('./public/uploads/images/business'),
 });
 
 router
   .route('/')
   .get(businessController.getAllBusinesses)
-  .post(upload.array('images', 10), businessController.createBusiness);
+  .post(upload.array('image', 10), businessController.createBusiness);
 
 router
   .route('/:id')
