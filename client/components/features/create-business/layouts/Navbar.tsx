@@ -35,7 +35,7 @@ function Navbar({ theme = 'light' }: ICreateBusinessNavbar) {
           {/* BUSINESS LINKS */}
           <div className="flex items-center gap-7 lg:gap-10">
             <div className="underline-offset-4 hover:underline">
-              <Link href="">
+              <Link href="/">
                 <a>
                   Contact Us <span className="font-medium">(01-4164120)</span>
                 </a>
