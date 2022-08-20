@@ -1,12 +1,13 @@
 import {
   FormContainer,
-  formData,
   MyFormValues,
   Navbar,
   useSubmitForm,
   validationSchema,
 } from '@features/create-business';
-import { buildFormData } from 'components/features/create-business/utils/objects/buildFormData';
+
+import { initialFormValues } from '@features/create-business/data';
+import { dataToFormData } from '@features/create-business/utils/objects/dataToFormData';
 import AppLayout from 'components/layout/app/AppLayout';
 import ProviderLayout from 'components/layout/provider/ProviderLayout.';
 import { Formik } from 'formik';
@@ -16,14 +17,12 @@ const RegisterBusiness: NextPageWithLayout = () => {
   const mutation = useSubmitForm();
 
   const handleSubmit = (values: MyFormValues) => {
-    const formData = new FormData();
+    const formData = dataToFormData(values);
 
     // add all images to form data
     for (const file of values.images) {
-      formData.append('images', file);
+      formData.append('image', file);
     }
-    // add remaining form fields to form data
-    buildFormData(formData, values);
 
     mutation.mutate(formData);
   };
@@ -31,7 +30,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
   return (
     <>
       <Formik
-        initialValues={formData.initialValues}
+        initialValues={initialFormValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
         validateOnChange={false}
