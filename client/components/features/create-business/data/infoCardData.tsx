@@ -1,4 +1,4 @@
-export const cardData = [
+export const infoCardData = [
   {
     id: 1,
     heading: (

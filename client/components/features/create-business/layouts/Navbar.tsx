@@ -1,4 +1,4 @@
-import { linkData } from '@features/create-business';
+import { linkData } from '@features/create-business/data';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
 import Logo from 'components/logo/Logo';
