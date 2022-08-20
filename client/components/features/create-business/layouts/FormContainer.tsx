@@ -1,6 +1,5 @@
 import {
   FieldLayout,
-  formData,
   MyLabel,
   MySubLabel,
   MyTextArea,
@@ -13,8 +12,6 @@ import {
 } from '@features/create-business';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { Form } from 'formik';
-
-const { hours, minutes, timeOfDay } = formData;
 
 function FormContainer() {
   return (
@@ -82,22 +79,12 @@ function FormContainer() {
             {/* Open */}
             <div className="mb-5 lg:mb-0">
               <p className="mb-1 text-sm font-medium text-gray-700">Open</p>
-              <SelectTime
-                hours={hours}
-                minutes={minutes}
-                timeOfDay={timeOfDay}
-                inputName="businessHours.open"
-              />
+              <SelectTime inputName="businessHours.open" />
             </div>
             {/* Close */}
             <div className="mb-5 lg:mb-0">
               <p className="mb-1 text-sm font-medium text-gray-700">Close</p>
-              <SelectTime
-                hours={hours}
-                minutes={minutes}
-                timeOfDay={timeOfDay}
-                inputName="businessHours.open"
-              />
+              <SelectTime inputName="businessHours.open" />
             </div>
           </div>
         </FieldLayout>

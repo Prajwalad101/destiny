@@ -1,41 +1,37 @@
-import { MyListBox } from '@features/create-business';
+import { formData, MyListBox } from '@features/create-business';
 import { Listbox } from '@headlessui/react';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
 
-type List = { name: string }[];
+const { hours, minutes, timeOfDay } = formData;
 
 interface SelectTimeProps {
-  hours: List;
-  minutes: List;
-  timeOfDay: List;
   inputName: string;
 }
 
-function SelectTime({ hours, minutes, timeOfDay, inputName }: SelectTimeProps) {
+function SelectTime({ inputName }: SelectTimeProps) {
   return (
     <div className="flex items-center font-rubik">
-      <SelectHour list={hours} inputName={inputName} />
+      <SelectHour inputName={inputName} />
       <span className="px-1 text-2xl">:</span>
-      <SelectMinute list={minutes} inputName={inputName} />
-      <SelectTimeOfDay list={timeOfDay} inputName={inputName} />
+      <SelectMinute inputName={inputName} />
+      <SelectTimeOfDay inputName={inputName} />
     </div>
   );
 }
 
 interface SelectorProps {
-  list: List;
   inputName: string;
 }
 
-const SelectHour = ({ list, inputName }: SelectorProps) => {
-  const [selectedHour, setSelectedHour] = useState(list[0]);
+const SelectHour = ({ inputName }: SelectorProps) => {
+  const [selectedHour, setSelectedHour] = useState(hours[0]);
 
   const hourInputName = inputName.concat('.hour');
   return (
     <>
       <MyListBox
-        list={list}
+        list={hours}
         listState={{ selected: selectedHour, setSelected: setSelectedHour }}
         inputName={hourInputName}
         width={90}
@@ -56,14 +52,14 @@ const SelectHour = ({ list, inputName }: SelectorProps) => {
   );
 };
 
-const SelectMinute = ({ list, inputName }: SelectorProps) => {
-  const [selectedMinute, setSelectedMinute] = useState(list[0]);
+const SelectMinute = ({ inputName }: SelectorProps) => {
+  const [selectedMinute, setSelectedMinute] = useState(minutes[0]);
 
   const minuteInputName = inputName.concat('.minute');
 
   return (
     <MyListBox
-      list={list}
+      list={minutes}
       listState={{ selected: selectedMinute, setSelected: setSelectedMinute }}
       inputName={minuteInputName}
       width={90}
@@ -83,14 +79,14 @@ const SelectMinute = ({ list, inputName }: SelectorProps) => {
   );
 };
 
-const SelectTimeOfDay = ({ list, inputName }: SelectorProps) => {
-  const [selectedTimeOfDay, setSelectedTimeOfDay] = useState(list[0]);
+const SelectTimeOfDay = ({ inputName }: SelectorProps) => {
+  const [selectedTimeOfDay, setSelectedTimeOfDay] = useState(timeOfDay[0]);
 
   const timeOfDayInputName = inputName.concat('.timeOfDay');
 
   return (
     <MyListBox
-      list={list}
+      list={timeOfDay}
       listState={{
         selected: selectedTimeOfDay,
         setSelected: setSelectedTimeOfDay,
