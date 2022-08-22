@@ -1,12 +1,10 @@
+import axios from 'axios';
 import { useMutation } from 'react-query';
 
 function useSubmitForm() {
-  const mutation = useMutation((newBusiness: FormData) => {
-    return fetch(`${process.env.NEXT_PUBLIC_HOST}/api/business`, {
-      method: 'POST',
-      body: newBusiness,
-    });
-  });
+  const mutation = useMutation((newBusiness: FormData) =>
+    axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/business`, newBusiness)
+  );
   return mutation;
 }
 

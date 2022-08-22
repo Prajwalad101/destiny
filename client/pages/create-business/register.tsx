@@ -12,6 +12,8 @@ import AppLayout from 'components/layout/app/AppLayout';
 import ProviderLayout from 'components/layout/provider/ProviderLayout.';
 import { Formik } from 'formik';
 import { NextPageWithLayout } from 'pages/_app';
+import { useEffect } from 'react';
+import { handleMutationError } from 'utils/logger';
 
 const RegisterBusiness: NextPageWithLayout = () => {
   const mutation = useSubmitForm();
@@ -26,6 +28,10 @@ const RegisterBusiness: NextPageWithLayout = () => {
 
     mutation.mutate(formData);
   };
+
+  useEffect(() => {
+    handleMutationError(mutation.error);
+  }, [mutation]);
 
   return (
     <>
