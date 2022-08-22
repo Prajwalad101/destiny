@@ -1,4 +1,5 @@
-import { linkData, Navbar } from '@features/create-business';
+import { Navbar } from '@features/create-business';
+import { linkData } from '@features/create-business/data';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
 import MainHeading from 'components/text/main-heading/MainHeading';

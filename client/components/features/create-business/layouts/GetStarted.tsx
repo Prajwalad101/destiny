@@ -1,4 +1,4 @@
-import { linkData } from '@features/create-business';
+import { linkData } from '@features/create-business/data';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import Image from 'next/image';
 import Link from 'next/link';

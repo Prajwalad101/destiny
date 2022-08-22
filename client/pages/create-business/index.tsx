@@ -1,6 +1,6 @@
+import { infoCardData } from '@features/create-business/data';
 import React from 'react';
 import {
-  cardData,
   EllipsisSeperator,
   Hero,
   InfoCard,
@@ -14,7 +14,7 @@ const CreateBusiness: NextPageWithLayout = () => {
       <Hero />
       <AppLayout>
         <div className="md:my-20">
-          {cardData.map((data, index) => (
+          {infoCardData.map((data, index) => (
             <React.Fragment key={index}>
               <InfoCard {...data} flip={index % 2 ? true : false} key={index} />
               <EllipsisSeperator />
