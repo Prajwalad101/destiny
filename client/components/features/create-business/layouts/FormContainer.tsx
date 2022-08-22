@@ -104,6 +104,7 @@ function FormContainer() {
           </div>
         </FieldLayout>
 
+        {/* Features */}
         <FieldLayout>
           <div className="mb-5 lg:mb-0">
             <MyLabel htmlFor="features">Features</MyLabel>

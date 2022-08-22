@@ -42,7 +42,7 @@ function SelectFeature() {
 
     setFeatures(features);
     setSelectedFeatures([features[0]]);
-    setFieldValue('features', features[0]);
+    setFieldValue('features', [features[0].name]);
   }, [subCategory, businessSubCategory, setFieldValue]);
 
   // check if selectedFeatures contain any undefined values
