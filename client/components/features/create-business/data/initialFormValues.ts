@@ -2,7 +2,7 @@ import { MyFormValues } from '@features/create-business';
 import businessCategories from 'data/business/categoriesData';
 
 export const initialFormValues: MyFormValues = {
-  businessName: '',
+  name: '',
   description: '',
   address: '',
   businessHours: {
@@ -13,4 +13,5 @@ export const initialFormValues: MyFormValues = {
   subCategory: businessCategories[0].subCategories[0].name,
   features: [businessCategories[0].subCategories[0].features[0].name],
   images: [],
+  location: { type: 'Point', coordinates: [0, 0] },
 };

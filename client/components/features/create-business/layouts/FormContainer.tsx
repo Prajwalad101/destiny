@@ -12,6 +12,7 @@ import {
 } from '@features/create-business';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { Form } from 'formik';
+import MyGeolocation from '../components/Form/MyGeolocation/MyGeolocation';
 
 function FormContainer() {
   return (
@@ -27,13 +28,13 @@ function FormContainer() {
         {/* Business Name */}
         <FieldLayout>
           <div className="mb-5 lg:mb-0">
-            <MyLabel htmlFor="businessName">Name</MyLabel>
+            <MyLabel htmlFor="name">Name</MyLabel>
             <MySubLabel className="mb-3">
               Enter the full name of your business
             </MySubLabel>
           </div>
           <MyTextInput
-            name="businessName"
+            name="name"
             type="text"
             placeholder="eg: Shrestha Futsal"
           />
@@ -114,6 +115,14 @@ function FormContainer() {
         {/* Images */}
         <FieldLayout>
           <SelectImage inputName="images" />
+        </FieldLayout>
+
+        <FieldLayout>
+          <div className="mb-5 lg:mb-0">
+            <MyLabel htmlFor="location">Location</MyLabel>
+            <MySubLabel>Select the location of your business</MySubLabel>
+          </div>
+          <MyGeolocation />
         </FieldLayout>
 
         {/* Submit Button */}

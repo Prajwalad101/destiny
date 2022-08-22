@@ -4,7 +4,7 @@ export interface OtherProps {
 }
 
 export interface MyFormValues {
-  businessName: string;
+  name: string;
   description: string;
   address: string;
   businessHours: {
@@ -15,4 +15,5 @@ export interface MyFormValues {
   subCategory: string;
   features: string[];
   images: File[];
+  location: { type: 'Point'; coordinates: number[] };
 }
