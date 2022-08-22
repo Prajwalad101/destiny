@@ -6,6 +6,7 @@ import MyTextArea from './components/Form/MyTextArea/MyTextArea';
 import MyTextInput from './components/Form/MyTextInput/MyTextInput';
 import SelectCategory from './components/Form/SelectCategory/SelectCategory';
 import SelectFeature from './components/Form/SelectFeature/SelectFeature';
+import SelectGeolocation from './components/Form/SelectGeolocation/SelectGeolocation';
 import SelectImage from './components/Form/SelectImage/SelectImage';
 import SelectSubCategory from './components/Form/SelectSubCategory/SelectSubCategory';
 import SelectTime from './components/Form/SelectTime/SelectTime';
@@ -35,6 +36,7 @@ export {
   SelectImage,
   SelectSubCategory,
   SelectTime,
+  SelectGeolocation,
 };
 // -----UI-----
 export { EllipsisSeperator, InfoCard };

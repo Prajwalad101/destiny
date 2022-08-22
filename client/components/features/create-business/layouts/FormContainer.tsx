@@ -6,13 +6,13 @@ import {
   MyTextInput,
   SelectCategory,
   SelectFeature,
+  SelectGeolocation,
   SelectImage,
   SelectSubCategory,
   SelectTime,
 } from '@features/create-business';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { Form } from 'formik';
-import MyGeolocation from '../components/Form/MyGeolocation/MyGeolocation';
 
 function FormContainer() {
   return (
@@ -123,7 +123,7 @@ function FormContainer() {
             <MyLabel htmlFor="location">Location</MyLabel>
             <MySubLabel>Select the location of your business</MySubLabel>
           </div>
-          <MyGeolocation />
+          <SelectGeolocation />
         </FieldLayout>
 
         {/* Submit Button */}

@@ -11,5 +11,11 @@ export const validationSchema = Yup.object({
     address: Yup.string()
       .max(40, 'Must be 40 characters or less')
       .required('This field is required'),
+    coordinates: Yup.array().of(
+      Yup.number().notOneOf(
+        [0, undefined],
+        'Coordinates cannot be 0 or undefined'
+      )
+    ),
   }),
 });

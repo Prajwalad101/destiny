@@ -35,12 +35,11 @@ const createBusiness = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
     const files = req.files as Express.Multer.File[];
 
-    const _filePaths = files.map((file) => file.path);
+    const filePaths = files.map((file) => file.path);
 
-    // add images to the request body
-    req.body.images = _filePaths;
+    // add images paths to the request body
+    req.body.images = filePaths;
 
-    console.log(req.body);
     const business = await Business.create(req.body);
     res.status(201).json({
       status: 'success',
