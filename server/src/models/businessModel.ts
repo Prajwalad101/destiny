@@ -39,13 +39,27 @@ const businessSchema = new mongoose.Schema<IBusiness>(
       },
       address: String,
     },
-    tags: {
+    category: {
+      type: String,
+      required: [true, 'A business must contain a category'],
+    },
+    subCategory: {
+      type: String,
+      required: [true, 'A business must contain a subCategory'],
+    },
+    features: {
       type: [String],
-      required: true,
+      validate: {
+        validator: (v: string[]) => v.length > 0,
+        message: 'A business must contain 1 or more features',
+      },
     },
     images: {
       type: [String],
-      required: true,
+      validate: {
+        validator: (v: string[]) => v.length > 0,
+        message: 'A business must contain 2 or more images',
+      },
     },
     total_rating: { type: Number, default: 0 },
     rating_count: { type: Number, default: 0 },
@@ -66,6 +80,7 @@ businessSchema.virtual('reviews', {
 // calculate the avgRating field from total_rating & rating_count
 // only runs when creating business and updating business through save (done in reviewMiddleware)
 businessSchema.pre('save', function (next) {
+  console.log(this);
   if (this.total_rating === 0 || this.rating_count === 0) return next();
 
   this.avgRating = this.total_rating / this.rating_count;
