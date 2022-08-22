@@ -1,4 +1,4 @@
-import { MyFormValues } from '@features/create-business/types/interfaces';
+import { MyFormValues } from '@features/create-business/types/MyFormValues';
 import { buildFormData } from './buildFormData';
 
 export function dataToFormData(data: MyFormValues) {

@@ -6,11 +6,13 @@ import { useState } from 'react';
 function MyGeolocation() {
   const [isSelect, setIsSelect] = useState(false);
   const [latitude, longitude, _error] = useUserCoordinates(isSelect);
-  const [_field, _meta, handler] = useField('location');
+  const [, , typeHandler] = useField('location.type');
+  const [, , coordinateHandler] = useField('location.coordinates');
 
   const handleClick = () => {
     setIsSelect(true);
-    handler.setValue({ type: 'Point', coordinates: [longitude, latitude] });
+    typeHandler.setValue('Point');
+    coordinateHandler.setValue([longitude, latitude]);
   };
 
   return (

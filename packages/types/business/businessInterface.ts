@@ -9,9 +9,11 @@ export interface IBusiness {
   createdAt?: Date;
   businessHours: { open: string; close: string };
   location: { type: 'Point'; coordinates: number[]; address?: string };
-  tags: string[];
+  category: string;
+  subCategory: string;
+  features: string[];
   images: string[];
-  reviews: IReview[];
+  reviews?: IReview[];
   total_rating: number;
   rating_count: number;
   avgRating: number;

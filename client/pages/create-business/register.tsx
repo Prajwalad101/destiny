@@ -25,6 +25,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
     for (const file of values.images) {
       formData.append('image', file);
     }
+    formData.append('price', 'medium');
 
     mutation.mutate(formData);
   };

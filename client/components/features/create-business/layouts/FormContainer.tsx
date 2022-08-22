@@ -55,14 +55,14 @@ function FormContainer() {
         {/* Address */}
         <FieldLayout>
           <div className="mb-5 lg:mb-0">
-            <MyLabel htmlFor="address">Address</MyLabel>
+            <MyLabel htmlFor="location.address">Address</MyLabel>
             <MySubLabel>
               Provide full address of your business. Make sure the address is
               short and recognizable
             </MySubLabel>
           </div>
           <MyTextInput
-            name="address"
+            name="location.address"
             type="text"
             placeholder="eg: Naya Baneshwor, Kathmandu"
           />
