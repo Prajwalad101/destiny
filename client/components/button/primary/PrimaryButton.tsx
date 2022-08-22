@@ -3,21 +3,19 @@ import { classNames } from '../../../utils/css';
 interface PrimaryButtonProps {
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
-function PrimaryButton({
-  children,
-  onClick,
-  className = '',
-}: PrimaryButtonProps) {
+type ButtonProps = React.HTMLProps<HTMLButtonElement> & PrimaryButtonProps;
+
+function PrimaryButton({ children, className = '', ...props }: ButtonProps) {
   return (
     <button
       className={classNames(
         className,
         'rounded-md border-[1px] border-primaryred bg-primaryred text-base text-white transition-colors hover:border-red-500 hover:bg-red-500'
       )}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>

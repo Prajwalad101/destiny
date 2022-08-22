@@ -2,7 +2,7 @@ import { classNames } from '../../../utils/css';
 
 interface SecondaryButtonProps {
   theme?: 'light' | 'dark';
-  type?: 'button' | 'submit' | 'reset' | undefined;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & SecondaryButtonProps;
