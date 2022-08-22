@@ -1,8 +1,5 @@
-import { formData } from '@features/create-business';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import SelectTime from './SelectTime';
-
-const { hours, minutes, timeOfDay } = formData;
 
 export default {
   title: 'components/CombinedListBox',
@@ -14,9 +11,3 @@ const Template: ComponentStory<typeof SelectTime> = (args) => (
 );
 
 export const Base = Template.bind({});
-
-Base.args = {
-  hours,
-  minutes,
-  timeOfDay,
-};
