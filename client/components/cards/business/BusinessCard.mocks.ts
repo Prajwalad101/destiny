@@ -13,7 +13,7 @@ const card1: IBusinessCard = {
       coordinates: [24.67964, 38.253338],
       address: '52 Clove Alley',
     },
-    tags: ['tmbq', 'rvz', 'evlem', 'opb'],
+    features: ['tmbq', 'rvz', 'evlem', 'opb'],
     images: [
       'http://dummyimage.com/138x100.png/ff4444/ffffff',
       'http://dummyimage.com/183x100.png/5fa2dd/ffffff',
@@ -28,6 +28,8 @@ const card1: IBusinessCard = {
         createdAt: '2021-08-01',
       },
     ],
+    category: 'Food and Drinks',
+    subCategory: 'Resturants',
     total_rating: 32,
     rating_count: 7,
     price: 'medium',

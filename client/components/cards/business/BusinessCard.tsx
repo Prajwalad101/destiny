@@ -67,8 +67,8 @@ function BusinessCard({ business }: IBusinessCard) {
   );
 }
 
-const Reviews = ({ reviews }: { reviews: IReview[] }) => {
-  if (reviews.length === 0) {
+const Reviews = ({ reviews }: { reviews: IReview[] | undefined }) => {
+  if (!reviews || reviews.length === 0) {
     return (
       <>
         <p className="mb-2 text-secondarytext">No reviews found</p>
