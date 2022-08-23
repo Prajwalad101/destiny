@@ -1,4 +1,6 @@
 import { MyLabel, MySubLabel } from '@features/create-business';
+import readFilesAsDataURL from '@features/create-business/utils/api/readFilesAsDataUrl';
+import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
 import ImageScroll from 'components/image/scroll/ImageScroll';
 import { useField } from 'formik';
 import Image from 'next/image';
@@ -8,69 +10,36 @@ interface SelectImageProps {
   inputName: string;
 }
 
-const imageTypeRegex = /image\/(png|jpg|jpeg)/i;
-
 const SelectImage = ({ inputName }: SelectImageProps) => {
   const [imageFiles, setImageFiles] = useState<File[]>();
   const [images, setImages] = useState<string[]>();
 
-  const [_field, meta, handler] = useField(inputName);
+  const [, meta, handler] = useField(inputName);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    // check for null value
-    if (!e.target.files) return;
-
-    // get the selected files from event
     const files = e.target.files;
-    const filesArr = Array.from(files); // to perform array methods
-    const validImageFiles: File[] = [];
+    if (!files) return;
 
-    // filter for images for valid file path
+    // get the images matching the specified regex
+    const validFiles = checkValidImageFiles(files);
 
-    filesArr.forEach((file) => {
-      if (file.type.match(imageTypeRegex)) {
-        validImageFiles.push(file);
-      }
-    });
-
-    // update image file state
-    if (validImageFiles.length) {
-      setImageFiles(validImageFiles);
-      handler.setValue(validImageFiles);
+    // check if any images matched the image type
+    if (!validFiles.length) {
+      console.log('Selected images are not of valid type');
       return;
     }
 
-    // no files are of valid type
-    alert('Selected images are not of valid type');
+    setImageFiles(validFiles);
+    handler.setValue(validFiles);
   };
 
+  // convert all imageFiles into data URL
   useEffect(() => {
     const fileReaders: FileReader[] = [];
     let isCancel = false;
 
-    // check for undefined
     if (imageFiles?.length) {
-      const promises = imageFiles.map((file) => {
-        return new Promise<string>((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReaders.push(fileReader);
-          fileReader.onload = (e) => {
-            const result = e.target?.result;
-            if (result) {
-              resolve(result.toString());
-            }
-          };
-          fileReader.onabort = () => {
-            reject(new Error('File reading aborted'));
-          };
-
-          fileReader.onerror = () => {
-            reject(new Error('Failed to read file'));
-          };
-
-          fileReader.readAsDataURL(file);
-        });
-      });
+      const promises = readFilesAsDataURL(imageFiles);
 
       // update state after all files have finished loading
       Promise.all(promises)
@@ -82,16 +51,16 @@ const SelectImage = ({ inputName }: SelectImageProps) => {
         .catch((error) => {
           console.log(error);
         });
-
-      return () => {
-        isCancel = true;
-        fileReaders.forEach((fileReader) => {
-          if (fileReader.readyState === 1) {
-            fileReader.abort();
-          }
-        });
-      };
     }
+
+    return () => {
+      isCancel = true;
+      fileReaders.forEach((fileReader) => {
+        if (fileReader.readyState === 1) {
+          fileReader.abort();
+        }
+      });
+    };
   }, [imageFiles]);
 
   return (
