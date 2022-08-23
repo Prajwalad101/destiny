@@ -6,8 +6,8 @@ import {
   MyTextInput,
   SelectCategory,
   SelectFeature,
-  SelectGeolocation,
   SelectImage,
+  SelectLocation,
   SelectSubCategory,
   SelectTime,
 } from '@features/create-business';
@@ -123,7 +123,7 @@ function FormContainer() {
             <MyLabel htmlFor="location">Location</MyLabel>
             <MySubLabel>Select the location of your business</MySubLabel>
           </div>
-          <SelectGeolocation />
+          <SelectLocation />
         </FieldLayout>
 
         {/* Submit Button */}

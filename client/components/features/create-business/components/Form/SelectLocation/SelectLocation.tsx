@@ -4,7 +4,7 @@ import { useField } from 'formik';
 import { useEffectAfterMount } from 'hooks';
 import { useState } from 'react';
 
-function SelectGeolocation() {
+function SelectLocation() {
   const [, meta, handler] = useField('location.coordinates');
   const [coordinates, setCoordinates] = useState<number[]>([0, 0]);
 
@@ -32,11 +32,11 @@ function SelectGeolocation() {
       >
         Set location
       </PrimaryButton>
-      {meta.error ? (
+      {meta.touched && meta.error ? (
         <p className="text-sm text-primaryred">*{meta.error[0]}</p>
       ) : null}
     </div>
   );
 }
 
-export default SelectGeolocation;
+export default SelectLocation;
