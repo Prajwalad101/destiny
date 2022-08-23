@@ -12,10 +12,7 @@ export const validationSchema = Yup.object({
       .max(40, 'Must be 40 characters or less')
       .required('This field is required'),
     coordinates: Yup.array().of(
-      Yup.number().notOneOf(
-        [0, undefined],
-        'Coordinates cannot be 0 or undefined'
-      )
+      Yup.number().notOneOf([0, undefined], 'Please select your coordinates')
     ),
   }),
   images: Yup.array().min(2, 'Upload at least 2 images'),

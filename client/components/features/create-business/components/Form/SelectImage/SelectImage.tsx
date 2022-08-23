@@ -3,6 +3,7 @@ import readFilesAsDataURL from '@features/create-business/utils/api/readFilesAsD
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
 import ImageScroll from 'components/image/scroll/ImageScroll';
 import { useField } from 'formik';
+import { useEffectAfterMount } from 'hooks';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 
@@ -61,6 +62,11 @@ const SelectImage = ({ inputName }: SelectImageProps) => {
         }
       });
     };
+  }, [imageFiles]);
+
+  // validate field after selecting images
+  useEffectAfterMount(() => {
+    handler.setTouched(true);
   }, [imageFiles]);
 
   return (
