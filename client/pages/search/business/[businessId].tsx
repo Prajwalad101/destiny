@@ -25,10 +25,12 @@ const Business: NextPageWithLayout = () => {
     return null;
   }
 
+  const BusinessReviews = businessData.reviews || [];
+
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
       <BusinessInfo business={businessData} />
-      <BusinessReview reviews={businessData.reviews} />
+      <BusinessReview reviews={BusinessReviews} />
     </ConditionalRender>
   );
 };

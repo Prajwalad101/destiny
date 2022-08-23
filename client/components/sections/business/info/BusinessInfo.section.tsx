@@ -18,7 +18,7 @@ function BusinessInfo({ business }: BusinessInfoProps) {
     avgRating,
     rating_count,
     businessHours,
-    tags,
+    features,
     location,
     description,
   } = business;
@@ -42,7 +42,7 @@ function BusinessInfo({ business }: BusinessInfoProps) {
           />
           {/* Address */}
           <p className="mb-3 text-secondarytext">{location.address}</p>
-          <Tags tags={tags} className="mb-3 flex gap-2" />
+          <Tags tags={features} className="mb-3 flex gap-2" />
           <Description
             description={description}
             className="text-gray-700 md:h-[150px] md:overflow-y-auto"
