@@ -20,14 +20,9 @@ const RegisterBusiness: NextPageWithLayout = () => {
 
   const handleSubmit = (values: MyFormValues) => {
     const formData = dataToFormData(values);
+    console.log(JSON.stringify(values, null, 2));
 
-    // add all images to form data
-    for (const file of values.images) {
-      formData.append('image', file);
-    }
-    formData.append('price', 'medium');
-
-    mutation.mutate(formData);
+    // mutation.mutate(formData);
   };
 
   useEffect(() => {

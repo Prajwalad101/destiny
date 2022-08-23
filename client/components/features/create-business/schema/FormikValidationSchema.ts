@@ -18,4 +18,5 @@ export const validationSchema = Yup.object({
       )
     ),
   }),
+  images: Yup.array().min(2, 'Upload at least 2 images'),
 });

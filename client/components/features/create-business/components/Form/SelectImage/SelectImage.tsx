@@ -14,7 +14,7 @@ const SelectImage = ({ inputName }: SelectImageProps) => {
   const [imageFiles, setImageFiles] = useState<File[]>();
   const [images, setImages] = useState<string[]>();
 
-  const [_field, _meta, handler] = useField(inputName);
+  const [_field, meta, handler] = useField(inputName);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     // check for null value
@@ -118,6 +118,9 @@ const SelectImage = ({ inputName }: SelectImageProps) => {
           Upload
         </label>
         <p className="my-3 text-gray-500">Select up to max of 10 images</p>
+        {meta.touched && meta.error ? (
+          <p className="text-sm text-primaryred">*{meta.error}</p>
+        ) : null}
         <MemoizedImages images={images} />
       </div>
     </>
