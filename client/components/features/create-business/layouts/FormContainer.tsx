@@ -11,10 +11,13 @@ import {
   SelectSubCategory,
   SelectTime,
 } from '@features/create-business';
-import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { Form } from 'formik';
 
-function FormContainer() {
+interface FormContainerProps {
+  submitButton: JSX.Element;
+}
+
+function FormContainer({ submitButton }: FormContainerProps) {
   return (
     <div className="my-10 min-w-full font-rubik">
       <h1 className="mb-2 text-[26px] font-medium">
@@ -127,9 +130,7 @@ function FormContainer() {
         </FieldLayout>
 
         {/* Submit Button */}
-        <SecondaryButton className="mt-16 px-10 py-2" type="submit">
-          Submit
-        </SecondaryButton>
+        {submitButton}
       </Form>
     </div>
   );
