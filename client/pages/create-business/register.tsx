@@ -15,7 +15,6 @@ import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
 import { useEffect } from 'react';
-import { handleMutationError } from 'utils/logger';
 
 const RegisterBusiness: NextPageWithLayout = () => {
   const mutation = useSubmitForm();
@@ -29,9 +28,13 @@ const RegisterBusiness: NextPageWithLayout = () => {
     // router.push('submit');
   };
 
+  const stringifiedMutation = JSON.stringify(mutation);
+
   useEffect(() => {
-    handleMutationError(mutation.error);
-  }, [mutation]);
+    if (mutation.isSuccess) router.push('submit?status=success', 'submit');
+    if (mutation.isError) router.push('submit?status=error', 'submit');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stringifiedMutation]);
 
   const submitButton = (
     <SecondaryButton
@@ -43,6 +46,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
     </SecondaryButton>
   );
 
+  // change the cursor style when submitting form
   useEffect(() => {
     if (mutation.isLoading) {
       document.body.style.cursor = 'progress';
