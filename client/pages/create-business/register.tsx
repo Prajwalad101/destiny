@@ -25,7 +25,6 @@ const RegisterBusiness: NextPageWithLayout = () => {
     console.log(JSON.stringify(values, null, 2));
 
     mutation.mutate(formData);
-    // router.push('submit');
   };
 
   const stringifiedMutation = JSON.stringify(mutation);
