@@ -22,15 +22,16 @@ const RegisterBusiness: NextPageWithLayout = () => {
 
   const handleSubmit = (values: MyFormValues) => {
     const formData = dataToFormData(values);
-    console.log(JSON.stringify(values, null, 2));
-
     mutation.mutate(formData);
   };
 
   const stringifiedMutation = JSON.stringify(mutation);
 
   useEffect(() => {
-    if (mutation.isSuccess) router.push('submit?status=success', 'submit');
+    const data = mutation.data?.data.data;
+    const id = data?._id;
+    if (mutation.isSuccess)
+      router.push(`submit?status=success&id=${id}`, 'submit');
     if (mutation.isError) router.push('submit?status=error', 'submit');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stringifiedMutation]);

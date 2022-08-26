@@ -2,6 +2,7 @@ import { Navbar } from '@features/create-business';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
 import Success from 'public/create-business/animations/completed.gif';
@@ -12,7 +13,7 @@ const SubmitBusiness: NextPageWithLayout = () => {
   const { query } = router;
 
   if (query.status === 'success') {
-    return <DisplaySuccess />;
+    return <DisplaySuccess id={query.id} />;
   }
 
   if (query.status === 'error') {
@@ -22,7 +23,7 @@ const SubmitBusiness: NextPageWithLayout = () => {
   return <></>;
 };
 
-const DisplaySuccess = () => {
+const DisplaySuccess = (props: { id: string | string[] | undefined }) => {
   return (
     <div className="relative flex flex-col items-center font-rubik">
       <div className="confetti-background absolute z-10 h-full w-[700px]" />
@@ -42,8 +43,12 @@ const DisplaySuccess = () => {
         <p className="mb-5 text-center text-lg text-secondarytext">
           Now, let&apos;s have a look at your business
         </p>
-        <SecondaryButton className="z-10 py-2 px-6">
-          <p className="text-base sm:text-lg">View your listing</p>
+        <SecondaryButton className="z-10 py-2 px-10">
+          <Link href={`/search/business/${props.id}`}>
+            <a>
+              <p className="text-base sm:text-lg">View your listing</p>
+            </a>
+          </Link>
         </SecondaryButton>
       </div>
     </div>
@@ -51,6 +56,8 @@ const DisplaySuccess = () => {
 };
 
 const DisplayError = () => {
+  const router = useRouter();
+
   return (
     <div className="relative flex flex-col items-center font-rubik">
       <div className="mt-5">
@@ -72,7 +79,10 @@ const DisplayError = () => {
             If it still does not work, try contacting our support department
           </span>
         </p>
-        <SecondaryButton className="z-10 py-2 px-10">
+        <SecondaryButton
+          className="z-10 py-2 px-10"
+          onClick={() => router.back()}
+        >
           <p className="text-base sm:text-lg">Go back</p>
         </SecondaryButton>
       </div>
