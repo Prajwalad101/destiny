@@ -33,9 +33,9 @@ const getAllBusinesses = catchAsync(
 
 const createBusiness = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
-    const files = req.files as Express.Multer.File[];
+    const files = req.files as Express.Multer.File[] | undefined;
 
-    const filePaths = files.map((file) => file.path);
+    const filePaths = files?.map((file) => file.path);
 
     // add images paths to the request body
     req.body.images = filePaths;

@@ -1,20 +1,14 @@
 import express from 'express';
-import multer from 'multer';
 import businessController from '../controllers/businessController';
-import { multerUtils } from '../utils/multer/index';
+import uploadFiles from '../utils/multer/uploadFiles';
 import reviewRouter from './reviewRoutes';
 
 const router = express.Router();
 
-// parse formData
-const upload = multer({
-  storage: multerUtils.storage('./public/uploads/images/business'),
-});
-
 router
   .route('/')
   .get(businessController.getAllBusinesses)
-  .post(upload.array('image', 10), businessController.createBusiness);
+  .post(uploadFiles(), businessController.createBusiness);
 
 router
   .route('/:id')
