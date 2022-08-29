@@ -15,6 +15,7 @@ import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
 import { useEffect } from 'react';
+import { logMutationError } from 'utils/logger';
 
 const RegisterBusiness: NextPageWithLayout = () => {
   const mutation = useSubmitForm();
@@ -22,6 +23,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
 
   const handleSubmit = (values: MyFormValues) => {
     const formData = dataToFormData(values);
+
     mutation.mutate(formData);
   };
 
@@ -30,9 +32,13 @@ const RegisterBusiness: NextPageWithLayout = () => {
   useEffect(() => {
     const data = mutation.data?.data.data;
     const id = data?._id;
+
     if (mutation.isSuccess)
       router.push(`submit?status=success&id=${id}`, 'submit');
-    if (mutation.isError) router.push('submit?status=error', 'submit');
+    if (mutation.isError) {
+      logMutationError(mutation.error);
+      router.push('submit?status=error', 'submit');
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stringifiedMutation]);
 
