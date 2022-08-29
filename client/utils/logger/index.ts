@@ -1,3 +1,3 @@
-import handleMutationError from './handleMutationError';
+import logMutationError from './logMutationError';
 
-export { handleMutationError };
+export { logMutationError };
