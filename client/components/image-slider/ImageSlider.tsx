@@ -3,16 +3,29 @@ import { CSSProperties, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { classNames } from 'utils/css';
 
+// type Percentage = `${string}%`;
+
 interface ImageSliderProps {
   images: string[];
+  // imageBreakpoint: ({ [key: number]: Percentage } | { default: Percentage })[];
+  imageClassName: string;
 }
+
+// {default: 50%, 500: 33%}
+// [{default: 50%}, {500: 33%}]
 
 interface Style {
   slider: CSSProperties;
+  image: CSSProperties;
 }
 
-function ImageSlider({ images }: ImageSliderProps) {
+// Allow users to specify the number of images to display at different screen sizes
+// TODO: Get the current screen size
+// TODO: Find out which breakpoint the size falls under
+
+function ImageSlider({ images, imageClassName }: ImageSliderProps) {
   const [sliderIndex, setSliderIndex] = useState<number>(0);
+  // const windowDimensions = useWindowDimensions();
 
   const styles = calculateStyles({ sliderIndex });
 
@@ -35,8 +48,17 @@ function ImageSlider({ images }: ImageSliderProps) {
       {/* Slider */}
       <div className="flex h-full w-full scroll-smooth" style={styles.slider}>
         {images.map((image, index) => (
-          <div key={index} className="relative w-[200px] shrink-0">
-            <Image src={image} alt="image" layout="fill" objectFit="cover" />
+          <div
+            key={index}
+            className={classNames(imageClassName, 'relative shrink-0')}
+          >
+            <Image
+              src={image}
+              alt="image"
+              layout="fill"
+              objectFit="cover"
+              className="px-1"
+            />
           </div>
         ))}
       </div>
@@ -91,7 +113,12 @@ const calculateStyles = ({ sliderIndex }: CalculateStylesProps) => {
       transform: `translate(${sliderIndex * -100}%)`,
       transition: 'transform 400ms ease-in-out',
     },
+    image: {
+      paddingLeft: '5px !important',
+      paddingRight: '5px !important',
+    },
   };
+
   return style;
 };
 

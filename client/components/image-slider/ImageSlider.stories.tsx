@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof ImageSlider>;
 
 const Template: ComponentStory<typeof ImageSlider> = (args) => (
-  <div className="h-[200px] w-[600px] ">
+  <div className="h-[200px] w-full">
     <ImageSlider {...args} />
   </div>
 );
@@ -21,4 +21,6 @@ Base.args = {
     '/tempImages/image4.jpg',
     '/tempImages/image5.jpg',
   ],
+  // imageBreakpoint: [{ 500: '33%' }, { default: '50%' }],
+  imageClassName: 'w-[50%] sm:w-1/3',
 };
