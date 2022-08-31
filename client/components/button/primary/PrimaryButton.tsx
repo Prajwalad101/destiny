@@ -1,3 +1,4 @@
+import { ButtonProps as Button } from 'types/props/button/ButtonProps';
 import { classNames } from '../../../utils/css';
 
 interface PrimaryButtonProps {
@@ -6,7 +7,7 @@ interface PrimaryButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
-type ButtonProps = React.HTMLProps<HTMLButtonElement> & PrimaryButtonProps;
+type ButtonProps = Button & PrimaryButtonProps;
 
 function PrimaryButton({ children, className = '', ...props }: ButtonProps) {
   return (

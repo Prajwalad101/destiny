@@ -1,54 +1,77 @@
 import Image from 'next/image';
-import { CSSProperties, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
+import { ButtonProps } from 'types/props/button/ButtonProps';
 import { classNames } from 'utils/css';
-
-// type Percentage = `${string}%`;
+import { getVisibleChildrenCount } from 'utils/dom';
 
 interface ImageSliderProps {
   images: string[];
-  // imageBreakpoint: ({ [key: number]: Percentage } | { default: Percentage })[];
   imageClassName: string;
 }
 
-// {default: 50%, 500: 33%}
-// [{default: 50%}, {500: 33%}]
-
-interface Style {
-  slider: CSSProperties;
-  image: CSSProperties;
-}
-
-// Allow users to specify the number of images to display at different screen sizes
-// TODO: Get the current screen size
-// TODO: Find out which breakpoint the size falls under
-
 function ImageSlider({ images, imageClassName }: ImageSliderProps) {
-  const [sliderIndex, setSliderIndex] = useState<number>(0);
-  // const windowDimensions = useWindowDimensions();
+  const [sliderIndex, setSliderIndex] = useState<number>(1);
+  const [isScrollBeginning, setIsScrollBeginning] = useState<boolean>(true);
+  const [isScrollEnd, setIsScrollEnd] = useState<boolean>(false);
 
-  const styles = calculateStyles({ sliderIndex });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const childRef = useRef<HTMLDivElement>(null);
 
   const handleLeft = () => {
-    setSliderIndex((prevIndex) => {
-      // prevent index from decreasing below 1
-      if (prevIndex <= 0) return prevIndex;
-      return --prevIndex;
-    });
-    return;
+    if (isScrollBeginning) return;
+    setSliderIndex((prevIndex) => --prevIndex);
   };
 
   const handleRight = () => {
+    if (isScrollEnd) return;
     setSliderIndex((prevIndex) => ++prevIndex);
-    return;
   };
+
+  // handle button visibility state to limit scrolling
+  useEffect(() => {
+    const containerElement = containerRef.current;
+    const childElement = childRef.current;
+
+    if (!containerElement || !childElement) return;
+
+    // the number of visible children inside the scroll container
+    const numVisibleChildren = getVisibleChildrenCount(
+      containerElement,
+      childElement
+    );
+
+    if (!numVisibleChildren) return;
+
+    // prevent images from scrolling out of bounds
+    if (sliderIndex * numVisibleChildren >= images.length) {
+      setIsScrollEnd(true);
+    } else {
+      setIsScrollEnd(false);
+    }
+
+    if (sliderIndex <= 1) {
+      setIsScrollBeginning(true);
+    } else {
+      setIsScrollBeginning(false);
+    }
+  }, [sliderIndex, images]);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
       {/* Slider */}
-      <div className="flex h-full w-full scroll-smooth" style={styles.slider}>
+      <div
+        ref={containerRef}
+        // translate container based on slider index
+        style={{
+          transform: `translate(${(sliderIndex - 1) * -100}%)`,
+          transition: 'transform 400ms ease-in-out',
+        }}
+        className="flex h-full w-full scroll-smooth"
+      >
         {images.map((image, index) => (
           <div
+            ref={childRef}
             key={index}
             className={classNames(imageClassName, 'relative shrink-0')}
           >
@@ -63,13 +86,15 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
         ))}
       </div>
       {/* Slider Control Buttons */}
-      <LeftButton onClick={handleLeft} className="left-[5px]" />
-      <RightButton onClick={handleRight} className="right-[5px]" />
+      {!isScrollBeginning && (
+        <LeftButton onClick={handleLeft} className="left-[7px]" />
+      )}
+      {!isScrollEnd && (
+        <RightButton onClick={handleRight} className="right-[7px]" />
+      )}
     </div>
   );
 }
-
-type ButtonProps = React.HTMLProps<HTMLButtonElement>;
 
 function LeftButton({ onClick, className = '' }: ButtonProps) {
   return (
@@ -102,24 +127,5 @@ function RightButton({ onClick, className = '' }: ButtonProps) {
     </div>
   );
 }
-
-interface CalculateStylesProps {
-  sliderIndex: number;
-}
-
-const calculateStyles = ({ sliderIndex }: CalculateStylesProps) => {
-  const style: Style = {
-    slider: {
-      transform: `translate(${sliderIndex * -100}%)`,
-      transition: 'transform 400ms ease-in-out',
-    },
-    image: {
-      paddingLeft: '5px !important',
-      paddingRight: '5px !important',
-    },
-  };
-
-  return style;
-};
 
 export default ImageSlider;

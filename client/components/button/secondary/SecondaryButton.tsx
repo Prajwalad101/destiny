@@ -1,3 +1,4 @@
+import { ButtonProps as Button } from 'types/props/button/ButtonProps';
 import { classNames } from '../../../utils/css';
 
 interface SecondaryButtonProps {
@@ -5,7 +6,7 @@ interface SecondaryButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
-type ButtonProps = React.HTMLProps<HTMLButtonElement> & SecondaryButtonProps;
+type ButtonProps = Button & SecondaryButtonProps;
 
 function SecondaryButton({
   children,
