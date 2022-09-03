@@ -41,6 +41,7 @@ function Checkbox({
         id={filterName}
         style={{ display: 'none' }}
         onChange={(e) => handleChange(e)}
+        // eslint-disable-next-line react/no-unknown-property
         checked={selectedFilters.tags.includes(filterName)}
       />
       <label className="cbx" htmlFor={filterName}>

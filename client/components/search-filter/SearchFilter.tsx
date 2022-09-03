@@ -65,6 +65,7 @@ function SearchFilter({
                   id={filter}
                   className="w-[18px] accent-primaryred"
                   onChange={(e) => handleChange(e)}
+                  // eslint-disable-next-line react/no-unknown-property
                   checked={selectedFilters.price === filter}
                 />
                 <p className="capitalize">{filter}</p>
