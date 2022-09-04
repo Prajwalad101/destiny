@@ -18,12 +18,12 @@ const storage = (path: string) => {
     },
     filename: (_req, file, cb) => {
       const currentDate = new Date().toISOString().split('')[0];
-
+      const fileExtension = file.originalname.split('.').pop();
       //! Suffix might not be 100% unique
       const uniqueSuffix =
         currentDate + '-' + Date.now() + Math.round(Math.random() * 1e9);
 
-      cb(null, file.fieldname + '-' + uniqueSuffix);
+      cb(null, file.fieldname + '-' + uniqueSuffix + '.' + fileExtension);
     },
   });
 
