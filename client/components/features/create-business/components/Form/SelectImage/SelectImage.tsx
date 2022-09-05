@@ -1,10 +1,9 @@
 import { MyLabel, MySubLabel } from '@features/create-business';
 import { readFilesAsDataURL } from '@features/create-business/utils/api';
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
-import ImageScroll from 'components/image/scroll/ImageScroll';
+import ImageSlider from 'components/image-slider/ImageSlider';
 import { useField } from 'formik';
 import { useEffectAfterMount } from 'hooks';
-import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 
 interface SelectImageProps {
@@ -106,21 +105,8 @@ const Images = ({ images }: { images: string[] | undefined }) => {
   if (!images) return <></>;
 
   return (
-    <div className="flex w-full">
-      <ImageScroll noItems={images.length} initialItems={2} className="mb-4">
-        {images.map((image, index) => (
-          <div key={index} className="slider-img relative h-[150px] shrink-0">
-            <Image
-              src={image}
-              key={index}
-              alt="image"
-              layout="fill"
-              className="slider-next-img"
-              objectFit="cover"
-            />
-          </div>
-        ))}
-      </ImageScroll>
+    <div className="h-[150px] w-full sm:h-[180px]">
+      <ImageSlider images={images} imageClassName="w-1/2 sm:w-1/3" />
     </div>
   );
 };
