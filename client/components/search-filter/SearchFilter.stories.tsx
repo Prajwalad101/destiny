@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import SearchFilter from './SearchFilter';
 
-import searchFilterData from '../../data/searchFilter';
+import searchFilterData from 'data/searchFilter';
 
 export default {
   title: 'components/SearchFilter',

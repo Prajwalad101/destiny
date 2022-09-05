@@ -1,4 +1,4 @@
-import { classNames } from '../../../utils/css';
+import { classNames } from 'utils/css';
 
 function MainHeading({
   children,

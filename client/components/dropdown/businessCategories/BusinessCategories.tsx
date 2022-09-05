@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { IBusinessSubcategoryDropdown } from '../../../types/interfaces';
+import { IBusinessSubcategoryDropdown } from 'types/interfaces';
 
 interface BusinessCategoryDropdownProps {
   name: string;

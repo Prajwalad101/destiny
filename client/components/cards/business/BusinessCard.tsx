@@ -1,11 +1,11 @@
 import { IBusiness, IReview } from '@destiny/types';
+import RatingIcons from 'components/icons/ratings/RatingIcons';
+import ImageScroll from 'components/image/scroll/ImageScroll';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { checkIsOpen } from 'utils/api';
 import { getPublicFilePath } from 'utils/text';
-import { checkIsOpen } from '../../../utils/api';
-import RatingIcons from '../../icons/ratings/RatingIcons';
-import ImageScroll from '../../image/scroll/ImageScroll';
 
 export interface IBusinessCard {
   business: IBusiness;

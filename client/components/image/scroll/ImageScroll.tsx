@@ -1,7 +1,7 @@
+import useIsomorphicLayoutEffect from 'hooks/useIsomorphicLayoutEffect';
 import { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import useIsomorphicLayoutEffect from '../../../hooks/useIsomorphicLayoutEffect';
-import { classNames, getCalculatedValue } from '../../../utils/css';
+import { classNames, getCalculatedValue } from 'utils/css';
 
 interface ImageScrollProps {
   noItems: number;

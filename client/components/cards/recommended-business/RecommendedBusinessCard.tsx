@@ -1,5 +1,5 @@
+import RatingIcons from 'components/icons/ratings/RatingIcons';
 import Image from 'next/image';
-import RatingIcons from '../../icons/ratings/RatingIcons';
 
 export interface IRecommendBusinessCard {
   name: string;

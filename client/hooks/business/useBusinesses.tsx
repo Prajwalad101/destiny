@@ -1,7 +1,7 @@
 import { IBusiness } from '@destiny/types';
 import { useQuery } from 'react-query';
-import { ISelectedFilters } from '../../types/interfaces';
-import { buildBusinessQuery } from '../../utils/text';
+import { ISelectedFilters } from 'types/interfaces';
+import { buildBusinessQuery } from 'utils/text';
 
 export interface Data {
   status: string;

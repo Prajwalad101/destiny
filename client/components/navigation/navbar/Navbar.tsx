@@ -1,14 +1,14 @@
+import PrimaryButton from 'components/button/primary/PrimaryButton';
+import SecondaryButton from 'components/button/secondary/SecondaryButton';
+import AppLayout from 'components/layout/app/AppLayout';
+import Logo from 'components/logo/Logo';
+import { useSidebar } from 'context/navigation.context';
 import { navLinkData } from 'data';
+import usePreventBodyOverflow from 'hooks/usePreventBodyOverflow';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
-import { useSidebar } from '../../../context/navigation.context';
-import usePreventBodyOverflow from '../../../hooks/usePreventBodyOverflow';
-import { classNames } from '../../../utils/css';
-import PrimaryButton from '../../button/primary/PrimaryButton';
-import SecondaryButton from '../../button/secondary/SecondaryButton';
-import AppLayout from '../../layout/app/AppLayout';
-import Logo from '../../logo/Logo';
+import { classNames } from 'utils/css';
 
 interface INavbar {
   theme: 'light' | 'dark';

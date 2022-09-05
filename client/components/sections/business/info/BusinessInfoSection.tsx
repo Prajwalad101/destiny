@@ -1,10 +1,10 @@
 import { IBusiness } from '@destiny/types';
+import RatingIcons from 'components/icons/ratings/RatingIcons';
+import ImageScroll from 'components/image/scroll/ImageScroll';
 import Image from 'next/image';
 import { useState } from 'react';
-import { checkIsOpen } from '../../../../utils/api';
-import { getPublicFilePath, truncateText } from '../../../../utils/text';
-import RatingIcons from '../../../icons/ratings/RatingIcons';
-import ImageScroll from '../../../image/scroll/ImageScroll';
+import { checkIsOpen } from 'utils/api';
+import { getPublicFilePath, truncateText } from 'utils/text';
 
 interface BusinessInfoSectionProps {
   business: IBusiness;

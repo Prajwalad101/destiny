@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { IBusinessSubcategoryDropdown } from '../../../types/interfaces';
-import { classNames } from '../../../utils/css';
+import { IBusinessSubcategoryDropdown } from 'types/interfaces';
+import { classNames } from 'utils/css';
 
 interface BusinessCategoriesMobileProps {
   topic: string;

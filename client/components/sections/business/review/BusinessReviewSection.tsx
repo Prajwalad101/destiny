@@ -1,10 +1,10 @@
 import { IReview } from '@destiny/types';
+import RatingIcons from 'components/icons/ratings/RatingIcons';
+import ImageScroll from 'components/image/scroll/ImageScroll';
 import Image from 'next/image';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
+import { getRelativeDate } from 'utils/date';
 import { getPublicFilePath } from 'utils/text';
-import { getRelativeDate } from '../../../../utils/date';
-import RatingIcons from '../../../icons/ratings/RatingIcons';
-import ImageScroll from '../../../image/scroll/ImageScroll';
 
 const images = [
   'https://dummyimage.com/300.png/09f/fff&text=1',

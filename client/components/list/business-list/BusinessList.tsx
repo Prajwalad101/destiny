@@ -1,8 +1,8 @@
 import { IBusiness } from '@destiny/types';
+import BusinessCard from 'components/cards/business/BusinessCard';
+import useBusinesses from 'hooks/business/useBusinesses';
 import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react';
-import useBusinesses from '../../../hooks/business/useBusinesses';
-import { ISelectedFilters } from '../../../types/interfaces';
-import BusinessCard from '../../cards/business/BusinessCard';
+import { ISelectedFilters } from 'types/interfaces';
 
 interface BusinessListProps {
   sortField: string;

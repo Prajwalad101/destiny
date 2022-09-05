@@ -1,6 +1,6 @@
+import { ISortItem } from 'data/sortItem';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
-import { ISortItem } from '../../data/sortItem';
 
 export interface ISortItems {
   sortItemData: ISortItem[];

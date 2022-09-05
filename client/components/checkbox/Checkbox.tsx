@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { ISelectedFilters } from '../../types/interfaces';
+import { ISelectedFilters } from 'types/interfaces';
 
 interface CheckboxProps {
   filterName: string;

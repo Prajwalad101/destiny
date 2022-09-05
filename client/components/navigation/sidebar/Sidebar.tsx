@@ -1,12 +1,12 @@
+import BusinessCategoriesMobile from 'components/dropdown/explore-topic-mobile/BusinessCategoriesMobile';
+import { useSidebar } from 'context/navigation.context';
 import { navLinkData } from 'data';
+import businessCategories from 'data/business/categoriesData';
 import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
-import { useSidebar } from '../../../context/navigation.context';
-import businessCategories from '../../../data/business/categoriesData';
-import { classNames } from '../../../utils/css';
-import BusinessCategoriesMobile from '../../dropdown/explore-topic-mobile/BusinessCategoriesMobile';
+import { classNames } from 'utils/css';
 
 function Sidebar() {
   const { open, setOpen } = useSidebar();

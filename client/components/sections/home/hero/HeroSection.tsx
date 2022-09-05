@@ -1,9 +1,9 @@
-import businessCategories from '../../../../data/business/categoriesData';
-import BusinessCategoryDropdown from '../../../dropdown/businessCategories/BusinessCategories';
-import AppLayout from '../../../layout/app/AppLayout';
-import Navbar from '../../../navigation/navbar/Navbar';
-import Searchbar from '../../../search-bar/Searchbar';
-import MainHeading from '../../../text/main-heading/MainHeading';
+import BusinessCategoryDropdown from 'components/dropdown/businessCategories/BusinessCategories';
+import AppLayout from 'components/layout/app/AppLayout';
+import Navbar from 'components/navigation/navbar/Navbar';
+import Searchbar from 'components/search-bar/Searchbar';
+import MainHeading from 'components/text/main-heading/MainHeading';
+import businessCategories from 'data/business/categoriesData';
 
 function HeroSection() {
   return (
