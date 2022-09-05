@@ -6,7 +6,7 @@ export function buildBusinessQuery(
   fields: string[]
 ) {
   let priceQuery = '',
-    tagsQuery = '';
+    featuresQuery = '';
 
   const sortQuery = `sort=${sortField}`; // sortField is always defined
 
@@ -14,15 +14,15 @@ export function buildBusinessQuery(
     priceQuery = `&price=${filters.price}`;
   }
 
-  if (filters.tags.length !== 0) {
-    const tags = filters.tags.join(',');
-    tagsQuery = `&tags=${tags}`;
+  if (filters.features.length !== 0) {
+    const features = filters.features.join(',');
+    featuresQuery = `&features=${features}`;
   }
 
   const fieldsQuery = '&fields=' + fields.join(',');
 
-  // sort=-avgRating&price=cheap&tags=delivery,events
-  const apiQuery = ''.concat(sortQuery, priceQuery, tagsQuery, fieldsQuery);
+  // sort=-avgRating&price=cheap&features=delivery,events
+  const apiQuery = ''.concat(sortQuery, priceQuery, featuresQuery, fieldsQuery);
 
   return apiQuery;
 }

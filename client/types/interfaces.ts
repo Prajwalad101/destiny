@@ -1,5 +1,5 @@
 export interface ISelectedFilters {
-  tags: string[];
+  features: string[];
   price: string | null;
 }
 

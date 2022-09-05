@@ -12,22 +12,24 @@ function Checkbox({
   selectedFilters,
   setSelectedFilters,
 }: CheckboxProps) {
+  const { features } = selectedFilters;
+
   // when checkbox is clicked
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked, id: filterName } = e.target;
 
     // on check
-    if (checked && !selectedFilters.tags.includes(filterName)) {
-      selectedFilters.tags.push(filterName);
+    if (checked && !features.includes(filterName)) {
+      features.push(filterName);
       setSelectedFilters({ ...selectedFilters });
     }
 
     // on uncheck
     if (!checked) {
-      const index = selectedFilters.tags.indexOf(filterName);
+      const index = features.indexOf(filterName);
       if (index > -1) {
         // only remove if element is found
-        selectedFilters.tags.splice(index, 1);
+        features.splice(index, 1);
       }
       setSelectedFilters({ ...selectedFilters });
     }
@@ -42,7 +44,7 @@ function Checkbox({
         style={{ display: 'none' }}
         onChange={(e) => handleChange(e)}
         // eslint-disable-next-line react/no-unknown-property
-        checked={selectedFilters.tags.includes(filterName)}
+        checked={features.includes(filterName)}
       />
       <label className="cbx" htmlFor={filterName}>
         <span>

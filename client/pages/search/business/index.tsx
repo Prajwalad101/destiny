@@ -18,7 +18,7 @@ const SearchBusiness: NextPageWithLayout = () => {
   const [isFilter, setIsFilter] = useState(true);
   const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
   const [selectedFilters, setSelectedFilters] = useState<ISelectedFilters>({
-    tags: [],
+    features: [],
     price: null,
   });
 
@@ -29,6 +29,8 @@ const SearchBusiness: NextPageWithLayout = () => {
   useEffect(() => {
     setIsFilter(false);
   }, [businessResult, setIsFilter]);
+
+  console.log(selectedFilters);
 
   const filterComponent = (
     <SearchFilter
@@ -62,7 +64,7 @@ export async function getServerSideProps() {
   // to sort the initial query by the first item in the data
   // ** when updating initialData make sure to update on useBusinesses also
   const initialSortField = sortItemData[0].sortField;
-  const initialFilters = { tags: [], price: null };
+  const initialFilters = { features: [], price: null };
   const initialFields = ['-description', '-price', '-tags', '-total_rating'];
 
   await queryClient.prefetchQuery(
