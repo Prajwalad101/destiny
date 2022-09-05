@@ -30,8 +30,6 @@ const SearchBusiness: NextPageWithLayout = () => {
     setIsFilter(false);
   }, [businessResult, setIsFilter]);
 
-  console.log(selectedFilters);
-
   const filterComponent = (
     <SearchFilter
       filterOption={searchFilterData.resturants}
