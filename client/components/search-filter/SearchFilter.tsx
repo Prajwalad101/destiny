@@ -96,8 +96,9 @@ function SearchFilter({
           />
         </div>
         <div className="mb-5 flex flex-col">
-          <PrimaryButton onClick={() => setIsFilter(true)}>
-            <p className="py-[1px]">Filter</p>
+          <PrimaryButton className="py-2" onClick={() => setIsFilter(true)}>
+            {/* <p className="py-[2px]">Filter</p> */}
+            Filter
           </PrimaryButton>
         </div>
       </div>
