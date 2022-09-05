@@ -1,5 +1,5 @@
 import { MyLabel, MySubLabel } from '@features/create-business';
-import readFilesAsDataURL from '@features/create-business/utils/api/readFilesAsDataURL';
+import { readFilesAsDataURL } from '@features/create-business/utils/api';
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
 import ImageScroll from 'components/image/scroll/ImageScroll';
 import { useField } from 'formik';

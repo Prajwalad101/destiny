@@ -2,6 +2,7 @@ import { IBusiness, IReview } from '@destiny/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { getPublicFilePath } from 'utils/text';
 import { checkIsOpen } from '../../../utils/api';
 import RatingIcons from '../../icons/ratings/RatingIcons';
 import ImageScroll from '../../image/scroll/ImageScroll';
@@ -24,7 +25,7 @@ function BusinessCard({ business }: IBusinessCard) {
               <Link href={`/search/business/${business._id}`}>
                 <a>
                   <Image
-                    src={image}
+                    src={getPublicFilePath(image)}
                     alt="business-image"
                     layout="fill"
                     objectFit="cover"

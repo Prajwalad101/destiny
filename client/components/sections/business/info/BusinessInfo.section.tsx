@@ -2,7 +2,7 @@ import { IBusiness } from '@destiny/types';
 import Image from 'next/image';
 import { useState } from 'react';
 import { checkIsOpen } from '../../../../utils/api';
-import { truncateText } from '../../../../utils/text';
+import { getPublicFilePath, truncateText } from '../../../../utils/text';
 import RatingIcons from '../../../icons/ratings/RatingIcons';
 import ImageScroll from '../../../image/scroll/ImageScroll';
 
@@ -28,7 +28,12 @@ function BusinessInfo({ business }: BusinessInfoProps) {
       <div className="mb-7 flex flex-col gap-5 md:flex-row">
         {/* Cover Image */}
         <div className="relative h-[250px] w-full shrink-0 sm:h-[300px] md:w-[300px] lg:w-[450px]">
-          <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
+          <Image
+            alt={name}
+            src={getPublicFilePath(images[0])}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div>
           {/* Business Name */}
@@ -53,7 +58,7 @@ function BusinessInfo({ business }: BusinessInfoProps) {
         {images.map((image, index) => (
           <div key={index} className="slider-img relative h-[150px] shrink-0">
             <Image
-              src={image}
+              src={getPublicFilePath(image)}
               key={index}
               alt="image"
               layout="fill"

@@ -1,6 +1,7 @@
 import { IReview } from '@destiny/types';
 import Image from 'next/image';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
+import { getPublicFilePath } from 'utils/text';
 import { getRelativeDate } from '../../../../utils/date';
 import RatingIcons from '../../../icons/ratings/RatingIcons';
 import ImageScroll from '../../../image/scroll/ImageScroll';
@@ -69,7 +70,7 @@ function BusinessReview({ reviews }: { reviews: IReview[] }) {
                   className="slider-img relative h-[150px] shrink-0"
                 >
                   <Image
-                    src={image}
+                    src={getPublicFilePath(image)}
                     key={index}
                     alt="image"
                     layout="fill"
