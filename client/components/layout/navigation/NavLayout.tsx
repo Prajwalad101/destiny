@@ -1,6 +1,6 @@
-import { NavigationProvider } from '../../../context/navigation.context';
-import Navbar from '../../navigation/navbar/Navbar';
-import Sidebar from '../../navigation/sidebar/Sidebar';
+import Navbar from 'components/navigation/navbar/Navbar';
+import Sidebar from 'components/navigation/sidebar/Sidebar';
+import { NavigationProvider } from 'context/navigation.context';
 
 interface INavLayout {
   children: React.ReactNode;

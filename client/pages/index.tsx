@@ -1,18 +1,18 @@
 import BusinessCard from '../components/cards/recommended-business/RecommendedBusinessCard';
 import { mockRecommendBusinessCardProps } from '../components/cards/recommended-business/RecommendedBusinessCard.mocks';
 import Sidebar from '../components/navigation/sidebar/Sidebar';
-import HomeHero from '../components/sections/home/hero/HomeHero.section';
-import Recommended from '../components/sections/home/recommended/Recommend.section';
+import HeroSection from '../components/sections/home/hero/HeroSection';
+import RecommendedSection from '../components/sections/home/recommended/RecommendSection';
 import { NavigationProvider } from '../context/navigation.context';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
   return (
     <div>
-      <HomeHero />
+      <HeroSection />
       <div>
         {/* Recommended Businesses */}
-        <Recommended
+        <RecommendedSection
           title="Trending right now"
           description="Take a look at some of the hottest places to explore"
         >
@@ -21,9 +21,9 @@ const Home: NextPageWithLayout = () => {
           <BusinessCard {...mockRecommendBusinessCardProps.card3} />
           <BusinessCard {...mockRecommendBusinessCardProps.card3} />
           <BusinessCard {...mockRecommendBusinessCardProps.card3} />
-        </Recommended>
+        </RecommendedSection>
 
-        <Recommended
+        <RecommendedSection
           title="Near to you"
           description="Explore local businesses near to your location"
         >
@@ -32,7 +32,7 @@ const Home: NextPageWithLayout = () => {
           <BusinessCard {...mockRecommendBusinessCardProps.card3} />
           <BusinessCard {...mockRecommendBusinessCardProps.card3} />
           <BusinessCard {...mockRecommendBusinessCardProps.card3} />
-        </Recommended>
+        </RecommendedSection>
       </div>
     </div>
   );

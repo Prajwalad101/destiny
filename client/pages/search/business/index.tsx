@@ -1,18 +1,18 @@
+import {
+  AppLayout,
+  NavLayout,
+  ProviderLayout,
+  SearchBusinessLayout,
+} from 'components/layout';
+import SearchFilter from 'components/search-filter/SearchFilter';
+import SortItems from 'components/sort/SortItems';
+import { searchFilterData, sortItemData } from 'data';
+import { useBusinesses } from 'hooks';
+import { fetchBusinesses } from 'hooks/business/useBusinesses';
+import { NextPageWithLayout } from 'pages/_app';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
-import AppLayout from '../../../components/layout/app/AppLayout';
-import NavLayout from '../../../components/layout/navigation/NavLayout';
-import SearchBusinessLayout from '../../../components/layout/pages/search-business/SearchBusinessLayout';
-import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
-import SearchFilter from '../../../components/search-filter/SearchFilter';
-import SortItems from '../../../components/sort/SortItems';
-import searchFilterData from '../../../data/searchFilter';
-import { sortItemData } from '../../../data/sortItem';
-import useBusinesses, {
-  fetchBusinesses,
-} from '../../../hooks/business/useBusinesses';
-import { ISelectedFilters } from '../../../types/interfaces';
-import { NextPageWithLayout } from '../../_app';
+import { ISelectedFilters } from 'types/interfaces';
 
 const SearchBusiness: NextPageWithLayout = () => {
   const [isFilter, setIsFilter] = useState(true);

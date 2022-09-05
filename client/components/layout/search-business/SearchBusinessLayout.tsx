@@ -1,11 +1,11 @@
 import { IBusiness } from '@destiny/types';
+import BusinessCard from 'components/cards/business/BusinessCard';
+import ConditionalRender from 'components/conditional-render/ConditionalRender';
+import { Data } from 'hooks/business/useBusinesses';
+import useIsomorphicLayoutEffect from 'hooks/useIsomorphicLayoutEffect';
 import { useRouter } from 'next/router';
 import { memo, useState } from 'react';
 import { UseQueryResult } from 'react-query';
-import { Data } from '../../../../hooks/business/useBusinesses';
-import useIsomorphicLayoutEffect from '../../../../hooks/useIsomorphicLayoutEffect';
-import BusinessCard from '../../../cards/business/BusinessCard';
-import ConditionalRender from '../../../conditional-render/ConditionalRender';
 
 interface SearchBusinessLayoutProps {
   filterComponent: JSX.Element;

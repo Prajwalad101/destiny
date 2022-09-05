@@ -1,15 +1,11 @@
+import ConditionalRender from 'components/conditional-render/ConditionalRender';
+import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
+import BusinessInfoSection from 'components/sections/business/info/BusinessInfoSection';
+import BusinessReviewSection from 'components/sections/business/review/BusinessReviewSection';
+import useBusiness, { fetchBusiness } from 'hooks/business/useBusiness';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
-import ConditionalRender from '../../../components/conditional-render/ConditionalRender';
-import AppLayout from '../../../components/layout/app/AppLayout';
-import NavLayout from '../../../components/layout/navigation/NavLayout';
-import ProviderLayout from '../../../components/layout/provider/ProviderLayout.';
-import BusinessInfo from '../../../components/sections/business/info/BusinessInfo.section';
-import BusinessReview from '../../../components/sections/business/review/BusinessReview.section';
-import useBusiness, {
-  fetchBusiness,
-} from '../../../hooks/business/useBusiness';
 import { NextPageWithLayout } from '../../_app';
 
 const Business: NextPageWithLayout = () => {
@@ -29,8 +25,8 @@ const Business: NextPageWithLayout = () => {
 
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
-      <BusinessInfo business={businessData} />
-      <BusinessReview reviews={BusinessReviews} />
+      <BusinessInfoSection business={businessData} />
+      <BusinessReviewSection reviews={BusinessReviews} />
     </ConditionalRender>
   );
 };

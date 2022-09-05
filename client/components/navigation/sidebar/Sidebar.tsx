@@ -1,10 +1,10 @@
+import { navLinkData } from 'data';
 import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from '../../../context/navigation.context';
 import businessCategories from '../../../data/business/categoriesData';
-import { navLinks } from '../../../data/navLinks';
 import { classNames } from '../../../utils/css';
 import BusinessCategoriesMobile from '../../dropdown/explore-topic-mobile/BusinessCategoriesMobile';
 
@@ -41,7 +41,7 @@ function Sidebar() {
       </div>
 
       <div className="mb-5">
-        <Link href={navLinks.writeReview}>
+        <Link href={navLinkData.writeReview}>
           <a>
             <p
               className="mb-3 w-max cursor-pointer underline underline-offset-2 hover:text-gray-600"
@@ -51,7 +51,7 @@ function Sidebar() {
             </p>
           </a>
         </Link>
-        <Link href={navLinks.forBusiness}>
+        <Link href={navLinkData.forBusiness}>
           <a>
             <p
               className="w-max cursor-pointer underline underline-offset-2 hover:text-gray-600"

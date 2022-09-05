@@ -18,7 +18,7 @@ const images = [
   'https://dummyimage.com/300.png/09f/fff&text=9',
 ];
 
-function BusinessReview({ reviews }: { reviews: IReview[] }) {
+function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
   // ! Temporary Fix
   const userProfileImg =
     'https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
@@ -110,4 +110,4 @@ function Feedback({ likes }: { likes: number | undefined }) {
   );
 }
 
-export default BusinessReview;
+export default BusinessReviewSection;

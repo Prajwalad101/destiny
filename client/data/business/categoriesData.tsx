@@ -28,7 +28,7 @@ const {
   outdoorDining,
 } = businessFeatures;
 
-const businessCategories: IBusinessCategoryDropdown[] = [
+const businessCategoriesData: IBusinessCategoryDropdown[] = [
   {
     name: 'food and drinks',
     subCategories: [
@@ -148,4 +148,4 @@ const businessCategories: IBusinessCategoryDropdown[] = [
   },
 ];
 
-export default businessCategories;
+export default businessCategoriesData;

@@ -5,7 +5,7 @@ import Navbar from '../../../navigation/navbar/Navbar';
 import Searchbar from '../../../search-bar/Searchbar';
 import MainHeading from '../../../text/main-heading/MainHeading';
 
-function HomeHero() {
+function HeroSection() {
   return (
     <div className="relative mb-10 md:mb-0 md:h-[700px]">
       {/* BACKGROUND IMAGE */}
@@ -44,4 +44,4 @@ function HomeHero() {
   );
 }
 
-export default HomeHero;
+export default HeroSection;

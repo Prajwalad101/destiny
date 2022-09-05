@@ -1,4 +1,4 @@
-import { navLinks } from 'data/navLinks';
+import { navLinkData } from 'data';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
@@ -49,12 +49,12 @@ function Navbar({ theme }: INavbar) {
           {/* BUSINESS LINKS */}
           <div className="flex items-center gap-7 lg:gap-10">
             <div className="underline-offset-4 hover:underline">
-              <Link href={navLinks.forBusiness}>
+              <Link href={navLinkData.forBusiness}>
                 <a>For Businesses</a>
               </Link>
             </div>
             <div className="underline-offset-4 hover:underline">
-              <Link href={navLinks.writeReview}>
+              <Link href={navLinkData.writeReview}>
                 <a>Write a review</a>
               </Link>
             </div>

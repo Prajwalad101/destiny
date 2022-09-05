@@ -6,11 +6,11 @@ import { getPublicFilePath, truncateText } from '../../../../utils/text';
 import RatingIcons from '../../../icons/ratings/RatingIcons';
 import ImageScroll from '../../../image/scroll/ImageScroll';
 
-interface BusinessInfoProps {
+interface BusinessInfoSectionProps {
   business: IBusiness;
 }
 
-function BusinessInfo({ business }: BusinessInfoProps) {
+function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
   // Destructuring business properties
   const {
     name,
@@ -74,7 +74,7 @@ function BusinessInfo({ business }: BusinessInfoProps) {
   );
 }
 
-export default BusinessInfo;
+export default BusinessInfoSection;
 
 interface BasicInfoProps {
   avgRating: number;
