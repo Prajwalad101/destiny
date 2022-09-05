@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { ButtonProps } from 'types/props/button/ButtonProps';
 import { classNames } from 'utils/css';
@@ -69,7 +69,12 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
         }}
         className="flex h-full w-full scroll-smooth"
       >
-        {images.map((image, index) => (
+        <MemoizedImages
+          images={images}
+          imageClassName={imageClassName}
+          ref={childRef}
+        />
+        {/* {images.map((image, index) => (
           <div
             ref={childRef}
             key={index}
@@ -83,7 +88,7 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
               className="px-1"
             />
           </div>
-        ))}
+        ))} */}
       </div>
       {/* Slider Control Buttons */}
       {!isScrollBeginning && (
@@ -102,6 +107,7 @@ function LeftButton({ onClick, className = '' }: ButtonProps) {
       className={classNames(className, 'absolute top-[50%] translate-y-[-50%]')}
     >
       <button
+        type="button"
         onClick={onClick}
         className={
           'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
@@ -119,6 +125,7 @@ function RightButton({ onClick, className = '' }: ButtonProps) {
       className={classNames(className, 'absolute top-[50%] translate-y-[-50%]')}
     >
       <button
+        type="button"
         onClick={onClick}
         className="z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white"
       >
@@ -127,5 +134,61 @@ function RightButton({ onClick, className = '' }: ButtonProps) {
     </div>
   );
 }
+
+interface ImagesProps {
+  images: string[];
+  imageClassName: string;
+}
+
+const Images = React.forwardRef(
+  (
+    { images, imageClassName }: ImagesProps,
+    ref: React.ForwardedRef<HTMLDivElement>
+  ) => (
+    <>
+      {images.map((image, index) => (
+        <div
+          ref={ref}
+          key={index}
+          className={classNames(imageClassName, 'relative shrink-0')}
+        >
+          <Image
+            src={image}
+            alt="image"
+            layout="fill"
+            objectFit="cover"
+            className="px-1"
+          />
+        </div>
+      ))}
+    </>
+  )
+);
+
+Images.displayName = 'Images';
+
+const MemoizedImages = React.memo(Images);
+
+// function Images({ images, imageClassName, childRef }: { images: string[] }) {
+//   return (
+//     <>
+//       {images.map((image, index) => (
+//         <div
+//           ref={childRef}
+//           key={index}
+//           className={classNames(imageClassName, 'relative shrink-0')}
+//         >
+//           <Image
+//             src={image}
+//             alt="image"
+//             layout="fill"
+//             objectFit="cover"
+//             className="px-1"
+//           />
+//         </div>
+//       ))}
+//     </>
+//   );
+// }
 
 export default ImageSlider;
