@@ -22,16 +22,12 @@ function BusinessCard({ business }: IBusinessCard) {
         >
           {business.images.map((image, index) => (
             <div key={index} className="relative h-[200px] w-full shrink-0">
-              <Link href={`/search/business/${business._id}`}>
-                <a>
-                  <Image
-                    src={getPublicFilePath(image)}
-                    alt="business-image"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </a>
-              </Link>
+              <Image
+                src={getPublicFilePath(image)}
+                alt="business-image"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
           ))}
         </ImageScroll>

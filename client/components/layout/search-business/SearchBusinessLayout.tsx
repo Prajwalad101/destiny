@@ -30,9 +30,8 @@ function SearchBusinessLayout({
     }
   }, [businessResult]);
 
-  if (businessData === undefined) {
-    return null;
-  }
+  // only render layout if businessData exists
+  if (businessData === undefined) return null;
 
   const { isLoading, isError } = businessResult;
 
