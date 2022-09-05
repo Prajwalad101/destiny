@@ -26,6 +26,7 @@ const SubmitBusiness: NextPageWithLayout = () => {
 const DisplaySuccess = (props: { id: string | string[] | undefined }) => {
   return (
     <div className="relative flex flex-col items-center font-rubik">
+      {/* <Image src={Confetti} alt="" /> */}
       <div className="confetti-background absolute z-10 h-full w-[700px]" />
       <div className="mt-5">
         <Image
@@ -34,6 +35,7 @@ const DisplaySuccess = (props: { id: string | string[] | undefined }) => {
           width={300}
           height={300}
           className="pt-10"
+          objectFit="cover"
         />
       </div>
       <div className="z-10 flex flex-col items-center">

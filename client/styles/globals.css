@@ -10,6 +10,7 @@
 
 @import 'checkbox.css';
 @import 'slider.css';
+@import '../components/features/create-business/styles/submit.css';
 
 html,
 body {
