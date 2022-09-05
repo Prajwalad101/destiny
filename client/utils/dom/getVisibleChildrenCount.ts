@@ -14,7 +14,7 @@ function getVisibleChildrenCount(
   const parentContainerWidth = parentElement.clientWidth;
   const childWidth = childElement.offsetWidth;
 
-  const childCount = Math.ceil(parentContainerWidth / childWidth);
+  const childCount = Math.round(parentContainerWidth / childWidth);
   return childCount;
 }
 
