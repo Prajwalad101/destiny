@@ -47,7 +47,7 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
           />
           {/* Address */}
           <p className="mb-3 text-secondarytext">{location.address}</p>
-          <Tags tags={features} className="mb-3 flex gap-2" />
+          <Feature features={features} className="mb-3 flex gap-2" />
           <Description
             description={description}
             className="text-gray-700 md:h-[150px] md:overflow-y-auto"
@@ -99,19 +99,23 @@ function BasicInfo({
   );
 }
 
-interface TagsProps {
-  tags: string[];
+interface FeatureProps {
+  features: string[];
   className?: string;
 }
-function Tags({ tags, className = '' }: TagsProps) {
+function Feature({ features, className = '' }: FeatureProps) {
   return (
     <div className={className}>
-      <div className="w-max cursor-pointer rounded-sm bg-gray-200 px-3 py-[2px] hover:bg-gray-300">
-        <span className="text-sm capitalize text-secondarytext">{tags[0]}</span>
-      </div>
-      <div className="w-max cursor-pointer rounded-sm bg-gray-200 px-3 py-[2px] hover:bg-gray-300">
-        <span className="text-sm capitalize text-secondarytext">{tags[1]}</span>
-      </div>
+      {features.map((feature, index) => (
+        <div
+          key={index}
+          className="w-max cursor-pointer rounded-sm bg-gray-200 px-3 py-[2px] hover:bg-gray-300"
+        >
+          <span className="text-sm capitalize text-secondarytext">
+            {feature}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
