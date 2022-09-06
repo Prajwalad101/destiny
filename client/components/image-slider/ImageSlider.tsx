@@ -9,9 +9,20 @@ import { getVisibleChildrenCount } from 'utils/dom';
 interface ImageSliderProps {
   images: string[];
   imageClassName: string;
+  single: boolean;
 }
 
-function ImageSlider({ images, imageClassName }: ImageSliderProps) {
+interface ImagesProps {
+  images: string[];
+  imageClassName: string;
+  single?: boolean;
+}
+
+function ImageSlider({
+  images,
+  imageClassName,
+  single = false,
+}: ImageSliderProps) {
   const [sliderIndex, setSliderIndex] = useState<number>(1);
   const [isScrollBeginning, setIsScrollBeginning] = useState<boolean>(true);
   const [isScrollEnd, setIsScrollEnd] = useState<boolean>(false);
@@ -77,6 +88,7 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
           images={images}
           imageClassName={imageClassName}
           ref={childRef}
+          single={single}
         />
       </div>
       {/* Slider Control Buttons */}
@@ -124,14 +136,9 @@ function RightButton({ onClick, className = '' }: ButtonProps) {
   );
 }
 
-interface ImagesProps {
-  images: string[];
-  imageClassName: string;
-}
-
 const Images = React.forwardRef(
   (
-    { images, imageClassName }: ImagesProps,
+    { images, imageClassName, single }: ImagesProps,
     ref: React.ForwardedRef<HTMLDivElement>
   ) => (
     <>
@@ -146,7 +153,7 @@ const Images = React.forwardRef(
             alt="image"
             layout="fill"
             objectFit="cover"
-            className="px-1"
+            className={!single ? 'px-1' : ''}
           />
         </div>
       ))}
