@@ -1,3 +1,4 @@
+import { useWindowSize } from 'hooks';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
@@ -28,6 +29,9 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
     setSliderIndex((prevIndex) => ++prevIndex);
   };
 
+  // run useEffect on window resize
+  const { width } = useWindowSize();
+
   // handle button visibility state to limit scrolling
   useEffect(() => {
     const containerElement = containerRef.current;
@@ -55,7 +59,7 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
     } else {
       setIsScrollBeginning(false);
     }
-  }, [sliderIndex, images]);
+  }, [sliderIndex, images, width]);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -74,21 +78,6 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
           imageClassName={imageClassName}
           ref={childRef}
         />
-        {/* {images.map((image, index) => (
-          <div
-            ref={childRef}
-            key={index}
-            className={classNames(imageClassName, 'relative shrink-0')}
-          >
-            <Image
-              src={image}
-              alt="image"
-              layout="fill"
-              objectFit="cover"
-              className="px-1"
-            />
-          </div>
-        ))} */}
       </div>
       {/* Slider Control Buttons */}
       {!isScrollBeginning && (
@@ -168,27 +157,5 @@ const Images = React.forwardRef(
 Images.displayName = 'Images';
 
 const MemoizedImages = React.memo(Images);
-
-// function Images({ images, imageClassName, childRef }: { images: string[] }) {
-//   return (
-//     <>
-//       {images.map((image, index) => (
-//         <div
-//           ref={childRef}
-//           key={index}
-//           className={classNames(imageClassName, 'relative shrink-0')}
-//         >
-//           <Image
-//             src={image}
-//             alt="image"
-//             layout="fill"
-//             objectFit="cover"
-//             className="px-1"
-//           />
-//         </div>
-//       ))}
-//     </>
-//   );
-// }
 
 export default ImageSlider;
