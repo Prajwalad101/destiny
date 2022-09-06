@@ -34,9 +34,7 @@ export function buildBusinessQuery(
  * @example
  * truncateText('hello world', 1);  // returns hello
  */
-export function truncateText(text: string, length: number, readMore: boolean) {
-  if (readMore) return text;
-
+export function truncateText(text: string, length: number) {
   const formattedText = text.split(' ').slice(0, length).join(' ') + '...';
   return formattedText;
 }

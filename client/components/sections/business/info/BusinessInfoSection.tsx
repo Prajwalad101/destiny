@@ -109,30 +109,30 @@ interface DescriptionProps {
   description: string;
   className?: string;
 }
-function Description({
-  description: _description,
-  className = '',
-}: DescriptionProps) {
+function Description({ description, className = '' }: DescriptionProps) {
+  // state of the readMore button
   const [readMore, setReadMore] = useState(false);
+  const wordLimit = 40;
+  let text;
+
+  // if readMore button is clicked or description is less than limit, return original text
+  if (readMore || description.length < wordLimit) {
+    text = description;
+  } else {
+    text = truncateText(description, wordLimit);
+  }
 
   return (
     <div className={className}>
-      <span className="leading-[26px]">
-        {truncateText(
-          ' Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio laborum molestiae laboriosam illo adipisci asperiores cum nostrum, dolore debitis atque, ad porro est ipsam consectetur delectus fuga, ratione aut inventore natus possimus. Iste dolorem totam cupiditate quisquam repudiandae accusantium dignissimos unde inventore sit, asperiores laboriosam ea voluptatum voluptatibus, culpa dolorum animi in atque iusto, exercitationem rem! Rerum possimus, iste quod tempore facere ipsa. Maiores, quaerat! Veniam recusandae optio voluptate vitae, accusantium ea iure quo eveniet facere. Nemo assumenda accusantium quas doloribus excepturi dolore voluptate modi mollitia? Obcaecati dolorum ea sit quas. Error ex explicabo ipsam aliquid qui sapiente esse cum fugiat enim similique optio tempora, impedit consectetur natus odit nulla inventore, quod asperiores rem blanditiis cumque! Deleniti cupiditate dolores dicta facilis. Perferendis, doloribus, ipsum nemo, omnis cupiditate harum temporibus quae ipsam labore dolor nostrum voluptates distinctio magnam accusantium. Ex numquam aspernatur illo quibusdam atque similique tempora ea reprehenderit, autem, sunt hic laborum? Fugiat animi voluptatibus ullam, voluptate minima, distinctio natus placeat saepe sequi deserunt velit consectetur officia, eaque facere tempora qui vero consequatur repudiandae dolore ipsam est pariatur obcaecati! Maiores quas molestias voluptatem architecto sunt. Sed error consequatur provident atque earum eos autem ducimus adipisci repellat, magni velit iusto minus?',
-          40,
-          readMore
-        )}
-      </span>
-
-      <span
-        className="cursor-pointer text-primaryred  hover:text-red-600"
-        onClick={() => setReadMore(!readMore)}
-      >
-        {' '}
-        {readMore && 'Read Less'}
-        {!readMore && 'Read More'}
-      </span>
+      <span className="leading-[26px]">{text}</span>
+      {description.length > wordLimit && (
+        <button
+          className="cursor-pointer text-primaryred  hover:text-red-600"
+          onClick={() => setReadMore(!readMore)}
+        >
+          {readMore ? 'Read Less' : 'Read More'}
+        </button>
+      )}
     </div>
   );
 }
