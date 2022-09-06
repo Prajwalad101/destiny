@@ -4,7 +4,7 @@ import { useField } from 'formik';
 import { Fragment } from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { HiOutlineSelector } from 'react-icons/hi';
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 interface MyListBoxProps {
   list: { name: string }[];

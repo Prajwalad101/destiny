@@ -1,4 +1,4 @@
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 type MyLabelProps = React.HTMLProps<HTMLLabelElement>;
 

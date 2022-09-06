@@ -3,7 +3,7 @@ import RatingIcons from 'components/icons/ratings/RatingIcons';
 import ImageSlider from 'components/image-slider/ImageSlider';
 import Image from 'next/image';
 import { useState } from 'react';
-import { checkIsOpen } from 'utils/api';
+import { checkInterval } from 'utils/date';
 import { getPublicFilePath, truncateText } from 'utils/text';
 
 interface BusinessInfoSectionProps {
@@ -78,7 +78,9 @@ function BasicInfo({
       <RatingIcons avgRating={avgRating} />
       <span>{rating_count} reviews</span>
       <span className="font-medium">
-        {checkIsOpen(businessHours) ? 'Open Now' : 'Closed'}
+        {checkInterval(businessHours.open, businessHours.close)
+          ? 'Open Now'
+          : 'Closed'}
       </span>
     </div>
   );

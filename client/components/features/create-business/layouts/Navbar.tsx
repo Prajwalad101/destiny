@@ -4,7 +4,7 @@ import AppLayout from 'components/layout/app/AppLayout';
 import Logo from 'components/logo/Logo';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 interface ICreateBusinessNavbar {
   theme?: 'light' | 'dark';

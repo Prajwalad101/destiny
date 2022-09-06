@@ -3,8 +3,8 @@ import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { ButtonProps } from 'types/props/button/ButtonProps';
-import { classNames } from 'utils/css';
 import { getVisibleChildrenCount } from 'utils/dom';
+import { classNames } from 'utils/tailwind';
 
 interface ImageSliderProps {
   images: string[];

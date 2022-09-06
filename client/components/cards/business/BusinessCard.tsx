@@ -3,7 +3,7 @@ import RatingIcons from 'components/icons/ratings/RatingIcons';
 import ImageSlider from 'components/image-slider/ImageSlider';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
-import { checkIsOpen } from 'utils/api';
+import { checkInterval } from 'utils/date';
 import { getPublicFilePath } from 'utils/text';
 
 export interface IBusinessCard {
@@ -33,7 +33,12 @@ function BusinessCard({ business }: IBusinessCard) {
                   </p>
                 </div>
                 <p className="text-[15px] font-medium text-secondarytext">
-                  {checkIsOpen(business.businessHours) ? 'Open now' : 'Closed'}
+                  {checkInterval(
+                    business.businessHours.open,
+                    business.businessHours.close
+                  )
+                    ? 'Open now'
+                    : 'Closed'}
                 </p>
               </div>
               <p className="mb-4 text-sm text-secondarytext">

@@ -1,5 +1,5 @@
 import { ButtonProps as Button } from 'types/props/button/ButtonProps';
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 interface PrimaryButtonProps {
   children: React.ReactNode;

@@ -1,22 +1,17 @@
-export function dhm(ms: number) {
-  const days = Math.floor(ms / (24 * 60 * 60 * 1000));
-  const daysms = ms % (24 * 60 * 60 * 1000);
-  const hours = Math.floor(daysms / (60 * 60 * 1000));
-  const hoursms = ms % (60 * 60 * 1000);
-  const minutes = Math.floor(hoursms / (60 * 1000));
-  const minutesms = ms % (60 * 1000);
-  const sec = Math.floor(minutesms / 1000);
+import { msToTime } from './msToTime';
 
-  return { days, hours, minutes, sec };
-}
-
+/**
+ * converts the given date into relative date
+ * @param date the date to get the relative date from
+ * @returns the relative date derived from date variable and current date
+ */
 export function getRelativeDate(date: string) {
   const formatter = new Intl.RelativeTimeFormat('en-US', {
     numeric: 'auto',
   });
 
   const diff: number = new Date().getTime() - new Date(date).getTime(); // difference in milliseconds
-  const { days, hours, minutes, sec } = dhm(diff);
+  const { days, hours, minutes, sec } = msToTime(diff);
 
   let result = '';
 

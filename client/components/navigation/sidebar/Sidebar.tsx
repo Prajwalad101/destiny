@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 function Sidebar() {
   const { open, setOpen } = useSidebar();

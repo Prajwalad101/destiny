@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { BsCheck2 } from 'react-icons/bs';
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 interface InfoCardProps {
   heading: React.ReactNode;

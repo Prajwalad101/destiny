@@ -8,7 +8,7 @@ import usePreventBodyOverflow from 'hooks/usePreventBodyOverflow';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 interface INavbar {
   theme: 'light' | 'dark';

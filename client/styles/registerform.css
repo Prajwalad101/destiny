@@ -1,4 +1,0 @@
-.form-slider {
-  --slider-index: 1;
-  transform: translate(calc(var(--slider-index) * -100%));
-}

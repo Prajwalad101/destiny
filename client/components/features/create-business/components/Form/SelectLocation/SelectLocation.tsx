@@ -1,4 +1,4 @@
-import getUserCoordinates from '@features/create-business/utils/api/getUserCoordinates';
+import { getUserCoordinates } from '@features/create-business/utils/api';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import { useField } from 'formik';
 import { useEffectAfterMount } from 'hooks';

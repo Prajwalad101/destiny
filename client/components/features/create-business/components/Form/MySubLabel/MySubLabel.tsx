@@ -1,4 +1,4 @@
-import { classNames } from 'utils/css';
+import { classNames } from 'utils/tailwind';
 
 interface MySubLabelProps {
   children: React.ReactNode;
