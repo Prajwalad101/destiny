@@ -14,7 +14,7 @@ function ConditionalRender({
   }
 
   if (isError) {
-    alert('Error when fetching data. Check the console for detailwinds');
+    alert('Error when fetching data. Check the console for details');
   }
 
   return <div>{children}</div>;
