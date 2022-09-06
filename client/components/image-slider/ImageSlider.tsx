@@ -8,21 +8,16 @@ import { getVisibleChildrenCount } from 'utils/dom';
 
 interface ImageSliderProps {
   images: string[];
-  imageClassName: string;
-  className?: string;
+  className: string;
 }
 
 interface ImagesProps {
   images: string[];
-  imageClassName: string;
+  className: string;
   numVisibleChildren: number;
 }
 
-function ImageSlider({
-  images,
-  imageClassName,
-  className = '',
-}: ImageSliderProps) {
+function ImageSlider({ images, className }: ImageSliderProps) {
   // slider index increases or decreases on each button click
   const [sliderIndex, setSliderIndex] = useState<number>(1);
   const [numVisibleChildren, setNumVisibleChildren] = useState<number>(0);
@@ -60,12 +55,7 @@ function ImageSlider({
   };
 
   return (
-    <div
-      className={classNames(
-        className,
-        'relative h-full w-full overflow-hidden'
-      )}
-    >
+    <div className="relative h-full w-full overflow-hidden">
       {/* Slider */}
       <div
         ref={containerRef}
@@ -78,7 +68,7 @@ function ImageSlider({
       >
         <MemoizedImages
           images={images}
-          imageClassName={imageClassName}
+          className={className}
           ref={childRef}
           numVisibleChildren={numVisibleChildren}
         />
@@ -130,7 +120,7 @@ function RightButton({ onClick, className = '' }: ButtonProps) {
 
 const Images = React.forwardRef(
   (
-    { images, imageClassName, numVisibleChildren }: ImagesProps,
+    { images, className, numVisibleChildren }: ImagesProps,
     ref: React.ForwardedRef<HTMLDivElement>
   ) => (
     <>
@@ -138,7 +128,7 @@ const Images = React.forwardRef(
         <div
           ref={ref}
           key={index}
-          className={classNames(imageClassName, 'relative shrink-0')}
+          className={classNames(className, 'relative shrink-0')}
         >
           <Image
             src={image}

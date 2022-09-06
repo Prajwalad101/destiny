@@ -106,7 +106,7 @@ const Images = ({ images }: { images: string[] | undefined }) => {
 
   return (
     <div className="h-[150px] w-full sm:h-[180px]">
-      <ImageSlider images={images} imageClassName="w-1/2 sm:w-1/3" />
+      <ImageSlider images={images} className="w-1/2 sm:w-1/3" />
     </div>
   );
 };

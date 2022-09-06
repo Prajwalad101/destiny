@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof ImageSlider> = (args) => (
 export const Base = Template.bind({});
 Base.args = {
   images: ['/', '/', '/'],
-  imageClassName: 'w-1/2 sm:w-1/3',
+  className: 'w-1/2 sm:w-1/3',
 };
