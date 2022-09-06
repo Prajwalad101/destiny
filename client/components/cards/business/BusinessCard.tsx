@@ -1,7 +1,6 @@
 import { IBusiness, IReview } from '@destiny/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageScroll from 'components/image/scroll/ImageScroll';
-import Image from 'next/image';
+import ImageSlider from 'components/image-slider/ImageSlider';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { checkIsOpen } from 'utils/api';
@@ -12,25 +11,13 @@ export interface IBusinessCard {
 }
 
 function BusinessCard({ business }: IBusinessCard) {
+  // get image path relative to the public folder
+  const images = business.images.map((image) => getPublicFilePath(image));
+
   return (
     <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex ">
-      <div className="shrink-0 sm:w-[224px]">
-        <ImageScroll
-          noItems={business.images.length}
-          initialItems={1}
-          slider={true}
-        >
-          {business.images.map((image, index) => (
-            <div key={index} className="relative h-[200px] w-full shrink-0">
-              <Image
-                src={getPublicFilePath(image)}
-                alt="business-image"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          ))}
-        </ImageScroll>
+      <div className="h-48 shrink-0 sm:w-[224px]">
+        <ImageSlider images={images} className="w-full" />
       </div>
       {/* Body */}
       <div className="min-w-0 grow border-2 border-t-0 sm:border-t-2 sm:border-l-0">

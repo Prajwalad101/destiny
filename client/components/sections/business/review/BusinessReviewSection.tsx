@@ -1,10 +1,9 @@
 import { IReview } from '@destiny/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageScroll from 'components/image/scroll/ImageScroll';
+import ImageSlider from 'components/image-slider/ImageSlider';
 import Image from 'next/image';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 import { getRelativeDate } from 'utils/date';
-import { getPublicFilePath } from 'utils/text';
 
 const images = [
   'https://dummyimage.com/300.png/09f/fff&text=1',
@@ -59,27 +58,12 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
             </div>
             {/* User Review */}
             <p className="mb-4">{review.review}</p>
-            <ImageScroll
-              noItems={images.length}
-              initialItems={3}
-              className="mb-4"
-            >
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className="slider-img relative h-[150px] shrink-0"
-                >
-                  <Image
-                    src={getPublicFilePath(image)}
-                    key={index}
-                    alt="image"
-                    layout="fill"
-                    className="slider-next-img"
-                    objectFit="cover"
-                  />
-                </div>
-              ))}
-            </ImageScroll>
+            <div className="mb-4 h-[150px]">
+              <ImageSlider
+                images={images}
+                className="w-1/3 sm:w-1/4 lg:w-1/5"
+              />
+            </div>
             <Feedback likes={review.likes} />
             {/* Horizontal Line */}
             <div className={`border-b-[1px] border-gray-400`} />
@@ -90,7 +74,7 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
   );
 }
 
-function Feedback({ likes }: { likes: number | undefined }) {
+function Feedback({ likes }: { likes: number }) {
   return (
     <div className="flex items-center gap-7">
       <div className="mb-4 flex items-center gap-2">

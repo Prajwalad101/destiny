@@ -1,6 +1,6 @@
 import { IBusiness } from '@destiny/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageScroll from 'components/image/scroll/ImageScroll';
+import ImageSlider from 'components/image-slider/ImageSlider';
 import Image from 'next/image';
 import { useState } from 'react';
 import { checkIsOpen } from 'utils/api';
@@ -14,7 +14,6 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
   // Destructuring business properties
   const {
     name,
-    images,
     avgRating,
     rating_count,
     businessHours,
@@ -23,22 +22,19 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
     description,
   } = business;
 
+  const images = business.images.map((image) => getPublicFilePath(image));
+
   return (
     <div className="mt-4 font-rubik">
       <div className="mb-7 flex flex-col gap-5 md:flex-row">
         {/* Cover Image */}
         <div className="relative h-[250px] w-full shrink-0 sm:h-[300px] md:w-[300px] lg:w-[450px]">
-          <Image
-            alt={name}
-            src={getPublicFilePath(images[0])}
-            layout="fill"
-            objectFit="cover"
-          />
+          <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
         </div>
         <div>
           {/* Business Name */}
           <h4 className="mb-2 text-xl font-medium">{name}</h4>
-          {/* AvgRating, NumReviews Open/Closed */}
+          {/* AvgRating, NumReviews, Open/Closed */}
           <BasicInfo
             avgRating={avgRating}
             rating_count={rating_count}
@@ -54,20 +50,9 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
           />
         </div>
       </div>
-      <ImageScroll noItems={images.length} initialItems={2} className="mb-8">
-        {images.map((image, index) => (
-          <div key={index} className="slider-img relative h-[150px] shrink-0">
-            <Image
-              src={getPublicFilePath(image)}
-              key={index}
-              alt="image"
-              layout="fill"
-              className="slider-next-img"
-              objectFit="cover"
-            />
-          </div>
-        ))}
-      </ImageScroll>
+      <div className="mb-5 h-[150px] w-full">
+        <ImageSlider images={images} className="w-1/2 sm:w-1/4 lg:w-1/6" />
+      </div>
       {/* Horizontal Line */}
       <div className="mb-5 border-b-2 border-gray-200" />
     </div>
