@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 
 // Define general type for useWindowSize hook, which includes width and height
-export interface Size {
+export interface Dimensions {
   width: number | undefined;
   height: number | undefined;
 }
 
-function useWindowSize(): Size {
+/**
+ * @returns an object containing the current window dimensions{width, height}
+ *
+ * The dimensions are updated on each window resize
+ */
+function useWindowSize(): Dimensions {
   // Initialize state with undefined width/height so server and client renders match
-  const [windowSize, setWindowSize] = useState<Size>({
+  const [windowSize, setWindowSize] = useState<Dimensions>({
     width: undefined,
     height: undefined,
   });

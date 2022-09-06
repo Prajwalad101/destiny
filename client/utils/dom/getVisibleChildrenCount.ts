@@ -4,10 +4,13 @@
  * @param childElement The child Div element inside the container element
  * @returns the number of visible child elements inside the container
  */
-function getVisibleChildrenCount(
-  containerElement: HTMLDivElement,
-  childElement: HTMLDivElement
-) {
+
+interface Props {
+  containerElement: HTMLDivElement;
+  childElement: HTMLDivElement;
+}
+
+function getVisibleChildrenCount({ containerElement, childElement }: Props) {
   const parentElement = containerElement.parentElement;
   if (!parentElement) return;
 

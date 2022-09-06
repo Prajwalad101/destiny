@@ -9,41 +9,26 @@ import { getVisibleChildrenCount } from 'utils/dom';
 interface ImageSliderProps {
   images: string[];
   imageClassName: string;
-  single: boolean;
 }
 
 interface ImagesProps {
   images: string[];
   imageClassName: string;
-  single?: boolean;
+  numVisibleChildren: number;
 }
 
-function ImageSlider({
-  images,
-  imageClassName,
-  single = false,
-}: ImageSliderProps) {
+function ImageSlider({ images, imageClassName }: ImageSliderProps) {
+  // slider index increases or decreases on each button click
   const [sliderIndex, setSliderIndex] = useState<number>(1);
-  const [isScrollBeginning, setIsScrollBeginning] = useState<boolean>(true);
-  const [isScrollEnd, setIsScrollEnd] = useState<boolean>(false);
+  const [numVisibleChildren, setNumVisibleChildren] = useState<number>(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
 
-  const handleLeft = () => {
-    if (isScrollBeginning) return;
-    setSliderIndex((prevIndex) => --prevIndex);
-  };
-
-  const handleRight = () => {
-    if (isScrollEnd) return;
-    setSliderIndex((prevIndex) => ++prevIndex);
-  };
-
-  // run useEffect on window resize
+  // run useEffect logic on window resize
   const { width } = useWindowSize();
 
-  // handle button visibility state to limit scrolling
+  // get the number of currently visible images on the slider
   useEffect(() => {
     const containerElement = containerRef.current;
     const childElement = childRef.current;
@@ -51,26 +36,23 @@ function ImageSlider({
     if (!containerElement || !childElement) return;
 
     // the number of visible children inside the scroll container
-    const numVisibleChildren = getVisibleChildrenCount(
+    const numVisibleChildren = getVisibleChildrenCount({
       containerElement,
-      childElement
-    );
+      childElement,
+    });
 
-    if (!numVisibleChildren) return;
-
-    // prevent images from scrolling out of bounds
-    if (sliderIndex * numVisibleChildren >= images.length) {
-      setIsScrollEnd(true);
-    } else {
-      setIsScrollEnd(false);
-    }
-
-    if (sliderIndex <= 1) {
-      setIsScrollBeginning(true);
-    } else {
-      setIsScrollBeginning(false);
+    if (numVisibleChildren) {
+      setNumVisibleChildren(numVisibleChildren);
     }
   }, [sliderIndex, images, width]);
+
+  const handleLeft = () => {
+    setSliderIndex((prevIndex) => --prevIndex);
+  };
+
+  const handleRight = () => {
+    setSliderIndex((prevIndex) => ++prevIndex);
+  };
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -88,14 +70,14 @@ function ImageSlider({
           images={images}
           imageClassName={imageClassName}
           ref={childRef}
-          single={single}
+          numVisibleChildren={numVisibleChildren}
         />
       </div>
       {/* Slider Control Buttons */}
-      {!isScrollBeginning && (
+      {sliderIndex > 1 && (
         <LeftButton onClick={handleLeft} className="left-[7px]" />
       )}
-      {!isScrollEnd && (
+      {sliderIndex * numVisibleChildren < images.length && (
         <RightButton onClick={handleRight} className="right-[7px]" />
       )}
     </div>
@@ -138,7 +120,7 @@ function RightButton({ onClick, className = '' }: ButtonProps) {
 
 const Images = React.forwardRef(
   (
-    { images, imageClassName, single }: ImagesProps,
+    { images, imageClassName, numVisibleChildren }: ImagesProps,
     ref: React.ForwardedRef<HTMLDivElement>
   ) => (
     <>
@@ -153,7 +135,7 @@ const Images = React.forwardRef(
             alt="image"
             layout="fill"
             objectFit="cover"
-            className={!single ? 'px-1' : ''}
+            className={numVisibleChildren !== 1 ? 'px-1' : ''}
           />
         </div>
       ))}
