@@ -1,12 +1,12 @@
-import { Navbar } from '@features/create-business';
 import { linkData } from '@features/create-business/data';
+import { NavbarSection } from '@features/create-business/layouts';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
 import MainHeading from 'components/text/main-heading/MainHeading';
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
 
-function Hero() {
+function HeroSection() {
   return (
     <div>
       <div className="relative h-[650px] font-rubik md:h-[700px]">
@@ -15,7 +15,7 @@ function Hero() {
         {/* Overlay */}
         <div className="absolute inset-0 -z-10 hidden h-full w-full bg-gray-600 opacity-10 md:block" />
         <div className="mb-7 md:mb-10">
-          <Navbar theme="dark" />
+          <NavbarSection theme="dark" />
         </div>
         <AppLayout size="sm">
           <MainHeading className="mb-3 max-w-sm sm:max-w-[40rem]">
@@ -71,4 +71,4 @@ function CallToAction() {
   );
 }
 
-export default Hero;
+export default HeroSection;

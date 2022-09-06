@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const validationSchema = Yup.object({
+export const formikValidationSchema = Yup.object({
   name: Yup.string()
     .max(40, 'Must be 40 characters or less')
     .required('This field is required'),

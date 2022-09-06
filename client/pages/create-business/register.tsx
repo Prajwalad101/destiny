@@ -1,12 +1,11 @@
+import { initialFormValues } from '@features/create-business/data';
+import { useSubmitForm } from '@features/create-business/hooks';
 import {
   FormContainer,
-  MyFormValues,
-  Navbar,
-  useSubmitForm,
-  validationSchema,
-} from '@features/create-business';
-
-import { initialFormValues } from '@features/create-business/data';
+  NavbarSection,
+} from '@features/create-business/layouts';
+import { formikValidationSchema } from '@features/create-business/schema';
+import { MyFormValues } from '@features/create-business/types';
 import { dataToFormData } from '@features/create-business/utils/objects/dataToFormData';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
@@ -65,7 +64,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
     <>
       <Formik
         initialValues={initialFormValues}
-        validationSchema={validationSchema}
+        validationSchema={formikValidationSchema}
         onSubmit={handleSubmit}
         validateOnChange={false}
         validateOnBlur={true}
@@ -79,7 +78,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
 RegisterBusiness.getLayout = (page) => (
   <>
     <ProviderLayout>
-      <Navbar />
+      <NavbarSection />
       <AppLayout size="sm">{page}</AppLayout>
     </ProviderLayout>
   </>

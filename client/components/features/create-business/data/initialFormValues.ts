@@ -1,4 +1,4 @@
-import { MyFormValues } from '@features/create-business';
+import { MyFormValues } from '@features/create-business/types';
 import businessCategories from 'data/business/categoriesData';
 
 export const initialFormValues: MyFormValues = {

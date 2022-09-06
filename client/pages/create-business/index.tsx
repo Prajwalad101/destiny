@@ -1,17 +1,14 @@
 import { infoCardData } from '@features/create-business/data';
+import { HeroSection } from '@features/create-business/layouts';
+import { EllipsisSeperator, InfoCard } from '@features/create-business/ui';
+import AppLayout from 'components/layout/app/AppLayout';
 import React from 'react';
-import {
-  EllipsisSeperator,
-  Hero,
-  InfoCard,
-} from '../../components/features/create-business';
-import AppLayout from '../../components/layout/app/AppLayout';
 import { NextPageWithLayout } from '../_app';
 
 const CreateBusiness: NextPageWithLayout = () => {
   return (
     <div>
-      <Hero />
+      <HeroSection />
       <AppLayout>
         <div className="md:my-20">
           {infoCardData.map((data, index) => (

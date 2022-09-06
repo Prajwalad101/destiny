@@ -1,4 +1,4 @@
-import { MyListBox } from '@features/create-business';
+import { MyListBox } from '@features/create-business/components';
 import { hours, minutes, timeOfDay } from '@features/create-business/data';
 import { Listbox } from '@headlessui/react';
 import { useField } from 'formik';

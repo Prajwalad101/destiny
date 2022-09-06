@@ -10,7 +10,7 @@ interface ICreateBusinessNavbar {
   theme?: 'light' | 'dark';
 }
 
-function Navbar({ theme = 'light' }: ICreateBusinessNavbar) {
+function NavbarSection({ theme = 'light' }: ICreateBusinessNavbar) {
   return (
     <div className="py-4 font-rubik shadow-md md:pt-7 md:shadow-none">
       <AppLayout size="sm">
@@ -56,4 +56,4 @@ function Navbar({ theme = 'light' }: ICreateBusinessNavbar) {
   );
 }
 
-export default Navbar;
+export default NavbarSection;
