@@ -9,6 +9,7 @@ import { getVisibleChildrenCount } from 'utils/dom';
 interface ImageSliderProps {
   images: string[];
   imageClassName: string;
+  className?: string;
 }
 
 interface ImagesProps {
@@ -17,7 +18,11 @@ interface ImagesProps {
   numVisibleChildren: number;
 }
 
-function ImageSlider({ images, imageClassName }: ImageSliderProps) {
+function ImageSlider({
+  images,
+  imageClassName,
+  className = '',
+}: ImageSliderProps) {
   // slider index increases or decreases on each button click
   const [sliderIndex, setSliderIndex] = useState<number>(1);
   const [numVisibleChildren, setNumVisibleChildren] = useState<number>(0);
@@ -55,7 +60,12 @@ function ImageSlider({ images, imageClassName }: ImageSliderProps) {
   };
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div
+      className={classNames(
+        className,
+        'relative h-full w-full overflow-hidden'
+      )}
+    >
       {/* Slider */}
       <div
         ref={containerRef}
