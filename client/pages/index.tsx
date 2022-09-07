@@ -1,8 +1,8 @@
+import { HeroSection } from '@features/home-page/layouts';
 import { BusinessCard } from '@features/recommended-business/components';
 import { mockBusinessCardProps } from '@features/recommended-business/data';
 import { RecommendedSection } from '@features/recommended-business/layouts';
 import Sidebar from 'components/navigation/sidebar/Sidebar';
-import HeroSection from 'components/sections/home/hero/HeroSection';
 import { NavigationProvider } from 'context/navigation.context';
 import { NextPageWithLayout } from 'pages/_app';
 

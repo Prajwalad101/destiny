@@ -1,11 +1,11 @@
 import { AiOutlineSearch } from 'react-icons/ai';
 
-interface ISearchbar {
+interface SearchbarProps {
   foodPlaceholder: string;
   locationPlaceholder: string;
 }
 
-function Searchbar({ foodPlaceholder, locationPlaceholder }: ISearchbar) {
+function Searchbar({ foodPlaceholder, locationPlaceholder }: SearchbarProps) {
   return (
     <div className="relative flex h-[51.5px] w-full items-center font-merriweather md:h-[60px]">
       {/* TOPIC SEARCH INPUT FIELD */}

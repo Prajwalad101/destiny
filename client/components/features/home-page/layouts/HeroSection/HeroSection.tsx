@@ -1,8 +1,10 @@
-import BusinessCategoryDropdown from 'components/dropdown/businessCategories/BusinessCategories';
+import {
+  CategoriesDropdown,
+  MainHeading,
+  Searchbar,
+} from '@features/home-page/components';
 import AppLayout from 'components/layout/app/AppLayout';
 import Navbar from 'components/navigation/navbar/Navbar';
-import Searchbar from 'components/search-bar/Searchbar';
-import MainHeading from 'components/text/main-heading/MainHeading';
 import businessCategories from 'data/business/categoriesData';
 
 function HeroSection() {
@@ -31,7 +33,7 @@ function HeroSection() {
           <div className="mt-5 hidden gap-5 font-rubik md:flex">
             {businessCategories.map((data, index) => (
               <div key={index}>
-                <BusinessCategoryDropdown
+                <CategoriesDropdown
                   name={data.name}
                   subCategories={data.subCategories}
                 />

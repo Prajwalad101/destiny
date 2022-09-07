@@ -28,6 +28,7 @@ const {
   outdoorDining,
 } = businessFeatures;
 
+// contains data about how all business are categorized
 const businessCategoriesData: IBusinessCategoryDropdown[] = [
   {
     name: 'food and drinks',

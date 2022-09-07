@@ -1,3 +1,4 @@
+// contains data about features of individual business categories
 const businessFeatures = {
   delivery: 'delivery',
   reservations: 'reservations',

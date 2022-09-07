@@ -1,5 +1,5 @@
+import { Searchbar } from '@features/home-page/components';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Searchbar from './Searchbar';
 
 export default {
   title: 'components/Searchbar',
