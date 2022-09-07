@@ -1,7 +1,7 @@
+import { BusinessCardProps } from '@features/search-business/types';
 import mongoose from 'mongoose';
-import { IBusinessCard } from './BusinessCard';
 
-const card1: IBusinessCard = {
+const card1: BusinessCardProps = {
   business: {
     _id: new mongoose.Types.ObjectId(),
     name: 'Vidoo',
@@ -26,6 +26,8 @@ const card1: IBusinessCard = {
         _id: new mongoose.Types.ObjectId(),
         business: new mongoose.Types.ObjectId(),
         createdAt: '2021-08-01',
+        likes: 0,
+        dislikes: 0,
       },
     ],
     category: 'Food and Drinks',

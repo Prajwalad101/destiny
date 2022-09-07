@@ -1,4 +1,4 @@
-import { ISelectedFilters } from 'types/interfaces';
+import { ISelectedFilters } from '@features/search-business/types';
 
 export function buildBusinessQuery(
   sortField: string,

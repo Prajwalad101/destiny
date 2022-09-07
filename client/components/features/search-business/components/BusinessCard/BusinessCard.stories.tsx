@@ -1,6 +1,7 @@
+import { BusinessCard } from '@features/search-business/components';
+import { mockBusinessCardProps } from '@features/search-business/data';
+import { BusinessCardProps } from '@features/search-business/types';
 import { ComponentStory } from '@storybook/react';
-import BusinessCard, { IBusinessCard } from './BusinessCard';
-import { mockBusinessCardProps } from './BusinessCard.mocks';
 
 export default {
   title: 'components/Cards/Business',
@@ -14,4 +15,4 @@ const Template: ComponentStory<typeof BusinessCard> = (args) => (
 export const Base = Template.bind({});
 Base.args = {
   ...mockBusinessCardProps.card1,
-} as IBusinessCard;
+} as BusinessCardProps;

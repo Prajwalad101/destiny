@@ -1,8 +1,3 @@
-export interface ISelectedFilters {
-  features: string[];
-  price: string | null;
-}
-
 export interface IBusinessCategoryDropdown {
   name: string;
   subCategories: IBusinessSubcategoryDropdown[];

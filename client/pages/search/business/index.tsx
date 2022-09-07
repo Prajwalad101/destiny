@@ -1,18 +1,13 @@
-import {
-  AppLayout,
-  NavLayout,
-  ProviderLayout,
-  SearchBusinessLayout,
-} from 'components/layout';
-import SearchFilter from 'components/search-filter/SearchFilter';
-import SortItems from 'components/sort/SortItems';
-import { searchFilterData, sortItemData } from 'data';
-import { useBusinesses } from 'hooks';
-import { fetchBusinesses } from 'hooks/business/useBusinesses';
+import { SearchFilter, SortItems } from '@features/search-business/components';
+import { searchFilterData, sortItemData } from '@features/search-business/data';
+import { useBusinesses } from '@features/search-business/hooks';
+import { SearchBusinessSection } from '@features/search-business/layouts';
+import { ISelectedFilters } from '@features/search-business/types';
+import { fetchBusinesses } from '@features/search-business/utils/api';
+import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
 import { NextPageWithLayout } from 'pages/_app';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
-import { ISelectedFilters } from 'types/interfaces';
 
 const SearchBusiness: NextPageWithLayout = () => {
   const [isFilter, setIsFilter] = useState(true);
@@ -48,7 +43,7 @@ const SearchBusiness: NextPageWithLayout = () => {
     />
   );
   return (
-    <SearchBusinessLayout
+    <SearchBusinessSection
       filterComponent={filterComponent}
       sortComponent={sortComponent}
       businessResult={businessResult}

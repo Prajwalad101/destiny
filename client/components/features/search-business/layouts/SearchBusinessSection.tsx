@@ -1,23 +1,22 @@
-import { IBusiness } from '@destiny/types';
-import BusinessCard from 'components/cards/business/BusinessCard';
+import { BusinessList } from '@features/search-business/components';
+import { IQueryData } from '@features/search-business/types';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
-import { Data } from 'hooks/business/useBusinesses';
 import useIsomorphicLayoutEffect from 'hooks/useIsomorphicLayoutEffect';
 import { useRouter } from 'next/router';
 import { memo, useState } from 'react';
 import { UseQueryResult } from 'react-query';
 
-interface SearchBusinessLayoutProps {
+interface SearchBusinessSectionProps {
   filterComponent: JSX.Element;
   sortComponent: JSX.Element;
-  businessResult: UseQueryResult<Data, Error>;
+  businessResult: UseQueryResult<IQueryData, Error>;
 }
 
-function SearchBusinessLayout({
+function SearchBusinessSection({
   filterComponent,
   sortComponent,
   businessResult,
-}: SearchBusinessLayoutProps) {
+}: SearchBusinessSectionProps) {
   const router = useRouter();
   const { name, city } = router.query;
 
@@ -60,18 +59,6 @@ function SearchBusinessLayout({
   );
 }
 
-function BusinessList({ businessData }: { businessData: IBusiness[] }) {
-  return (
-    <>
-      {businessData.map((business) => (
-        <div key={business._id.toString()} className="mb-4">
-          <BusinessCard business={business} />
-        </div>
-      ))}
-    </>
-  );
-}
-
 const MemoBusinessList = memo(BusinessList);
 
-export default SearchBusinessLayout;
+export default SearchBusinessSection;

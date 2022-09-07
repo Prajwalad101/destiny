@@ -6,11 +6,11 @@ import { FaQuoteLeft } from 'react-icons/fa';
 import { checkInterval } from 'utils/date';
 import { getPublicFilePath } from 'utils/text';
 
-export interface IBusinessCard {
+export interface BusinessCardProps {
   business: IBusiness;
 }
 
-function BusinessCard({ business }: IBusinessCard) {
+function BusinessCard({ business }: BusinessCardProps) {
   // get image path relative to the public folder
   const images = business.images.map((image) => getPublicFilePath(image));
 
