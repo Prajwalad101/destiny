@@ -1,9 +1,8 @@
 import { BusinessCardProps } from '@features/search-business/types';
-import mongoose from 'mongoose';
 
 const card1: BusinessCardProps = {
   business: {
-    _id: new mongoose.Types.ObjectId(),
+    _id: '6dfj5kivfk5ji98ekd',
     name: 'Vidoo',
     description: 'Primary hyperparathyroidism',
     createdAt: new Date(),
@@ -23,8 +22,8 @@ const card1: BusinessCardProps = {
       {
         review: 'Nice ambience and great dining experience',
         rating: 4,
-        _id: new mongoose.Types.ObjectId(),
-        business: new mongoose.Types.ObjectId(),
+        _id: '488djkg9kjksd',
+        business: 'dk39dfjk6393ljd',
         createdAt: '2021-08-01',
         likes: 0,
         dislikes: 0,
