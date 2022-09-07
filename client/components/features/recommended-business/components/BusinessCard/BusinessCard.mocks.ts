@@ -1,6 +1,6 @@
-import { IRecommendBusinessCard } from './RecommendedBusinessCard';
+import { BusinessCardProps } from '@features/recommended-business/types';
 
-const base: IRecommendBusinessCard = {
+const base: BusinessCardProps = {
   name: 'Eat Greek',
   location: 'Kathmandu, Naya Baneshwor',
   image: '/images/business/amer.jpg',
@@ -8,14 +8,14 @@ const base: IRecommendBusinessCard = {
   total_rating: 30,
   rating_count: 9,
 };
-const card1: IRecommendBusinessCard = {
+const card1: BusinessCardProps = {
   name: 'Gole Sausages',
   location: 'Kathmandu, Kapan',
   image: '/images/business/amer.jpg',
   total_rating: 30,
   rating_count: 9,
 };
-const card2: IRecommendBusinessCard = {
+const card2: BusinessCardProps = {
   name: 'Bajeko Sekuwa',
   location: 'Kathmandu, Kapan',
   image: '/images/business/amer.jpg',
@@ -23,7 +23,7 @@ const card2: IRecommendBusinessCard = {
   rating_count: 9,
 };
 
-const card3: IRecommendBusinessCard = {
+const card3: BusinessCardProps = {
   name: 'Bajeko Sekuwa',
   location: 'Kathmandu, Kapan',
   image: '/images/business/amer.jpg',
@@ -31,7 +31,7 @@ const card3: IRecommendBusinessCard = {
   rating_count: 9,
 };
 
-export const mockRecommendBusinessCardProps = {
+export const mockBusinessCardProps = {
   base,
   card1,
   card2,
