@@ -1,12 +1,15 @@
+import { useBusiness } from '@features/business-details/hooks';
+import {
+  BusinessInfoSection,
+  BusinessReviewSection,
+} from '@features/business-details/layouts';
+import { fetchBusiness } from '@features/business-details/utils/api';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
 import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
-import BusinessInfoSection from 'components/sections/business/info/BusinessInfoSection';
-import BusinessReviewSection from 'components/sections/business/review/BusinessReviewSection';
-import useBusiness, { fetchBusiness } from 'hooks/business/useBusiness';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { NextPageWithLayout } from 'pages/_app';
 import { dehydrate, QueryClient } from 'react-query';
-import { NextPageWithLayout } from '../../_app';
 
 const Business: NextPageWithLayout = () => {
   const router = useRouter();
