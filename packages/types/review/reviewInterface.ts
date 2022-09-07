@@ -1,11 +1,9 @@
-import { Types } from 'mongoose';
-
 export interface IReview {
-  _id: Types.ObjectId;
+  _id: string;
   review: string;
   rating: number;
   likes: number;
   dislikes: number;
-  business: Types.ObjectId;
+  business: string;
   createdAt: string;
 }

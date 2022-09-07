@@ -1,8 +1,7 @@
-import { Types } from 'mongoose';
 import { IReview } from '../review/reviewInterface';
 
 export interface IBusiness {
-  _id: Types.ObjectId;
+  _id: string;
   name: string;
   description: string;
   price: string;
