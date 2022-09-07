@@ -1,8 +1,5 @@
-import {
-  ListboxItem,
-  MyFormValues,
-  MyListBox,
-} from '@features/create-business';
+import { MyListBox } from '@features/create-business/components';
+import { ListboxItem, MyFormValues } from '@features/create-business/types';
 import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';

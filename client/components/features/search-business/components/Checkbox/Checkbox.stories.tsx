@@ -1,5 +1,5 @@
+import { Checkbox } from '@features/search-business/components';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Checkbox from './Checkbox';
 
 export default {
   title: 'components/Checkbox',

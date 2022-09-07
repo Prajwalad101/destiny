@@ -1,4 +1,4 @@
-import { MyLabel, MySubLabel } from '@features/create-business';
+import { MyLabel, MySubLabel } from '@features/create-business/components';
 import { readFilesAsDataURL } from '@features/create-business/utils/api';
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
 import ImageSlider from 'components/image-slider/ImageSlider';

@@ -1,4 +1,4 @@
-import { MyListBox } from '@features/create-business';
+import { MyListBox } from '@features/create-business/components';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import businessCategories from 'data/business/categoriesData';
 

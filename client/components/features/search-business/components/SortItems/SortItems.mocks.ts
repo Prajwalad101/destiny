@@ -1,7 +1,7 @@
-import { sortItemData } from 'data/sortItem';
-import { ISortItems } from './SortItems';
+import { sortItemData } from '@features/search-business/data';
+import { SortItemsProps } from '@features/search-business/types';
 
-const base: ISortItems = {
+const base: SortItemsProps = {
   sortItemData: sortItemData,
   selectedSort: sortItemData[0],
   setSelectedSort: () => sortItemData[0],

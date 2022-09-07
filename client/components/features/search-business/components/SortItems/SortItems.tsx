@@ -1,8 +1,8 @@
-import { ISortItem } from 'data/sortItem';
+import { ISortItem } from '@features/search-business/types';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 
-export interface ISortItems {
+export interface SortItemsProps {
   sortItemData: ISortItem[];
   selectedSort: ISortItem;
   setSelectedSort: Dispatch<SetStateAction<ISortItem>>;
@@ -14,7 +14,7 @@ function SortItems({
   selectedSort,
   setSelectedSort,
   setIsFilter,
-}: ISortItems) {
+}: SortItemsProps) {
   // when sortField state updates, fetch data
   useEffect(() => {
     setTimeout(() => {

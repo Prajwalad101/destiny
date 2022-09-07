@@ -1,8 +1,10 @@
+import { Checkbox } from '@features/search-business/components';
+import {
+  IFilterOptions,
+  ISelectedFilters,
+} from '@features/search-business/types';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
-import Checkbox from 'components/checkbox/Checkbox';
-import { IFilterOptions } from 'data/searchFilter';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { ISelectedFilters } from 'types/interfaces';
 
 interface PriceFilterProps {
   filterData: string[];

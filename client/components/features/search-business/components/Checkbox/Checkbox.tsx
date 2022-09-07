@@ -1,5 +1,5 @@
+import { ISelectedFilters } from '@features/search-business/types';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { ISelectedFilters } from 'types/interfaces';
 
 interface CheckboxProps {
   filterName: string;

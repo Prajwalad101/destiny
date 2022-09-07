@@ -1,7 +1,6 @@
+import { SearchFilter } from '@features/search-business/components';
+import { searchFilterData } from '@features/search-business/data';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import SearchFilter from './SearchFilter';
-
-import searchFilterData from 'data/searchFilter';
 
 export default {
   title: 'components/SearchFilter',

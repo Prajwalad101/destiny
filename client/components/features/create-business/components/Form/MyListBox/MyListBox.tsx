@@ -1,5 +1,5 @@
+import { ListboxItem, ListboxState } from '@features/create-business/types';
 import { Listbox, Transition } from '@headlessui/react';
-import { ListboxItem, ListboxState } from 'components/features/create-business';
 import { useField } from 'formik';
 import { Fragment } from 'react';
 import { BsCheck2 } from 'react-icons/bs';

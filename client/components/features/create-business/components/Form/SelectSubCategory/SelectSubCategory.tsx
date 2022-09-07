@@ -1,4 +1,5 @@
-import { MyFormValues, MyListBox } from '@features/create-business';
+import { MyListBox } from '@features/create-business/components';
+import { MyFormValues } from '@features/create-business/types';
 import { Listbox } from '@headlessui/react';
 import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';

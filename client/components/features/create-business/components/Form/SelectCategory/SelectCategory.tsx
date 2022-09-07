@@ -1,4 +1,4 @@
-import { MyListBox } from '@features/create-business';
+import { MyListBox } from '@features/create-business/components';
 import { Listbox } from '@headlessui/react';
 import businessCategories from 'data/business/categoriesData';
 import { useState } from 'react';
