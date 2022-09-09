@@ -9,29 +9,17 @@ const Home: NextPageWithLayout = () => {
     <div>
       <HeroSection />
       <div>
-        {/* Recommended Businesses */}
         <RecommendedSection
           title="Trending right now"
           description="Take a look at some of the hottest places to explore"
           groupBy="trending"
         />
-        {/* <BusinessCard {...mockBusinessCardProps.base} />
-          <BusinessCard {...mockBusinessCardProps.card2} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} /> */}
 
         <RecommendedSection
           title="Near to you"
           description="Explore local businesses near to your location"
           groupBy="location"
         />
-        {/* <BusinessCard {...mockBusinessCardProps.base} />
-          <BusinessCard {...mockBusinessCardProps.card2} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-        </RecommendedSection> */}
       </div>
     </div>
   );
