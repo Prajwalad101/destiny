@@ -1,8 +1,8 @@
 import { linkData } from '@features/create-business/data';
 import { NavbarSection } from '@features/create-business/layouts';
+import { MainHeading } from '@features/home-page/components';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
-import MainHeading from 'components/text/main-heading/MainHeading';
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
 

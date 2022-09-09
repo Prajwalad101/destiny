@@ -3,7 +3,7 @@ import { ListboxItem, MyFormValues } from '@features/create-business/types';
 import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
-import { IBusinessSubcategoryDropdown } from 'types/interfaces';
+import { IBusinessSubcategory } from 'types/business';
 
 function SelectFeature() {
   // avoid accidentally mutating original array
@@ -14,7 +14,7 @@ function SelectFeature() {
   } = useFormikContext<MyFormValues>();
 
   // currently selected business subcategory
-  let businessSubCategory: IBusinessSubcategoryDropdown | undefined;
+  let businessSubCategory: IBusinessSubcategory | undefined;
   categories.forEach((category) => {
     const result = category.subCategories.find(
       (businessSubCategory) => businessSubCategory.name === subCategory

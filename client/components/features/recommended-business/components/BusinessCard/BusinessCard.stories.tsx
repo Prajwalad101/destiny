@@ -1,7 +1,7 @@
 import { BusinessCard } from '@features/recommended-business/components';
+import { mockBusinessCardProps } from '@features/recommended-business/data';
 import { BusinessCardProps } from '@features/recommended-business/types';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { mockRecommendBusinessCardProps } from './BusinessCard.mocks';
 
 export default {
   title: 'components/Cards/RecommendBusiness',
@@ -16,5 +16,5 @@ const Template: ComponentStory<typeof BusinessCard> = (args) => (
 export const Base = Template.bind({});
 
 Base.args = {
-  ...mockRecommendBusinessCardProps.base,
+  ...mockBusinessCardProps.base,
 } as BusinessCardProps;

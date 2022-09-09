@@ -5,7 +5,7 @@ import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import { IBusinessSubcategoryDropdown } from 'types/interfaces';
+import { IBusinessSubcategory } from 'types/business';
 
 function SelectSubCategory() {
   // avoid accidentally mutating original array
@@ -23,7 +23,7 @@ function SelectSubCategory() {
 
   // list of subCategories
   const [subCategories, setSubCategories] = useState<
-    IBusinessSubcategoryDropdown[] | undefined
+    IBusinessSubcategory[] | undefined
   >(businessCategory?.subCategories);
 
   // currently selected subCategory

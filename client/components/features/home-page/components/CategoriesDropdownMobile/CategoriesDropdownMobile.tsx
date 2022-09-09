@@ -1,7 +1,7 @@
-import { IBusinessSubcategory } from '@features/home-page/types';
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { IBusinessSubcategory } from 'types/business';
 import { classNames } from 'utils/tailwind';
 
 interface CategoriesDropdownMobile {

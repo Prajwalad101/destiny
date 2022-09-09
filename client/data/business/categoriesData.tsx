@@ -13,7 +13,7 @@ import {
 import { MdOutlineFastfood, MdOutlineSportsTennis } from 'react-icons/md';
 import { RiCake3Fill, RiHotelLine } from 'react-icons/ri';
 import { TbRollercoaster } from 'react-icons/tb';
-import { IBusinessCategoryDropdown } from '../../types/interfaces';
+import { IBusinessCategory } from 'types/business';
 import businessFeatures from './featuresData';
 
 const iconSize = 20;
@@ -29,7 +29,7 @@ const {
 } = businessFeatures;
 
 // contains data about how all business are categorized
-const businessCategoriesData: IBusinessCategoryDropdown[] = [
+const businessCategoriesData: IBusinessCategory[] = [
   {
     name: 'food and drinks',
     subCategories: [

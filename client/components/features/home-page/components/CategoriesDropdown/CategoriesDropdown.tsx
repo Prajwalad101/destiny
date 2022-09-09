@@ -1,6 +1,6 @@
-import { IBusinessSubcategory } from '@features/home-page/types';
 import Link from 'next/link';
 import { RiArrowDownSLine } from 'react-icons/ri';
+import { IBusinessSubcategory } from 'types/business';
 
 interface CategoriesDropdownProps {
   name: string;
