@@ -1,20 +1,20 @@
+import { IBusinessSubcategory } from '@features/home-page/types';
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { IBusinessSubcategoryDropdown } from 'types/interfaces';
 import { classNames } from 'utils/tailwind';
 
-interface BusinessCategoriesMobileProps {
+interface CategoriesDropdownMobile {
   topic: string;
-  subCategories: IBusinessSubcategoryDropdown[];
+  subCategories: IBusinessSubcategory[];
   onClick: () => void;
 }
 
-function BusinessCategoriesMobile({
+function CategoriesDropdownMobile({
   topic,
   subCategories,
   onClick,
-}: BusinessCategoriesMobileProps) {
+}: CategoriesDropdownMobile) {
   const [selectedItem, setSelectedItem] = useState<string>(); // to track if displaying sub items
 
   const handleItemClick = (item: string) => {
@@ -27,7 +27,7 @@ function BusinessCategoriesMobile({
   };
 
   //! FIX: Change the static city variable
-  const link = (item: IBusinessSubcategoryDropdown, index: number) => (
+  const link = (item: IBusinessSubcategory, index: number) => (
     <Link
       key={index}
       href={{
@@ -80,4 +80,4 @@ function BusinessCategoriesMobile({
   );
 }
 
-export default BusinessCategoriesMobile;
+export default CategoriesDropdownMobile;

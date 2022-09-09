@@ -1,4 +1,4 @@
-import BusinessCategoriesMobile from 'components/dropdown/explore-topic-mobile/BusinessCategoriesMobile';
+import { CategoriesDropdownMobile } from '@features/home-page/components';
 import { useSidebar } from 'context/navigation.context';
 import { navLinkData } from 'data';
 import businessCategories from 'data/business/categoriesData';
@@ -70,7 +70,7 @@ function Sidebar() {
       <div className="mt-5 font-rubik md:hidden">
         {businessCategories.map((data, index) => (
           <div key={index}>
-            <BusinessCategoriesMobile
+            <CategoriesDropdownMobile
               topic={data.name}
               subCategories={data.subCategories}
               onClick={() => setOpen(!open)}
