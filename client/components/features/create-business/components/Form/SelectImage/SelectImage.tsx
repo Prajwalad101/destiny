@@ -1,9 +1,10 @@
 import { MyLabel, MySubLabel } from '@features/create-business/components';
 import { readFilesAsDataURL } from '@features/create-business/utils/api';
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
-import ImageSlider from 'components/image-slider/ImageSlider';
+import Slider from 'components/slider/Slider';
 import { useField } from 'formik';
 import { useEffectAfterMount } from 'hooks';
+import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 
 interface SelectImageProps {
@@ -106,7 +107,20 @@ const Images = ({ images }: { images: string[] | undefined }) => {
 
   return (
     <div className="h-[150px] w-full sm:h-[180px]">
-      <ImageSlider images={images} className="w-1/2 sm:w-1/3" />
+      {/* <Slider images={images} className="w-1/2 sm:w-1/3" /> */}
+      <Slider numItems={images.length}>
+        {images.map((image, index) => (
+          <div key={index} className="relative w-1/2 sm:w-1/3">
+            <Image
+              src={image}
+              alt="uploaded-images"
+              layout="fill"
+              objectFit="cover"
+              className="px-1"
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

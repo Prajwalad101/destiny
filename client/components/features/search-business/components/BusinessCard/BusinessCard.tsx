@@ -1,6 +1,7 @@
 import { IBusiness, IReview } from '@destiny/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageSlider from 'components/image-slider/ImageSlider';
+import ImageSlider from 'components/slider/Slider';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { checkInterval } from 'utils/date';
@@ -17,7 +18,14 @@ function BusinessCard({ business }: BusinessCardProps) {
   return (
     <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex ">
       <div className="h-48 shrink-0 sm:w-[224px]">
-        <ImageSlider images={images} className="w-full" />
+        {/* <ImageSlider images={images} className="w-full" /> */}
+        <ImageSlider numItems={images.length}>
+          {images.map((image, index) => (
+            <div key={index} className="relative w-full shrink-0">
+              <Image src={image} alt="image" layout="fill" objectFit="cover" />
+            </div>
+          ))}
+        </ImageSlider>
       </div>
       {/* Body */}
       <div className="min-w-0 grow border-2 border-t-0 sm:border-t-2 sm:border-l-0">

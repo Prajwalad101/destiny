@@ -1,6 +1,6 @@
 import { IReview } from '@destiny/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageSlider from 'components/image-slider/ImageSlider';
+import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 import { getRelativeDate } from 'utils/date';
@@ -59,10 +59,23 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
             {/* User Review */}
             <p className="mb-4">{review.review}</p>
             <div className="mb-4 h-[150px]">
-              <ImageSlider
+              <Slider numItems={images.length}>
+                {images.map((image, index) => (
+                  <div key={index} className="relative w-1/3 sm:w-1/4 lg:w-1/5">
+                    <Image
+                      src={image}
+                      alt="review-image"
+                      layout="fill"
+                      objectFit="cover"
+                      className="px-1"
+                    />
+                  </div>
+                ))}
+              </Slider>
+              {/* <ImageSlider
                 images={images}
                 className="w-1/3 sm:w-1/4 lg:w-1/5"
-              />
+              /> */}
             </div>
             <Feedback likes={review.likes} />
             {/* Horizontal Line */}

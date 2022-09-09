@@ -12,8 +12,7 @@ export interface BusinessCardProps {
 
 function BusinessCard(props: BusinessCardProps) {
   return (
-    <div className="w-[55%] shrink-0 cursor-pointer font-rubik md:w-[30%] lg:md:w-[25%]">
-      {/* IMAGE COMPONENT */}
+    <div className="cursor-pointer font-rubik">
       <Image
         src={props.image}
         alt={props.name}
@@ -24,9 +23,8 @@ function BusinessCard(props: BusinessCardProps) {
         className="rounded-t-sm hover:opacity-90"
       />
 
-      {/* BODY */}
       <div className="rounded-sm px-2 pt-3">
-        {/* NAME */}
+        {/* Business Name */}
         <div className="mb-1">
           <p className="text-base font-medium sm:text-lg">{props.name}</p>
         </div>
@@ -38,7 +36,7 @@ function BusinessCard(props: BusinessCardProps) {
           </div>
         ) : null} */}
 
-        {/* BUSINESS RATING */}
+        {/* Business Rating */}
         <div className="mb-2 flex gap-2 ">
           <RatingIcons avgRating={props.total_rating / props.rating_count} />
           <span className="text-sm text-secondarytext">
@@ -46,7 +44,7 @@ function BusinessCard(props: BusinessCardProps) {
           </span>
         </div>
 
-        {/* LOCATION */}
+        {/* Location */}
         <p className="mb-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm">
           {props.location}
         </p>

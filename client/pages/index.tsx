@@ -1,6 +1,4 @@
 import { HeroSection } from '@features/home-page/layouts';
-import { BusinessCard } from '@features/recommended-business/components';
-import { mockBusinessCardProps } from '@features/recommended-business/data';
 import { RecommendedSection } from '@features/recommended-business/layouts';
 import Sidebar from 'components/navigation/sidebar/Sidebar';
 import { NavigationProvider } from 'context/navigation.context';
@@ -15,24 +13,25 @@ const Home: NextPageWithLayout = () => {
         <RecommendedSection
           title="Trending right now"
           description="Take a look at some of the hottest places to explore"
-        >
-          <BusinessCard {...mockBusinessCardProps.base} />
+          groupBy="trending"
+        />
+        {/* <BusinessCard {...mockBusinessCardProps.base} />
           <BusinessCard {...mockBusinessCardProps.card2} />
           <BusinessCard {...mockBusinessCardProps.card3} />
           <BusinessCard {...mockBusinessCardProps.card3} />
-          <BusinessCard {...mockBusinessCardProps.card3} />
-        </RecommendedSection>
+          <BusinessCard {...mockBusinessCardProps.card3} /> */}
 
         <RecommendedSection
           title="Near to you"
           description="Explore local businesses near to your location"
-        >
-          <BusinessCard {...mockBusinessCardProps.base} />
+          groupBy="location"
+        />
+        {/* <BusinessCard {...mockBusinessCardProps.base} />
           <BusinessCard {...mockBusinessCardProps.card2} />
           <BusinessCard {...mockBusinessCardProps.card3} />
           <BusinessCard {...mockBusinessCardProps.card3} />
           <BusinessCard {...mockBusinessCardProps.card3} />
-        </RecommendedSection>
+        </RecommendedSection> */}
       </div>
     </div>
   );

@@ -1,26 +1,28 @@
+import { BusinessCard } from '@features/recommended-business/components';
+import { mockBusinessCardProps } from '@features/recommended-business/data';
+import { BusinessCardProps } from '@features/recommended-business/types';
 import AppLayout from 'components/layout/app/AppLayout';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import Slider from 'components/slider/Slider';
 
 interface IRecommendedSection {
   title: string;
   description?: string;
-  children: React.ReactNode;
+  groupBy: string;
 }
 
 function RecommendedSection({
   title,
   description,
-  children,
+  groupBy: _groupBy,
 }: IRecommendedSection) {
-  const slideLeft = () => {
-    const slider = document.getElementById(title) as HTMLDivElement;
-    slider.scrollLeft = slider.scrollLeft - 500;
-  };
-
-  const slideRight = () => {
-    const slider = document.getElementById(title) as HTMLDivElement;
-    slider.scrollLeft = slider.scrollLeft + 500;
-  };
+  const cards: BusinessCardProps[] = [
+    mockBusinessCardProps.card1,
+    mockBusinessCardProps.card2,
+    mockBusinessCardProps.card3,
+    mockBusinessCardProps.card3,
+    mockBusinessCardProps.card3,
+    mockBusinessCardProps.card3,
+  ];
 
   return (
     <AppLayout size="sm">
@@ -31,29 +33,13 @@ function RecommendedSection({
           </h3>
           <p className="text-base text-gray-800 md:block">{description}</p>
         </div>
-
-        <div className="relative">
-          <div
-            id={title}
-            className="hide-scrollbar mb-10 flex gap-3 overflow-x-scroll scroll-smooth"
-          >
-            {/* LEFT BUTTON */}
-            <div
-              className="absolute top-[35%] left-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white"
-              onClick={slideLeft}
-            >
-              <AiOutlineArrowLeft size={25} />
+        <Slider numItems={cards.length} className="mb-10">
+          {cards.map((card, index) => (
+            <div key={index} className="w-1/4 px-2">
+              <BusinessCard {...card} />
             </div>
-            {/* RIGHT BUTTON */}
-            <div
-              className="absolute top-[35%] right-5 z-10 cursor-pointer rounded-full bg-white p-2 text-black hover:bg-primaryred hover:text-white"
-              onClick={slideRight}
-            >
-              <AiOutlineArrowRight size={25} />
-            </div>
-            {children}
-          </div>
-        </div>
+          ))}
+        </Slider>
       </div>
     </AppLayout>
   );

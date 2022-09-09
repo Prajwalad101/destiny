@@ -1,3 +1,4 @@
-import SearchBusinessSection from './SearchBusinessSection';
+import BusinessList from './BusinessList/BusinessList';
+import SearchBusinessSection from './SearchBusinessSection/SearchBusinessSection';
 
-export { SearchBusinessSection };
+export { SearchBusinessSection, BusinessList };

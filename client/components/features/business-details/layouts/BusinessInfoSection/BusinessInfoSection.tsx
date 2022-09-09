@@ -1,6 +1,6 @@
 import { IBusiness } from '@destiny/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageSlider from 'components/image-slider/ImageSlider';
+import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import { useState } from 'react';
 import { checkInterval } from 'utils/date';
@@ -50,8 +50,20 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
           />
         </div>
       </div>
-      <div className="mb-5 h-[150px] w-full">
-        <ImageSlider images={images} className="w-1/2 sm:w-1/4 lg:w-1/6" />
+      <div className="mb-5 h-[150px] ">
+        <Slider numItems={images.length}>
+          {images.map((image, key) => (
+            <div key={key} className="sm:1-1/4 relative w-1/2 lg:w-1/6">
+              <Image
+                src={image}
+                alt="business images"
+                layout="fill"
+                objectFit="cover"
+                className="px-1"
+              />
+            </div>
+          ))}
+        </Slider>
       </div>
       {/* Horizontal Line */}
       <div className="mb-5 border-b-2 border-gray-200" />

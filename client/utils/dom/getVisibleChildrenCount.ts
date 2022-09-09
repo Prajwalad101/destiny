@@ -7,11 +7,11 @@
 
 interface Props {
   containerElement: HTMLDivElement;
-  childElement: HTMLDivElement;
 }
 
-function getVisibleChildrenCount({ containerElement, childElement }: Props) {
+function getVisibleChildrenCount({ containerElement }: Props) {
   const parentElement = containerElement.parentElement;
+  const childElement = containerElement.firstChild as HTMLElement;
   if (!parentElement) return;
 
   const parentContainerWidth = parentElement.clientWidth;

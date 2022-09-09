@@ -1,4 +1,4 @@
-import { BusinessList } from '@features/search-business/components';
+import { BusinessList } from '@features/search-business/layouts';
 import { IQueryData } from '@features/search-business/types';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
 import useIsomorphicLayoutEffect from 'hooks/useIsomorphicLayoutEffect';
