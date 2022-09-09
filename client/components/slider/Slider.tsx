@@ -9,15 +9,22 @@ interface SliderProps {
   children: React.ReactNode;
   numItems: number;
   className?: string;
+  leftButton?: JSX.Element;
+  rightButton?: JSX.Element;
 }
 
-function Slider({ children, numItems, className = '' }: SliderProps) {
+function Slider({
+  children,
+  numItems,
+  className = '',
+  leftButton,
+  rightButton,
+}: SliderProps) {
   // slider index increases or decreases on each button click
   const [sliderIndex, setSliderIndex] = useState<number>(1);
   const [numVisibleChildren, setNumVisibleChildren] = useState<number>(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  // const childRef = useRef<HTMLDivElement>(null);
 
   // run useEffect logic on window resize
   const { width } = useWindowSize();
@@ -46,6 +53,24 @@ function Slider({ children, numItems, className = '' }: SliderProps) {
     setSliderIndex((prevIndex) => ++prevIndex);
   };
 
+  // if slide button is defined, attach a div with onClick handler
+  // if not defined, use the default buttons
+  leftButton = leftButton ? (
+    <div onClick={handleLeft}>{leftButton}</div>
+  ) : (
+    <SliderButton onClick={handleLeft} className="left-[7px]">
+      <BiArrowBack size={20} />
+    </SliderButton>
+  );
+
+  rightButton = rightButton ? (
+    <div onClick={handleRight}>{rightButton}</div>
+  ) : (
+    <SliderButton onClick={handleRight} className="right-[7px] ">
+      <BiArrowBack size={20} className="rotate-180" />{' '}
+    </SliderButton>
+  );
+
   return (
     <div
       className={classNames(
@@ -66,20 +91,21 @@ function Slider({ children, numItems, className = '' }: SliderProps) {
         {children}
       </div>
       {/* Slider Control Buttons */}
-      {sliderIndex > 1 && (
-        <LeftButton onClick={handleLeft} className="left-[7px]" />
-      )}
-      {sliderIndex * numVisibleChildren < numItems && (
-        <RightButton onClick={handleRight} className="right-[7px]" />
-      )}
+      {sliderIndex > 1 && leftButton}
+      {sliderIndex * numVisibleChildren < numItems && rightButton}
     </div>
   );
 }
 
-function LeftButton({ onClick, className = '' }: ButtonProps) {
+export default Slider;
+
+function SliderButton({ onClick, className = '', children }: ButtonProps) {
   return (
     <div
-      className={classNames(className, 'absolute top-[50%] translate-y-[-50%]')}
+      className={classNames(
+        className,
+        'absolute top-[50%] translate-y-[-50%] '
+      )}
     >
       <button
         type="button"
@@ -88,26 +114,9 @@ function LeftButton({ onClick, className = '' }: ButtonProps) {
           'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
         }
       >
-        <BiArrowBack size={20} />
+        {/* <BiArrowBack size={20} /> */}
+        {children}
       </button>
     </div>
   );
 }
-
-function RightButton({ onClick, className = '' }: ButtonProps) {
-  return (
-    <div
-      className={classNames(className, 'absolute top-[50%] translate-y-[-50%]')}
-    >
-      <button
-        type="button"
-        onClick={onClick}
-        className="z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white"
-      >
-        <BiArrowBack size={20} className="rotate-180" />
-      </button>
-    </div>
-  );
-}
-
-export default Slider;
