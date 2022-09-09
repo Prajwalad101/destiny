@@ -13,15 +13,15 @@ export interface BusinessCardProps {
 function BusinessCard(props: BusinessCardProps) {
   return (
     <div className="cursor-pointer font-rubik">
-      <Image
-        src={props.image}
-        alt={props.name}
-        width={300}
-        height={300}
-        layout="responsive"
-        objectFit="cover"
-        className="rounded-t-sm hover:opacity-90"
-      />
+      <div className="relative h-[200px] sm:h-[250px]">
+        <Image
+          src={props.image}
+          alt={props.name}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-t-sm hover:opacity-90"
+        />
+      </div>
 
       <div className="rounded-sm px-2 pt-3">
         {/* Business Name */}

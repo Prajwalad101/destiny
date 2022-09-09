@@ -72,12 +72,7 @@ function Slider({
   );
 
   return (
-    <div
-      className={classNames(
-        className,
-        'relative h-full w-full overflow-hidden'
-      )}
-    >
+    <div className={classNames(className, 'relative overflow-hidden')}>
       {/* Slider */}
       <div
         ref={containerRef}
@@ -86,7 +81,7 @@ function Slider({
           transform: `translate(${(sliderIndex - 1) * -100}%)`,
           transition: 'transform 400ms ease-in-out',
         }}
-        className="flex h-full w-full scroll-smooth child:shrink-0"
+        className="flex scroll-smooth child:shrink-0"
       >
         {children}
       </div>

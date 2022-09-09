@@ -41,13 +41,12 @@ function RecommendedSection({
 
   return (
     <AppLayout size="sm">
-      <div className="md:mb-16">
-        <div className="mb-5 font-rubik">
-          <h3 className="mb-2 text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:text-2xl">
-            {title}
-          </h3>
-          <p className="text-base text-gray-800 md:block">{description}</p>
-        </div>
+      <div className="font-rubik md:mb-16">
+        <h3 className="mb-2 text-xl font-medium text-gray-800 sm:text-[22px] md:mt-10 md:text-2xl">
+          {title}
+        </h3>
+        <p className="mb-5 text-base text-gray-800 md:block">{description}</p>
+
         <Slider
           numItems={cards.length}
           className="mb-10"
@@ -55,7 +54,7 @@ function RecommendedSection({
           rightButton={rightButton}
         >
           {cards.map((card, index) => (
-            <div key={index} className="w-1/2 px-2 sm:w-1/4">
+            <div key={index} className="w-full sm:w-1/2 sm:px-2 lg:w-1/4">
               <BusinessCard {...card} />
             </div>
           ))}
