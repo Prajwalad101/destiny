@@ -58,25 +58,23 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
             </div>
             {/* User Review */}
             <p className="mb-4">{review.review}</p>
-            <div className="mb-4 h-[150px]">
-              <Slider numItems={images.length}>
-                {images.map((image, index) => (
-                  <div key={index} className="relative w-1/3 sm:w-1/4 lg:w-1/5">
-                    <Image
-                      src={image}
-                      alt="review-image"
-                      layout="fill"
-                      objectFit="cover"
-                      className="px-1"
-                    />
-                  </div>
-                ))}
-              </Slider>
-              {/* <ImageSlider
-                images={images}
-                className="w-1/3 sm:w-1/4 lg:w-1/5"
-              /> */}
-            </div>
+            <Slider numItems={images.length} className="mb-4">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="relative h-[150px] w-1/3 sm:w-1/4 lg:w-1/5"
+                >
+                  <Image
+                    src={image}
+                    alt="review-image"
+                    layout="fill"
+                    objectFit="cover"
+                    className="px-1"
+                  />
+                </div>
+              ))}
+            </Slider>
+
             <Feedback likes={review.likes} />
             {/* Horizontal Line */}
             <div className={`border-b-[1px] border-gray-400`} />

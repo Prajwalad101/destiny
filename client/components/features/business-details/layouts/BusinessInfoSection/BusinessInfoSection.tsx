@@ -50,21 +50,19 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
           />
         </div>
       </div>
-      <div className="mb-5 h-[150px] ">
-        <Slider numItems={images.length}>
-          {images.map((image, key) => (
-            <div key={key} className="sm:1-1/4 relative w-1/2 lg:w-1/6">
-              <Image
-                src={image}
-                alt="business images"
-                layout="fill"
-                objectFit="cover"
-                className="px-1"
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Slider numItems={images.length} className="mb-5">
+        {images.map((image, key) => (
+          <div key={key} className="sm:1-1/4 relative h-[150px] w-1/2 lg:w-1/6">
+            <Image
+              src={image}
+              alt="business images"
+              layout="fill"
+              objectFit="cover"
+              className="px-1"
+            />
+          </div>
+        ))}
+      </Slider>
       {/* Horizontal Line */}
       <div className="mb-5 border-b-2 border-gray-200" />
     </div>
