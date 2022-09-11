@@ -1,4 +1,4 @@
-import { IReview } from '../review/reviewInterface';
+import { IReview } from '../review/review.interface';
 
 export interface IBusiness {
   _id: string;
