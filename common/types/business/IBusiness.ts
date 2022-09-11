@@ -1,16 +1,17 @@
-import { IReview } from '../review/review.interface';
+import { BusinessFeatures } from '@destiny/common/data';
+import { IReview, ValueOf } from '@destiny/common/types';
 
 export interface IBusiness {
   _id: string;
   name: string;
   description: string;
-  price: string;
+  price: 'cheap' | 'medium' | 'high' | 'exclusive';
   createdAt?: Date;
   businessHours: { open: string; close: string };
   location: { type: 'Point'; coordinates: number[]; address?: string };
   category: string;
   subCategory: string;
-  features: string[];
+  features: ValueOf<typeof BusinessFeatures>[];
   images: string[];
   reviews?: IReview[];
   total_rating: number;
