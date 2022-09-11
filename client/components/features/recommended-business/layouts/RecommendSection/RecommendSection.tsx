@@ -18,6 +18,7 @@ function RecommendedSection({
   description,
   groupBy: _groupBy,
 }: IRecommendedSection) {
+  // const query = useBusinesses();
   const cards: BusinessCardProps[] = [
     mockBusinessCardProps.card1,
     mockBusinessCardProps.card2,

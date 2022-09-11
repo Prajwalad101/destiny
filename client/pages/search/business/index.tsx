@@ -1,52 +1,63 @@
+import { IBusiness } from '@destiny/common/types';
 import { SearchFilter, SortItems } from '@features/search-business/components';
-import { searchFilterData, sortItemData } from '@features/search-business/data';
+import {
+  searchFilterOptions,
+  sortItemData,
+} from '@features/search-business/data';
 import { useBusinesses } from '@features/search-business/hooks';
 import { SearchBusinessSection } from '@features/search-business/layouts';
-import { ISelectedFilters } from '@features/search-business/types';
 import { fetchBusinesses } from '@features/search-business/utils/api';
 import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
 import { NextPageWithLayout } from 'pages/_app';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 
+// only query for these fields when fetching businesses
+const businessFields = ['-description', '-price', '-tags', '-total_rating'];
+
 const SearchBusiness: NextPageWithLayout = () => {
-  const [isFilter, setIsFilter] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(true);
   const [selectedSort, setSelectedSort] = useState(sortItemData[0]);
-  const [selectedFilters, setSelectedFilters] = useState<ISelectedFilters>({
+  const [selectedFilters, setSelectedFilters] = useState<
+    Pick<IBusiness, 'features' | 'price'>
+  >({
     features: [],
-    price: null,
+    price: 'medium',
   });
 
   const sortField = selectedSort.sortField;
-  const businessResult = useBusinesses(sortField, selectedFilters, isFilter);
+  const businessResult = useBusinesses({
+    sort: sortField,
+    filters: selectedFilters,
+    enabled: isEnabled,
+    fields: businessFields,
+  });
 
   // when fetch settles, change the filter state back to false
   useEffect(() => {
-    setIsFilter(false);
-  }, [businessResult, setIsFilter]);
+    setIsEnabled(false);
+  }, [businessResult]);
 
   const filterComponent = (
     <SearchFilter
-      filterOption={searchFilterData.resturants}
+      //! Temporary Fix: This can lead to run time error
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      filterBy={searchFilterOptions.resturant!}
       selectedFilters={selectedFilters}
       setSelectedFilters={setSelectedFilters}
-      setIsFilter={setIsFilter}
+      setIsEnabled={setIsEnabled}
     />
   );
 
   const sortComponent = (
     <SortItems
-      sortItemData={sortItemData}
-      selectedSort={selectedSort}
-      setSelectedSort={setSelectedSort}
-      setIsFilter={setIsFilter}
+      {...{ sortItemData, selectedSort, setSelectedSort, setIsEnabled }}
     />
   );
+
   return (
     <SearchBusinessSection
-      filterComponent={filterComponent}
-      sortComponent={sortComponent}
-      businessResult={businessResult}
+      {...{ filterComponent, sortComponent, businessResult }}
     />
   );
 };
@@ -58,11 +69,11 @@ export async function getServerSideProps() {
   // ** when updating initialData make sure to update on useBusinesses also
   const initialSortField = sortItemData[0].sortField;
   const initialFilters = { features: [], price: null };
-  const initialFields = ['-description', '-price', '-tags', '-total_rating'];
+  // const initialFields = ['-description', '-price', '-tags', '-total_rating'];
 
   await queryClient.prefetchQuery(
-    ['business', initialSortField, initialFilters, initialFields],
-    () => fetchBusinesses(initialSortField, initialFilters, initialFields),
+    ['business', initialSortField, initialFilters, businessFields],
+    () => fetchBusinesses(initialSortField, initialFilters, businessFields),
     { staleTime: 1000 * 10 }
   );
 

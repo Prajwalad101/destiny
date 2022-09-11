@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof SearchFilter> = (args) => (
 
 export const ResturantFilter = Template.bind({});
 ResturantFilter.args = {
-  filterOption: searchFilterData.resturants,
+  filterOption: searchFilterData.resturant,
 };

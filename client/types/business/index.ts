@@ -1,4 +1,4 @@
 import { IBusinessCategory } from './IBusinessCategory';
-import { IBusinessSubcategory } from './IBusinessSubcategory';
+import { IBusinessType } from './IBusinessType';
 
-export type { IBusinessCategory, IBusinessSubcategory };
+export type { IBusinessCategory, IBusinessType };

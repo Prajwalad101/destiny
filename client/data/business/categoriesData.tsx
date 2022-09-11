@@ -1,3 +1,4 @@
+import { BusinessFeatures } from '@destiny/common/data';
 import { AiFillCar, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BiCoffeeTogo, BiFootball } from 'react-icons/bi';
 import { BsMusicNote } from 'react-icons/bs';
@@ -14,136 +15,125 @@ import { MdOutlineFastfood, MdOutlineSportsTennis } from 'react-icons/md';
 import { RiCake3Fill, RiHotelLine } from 'react-icons/ri';
 import { TbRollercoaster } from 'react-icons/tb';
 import { IBusinessCategory } from 'types/business';
-import businessFeatures from './featuresData';
 
 const iconSize = 20;
-
-// resturant features
-const {
-  delivery,
-  reservations,
-  events,
-  goodForKids,
-  liveMusic,
-  outdoorDining,
-} = businessFeatures;
 
 // contains data about how all business are categorized
 const businessCategoriesData: IBusinessCategory[] = [
   {
     name: 'food and drinks',
-    subCategories: [
+    types: [
       {
-        name: 'resturants',
+        name: 'resturant',
         icon: <FaPizzaSlice size={17} />,
         features: [
-          { name: delivery },
-          { name: reservations },
-          { name: events },
-          { name: goodForKids },
-          { name: liveMusic },
-          { name: outdoorDining },
+          { name: BusinessFeatures.delivery },
+          { name: BusinessFeatures.reservations },
+          { name: BusinessFeatures.events },
+          { name: BusinessFeatures.goodForKids },
+          { name: BusinessFeatures.liveMusic },
+          { name: BusinessFeatures.outdoorDining },
         ],
       },
       {
-        name: 'cafes',
+        name: 'cafe',
         icon: <BiCoffeeTogo size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
-        name: 'fast foods',
+        name: 'fast food',
         icon: <MdOutlineFastfood size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
-        name: 'hotels',
+        name: 'hotel',
         icon: <RiHotelLine size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'bakery',
         icon: <RiCake3Fill size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
     ],
   },
   {
     name: 'sports and fitness',
-    subCategories: [
+    types: [
       {
-        name: 'gyms',
+        name: 'gym',
         icon: <GiWeightLiftingUp size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'futsal',
         icon: <BiFootball size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'tennis',
         icon: <MdOutlineSportsTennis size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'zumba',
         icon: <BsMusicNote size={17} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'swimming',
         icon: <FaSwimmingPool size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
     ],
   },
   {
     name: 'home services',
-    subCategories: [
+    types: [
       {
         name: 'plumbing',
         icon: <GiTeePipe size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'electricity',
         icon: <GiWireCoil size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'cleaning',
         icon: <GiVacuumCleaner size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'repairs',
         icon: <GiAutoRepair size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
     ],
   },
   {
     name: 'others',
-    subCategories: [
+    types: [
       {
         name: 'entertainment',
         icon: <TbRollercoaster size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'shopping',
         icon: <FiShoppingBag size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
-        name: 'essentials',
+        name: 'essential',
         icon: <AiOutlineShoppingCart size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
       {
         name: 'vehicles',
         icon: <AiFillCar size={iconSize} />,
-        features: [{ name: '' }],
+        features: [{ name: BusinessFeatures.delivery }],
       },
     ],
   },

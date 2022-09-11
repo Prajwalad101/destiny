@@ -1,26 +1,27 @@
 import { ISortItem } from '@features/search-business/types';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 
 export interface SortItemsProps {
   sortItemData: ISortItem[];
   selectedSort: ISortItem;
-  setSelectedSort: Dispatch<SetStateAction<ISortItem>>;
-  setIsFilter: Dispatch<SetStateAction<boolean>>;
+  setSelectedSort: (_sortItem: ISortItem) => void;
+  setIsEnabled: (_isEnabled: boolean) => void;
 }
 
 function SortItems({
   sortItemData,
   selectedSort,
   setSelectedSort,
-  setIsFilter,
+  setIsEnabled,
 }: SortItemsProps) {
   // when sortField state updates, fetch data
   useEffect(() => {
     setTimeout(() => {
-      setIsFilter(true);
+      setIsEnabled(true);
     }, 0);
-  }, [setIsFilter, selectedSort]);
+  }, [setIsEnabled, selectedSort]);
+
   return (
     <div className="flex shrink-0 items-center font-rubik">
       <p className="text-secondarytext">Sort By:</p>

@@ -1,16 +1,13 @@
 import { BusinessCardProps } from '../components/BusinessCard/BusinessCard';
 import { SortItemsProps } from '../components/SortItems/SortItems';
-import { IFilterOptions } from './IFilterOptions';
 import { IQueryData } from './IQueryData';
-import { ISearchFilters } from './ISearchFilters';
-import { ISelectedFilters } from './ISelectedFilters';
 import { ISortItem } from './ISortItem';
+import { FilterByOptions, SearchFilters } from './SearchFilters';
 
 export type {
   BusinessCardProps,
-  ISelectedFilters,
-  ISearchFilters,
-  IFilterOptions,
+  SearchFilters,
+  FilterByOptions,
   ISortItem,
   SortItemsProps,
   IQueryData,

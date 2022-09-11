@@ -1,10 +1,8 @@
+import { IBusiness } from '@destiny/common/types';
 import { Checkbox } from '@features/search-business/components';
-import {
-  IFilterOptions,
-  ISelectedFilters,
-} from '@features/search-business/types';
+import { FilterByOptions } from '@features/search-business/types';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent } from 'react';
 
 interface PriceFilterProps {
   filterData: string[];
@@ -17,17 +15,17 @@ interface SelectFilterProps {
 }
 
 interface SearchFilterProps {
-  filterOption: IFilterOptions;
-  selectedFilters: ISelectedFilters;
-  setSelectedFilters: Dispatch<SetStateAction<ISelectedFilters>>;
-  setIsFilter: Dispatch<SetStateAction<boolean>>;
+  filterBy: FilterByOptions;
+  selectedFilters: Pick<IBusiness, 'features' | 'price'>;
+  setSelectedFilters: (_filter: Pick<IBusiness, 'features' | 'price'>) => void;
+  setIsEnabled: (_isEnabled: boolean) => void;
 }
 
 function SearchFilter({
-  filterOption,
+  filterBy,
   selectedFilters,
   setSelectedFilters,
-  setIsFilter,
+  setIsEnabled,
 }: SearchFilterProps) {
   const SelectFilter = ({ filterData, filterType }: SelectFilterProps) => {
     return (
@@ -52,8 +50,15 @@ function SearchFilter({
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       const { id } = e.target;
 
-      selectedFilters.price = id;
-      setSelectedFilters({ ...selectedFilters });
+      if (
+        id === 'cheap' ||
+        id === 'medium' ||
+        id === 'high' ||
+        id === 'exclusive'
+      ) {
+        selectedFilters.price = id;
+        setSelectedFilters({ ...selectedFilters });
+      }
     };
     return (
       <div>
@@ -82,22 +87,16 @@ function SearchFilter({
     <div className="hidden h-max rounded-md bg-gray-100 font-rubik lg:block">
       <div className=" w-[340px] px-8 py-6">
         <div className="mb-12 flex w-full flex-col gap-y-7">
-          <PriceFilter filterData={filterOption.price} filterType="price" />
+          <PriceFilter filterData={filterBy.price} filterType="price" />
           <SelectFilter
-            filterData={filterOption.suggested}
+            filterData={filterBy.suggested}
             filterType="suggested"
           />
-          <SelectFilter
-            filterData={filterOption.features}
-            filterType="features"
-          />
-          <SelectFilter
-            filterData={filterOption.distance}
-            filterType="distance"
-          />
+          <SelectFilter filterData={filterBy.popular} filterType="popular" />
+          <SelectFilter filterData={filterBy.distance} filterType="distance" />
         </div>
         <div className="mb-5 flex flex-col">
-          <PrimaryButton className="py-2" onClick={() => setIsFilter(true)}>
+          <PrimaryButton className="py-2" onClick={() => setIsEnabled(true)}>
             {/* <p className="py-[2px]">Filter</p> */}
             Filter
           </PrimaryButton>

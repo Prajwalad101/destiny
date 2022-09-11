@@ -1,6 +1,6 @@
-import { IBusinessSubcategory } from 'types/business';
+import { IBusinessType } from 'types/business';
 
 export interface IBusinessCategory {
   name: string;
-  subCategories: IBusinessSubcategory[];
+  types: IBusinessType[];
 }
