@@ -1,5 +1,6 @@
 import { HeroSection } from '@features/home-page/layouts';
 import { RecommendedSection } from '@features/recommended-business/layouts';
+import { ProviderLayout } from 'components/layout';
 import Sidebar from 'components/navigation/sidebar/Sidebar';
 import { NavigationProvider } from 'context/navigation.context';
 import { NextPageWithLayout } from 'pages/_app';
@@ -26,11 +27,13 @@ const Home: NextPageWithLayout = () => {
 };
 
 // since navbar should render behind background image, it is present inside the hero section
-Home.getLayout = (page) => (
-  <NavigationProvider>
-    <Sidebar />
-    {page}
-  </NavigationProvider>
+Home.getLayout = (page, pageProps) => (
+  <ProviderLayout pageProps={pageProps}>
+    <NavigationProvider>
+      <Sidebar />
+      {page}
+    </NavigationProvider>
+  </ProviderLayout>
 );
 
 export default Home;

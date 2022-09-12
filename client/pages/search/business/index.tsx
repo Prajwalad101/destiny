@@ -6,7 +6,10 @@ import {
 } from '@features/search-business/data';
 import { useBusinesses } from '@features/search-business/hooks';
 import { SearchBusinessSection } from '@features/search-business/layouts';
-import { fetchBusinesses } from '@features/search-business/utils/api';
+import {
+  buildBusinessQuery,
+  fetchBusinesses,
+} from '@features/search-business/utils/api';
 import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
 import { NextPageWithLayout } from 'pages/_app';
 import { useEffect, useState } from 'react';
@@ -66,16 +69,22 @@ export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   // to sort the initial query by the first item in the data
-  // ** when updating initialData make sure to update on useBusinesses also
   const initialSortField = sortItemData[0].sortField;
+
   const initialFilters: {
     features: IBusiness['features'];
     price: IBusiness['price'];
   } = { features: [], price: 'medium' };
 
+  const queryURL = buildBusinessQuery(
+    initialSortField,
+    initialFilters,
+    businessFields
+  );
+
   await queryClient.prefetchQuery(
     ['business', initialSortField, initialFilters, businessFields],
-    () => fetchBusinesses(initialSortField, initialFilters, businessFields),
+    () => fetchBusinesses(queryURL),
     { staleTime: 1000 * 10 }
   );
 

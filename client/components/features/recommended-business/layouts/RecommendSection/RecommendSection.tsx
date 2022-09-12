@@ -1,6 +1,7 @@
 import { BusinessCard } from '@features/recommended-business/components';
 import { mockBusinessCardProps } from '@features/recommended-business/data';
 import { BusinessCardProps } from '@features/recommended-business/types';
+import { useBusinesses } from '@features/search-business/hooks';
 import AppLayout from 'components/layout/app/AppLayout';
 import Slider from 'components/slider/Slider';
 import { BiArrowBack } from 'react-icons/bi';
@@ -18,7 +19,6 @@ function RecommendedSection({
   description,
   groupBy: _groupBy,
 }: IRecommendedSection) {
-  // const query = useBusinesses();
   const cards: BusinessCardProps[] = [
     mockBusinessCardProps.card1,
     mockBusinessCardProps.card2,
@@ -27,6 +27,13 @@ function RecommendedSection({
     mockBusinessCardProps.card3,
     mockBusinessCardProps.card3,
   ];
+
+  const businessResult = useBusinesses();
+  const businesses = businessResult.data?.data;
+
+  if (!businesses) {
+    return <></>;
+  }
 
   const leftButton = (
     <SliderButton className="left-[10px]">
@@ -54,9 +61,9 @@ function RecommendedSection({
           leftButton={leftButton}
           rightButton={rightButton}
         >
-          {cards.map((card, index) => (
+          {businesses.map((business, index) => (
             <div key={index} className="w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-              <BusinessCard {...card} />
+              <BusinessCard business={business} />
             </div>
           ))}
         </Slider>
