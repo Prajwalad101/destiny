@@ -1,4 +1,4 @@
-import { BusinessFeature, IReview } from '@destiny/types';
+import { BusinessFeature, IReview } from '@destiny/common/types';
 
 export interface IBusiness {
   _id: string;

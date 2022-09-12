@@ -1,4 +1,4 @@
-import { businessFeatures } from '@destiny/types';
+import { businessFeatures } from '@destiny/common/data';
 import { AiFillCar, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BiCoffeeTogo, BiFootball } from 'react-icons/bi';
 import { BsMusicNote } from 'react-icons/bs';

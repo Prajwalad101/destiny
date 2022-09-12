@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/types';
+import { IBusiness } from '@destiny/common/types';
 import { Checkbox } from '@features/search-business/components';
 import { FilterByOptions } from '@features/search-business/types';
 import PrimaryButton from 'components/button/primary/PrimaryButton';

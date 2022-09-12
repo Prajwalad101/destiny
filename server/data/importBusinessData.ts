@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/types';
+import { IBusiness } from '@destiny/common/types';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import '../src/loadEnv';

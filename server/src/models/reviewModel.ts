@@ -1,4 +1,4 @@
-import { IReview } from '@destiny/types';
+import { IReview } from '@destiny/common/types';
 import { model, Schema } from 'mongoose';
 
 const reviewSchema = new Schema<IReview>(

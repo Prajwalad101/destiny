@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/types';
+import { IBusiness } from '@destiny/common/types';
 import { IQueryData } from '@features/search-business/types';
 import { fetchBusinesses } from '@features/search-business/utils/api';
 import { useQuery } from 'react-query';

@@ -1,4 +1,4 @@
-import { IBusiness, IReview } from '@destiny/types';
+import { IBusiness, IReview } from '@destiny/common/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
 import ImageSlider from 'components/slider/Slider';
 import Image from 'next/image';

@@ -1,8 +1,8 @@
-import { businessFeatures, businessTypes, ValueOf } from '@destiny/types';
+import { BusinessFeature, BusinessType } from '@destiny/common/types';
 
 // any specific type of business (eg. resturant)
 export interface IBusinessType {
-  name: ValueOf<typeof businessTypes>;
+  name: BusinessType;
   icon: JSX.Element;
-  features: { name: ValueOf<typeof businessFeatures> }[];
+  features: { name: BusinessFeature }[];
 }

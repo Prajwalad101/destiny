@@ -1,4 +1,4 @@
-import { IReview } from '@destiny/types';
+import { IReview } from '@destiny/common/types';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import '../src/loadEnv';

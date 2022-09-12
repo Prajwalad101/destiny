@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/types';
+import { IBusiness } from '@destiny/common/types';
 import { BusinessCard } from '@features/search-business/components';
 
 function BusinessList({ businessData }: { businessData: IBusiness[] }) {

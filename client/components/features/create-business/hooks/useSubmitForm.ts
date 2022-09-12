@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/types';
+import { IBusiness } from '@destiny/common/types';
 import axios from 'axios';
 import { useMutation } from 'react-query';
 
