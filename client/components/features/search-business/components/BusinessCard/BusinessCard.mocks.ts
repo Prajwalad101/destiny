@@ -1,5 +1,5 @@
 import { BusinessCardProps } from '@features/search-business/types';
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 
 const card1: BusinessCardProps = {
   business: {
@@ -24,7 +24,7 @@ const card1: BusinessCardProps = {
         review: 'Nice ambience and great dining experience',
         rating: 4,
         _id: '488djkg9kjksd',
-        business: new mongoose.Types.ObjectId(),
+        business: '56cb91bdc3464f14678934ca' as unknown as Types.ObjectId,
         createdAt: '2021-08-01',
         likes: 0,
         dislikes: 0,
