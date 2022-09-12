@@ -1,10 +1,12 @@
-import { ISelectedFilters } from '@features/search-business/types';
-
+import { IBusiness } from '@destiny/common/types';
 import { buildBusinessQuery } from '@features/search-business/utils/api';
+
+type BusinessFeatures = IBusiness['features'];
+type BusinessPrice = IBusiness['price'];
 
 export const fetchBusinesses = async (
   sortField: string,
-  filters: ISelectedFilters,
+  filters: { features: BusinessFeatures | null; price: BusinessPrice },
   fields: string[]
 ) => {
   const query = buildBusinessQuery(sortField, filters, fields);

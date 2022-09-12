@@ -1,8 +1,11 @@
-import { ISelectedFilters } from '@features/search-business/types';
+import { IBusiness } from '@destiny/common/types';
+
+type BusinessFeatures = IBusiness['features'];
+type BusinessPrice = IBusiness['price'];
 
 export function buildBusinessQuery(
   sortField: string,
-  filters: ISelectedFilters,
+  filters: { features: BusinessFeatures | null; price: BusinessPrice | null },
   fields: string[]
 ) {
   let priceQuery = '',
@@ -14,7 +17,7 @@ export function buildBusinessQuery(
     priceQuery = `&price=${filters.price}`;
   }
 
-  if (filters.features.length !== 0) {
+  if (filters.features) {
     const features = filters.features.join(',');
     featuresQuery = `&features=${features}`;
   }
