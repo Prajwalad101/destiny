@@ -16,5 +16,5 @@ const Template: ComponentStory<typeof BusinessCard> = (args) => (
 export const Base = Template.bind({});
 
 Base.args = {
-  ...mockBusinessCardProps.base,
+  ...mockBusinessCardProps.card1,
 } as BusinessCardProps;
