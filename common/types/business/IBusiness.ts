@@ -1,5 +1,4 @@
-import { BusinessFeatures } from '@destiny/common/data';
-import { IReview, ValueOf } from '@destiny/common/types';
+import { BusinessFeature, IReview } from '@destiny/types';
 
 export interface IBusiness {
   _id: string;
@@ -11,7 +10,7 @@ export interface IBusiness {
   location: { type: 'Point'; coordinates: number[]; address?: string };
   category: string;
   subCategory: string;
-  features: ValueOf<typeof BusinessFeatures>[];
+  features: BusinessFeature[];
   images: string[];
   reviews?: IReview[];
   total_rating: number;

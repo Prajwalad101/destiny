@@ -5,7 +5,7 @@
   "workspaces": [
     "client",
     "server",
-    "common"
+    "common/*"
   ],
   "license": "MIT",
   "devDependencies": {

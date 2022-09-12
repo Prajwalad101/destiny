@@ -1,4 +1,14 @@
-import { BusinessFeatures } from '@destiny/common/data';
-import { ValueOf } from '@destiny/common/types';
+import { ValueOf } from '@destiny/types';
 
-export type BusinessFeature = ValueOf<typeof BusinessFeatures>;
+const businessFeatures = {
+  delivery: 'delivery',
+  reservations: 'reservations',
+  events: 'events',
+  goodForKids: 'good for kids',
+  liveMusic: 'live music',
+  outdoorDining: 'outdoor dining',
+} as const;
+
+export default businessFeatures;
+
+export type BusinessFeature = ValueOf<typeof businessFeatures>;
