@@ -5,7 +5,7 @@ type BusinessPrice = IBusiness['price'];
 
 export function buildBusinessQuery(
   sortField: string,
-  filters: { features: BusinessFeatures | null; price: BusinessPrice | null },
+  filters: { features: BusinessFeatures; price: BusinessPrice },
   fields: string[]
 ) {
   let priceQuery = '',
@@ -13,12 +13,11 @@ export function buildBusinessQuery(
 
   const sortQuery = `sort=${sortField}`; // sortField is always defined
 
-  if (filters.price) {
-    priceQuery = `&price=${filters.price}`;
-  }
+  priceQuery = `&price=${filters.price}`;
 
-  if (filters.features) {
-    const features = filters.features.join(',');
+  // features can be an empty array
+  if (filters.features?.length !== 0) {
+    const features = filters.features?.join(',');
     featuresQuery = `&features=${features}`;
   }
 

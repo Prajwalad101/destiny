@@ -68,7 +68,10 @@ export async function getServerSideProps() {
   // to sort the initial query by the first item in the data
   // ** when updating initialData make sure to update on useBusinesses also
   const initialSortField = sortItemData[0].sortField;
-  const initialFilters = { features: null, price: 'medium' } as const;
+  const initialFilters: {
+    features: IBusiness['features'];
+    price: IBusiness['price'];
+  } = { features: [], price: 'medium' };
 
   await queryClient.prefetchQuery(
     ['business', initialSortField, initialFilters, businessFields],

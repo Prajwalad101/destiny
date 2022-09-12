@@ -6,7 +6,7 @@ type BusinessPrice = IBusiness['price'];
 
 export const fetchBusinesses = async (
   sortField: string,
-  filters: { features: BusinessFeatures | null; price: BusinessPrice },
+  filters: { features: BusinessFeatures; price: BusinessPrice },
   fields: string[]
 ) => {
   const query = buildBusinessQuery(sortField, filters, fields);
