@@ -1,14 +1,14 @@
-import { ISelectedFilters } from '@features/search-business/types';
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { BusinessFeature, IBusiness } from '@destiny/common/types';
+import { ChangeEvent } from 'react';
 
 interface CheckboxProps {
-  filterName: string;
-  selectedFilters: ISelectedFilters;
-  setSelectedFilters: Dispatch<SetStateAction<ISelectedFilters>>;
+  feature: BusinessFeature;
+  selectedFilters: Pick<IBusiness, 'features' | 'price'>;
+  setSelectedFilters: (_filter: Pick<IBusiness, 'features' | 'price'>) => void;
 }
 
 function Checkbox({
-  filterName,
+  feature,
   selectedFilters,
   setSelectedFilters,
 }: CheckboxProps) {
@@ -16,17 +16,20 @@ function Checkbox({
 
   // when checkbox is clicked
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { checked, id: filterName } = e.target;
+    const checked = e.target.checked;
+
+    //* IMP: Only assert if input id for this event is of type BusinessFeature
+    const feature = e.target.id as BusinessFeature;
 
     // on check
-    if (checked && !features.includes(filterName)) {
-      features.push(filterName);
+    if (checked && !features.includes(feature)) {
+      features.push(feature);
       setSelectedFilters({ ...selectedFilters });
     }
 
     // on uncheck
     if (!checked) {
-      const index = features.indexOf(filterName);
+      const index = features.indexOf(feature);
       if (index > -1) {
         // only remove if element is found
         features.splice(index, 1);
@@ -40,18 +43,18 @@ function Checkbox({
       <input
         type="checkbox"
         className="inp-cbx"
-        id={filterName}
+        id={feature}
         style={{ display: 'none' }}
         onChange={(e) => handleChange(e)}
-        checked={features.includes(filterName)}
+        checked={features.includes(feature)}
       />
-      <label className="cbx" htmlFor={filterName}>
+      <label className="cbx" htmlFor={feature}>
         <span>
           <svg width="12px" height="10px" viewBox="0 0 12 10">
             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
           </svg>
         </span>
-        <span className="capitalize">{filterName}</span>
+        <span className="capitalize">{feature}</span>
       </label>
     </div>
   );

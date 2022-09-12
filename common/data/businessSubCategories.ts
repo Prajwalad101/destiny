@@ -1,4 +1,4 @@
-const businessTypes = {
+const businessSubcategories = {
   resturant: 'resturant',
   cafe: 'cafe',
   fastfood: 'fast food',
@@ -17,6 +17,6 @@ const businessTypes = {
   shopping: 'shopping',
   essential: 'essential',
   vehicle: 'vehicles',
-};
+} as const;
 
-export default businessTypes;
+export default businessSubcategories;

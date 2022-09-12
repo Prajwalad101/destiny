@@ -1,4 +1,5 @@
 import { BusinessCardProps } from '@features/search-business/types';
+import mongoose from 'mongoose';
 
 const card1: BusinessCardProps = {
   business: {
@@ -12,7 +13,7 @@ const card1: BusinessCardProps = {
       coordinates: [24.67964, 38.253338],
       address: '52 Clove Alley',
     },
-    features: ['tmbq', 'rvz', 'evlem', 'opb'],
+    features: ['delivery', 'reservations', 'events', 'good for kids'],
     images: [
       'http://dummyimage.com/138x100.png/ff4444/ffffff',
       'http://dummyimage.com/183x100.png/5fa2dd/ffffff',
@@ -23,7 +24,7 @@ const card1: BusinessCardProps = {
         review: 'Nice ambience and great dining experience',
         rating: 4,
         _id: '488djkg9kjksd',
-        business: 'dk39dfjk6393ljd',
+        business: new mongoose.Types.ObjectId(),
         createdAt: '2021-08-01',
         likes: 0,
         dislikes: 0,

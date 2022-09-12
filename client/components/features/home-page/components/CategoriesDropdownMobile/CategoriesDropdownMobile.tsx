@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { IBusinessType } from 'types/business';
+import { ISubcategoryDropdown } from 'types/business';
 import { classNames } from 'utils/tailwind';
 
 interface CategoriesDropdownMobile {
   topic: string;
-  subCategories: IBusinessType[];
+  subcategories: ISubcategoryDropdown[];
   onClick: () => void;
 }
 
 function CategoriesDropdownMobile({
   topic,
-  subCategories,
+  subcategories,
   onClick,
 }: CategoriesDropdownMobile) {
   const [selectedItem, setSelectedItem] = useState<string>(); // to track if displaying sub items
@@ -27,7 +27,7 @@ function CategoriesDropdownMobile({
   };
 
   //! FIX: Change the static city variable
-  const link = (item: IBusinessType, index: number) => (
+  const link = (item: ISubcategoryDropdown, index: number) => (
     <Link
       key={index}
       href={{
@@ -74,7 +74,7 @@ function CategoriesDropdownMobile({
           'ml-6 transition-opacity duration-500 ease-linear'
         )}
       >
-        {subCategories.map((item, index) => link(item, index))}
+        {subcategories.map((item, index) => link(item, index))}
       </div>
     </>
   );

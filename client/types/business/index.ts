@@ -1,4 +1,4 @@
-import { IBusinessCategory } from './IBusinessCategory';
-import { IBusinessType } from './IBusinessType';
+import { ICategoryDropdown } from './ICategoryDropdown';
+import { ISubcategoryDropdown } from './ISubcategoryDropdown';
 
-export type { IBusinessCategory, IBusinessType };
+export type { ICategoryDropdown, ISubcategoryDropdown };

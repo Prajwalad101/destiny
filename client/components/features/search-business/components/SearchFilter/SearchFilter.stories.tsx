@@ -1,5 +1,5 @@
 import { SearchFilter } from '@features/search-business/components';
-import { searchFilterData } from '@features/search-business/data';
+import { searchFilterOptions } from '@features/search-business/data';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof SearchFilter> = (args) => (
 
 export const ResturantFilter = Template.bind({});
 ResturantFilter.args = {
-  filterOption: searchFilterData.resturant,
+  filterBy: searchFilterOptions.resturant,
 };

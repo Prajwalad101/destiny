@@ -5,12 +5,13 @@ import businessCategories from 'data/business/categoriesData';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import { IBusinessSubcategory } from 'types/business';
+import { ISubcategoryDropdown } from 'types/business';
+
+// avoid accidentally mutating original array
+const categories = [...businessCategories];
 
 function SelectSubCategory() {
-  // avoid accidentally mutating original array
-  const categories = [...businessCategories];
-
+  // get the currently selected category name
   const {
     setFieldValue,
     values: { category },
@@ -21,41 +22,41 @@ function SelectSubCategory() {
     (businessCategory) => businessCategory.name === category
   );
 
-  // list of subCategories
-  const [subCategories, setSubCategories] = useState<
-    IBusinessSubcategory[] | undefined
-  >(businessCategory?.subCategories);
+  // list of subcategories
+  const [subcategories, setSubcategories] = useState<
+    ISubcategoryDropdown[] | undefined
+  >(businessCategory?.subcategories);
 
   // currently selected subCategory
-  const [selectedSubCategory, setSelectedSubCategory] = useState<
+  const [selectedSubcategory, setSelectedSubcategory] = useState<
     | {
         name: string;
         features?: { name: string }[];
       }
     | undefined
-  >(businessCategory?.subCategories[0]);
+  >(businessCategory?.subcategories[0]);
 
   // update subcategories when category changes
   useEffect(() => {
-    const subCategories = businessCategory?.subCategories;
-    if (!subCategories) return;
+    const subcategories = businessCategory?.subcategories;
+    if (!subcategories) return;
 
-    setSubCategories(subCategories);
-    setSelectedSubCategory(subCategories[0]); // update selected subcategory
-    setFieldValue('subCategory', subCategories[0].name); // update formik state
+    setSubcategories(subcategories);
+    setSelectedSubcategory(subcategories[0]); // update selected subcategory
+    setFieldValue('subCategory', subcategories[0].name); // update formik state
   }, [category, businessCategory, setFieldValue]);
 
-  if (!subCategories || !selectedSubCategory) {
+  if (!subcategories || !selectedSubcategory) {
     return <></>;
   }
 
   return (
     <div>
       <MyListBox
-        list={subCategories}
+        list={subcategories}
         listState={{
-          selected: selectedSubCategory,
-          setSelected: setSelectedSubCategory,
+          selected: selectedSubcategory,
+          setSelected: setSelectedSubcategory,
         }}
         width={140}
         inputName="subCategory"
@@ -63,7 +64,7 @@ function SelectSubCategory() {
           <Listbox.Button className="relative w-full rounded-r-md border-[1px] border-l-0 border-gray-400 px-5 py-2 text-left">
             <>
               <span className="block truncate capitalize">
-                {selectedSubCategory.name}
+                {selectedSubcategory.name}
               </span>
               <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
                 <HiOutlineSelector size={17} className="text-gray-400" />

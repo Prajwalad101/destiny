@@ -3,12 +3,12 @@ import { Listbox } from '@headlessui/react';
 import businessCategories from 'data/business/categoriesData';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
-import { IBusinessType } from 'types/business';
+import { ISubcategoryDropdown } from 'types/business';
 
 function SelectCategory() {
   const [selectedCategory, setSelectedCategory] = useState<{
     name: string;
-    types?: IBusinessType[];
+    subcategories?: ISubcategoryDropdown[];
   }>(businessCategories[0]);
 
   const categoryState = {

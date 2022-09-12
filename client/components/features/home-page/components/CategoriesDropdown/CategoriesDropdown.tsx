@@ -1,21 +1,21 @@
 import Link from 'next/link';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { IBusinessSubcategory } from 'types/business';
+import { ISubcategoryDropdown } from 'types/business';
 
 interface CategoriesDropdownProps {
   name: string;
-  subCategories: IBusinessSubcategory[];
+  subcategories: ISubcategoryDropdown[];
 }
 
-function CategoriesDropdown({ name, subCategories }: CategoriesDropdownProps) {
+function CategoriesDropdown({ name, subcategories }: CategoriesDropdownProps) {
   // to display items in two columns
-  const evenItems = subCategories.filter(
+  const evenItems = subcategories.filter(
     (_subCategory, i) => i % 2 === 0 || i === 0
   );
-  const oddItems = subCategories.filter((_subCategory, i) => i % 2 !== 0);
+  const oddItems = subcategories.filter((_subCategory, i) => i % 2 !== 0);
 
   //! FIX: Change the static city variable
-  const link = (item: IBusinessSubcategory, index: number) => (
+  const link = (item: ISubcategoryDropdown, index: number) => (
     <Link
       key={index}
       href={{

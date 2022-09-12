@@ -14,15 +14,15 @@ import {
 import { MdOutlineFastfood, MdOutlineSportsTennis } from 'react-icons/md';
 import { RiCake3Fill, RiHotelLine } from 'react-icons/ri';
 import { TbRollercoaster } from 'react-icons/tb';
-import { IBusinessCategory } from 'types/business';
+import { ICategoryDropdown } from 'types/business';
 
 const iconSize = 20;
 
 // contains data about how all business are categorized
-const businessCategoriesData: IBusinessCategory[] = [
+const businessCategoriesData: ICategoryDropdown[] = [
   {
     name: 'food and drinks',
-    types: [
+    subcategories: [
       {
         name: 'resturant',
         icon: <FaPizzaSlice size={17} />,
@@ -59,7 +59,7 @@ const businessCategoriesData: IBusinessCategory[] = [
   },
   {
     name: 'sports and fitness',
-    types: [
+    subcategories: [
       {
         name: 'gym',
         icon: <GiWeightLiftingUp size={iconSize} />,
@@ -89,7 +89,7 @@ const businessCategoriesData: IBusinessCategory[] = [
   },
   {
     name: 'home services',
-    types: [
+    subcategories: [
       {
         name: 'plumbing',
         icon: <GiTeePipe size={iconSize} />,
@@ -114,7 +114,7 @@ const businessCategoriesData: IBusinessCategory[] = [
   },
   {
     name: 'others',
-    types: [
+    subcategories: [
       {
         name: 'entertainment',
         icon: <TbRollercoaster size={iconSize} />,

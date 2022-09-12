@@ -9,8 +9,8 @@ export const initialFormValues: MyFormValues = {
     close: '1:00 PM',
   },
   category: businessCategories[0].name,
-  subCategory: businessCategories[0].subCategories[0].name,
-  features: [businessCategories[0].subCategories[0].features[0].name],
+  subCategory: businessCategories[0].subcategories[0].name,
+  features: [businessCategories[0].subcategories[0].features[0].name],
   images: [],
   location: { type: 'Point', coordinates: [0, 0], address: '' },
 };
