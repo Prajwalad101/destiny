@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/common/types';
+import { IBusiness } from '@destiny/types';
 import { SearchFilter, SortItems } from '@features/search-business/components';
 import {
   searchFilterOptions,

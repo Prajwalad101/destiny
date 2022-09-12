@@ -72,7 +72,7 @@ function Sidebar() {
           <div key={index}>
             <CategoriesDropdownMobile
               topic={data.name}
-              subCategories={data.subCategories}
+              subCategories={data.types}
               onClick={() => setOpen(!open)}
             />
           </div>

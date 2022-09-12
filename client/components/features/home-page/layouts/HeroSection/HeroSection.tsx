@@ -35,7 +35,7 @@ function HeroSection() {
               <div key={index}>
                 <CategoriesDropdown
                   name={data.name}
-                  subCategories={data.subCategories}
+                  subCategories={data.types}
                 />
               </div>
             ))}

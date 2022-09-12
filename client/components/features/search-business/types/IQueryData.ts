@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/common/types';
+import { IBusiness } from '@destiny/types';
 
 export interface IQueryData {
   status: string;

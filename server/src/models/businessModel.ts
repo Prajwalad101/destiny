@@ -1,4 +1,4 @@
-import { IBusiness } from '@destiny/common/types';
+import { IBusiness } from '@destiny/types';
 import mongoose from 'mongoose';
 
 const businessSchema = new mongoose.Schema<IBusiness>(

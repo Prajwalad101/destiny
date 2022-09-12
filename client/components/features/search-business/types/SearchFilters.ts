@@ -1,4 +1,4 @@
-import { BusinessType, IBusiness } from '@destiny/common/types';
+import { BusinessType, IBusiness } from '@destiny/types';
 
 export interface FilterByOptions {
   price: IBusiness['price'][];
