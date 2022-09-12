@@ -11,7 +11,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@destiny/types": "1.0.0",
+    "@destiny/common": "1.0.0",
     "@headlessui/react": "^1.6.6",
     "axios": "^0.27.2",
     "formik": "^2.2.9",

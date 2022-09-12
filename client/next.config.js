@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const withTM = require('next-transpile-modules')(['@destiny/types']);
+const withTM = require('next-transpile-modules')(['@destiny/common']);
 
 const nextConfig = withTM({
   reactStrictMode: true,
