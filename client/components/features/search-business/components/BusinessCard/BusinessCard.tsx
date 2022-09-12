@@ -1,6 +1,6 @@
 import { IBusiness, IReview } from '@destiny/common/types';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import ImageSlider from 'components/slider/Slider';
+import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
@@ -16,17 +16,14 @@ function BusinessCard({ business }: BusinessCardProps) {
   const images = business.images.map((image) => getPublicFilePath(image));
 
   return (
-    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex ">
-      <div className="h-48 shrink-0 sm:w-[224px]">
-        {/* <ImageSlider images={images} className="w-full" /> */}
-        <ImageSlider numItems={images.length}>
-          {images.map((image, index) => (
-            <div key={index} className="relative w-full shrink-0">
-              <Image src={image} alt="image" layout="fill" objectFit="cover" />
-            </div>
-          ))}
-        </ImageSlider>
-      </div>
+    <div className="font-rubik transition-colors hover:bg-gray-50 sm:flex">
+      <Slider numItems={images.length} className="shrink-0 sm:w-[224px]">
+        {images.map((image, index) => (
+          <div key={index} className="relative h-48 w-full">
+            <Image src={image} alt="image" layout="fill" objectFit="cover" />
+          </div>
+        ))}
+      </Slider>
       {/* Body */}
       <div className="min-w-0 grow border-2 border-t-0 sm:border-t-2 sm:border-l-0">
         <Link href={`/search/business/${business._id}`}>
