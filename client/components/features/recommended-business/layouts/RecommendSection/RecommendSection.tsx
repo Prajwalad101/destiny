@@ -1,6 +1,4 @@
 import { BusinessCard } from '@features/recommended-business/components';
-import { mockBusinessCardProps } from '@features/recommended-business/data';
-import { BusinessCardProps } from '@features/recommended-business/types';
 import { useBusinesses } from '@features/search-business/hooks';
 import AppLayout from 'components/layout/app/AppLayout';
 import Slider from 'components/slider/Slider';
@@ -19,15 +17,6 @@ function RecommendedSection({
   description,
   groupBy: _groupBy,
 }: IRecommendedSection) {
-  const cards: BusinessCardProps[] = [
-    mockBusinessCardProps.card1,
-    mockBusinessCardProps.card2,
-    mockBusinessCardProps.card3,
-    mockBusinessCardProps.card3,
-    mockBusinessCardProps.card3,
-    mockBusinessCardProps.card3,
-  ];
-
   const businessResult = useBusinesses();
   const businesses = businessResult.data?.data;
 
@@ -56,7 +45,7 @@ function RecommendedSection({
         <p className="mb-5 text-base text-gray-800 md:block">{description}</p>
 
         <Slider
-          numItems={cards.length}
+          numItems={businesses.length}
           className="mb-10"
           leftButton={leftButton}
           rightButton={rightButton}
