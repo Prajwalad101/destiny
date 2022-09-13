@@ -2,26 +2,26 @@ import { NextFunction, Request, Response } from 'express';
 import Business from '../models/businessModel';
 import { APIFeatures } from '../utils/apiFeatures';
 import AppError from '../utils/appError';
-import { filterTags } from '../utils/businessFunc';
+import { filterFeatures } from '../utils/businessFunc';
 import catchAsync from '../utils/catchAsync';
 
 const getAllBusinesses = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
     const businessQuery = Business.find();
 
-    const customFilters = ['tags']; // these filters are excluded on APIFeatures
+    const customFilters = ['features']; // these filters are excluded on APIFeatures
 
-    // filter documents by "tags" field
-    const tags = req.query.tags as string | undefined;
-    filterTags(businessQuery, tags);
+    // filter documents by "features" field
+    const features = req.query.features as string | undefined;
+    filterFeatures(businessQuery, features);
 
-    const features = new APIFeatures(businessQuery, req.query)
+    const apiFeatures = new APIFeatures(businessQuery, req.query)
       .filter(customFilters)
       .sort()
       .limitFields()
       .paginate();
 
-    const allBusiness = await features.query;
+    const allBusiness = await apiFeatures.query;
 
     res.json({
       status: 'success',

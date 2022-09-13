@@ -1,15 +1,15 @@
 /**
  * mutates the original query object by adding custom filter query
  * @param query business query object
- * @param tags field passed into the query params
+ * @param features field passed into the query params
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const filterTags = (query: any, tags: string | undefined) => {
-  let tagsArr: string[] = [];
+export const filterFeatures = (query: any, features: string | undefined) => {
+  let featuresArr: string[] = [];
 
-  // if tags is not passed, do not query by that field
-  if (!tags) return;
+  // if features is not passed, do not query by that field
+  if (!features) return;
 
-  tagsArr = tags?.split(',');
-  query.find({ tags: { $all: tagsArr } });
+  featuresArr = features?.split(',');
+  query.find({ features: { $all: featuresArr } });
 };
