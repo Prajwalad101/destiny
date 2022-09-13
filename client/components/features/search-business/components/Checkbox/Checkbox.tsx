@@ -1,10 +1,11 @@
-import { BusinessFeature, IBusiness } from '@destiny/common/types';
+import { BusinessFeature } from '@destiny/common/types';
+import { FilterFields } from '@features/search-business/types';
 import { ChangeEvent } from 'react';
 
 interface CheckboxProps {
   feature: BusinessFeature;
-  selectedFilters: Pick<IBusiness, 'features' | 'price'>;
-  setSelectedFilters: (_filter: Pick<IBusiness, 'features' | 'price'>) => void;
+  selectedFilters: FilterFields;
+  setSelectedFilters: (_filter: FilterFields) => void;
 }
 
 function Checkbox({
@@ -16,19 +17,17 @@ function Checkbox({
 
   // when checkbox is clicked
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-
     //* IMP: Only assert if input id for this event is of type BusinessFeature
     const feature = e.target.id as BusinessFeature;
 
-    // on check
-    if (checked && !features.includes(feature)) {
+    // when checkbox is checked
+    if (e.target.checked && !features.includes(feature)) {
       features.push(feature);
       setSelectedFilters({ ...selectedFilters });
     }
 
-    // on uncheck
-    if (!checked) {
+    // when checkbox is unchecked and features exists
+    if (!e.target.checked) {
       const index = features.indexOf(feature);
       if (index > -1) {
         // only remove if element is found

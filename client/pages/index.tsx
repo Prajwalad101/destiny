@@ -26,7 +26,7 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-// since navbar should render behind background image, it is present inside the hero section
+// since navbar should render with background image, it is present inside the hero section
 Home.getLayout = (page, pageProps) => (
   <ProviderLayout pageProps={pageProps}>
     <NavigationProvider>

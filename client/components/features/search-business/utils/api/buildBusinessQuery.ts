@@ -1,17 +1,15 @@
 import { IBusiness } from '@destiny/common/types';
 
-type BusinessFeatures = IBusiness['features'];
-type BusinessPrice = IBusiness['price'];
-
 export function buildBusinessQuery(
   sortField: string | undefined,
-  filters: { features: BusinessFeatures; price: BusinessPrice } | undefined,
+  filters: Pick<IBusiness, 'features' | 'price' | 'subCategory'> | undefined,
   fields: string[] | undefined
 ) {
   let sortQuery = '',
     priceQuery = '',
     featuresQuery = '',
-    fieldsQuery = '';
+    fieldsQuery = '',
+    subcategoryQuery = '';
 
   if (sortField) {
     sortQuery = `sort=${sortField}`; // sortField is always defined
@@ -19,6 +17,7 @@ export function buildBusinessQuery(
 
   if (filters) {
     priceQuery = `&price=${filters.price}`;
+    subcategoryQuery = `&subCategory=${filters.subCategory}`;
 
     // features can be an empty array
     if (filters.features.length !== 0) {
@@ -32,7 +31,13 @@ export function buildBusinessQuery(
   }
 
   // sort=-avgRating&price=cheap&features=delivery,events
-  const apiQuery = ''.concat(sortQuery, priceQuery, featuresQuery, fieldsQuery);
+  const apiQuery = ''.concat(
+    sortQuery,
+    priceQuery,
+    featuresQuery,
+    fieldsQuery,
+    subcategoryQuery
+  );
 
   return apiQuery;
 }

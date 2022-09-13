@@ -1,6 +1,9 @@
 import { IBusiness } from '@destiny/common/types';
 import { Checkbox } from '@features/search-business/components';
-import { IFilterByOptions } from '@features/search-business/types';
+import {
+  FilterFields,
+  IFilterByOptions,
+} from '@features/search-business/types';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import { ChangeEvent } from 'react';
 
@@ -16,8 +19,8 @@ interface SelectFilterProps {
 
 interface SearchFilterProps {
   filterBy: IFilterByOptions;
-  selectedFilters: Pick<IBusiness, 'features' | 'price'>;
-  setSelectedFilters: (_filter: Pick<IBusiness, 'features' | 'price'>) => void;
+  selectedFilters: FilterFields;
+  setSelectedFilters: (_filter: FilterFields) => void;
   setIsEnabled: (_isEnabled: boolean) => void;
 }
 

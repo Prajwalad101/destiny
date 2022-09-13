@@ -1,5 +1,4 @@
-import { IBusiness } from '@destiny/common/types';
-import { IQueryData } from '@features/search-business/types';
+import { FilterFields, IQueryData } from '@features/search-business/types';
 import {
   buildBusinessQuery,
   fetchBusinesses,
@@ -8,7 +7,7 @@ import { useQuery } from 'react-query';
 
 type Props = {
   sort: string; // sort items based on this field(eg:-createdAt)
-  filters: Pick<IBusiness, 'features' | 'price'>; // filter items based on this property
+  filters: FilterFields; // filter items based on this property
   fields: string[]; // fields to select when fetching items
   enabled: boolean; // only fetch if true,
 };
