@@ -14,17 +14,18 @@ type Props = {
 };
 
 function useBusinesses(props?: Partial<Props>) {
-  const queryURL = buildBusinessQuery(
-    props?.sort,
-    props?.filters,
-    props?.fields
-  );
+  const { sort, filters, fields, enabled } = props || {};
+
+  const queryURL = buildBusinessQuery(sort, filters, fields);
+
+  // if no enabled variable passed, enable automatic refetching
+  const isEnabled = enabled === undefined ? true : enabled;
 
   const query = useQuery<IQueryData, Error>(
-    ['business', props?.sort, props?.filters, props?.fields],
+    ['business', sort, filters, fields],
     () => fetchBusinesses(queryURL),
     {
-      enabled: props?.enabled || true, // only run when the filter button is clicked
+      enabled: isEnabled, // only run when the filter button is clicked
       staleTime: 1000 * 10,
     }
   );
