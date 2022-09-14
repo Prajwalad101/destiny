@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 
 // fields to not query for when fetching businesses
-const businessFields = ['-description', '-price', '-tags', '-total_rating'];
+const businessFields = ['-description', '-price', '-features', '-total_rating'];
 
 const SearchBusiness: NextPageWithLayout = () => {
   const router = useRouter();
