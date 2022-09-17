@@ -13,5 +13,9 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 export const Base = Template.bind({});
 Base.args = {
   feature: 'delivery',
-  selectedFilters: { price: 'medium', features: ['delivery'] },
+  selectedFilters: {
+    price: 'medium',
+    features: ['delivery'],
+    subCategory: 'resturant',
+  },
 };
