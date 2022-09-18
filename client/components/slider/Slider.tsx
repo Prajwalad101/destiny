@@ -58,17 +58,13 @@ function Slider({
   leftButton = leftButton ? (
     <div onClick={handleLeft}>{leftButton}</div>
   ) : (
-    <SliderButton onClick={handleLeft} className="left-[7px]">
-      <BiArrowBack size={20} />
-    </SliderButton>
+    <LeftButton onClick={handleLeft} />
   );
 
   rightButton = rightButton ? (
     <div onClick={handleRight}>{rightButton}</div>
   ) : (
-    <SliderButton onClick={handleRight} className="right-[7px] ">
-      <BiArrowBack size={20} className="rotate-180" />{' '}
-    </SliderButton>
+    <RightButton onClick={handleRight} />
   );
 
   return (
@@ -94,14 +90,9 @@ function Slider({
 
 export default Slider;
 
-function SliderButton({ onClick, className = '', children }: ButtonProps) {
+const LeftButton = ({ onClick }: ButtonProps) => {
   return (
-    <div
-      className={classNames(
-        className,
-        'absolute top-[50%] translate-y-[-50%] '
-      )}
-    >
+    <div className="absolute top-[50%] translate-y-[-50%] ">
       <button
         type="button"
         onClick={onClick}
@@ -109,9 +100,24 @@ function SliderButton({ onClick, className = '', children }: ButtonProps) {
           'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
         }
       >
-        {/* <BiArrowBack size={20} /> */}
-        {children}
+        <BiArrowBack size={20} />
       </button>
     </div>
   );
-}
+};
+
+const RightButton = ({ onClick }: ButtonProps) => {
+  return (
+    <div className="absolute top-[50%] translate-y-[-50%] ">
+      <button
+        type="button"
+        onClick={onClick}
+        className={
+          'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
+        }
+      >
+        <BiArrowBack size={20} className="rotate-180" />{' '}
+      </button>
+    </div>
+  );
+};

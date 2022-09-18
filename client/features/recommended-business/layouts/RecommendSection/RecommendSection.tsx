@@ -2,13 +2,11 @@ import { BusinessCard } from '@features/recommended-business/components';
 import { useBusinesses } from '@features/search-business/hooks';
 import AppLayout from 'components/layout/app/AppLayout';
 import Slider from 'components/slider/Slider';
-import { BiArrowBack } from 'react-icons/bi';
-import { ButtonProps } from 'types/props/button/ButtonProps';
-import { classNames } from 'utils/tailwind';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
 interface IRecommendedSection {
   title: string;
-  description?: string;
+  description: string;
   groupBy: string;
 }
 
@@ -24,18 +22,6 @@ function RecommendedSection({
     return <></>;
   }
 
-  const leftButton = (
-    <SliderButton className="left-[10px]">
-      <BiArrowBack size={20} />
-    </SliderButton>
-  );
-
-  const rightButton = (
-    <SliderButton className="right-[10px]">
-      <BiArrowBack size={20} className="rotate-180" />
-    </SliderButton>
-  );
-
   return (
     <AppLayout size="sm">
       <div className="font-rubik md:mb-16">
@@ -47,8 +33,8 @@ function RecommendedSection({
         <Slider
           numItems={businesses.length}
           className="mb-10"
-          leftButton={leftButton}
-          rightButton={rightButton}
+          leftButton={<LeftButton />}
+          rightButton={<RightButton />}
         >
           {businesses.map((business, index) => (
             <div key={index} className="w-full sm:w-1/2 sm:px-2 lg:w-1/4">
@@ -61,18 +47,26 @@ function RecommendedSection({
   );
 }
 
-function SliderButton({ children, className = '' }: ButtonProps) {
+const RightButton = () => {
   return (
     <button
       type="button"
-      className={classNames(
-        className,
-        'absolute top-[40%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
-      )}
+      className="md:right-[15px] right-[10px] absolute top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md"
     >
-      {children}
+      <AiOutlineRight size={20} />
     </button>
   );
-}
+};
+
+const LeftButton = () => {
+  return (
+    <button
+      type="button"
+      className="md:left-[15px] left-[10px] absolute top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md"
+    >
+      <AiOutlineLeft size={20} />
+    </button>
+  );
+};
 
 export default RecommendedSection;
