@@ -1,4 +1,4 @@
-import { ButtonProps as Button } from 'types/props/button/ButtonProps';
+import { ButtonProps as Button } from 'types/props';
 import { classNames } from 'utils/tailwind';
 
 interface SecondaryButtonProps {

@@ -3,6 +3,7 @@ import { useBusinesses } from '@features/search-business/hooks';
 import AppLayout from 'components/layout/app/AppLayout';
 import Slider from 'components/slider/Slider';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { ButtonProps } from 'types/props';
 
 interface IRecommendedSection {
   title: string;
@@ -32,8 +33,8 @@ function RecommendedSection({
 
         <Slider
           numItems={businesses.length}
-          leftButton={<LeftButton />}
-          rightButton={<RightButton />}
+          LeftButton={LeftButton}
+          RightButton={RightButton}
           className="sm:-mx-2"
         >
           {businesses.map((business, index) => (
@@ -47,9 +48,10 @@ function RecommendedSection({
   );
 }
 
-const RightButton = () => {
+const RightButton = ({ onClick }: ButtonProps) => {
   return (
     <button
+      onClick={onClick}
       type="button"
       className="md:right-[15px] right-[10px] absolute top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md"
     >
@@ -58,9 +60,10 @@ const RightButton = () => {
   );
 };
 
-const LeftButton = () => {
+const LeftButton = ({ onClick }: ButtonProps) => {
   return (
     <button
+      onClick={onClick}
       type="button"
       className="md:left-[15px] left-[10px] absolute top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md"
     >

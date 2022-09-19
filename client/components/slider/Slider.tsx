@@ -1,7 +1,7 @@
 import { useWindowSize } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { ButtonProps } from 'types/props/button/ButtonProps';
+import { ButtonProps } from 'types/props';
 import { getVisibleChildrenCount } from 'utils/dom';
 import { classNames } from 'utils/tailwind';
 
@@ -9,16 +9,16 @@ interface SliderProps {
   children: React.ReactNode;
   numItems: number;
   className?: string;
-  leftButton?: JSX.Element;
-  rightButton?: JSX.Element;
+  LeftButton?: (_props: ButtonProps) => JSX.Element;
+  RightButton?: (_props: ButtonProps) => JSX.Element;
 }
 
 function Slider({
   children,
   numItems,
   className = '',
-  leftButton,
-  rightButton,
+  LeftButton,
+  RightButton,
 }: SliderProps) {
   // slider index increases or decreases on each button click
   const [sliderIndex, setSliderIndex] = useState<number>(1);
@@ -53,18 +53,15 @@ function Slider({
     setSliderIndex((prevIndex) => ++prevIndex);
   };
 
-  // if slide button is defined, attach a div with onClick handler
-  // if not defined, use the default buttons
-  leftButton = leftButton ? (
-    <div onClick={handleLeft}>{leftButton}</div>
-  ) : (
+  const leftButton = LeftButton ? (
     <LeftButton onClick={handleLeft} />
-  );
-
-  rightButton = rightButton ? (
-    <div onClick={handleRight}>{rightButton}</div>
   ) : (
+    <SliderLeftButton onClick={handleLeft} />
+  );
+  const rightButton = RightButton ? (
     <RightButton onClick={handleRight} />
+  ) : (
+    <SilderRightButton onClick={handleRight} />
   );
 
   return (
@@ -90,7 +87,7 @@ function Slider({
 
 export default Slider;
 
-const LeftButton = ({ onClick }: ButtonProps) => {
+const SliderLeftButton = ({ onClick }: ButtonProps) => {
   return (
     <div className="absolute top-[50%] translate-y-[-50%] ">
       <button
@@ -106,7 +103,7 @@ const LeftButton = ({ onClick }: ButtonProps) => {
   );
 };
 
-const RightButton = ({ onClick }: ButtonProps) => {
+const SilderRightButton = ({ onClick }: ButtonProps) => {
   return (
     <div className="absolute top-[50%] translate-y-[-50%] ">
       <button
