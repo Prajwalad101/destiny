@@ -1,7 +1,7 @@
 import { useWindowSize } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { ButtonProps } from 'types/props/button/ButtonProps';
+import { ButtonProps } from 'types/props';
 import { getVisibleChildrenCount } from 'utils/dom';
 import { classNames } from 'utils/tailwind';
 
@@ -9,16 +9,16 @@ interface SliderProps {
   children: React.ReactNode;
   numItems: number;
   className?: string;
-  leftButton?: JSX.Element;
-  rightButton?: JSX.Element;
+  LeftButton?: (_props: ButtonProps) => JSX.Element;
+  RightButton?: (_props: ButtonProps) => JSX.Element;
 }
 
 function Slider({
   children,
   numItems,
   className = '',
-  leftButton,
-  rightButton,
+  LeftButton,
+  RightButton,
 }: SliderProps) {
   // slider index increases or decreases on each button click
   const [sliderIndex, setSliderIndex] = useState<number>(1);
@@ -53,22 +53,15 @@ function Slider({
     setSliderIndex((prevIndex) => ++prevIndex);
   };
 
-  // if slide button is defined, attach a div with onClick handler
-  // if not defined, use the default buttons
-  leftButton = leftButton ? (
-    <div onClick={handleLeft}>{leftButton}</div>
+  const leftButton = LeftButton ? (
+    <LeftButton onClick={handleLeft} />
   ) : (
-    <SliderButton onClick={handleLeft} className="left-[7px]">
-      <BiArrowBack size={20} />
-    </SliderButton>
+    <SliderLeftButton onClick={handleLeft} />
   );
-
-  rightButton = rightButton ? (
-    <div onClick={handleRight}>{rightButton}</div>
+  const rightButton = RightButton ? (
+    <RightButton onClick={handleRight} />
   ) : (
-    <SliderButton onClick={handleRight} className="right-[7px] ">
-      <BiArrowBack size={20} className="rotate-180" />{' '}
-    </SliderButton>
+    <SilderRightButton onClick={handleRight} />
   );
 
   return (
@@ -94,14 +87,9 @@ function Slider({
 
 export default Slider;
 
-function SliderButton({ onClick, className = '', children }: ButtonProps) {
+const SliderLeftButton = ({ onClick }: ButtonProps) => {
   return (
-    <div
-      className={classNames(
-        className,
-        'absolute top-[50%] translate-y-[-50%] '
-      )}
-    >
+    <div className="absolute top-[50%] translate-y-[-50%] ">
       <button
         type="button"
         onClick={onClick}
@@ -109,9 +97,24 @@ function SliderButton({ onClick, className = '', children }: ButtonProps) {
           'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
         }
       >
-        {/* <BiArrowBack size={20} /> */}
-        {children}
+        <BiArrowBack size={20} />
       </button>
     </div>
   );
-}
+};
+
+const SilderRightButton = ({ onClick }: ButtonProps) => {
+  return (
+    <div className="absolute top-[50%] translate-y-[-50%] ">
+      <button
+        type="button"
+        onClick={onClick}
+        className={
+          'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
+        }
+      >
+        <BiArrowBack size={20} className="rotate-180" />{' '}
+      </button>
+    </div>
+  );
+};
