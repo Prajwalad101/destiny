@@ -1,6 +1,6 @@
 import { useWindowSize } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
-import { BiArrowBack } from 'react-icons/bi';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { ButtonProps } from 'types/props';
 import { getVisibleChildrenCount } from 'utils/dom';
 import { classNames } from 'utils/tailwind';
@@ -89,32 +89,28 @@ export default Slider;
 
 const SliderLeftButton = ({ onClick }: ButtonProps) => {
   return (
-    <div className="absolute top-[50%] translate-y-[-50%] ">
-      <button
-        type="button"
-        onClick={onClick}
-        className={
-          'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
-        }
-      >
-        <BiArrowBack size={20} />
-      </button>
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className={
+        'shadow-md left-[5px] absolute top-[50%] translate-y-[-50%]  z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
+      }
+    >
+      <AiOutlineLeft size={20} />
+    </button>
   );
 };
 
 const SilderRightButton = ({ onClick }: ButtonProps) => {
   return (
-    <div className="absolute top-[50%] translate-y-[-50%] ">
-      <button
-        type="button"
-        onClick={onClick}
-        className={
-          'z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
-        }
-      >
-        <BiArrowBack size={20} className="rotate-180" />{' '}
-      </button>
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className={
+        'absolute top-[50%] translate-y-[-50%] right-[5px] z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md'
+      }
+    >
+      <AiOutlineRight size={20} />
+    </button>
   );
 };

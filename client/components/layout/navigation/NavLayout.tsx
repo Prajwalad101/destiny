@@ -1,6 +1,6 @@
-import Navbar from 'components/navigation/navbar/Navbar';
-import Sidebar from 'components/navigation/sidebar/Sidebar';
-import { NavigationProvider } from 'context/navigation.context';
+import { AppLayout } from 'components/layout';
+import { Navbar, Sidebar } from 'components/navigation';
+import { NavigationProvider } from 'context';
 
 interface INavLayout {
   children: React.ReactNode;
@@ -9,7 +9,9 @@ interface INavLayout {
 function NavLayout({ children }: INavLayout) {
   return (
     <NavigationProvider>
-      <Navbar theme="light" />
+      <AppLayout>
+        <Navbar theme="light" />
+      </AppLayout>
       <Sidebar />
       {children}
     </NavigationProvider>
