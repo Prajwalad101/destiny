@@ -5,7 +5,9 @@ import {
 } from '@features/business-details/layouts';
 import { fetchBusiness } from '@features/business-details/utils/api';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
-import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
+import { NavigationProvider, QueryProvider } from 'components/context-provider';
+import { AppLayout } from 'components/layout';
+import { Navbar, Sidebar } from 'components/navigation';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
@@ -56,9 +58,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default Business;
 
 Business.getLayout = (page, pageProps) => (
-  <ProviderLayout pageProps={pageProps}>
-    <NavLayout>
-      <AppLayout size="sm">{page}</AppLayout>
-    </NavLayout>
-  </ProviderLayout>
+  <QueryProvider pageProps={pageProps}>
+    <NavigationProvider>
+      <Navbar theme="light" size="sm" />
+      <Sidebar />
+    </NavigationProvider>
+    <AppLayout size="sm">{page}</AppLayout>
+  </QueryProvider>
 );

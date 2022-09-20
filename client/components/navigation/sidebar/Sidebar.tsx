@@ -1,5 +1,5 @@
 import { SidebarCategoryDropdown } from '@features/home-page/components';
-import { useSidebar } from 'context/navigation.context';
+import { useSidebar } from 'components/context-provider';
 import businessCategories from 'data/business/categoriesData';
 import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';

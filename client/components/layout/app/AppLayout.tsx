@@ -2,10 +2,10 @@ import { classNames } from 'utils/tailwind';
 
 interface IAppLayout {
   children: React.ReactNode;
-  size?: 'sm' | 'lg';
+  size: 'sm' | 'lg';
 }
 
-function AppLayout({ children, size = 'lg' }: IAppLayout) {
+function AppLayout({ children, size }: IAppLayout) {
   return (
     <div
       className={classNames(

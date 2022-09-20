@@ -10,11 +10,11 @@ import businessCategories from 'data/business/categoriesData';
 function HeroSection() {
   return (
     <div className="relative mb-10 md:mb-0 md:h-[700px]">
+      {/* BG Image */}
+      <div className="absolute inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
+      {/* Navbar */}
+      <Navbar theme="dark" size="sm" />
       <AppLayout size="sm">
-        {/* BG Image */}
-        <div className="absolute inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
-        {/* Navbar */}
-        <Navbar theme="dark" />
         <section className="mt-7 md:mt-20">
           <MainHeading className="mb-5 max-w-sm sm:max-w-xl md:mb-7">
             Find and support local businesses

@@ -1,8 +1,8 @@
 import { HeroSection } from '@features/home-page/layouts';
 import { RecommendedSection } from '@features/recommended-business/layouts';
-import { ProviderLayout } from 'components/layout';
+import { QueryProvider } from 'components/context-provider';
+import { NavigationProvider } from 'components/context-provider/NavigationProvider/NavigationProvider';
 import Sidebar from 'components/navigation/sidebar/Sidebar';
-import { NavigationProvider } from 'context/navigation.context';
 import { NextPageWithLayout } from 'pages/_app';
 
 const Home: NextPageWithLayout = () => {
@@ -28,12 +28,12 @@ const Home: NextPageWithLayout = () => {
 
 // since navbar should render with background image, it is present inside the hero section
 Home.getLayout = (page, pageProps) => (
-  <ProviderLayout pageProps={pageProps}>
+  <QueryProvider pageProps={pageProps}>
     <NavigationProvider>
       <Sidebar />
       {page}
     </NavigationProvider>
-  </ProviderLayout>
+  </QueryProvider>
 );
 
 export default Home;

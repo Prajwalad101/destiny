@@ -9,7 +9,7 @@ const CreateBusiness: NextPageWithLayout = () => {
   return (
     <div>
       <HeroSection />
-      <AppLayout>
+      <AppLayout size="sm">
         <div className="md:my-20">
           {infoCardData.map((data, index) => (
             <React.Fragment key={index}>

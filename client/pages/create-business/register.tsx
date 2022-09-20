@@ -8,8 +8,8 @@ import { formikValidationSchema } from '@features/create-business/schema';
 import { MyFormValues } from '@features/create-business/types';
 import { dataToFormData } from '@features/create-business/utils/objects/dataToFormData';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
+import { QueryProvider } from 'components/context-provider';
 import AppLayout from 'components/layout/app/AppLayout';
-import ProviderLayout from 'components/layout/provider/ProviderLayout.';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
@@ -77,10 +77,10 @@ const RegisterBusiness: NextPageWithLayout = () => {
 
 RegisterBusiness.getLayout = (page) => (
   <>
-    <ProviderLayout>
+    <QueryProvider>
       <NavbarSection />
       <AppLayout size="sm">{page}</AppLayout>
-    </ProviderLayout>
+    </QueryProvider>
   </>
 );
 

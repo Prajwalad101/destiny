@@ -11,7 +11,9 @@ import {
   buildBusinessQuery,
   fetchBusinesses,
 } from '@features/search-business/utils/api';
-import { AppLayout, NavLayout, ProviderLayout } from 'components/layout';
+import { NavigationProvider, QueryProvider } from 'components/context-provider';
+import { AppLayout } from 'components/layout';
+import { Navbar, Sidebar } from 'components/navigation';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
@@ -103,9 +105,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default SearchBusiness;
 
 SearchBusiness.getLayout = (page, pageProps) => (
-  <ProviderLayout pageProps={pageProps}>
-    <NavLayout>
-      <AppLayout>{page}</AppLayout>
-    </NavLayout>
-  </ProviderLayout>
+  <QueryProvider pageProps={pageProps}>
+    <NavigationProvider>
+      <Navbar theme="light" size="lg" />
+      <Sidebar />
+    </NavigationProvider>
+    <AppLayout size="lg">{page}</AppLayout>
+  </QueryProvider>
 );

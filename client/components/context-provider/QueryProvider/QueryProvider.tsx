@@ -1,7 +1,7 @@
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-interface IProviderLayout {
+interface QueryProviderProps {
   children: React.ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pageProps?: any;
@@ -15,7 +15,7 @@ const queryClient = new QueryClient({
   },
 });
 
-function ProviderLayout({ children, pageProps }: IProviderLayout) {
+function QueryProvider({ children, pageProps }: QueryProviderProps) {
   let component;
   if (pageProps) {
     component = <Hydrate state={pageProps.dehydratedState}>{children}</Hydrate>;
@@ -31,4 +31,4 @@ function ProviderLayout({ children, pageProps }: IProviderLayout) {
   );
 }
 
-export default ProviderLayout;
+export default QueryProvider;

@@ -1,23 +1,17 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
+import { createContext, useContext, useState } from 'react';
 
 interface IContext {
   open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-interface INavigationProvider {
-  children: React.ReactNode;
+  setOpen: (_value: boolean) => void;
 }
 
 const NavigationContext = createContext<IContext | undefined>(undefined);
 
-function NavigationProvider({ children }: INavigationProvider) {
+interface NavigationProviderProps {
+  children: React.ReactNode;
+}
+
+function NavigationProvider({ children }: NavigationProviderProps) {
   // sidebar toggle state
   const [open, setOpen] = useState(false);
   const value = { open, setOpen };
