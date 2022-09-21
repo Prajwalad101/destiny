@@ -1,29 +1,22 @@
 import { linkData } from '@features/create-business/data';
-import { NavbarSection } from '@features/create-business/layouts';
 import { MainHeading } from '@features/home-page/components';
 import PrimaryButton from 'components/button/primary/PrimaryButton';
-import AppLayout from 'components/layout/app/AppLayout';
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
 
 function HeroSection() {
   return (
     <div>
-      <div className="relative h-[650px] font-rubik md:h-[700px]">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-10 hidden bg-for-business-main bg-cover bg-no-repeat md:block" />
+      <div className="h-[550px] font-rubik md:h-[600px]">
+        {/* BG Image */}
+        <div className="absolute h-[650px] md:h-[700px] inset-0 -z-10 hidden bg-for-business-main bg-cover bg-no-repeat md:block" />
         {/* Overlay */}
-        <div className="absolute inset-0 -z-10 hidden h-full w-full bg-gray-600 opacity-10 md:block" />
-        <div className="mb-7 md:mb-10">
-          <NavbarSection theme="dark" />
-        </div>
-        <AppLayout size="sm">
-          <MainHeading className="mb-3 max-w-sm sm:max-w-[40rem]">
-            Register your business for free
-          </MainHeading>
-          <SubHeading />
-          <CallToAction />
-        </AppLayout>
+        <div className="absolute h-[650px] md:h-[700px] inset-0 -z-10 hidden w-full bg-gray-600 opacity-10 md:block" />
+        <MainHeading className="mb-3 max-w-sm sm:max-w-[40rem]">
+          Register your business for free
+        </MainHeading>
+        <SubHeading />
+        <CallToAction />
       </div>
     </div>
   );

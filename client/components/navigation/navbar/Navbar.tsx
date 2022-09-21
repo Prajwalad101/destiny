@@ -1,7 +1,6 @@
 import PrimaryButton from 'components/button/primary/PrimaryButton';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { useSidebar } from 'components/context-provider';
-import { AppLayout } from 'components/layout';
 import Logo from 'components/logo/Logo';
 import usePreventBodyOverflow from 'hooks/usePreventBodyOverflow';
 import Link from 'next/link';
@@ -11,16 +10,15 @@ import { classNames } from 'utils/tailwind';
 
 interface INavbar {
   theme: 'light' | 'dark';
-  size: 'sm' | 'lg';
 }
 
-function Navbar({ theme, size }: INavbar) {
+function Navbar({ theme }: INavbar) {
   const { open, setOpen } = useSidebar();
 
   usePreventBodyOverflow(open);
 
   return (
-    <AppLayout size={size}>
+    <>
       <div className="py-4 font-rubik md:pt-7">
         {/* For smaller(<md) screens */}
         <div className="flex items-center justify-between md:hidden">
@@ -67,7 +65,7 @@ function Navbar({ theme, size }: INavbar) {
       </div>
       {/* Divider */}
       <div className="left-0 right-0 absolute border border-gray-300 md:hidden w-full" />
-    </AppLayout>
+    </>
   );
 }
 

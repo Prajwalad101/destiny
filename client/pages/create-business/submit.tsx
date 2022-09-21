@@ -1,4 +1,4 @@
-import { NavbarSection } from '@features/create-business/layouts';
+import { Navbar } from '@features/create-business/components';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import AppLayout from 'components/layout/app/AppLayout';
 import Image from 'next/image';
@@ -93,10 +93,10 @@ const DisplayError = () => {
 };
 
 SubmitBusiness.getLayout = (page) => (
-  <>
-    <NavbarSection />
-    <AppLayout size="sm">{page}</AppLayout>;
-  </>
+  <AppLayout size="sm">
+    <Navbar />
+    {page}
+  </AppLayout>
 );
 
 export default SubmitBusiness;

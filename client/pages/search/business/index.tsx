@@ -106,10 +106,12 @@ export default SearchBusiness;
 
 SearchBusiness.getLayout = (page, pageProps) => (
   <QueryProvider pageProps={pageProps}>
-    <NavigationProvider>
-      <Navbar theme="light" size="lg" />
-      <Sidebar />
-    </NavigationProvider>
-    <AppLayout size="lg">{page}</AppLayout>
+    <AppLayout size="lg">
+      <NavigationProvider>
+        <Navbar theme="light" />
+        <Sidebar />
+      </NavigationProvider>
+      {page}
+    </AppLayout>
   </QueryProvider>
 );

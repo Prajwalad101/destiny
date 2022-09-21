@@ -10,6 +10,7 @@ import SelectImage from './Form/SelectImage/SelectImage';
 import SelectLocation from './Form/SelectLocation/SelectLocation';
 import SelectSubCategory from './Form/SelectSubCategory/SelectSubCategory';
 import SelectTime from './Form/SelectTime/SelectTime';
+import Navbar from './Navbar';
 
 export {
   MyLabel,
@@ -24,4 +25,5 @@ export {
   SelectLocation,
   SelectSubCategory,
   SelectTime,
+  Navbar,
 };

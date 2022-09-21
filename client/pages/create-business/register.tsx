@@ -1,9 +1,7 @@
+import { Navbar } from '@features/create-business/components';
 import { initialFormValues } from '@features/create-business/data';
 import { useSubmitForm } from '@features/create-business/hooks';
-import {
-  FormContainer,
-  NavbarSection,
-} from '@features/create-business/layouts';
+import { FormContainer } from '@features/create-business/layouts';
 import { formikValidationSchema } from '@features/create-business/schema';
 import { MyFormValues } from '@features/create-business/types';
 import { dataToFormData } from '@features/create-business/utils/objects/dataToFormData';
@@ -78,8 +76,10 @@ const RegisterBusiness: NextPageWithLayout = () => {
 RegisterBusiness.getLayout = (page) => (
   <>
     <QueryProvider>
-      <NavbarSection />
-      <AppLayout size="sm">{page}</AppLayout>
+      <AppLayout size="sm">
+        <Navbar />
+        {page}
+      </AppLayout>
     </QueryProvider>
   </>
 );

@@ -59,10 +59,12 @@ export default Business;
 
 Business.getLayout = (page, pageProps) => (
   <QueryProvider pageProps={pageProps}>
-    <NavigationProvider>
-      <Navbar theme="light" size="sm" />
-      <Sidebar />
-    </NavigationProvider>
-    <AppLayout size="sm">{page}</AppLayout>
+    <AppLayout size="sm">
+      <NavigationProvider>
+        <Navbar theme="light" />
+        <Sidebar />
+      </NavigationProvider>
+      {page}
+    </AppLayout>
   </QueryProvider>
 );

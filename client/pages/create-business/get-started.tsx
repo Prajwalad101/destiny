@@ -1,5 +1,5 @@
+import { Navbar } from '@features/create-business/components';
 import { linkData } from '@features/create-business/data';
-import { NavbarSection } from '@features/create-business/layouts';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -43,8 +43,10 @@ const GetStarted: NextPageWithLayout = () => {
 
 GetStarted.getLayout = (page) => (
   <>
-    <NavbarSection />
-    <AppLayout size="sm">{page}</AppLayout>
+    <AppLayout size="sm">
+      <Navbar />
+      {page}
+    </AppLayout>
   </>
 );
 

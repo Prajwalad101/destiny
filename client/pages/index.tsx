@@ -15,35 +15,31 @@ import { NextPageWithLayout } from 'pages/_app';
 const Home: NextPageWithLayout = () => {
   return (
     <div>
-      <div className="relative mb-10 md:mb-0 md:h-[700px]">
-        {/* BG Image */}
-        <div className="absolute inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
-        {/* Navbar */}
-        <Navbar theme="dark" size="sm" />
-        <AppLayout size="sm">
-          <section className="mt-7 md:mt-20">
-            <MainHeading className="mb-5 max-w-sm sm:max-w-xl md:mb-7">
-              Find and support local businesses
-            </MainHeading>
-            <div className="w-full max-w-xl md:max-w-2xl">
-              <Searchbar
-                foodPlaceholder="Search for stuff"
-                locationPlaceholder="Kathmandu, New baneshwor"
-              />
-            </div>
-            {/* Dropdown Items */}
-            <div className="mt-5 hidden gap-5 font-rubik md:flex">
-              {businessCategoriesData.map((data, index) => (
-                <div key={index}>
-                  <CategoriesDropdown
-                    name={data.name}
-                    subcategories={data.subcategories}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        </AppLayout>
+      <div className="mb-10 md:mb-0 md:h-[550px]">
+        <div className="absolute h-[700px] inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
+
+        <section className="mt-7 md:mt-20">
+          <MainHeading className="mb-5 max-w-sm sm:max-w-xl md:mb-7">
+            Find and support local businesses
+          </MainHeading>
+          <div className="w-full max-w-xl md:max-w-2xl">
+            <Searchbar
+              foodPlaceholder="Search for stuff"
+              locationPlaceholder="Kathmandu, New baneshwor"
+            />
+          </div>
+          {/* Dropdown Items */}
+          <div className="mt-5 hidden gap-5 font-rubik md:flex">
+            {businessCategoriesData.map((data, index) => (
+              <div key={index}>
+                <CategoriesDropdown
+                  name={data.name}
+                  subcategories={data.subcategories}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
       <div>
         <RecommendedSection
@@ -65,10 +61,13 @@ const Home: NextPageWithLayout = () => {
 // since navbar should render with background image, it is present inside the hero section
 Home.getLayout = (page, pageProps) => (
   <QueryProvider pageProps={pageProps}>
-    <NavigationProvider>
-      <Sidebar />
+    <AppLayout size="sm">
+      <NavigationProvider>
+        <Navbar theme="dark" />
+        <Sidebar />
+      </NavigationProvider>
       {page}
-    </NavigationProvider>
+    </AppLayout>
   </QueryProvider>
 );
 
