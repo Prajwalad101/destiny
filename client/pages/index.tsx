@@ -24,8 +24,8 @@ const Home: NextPageWithLayout = () => {
           </MainHeading>
           <div className="w-full max-w-xl md:max-w-2xl">
             <Searchbar
-              foodPlaceholder="Search for stuff"
-              locationPlaceholder="Kathmandu, New baneshwor"
+              placeholder1="Search for stuff"
+              placeholder2="Kathmandu, New baneshwor"
             />
           </div>
           {/* Dropdown Items */}
