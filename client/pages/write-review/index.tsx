@@ -1,4 +1,5 @@
 import { Searchbar } from '@features/home-page/components';
+import { ReviewCards } from '@features/write-review/components';
 import { NavigationProvider } from 'components/context-provider';
 import { AppLayout } from 'components/layout';
 import { Navbar, Sidebar } from 'components/navigation';
@@ -38,6 +39,7 @@ const WriteReview: NextPageWithLayout = () => {
           Checkout what people have been writing
         </span>
       </div>
+      <ReviewCards />
     </main>
   );
 };
