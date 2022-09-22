@@ -1,25 +1,36 @@
 import { AiOutlineSearch } from 'react-icons/ai';
+import { classNames } from 'utils/tailwind';
 
 interface SearchbarProps {
-  foodPlaceholder: string;
-  locationPlaceholder: string;
+  placeholder1: string;
+  placeholder2: string;
+  className?: string;
 }
 
-function Searchbar({ foodPlaceholder, locationPlaceholder }: SearchbarProps) {
+function Searchbar({
+  placeholder1,
+  placeholder2,
+  className = '',
+}: SearchbarProps) {
   return (
-    <div className="relative flex h-[51.5px] w-full items-center font-merriweather md:h-[60px]">
+    <div
+      className={classNames(
+        'relative flex h-[51.5px] bg-gray-500 overflow-hidden w-full items-center font-merriweather md:h-[60px]',
+        className
+      )}
+    >
       {/* TOPIC SEARCH INPUT FIELD */}
       <input
         className="h-full w-full rounded-sm bg-[#E6E6E6] px-4 text-base md:bg-white"
         type="text"
-        placeholder={foodPlaceholder}
+        placeholder={placeholder1}
       />
 
       {/* LOCATION SEARCH INPUT FIELD  */}
       <input
-        className="absolute right-0 hidden h-full w-1/2 rounded-r-sm border-l-2 bg-[#E6E6E6] pl-3 pr-16 text-[15px] md:block md:bg-white"
+        className="outline-none absolute right-0 hidden h-full w-1/2 rounded-r-sm border-l-2 bg-[#E6E6E6] pl-3 pr-16 text-[15px] md:block md:bg-white"
         type="text"
-        placeholder={locationPlaceholder}
+        placeholder={placeholder2}
       />
 
       {/* SEARCH BUTTON */}
