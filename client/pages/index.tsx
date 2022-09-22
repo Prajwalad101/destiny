@@ -22,12 +22,11 @@ const Home: NextPageWithLayout = () => {
           <MainHeading className="mb-5 max-w-sm sm:max-w-xl md:mb-7">
             Find and support local businesses
           </MainHeading>
-          <div className="w-full max-w-xl md:max-w-2xl">
-            <Searchbar
-              placeholder1="Search for stuff"
-              placeholder2="Kathmandu, New baneshwor"
-            />
-          </div>
+          <Searchbar
+            placeholder1="Search for stuff"
+            placeholder2="Kathmandu, New baneshwor"
+            className="max-w-xl md:max-w-2xl h-[60px] shadow-md rounded-md focus-within:shadow-lg transition-shadow"
+          />
           {/* Dropdown Items */}
           <div className="mt-5 hidden gap-5 font-rubik md:flex">
             {businessCategoriesData.map((data, index) => (

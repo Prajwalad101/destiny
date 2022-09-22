@@ -15,7 +15,7 @@ function Searchbar({
   return (
     <div
       className={classNames(
-        'relative flex h-[51.5px] overflow-hidden w-full items-center font-merriweather md:h-[60px]',
+        'relative flex h-[51.5px] bg-gray-500 overflow-hidden w-full items-center font-merriweather md:h-[60px]',
         className
       )}
     >
