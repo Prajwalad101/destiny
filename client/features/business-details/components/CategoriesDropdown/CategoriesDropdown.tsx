@@ -7,10 +7,10 @@ const categories = [...categoryDropdownData];
 
 export default function CategoriesDropdown() {
   return (
-    <div className="mt-3 mb-10">
+    <div className="mt-3 mb-5 md:mb-10 hidden md:block">
       {/* Divider */}
       <div className="absolute left-0 right-0 border-t-[1px] border-gray-300" />
-      <div className="pt-4 pb-2 hidden gap-10 font-rubik md:flex">
+      <div className="pt-4 pb-2 flex gap-12">
         {categories.map((data, index) => (
           <React.Fragment key={index}>
             <CategoryDropdown
@@ -20,6 +20,7 @@ export default function CategoriesDropdown() {
           </React.Fragment>
         ))}
       </div>
+      {/* Divider */}
       <div className="absolute left-0 right-0 border-t-[1px] border-gray-300" />
     </div>
   );
