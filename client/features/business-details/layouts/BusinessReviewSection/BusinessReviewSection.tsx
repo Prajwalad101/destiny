@@ -51,7 +51,7 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
             </div>
             {/* Rating, Relative Time */}
             <div className="mb-2 flex items-center gap-3">
-              <RatingIcons avgRating={review.rating} />
+              <RatingIcons rating={review.rating} />
               <span className="text-sm capitalize text-secondarytext">
                 {getRelativeDate(review.createdAt)}
               </span>

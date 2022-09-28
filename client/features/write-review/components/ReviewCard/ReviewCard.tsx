@@ -19,7 +19,7 @@ export default function ReviewCard() {
             The Burger House
           </h3>
           <div>
-            <RatingIcons avgRating={4.5} />
+            <RatingIcons rating={4.5} />
           </div>
         </div>
         <div className="flex justify-between mb-3 items-center">

@@ -1,9 +1,10 @@
 import { IBusiness } from '@destiny/common/types';
+import { OpenOrClosed } from '@features/business-details/components';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
 import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import { useState } from 'react';
-import { checkInterval } from 'utils/date';
+import { MdOutlinePhotoSizeSelectActual } from 'react-icons/md';
 import { getPublicFilePath, truncateText } from 'utils/text';
 
 interface BusinessInfoSectionProps {
@@ -17,7 +18,6 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
     avgRating,
     rating_count,
     businessHours,
-    features,
     location,
     description,
   } = business;
@@ -27,42 +27,55 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
   return (
     <div className="mt-4 font-rubik">
       <div className="mb-7 flex flex-col gap-5 md:flex-row">
-        {/* Cover Image */}
-        <div className="relative h-[250px] w-full shrink-0 sm:h-[300px] md:w-[300px] lg:w-[450px]">
-          <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
+        <div className="relative group">
+          <Slider
+            numItems={images.length}
+            className="shrink-0 w-full md:w-[400px] h-[300px] md:h-[400px] lg:w-[535px]"
+          >
+            {images.map((image, key) => (
+              <div key={key} className="relative w-full h-full">
+                <Image
+                  src={image}
+                  alt="business images"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            ))}
+          </Slider>
+          <div className="group-hover:opacity-100 transition-opacity flex opacity-0 absolute bottom-3 left-5 gap-3 items-end text-gray-100 hover:underline cursor-pointer">
+            <MdOutlinePhotoSizeSelectActual size={25} />
+            <span className="inline-block">
+              View all {images.length} photos
+            </span>
+          </div>
         </div>
         <div>
           {/* Business Name */}
-          <h4 className="mb-2 text-xl font-medium">{name}</h4>
+          <h4 className="mb-2 text-[23px] font-medium">{name}</h4>
           {/* AvgRating, NumReviews, Open/Closed */}
           <BasicInfo
             avgRating={avgRating}
             rating_count={rating_count}
-            businessHours={businessHours}
-            className="mb-2 flex items-center gap-4"
+            className="mb-5 flex items-center gap-10"
           />
           {/* Address */}
-          <p className="mb-3 text-secondarytext">{location.address}</p>
-          <Feature features={features} className="mb-3 flex gap-2" />
+          <span className="inline-block mb-3">{location.address}</span>
+          {/* <span className="inline-block">
+            {checkInterval(businessHours.open, businessHours.close)
+              ? 'Open right now'
+              : 'Closed'}
+          </span> */}
+          <OpenOrClosed
+            openingTime={businessHours.open}
+            closingTime={businessHours.close}
+          />
           <Description
             description={description}
-            className="text-gray-700 md:h-[150px] md:overflow-y-auto"
+            className="text-gray-700 md:overflow-y-auto"
           />
         </div>
       </div>
-      <Slider numItems={images.length} className="mb-5">
-        {images.map((image, key) => (
-          <div key={key} className="sm:1-1/4 relative h-[150px] w-1/2 lg:w-1/6">
-            <Image
-              src={image}
-              alt="business images"
-              layout="fill"
-              objectFit="cover"
-              className="px-1"
-            />
-          </div>
-        ))}
-      </Slider>
       {/* Horizontal Line */}
       <div className="mb-5 border-b-2 border-gray-200" />
     </div>
@@ -74,45 +87,25 @@ export default BusinessInfoSection;
 interface BasicInfoProps {
   avgRating: number;
   rating_count: number;
-  businessHours: { open: string; close: string };
   className?: string;
 }
+
 function BasicInfo({
   avgRating,
   rating_count,
-  businessHours,
   className = '',
 }: BasicInfoProps) {
   return (
     <div className={className}>
-      <RatingIcons avgRating={avgRating} />
-      <span>{rating_count} reviews</span>
-      <span className="font-medium">
+      <RatingIcons rating={avgRating} size={20} />
+      <span className="inline-block underline text-gray-800">
+        {rating_count} reviews
+      </span>
+      {/* <span className="font-medium">
         {checkInterval(businessHours.open, businessHours.close)
           ? 'Open Now'
           : 'Closed'}
-      </span>
-    </div>
-  );
-}
-
-interface FeatureProps {
-  features: string[];
-  className?: string;
-}
-function Feature({ features, className = '' }: FeatureProps) {
-  return (
-    <div className={className}>
-      {features.map((feature, index) => (
-        <div
-          key={index}
-          className="w-max cursor-pointer rounded-sm bg-gray-200 px-3 py-[2px] hover:bg-gray-300"
-        >
-          <span className="text-sm capitalize text-secondarytext">
-            {feature}
-          </span>
-        </div>
-      ))}
+      </span> */}
     </div>
   );
 }
