@@ -3,11 +3,13 @@ import { convertTime12to24, timeToDate } from 'utils/date';
 interface OpenOrClosedProps {
   openingTime: string;
   closingTime: string;
+  className?: string;
 }
 
 export default function OpenOrClosed({
   openingTime,
   closingTime,
+  className = '',
 }: OpenOrClosedProps) {
   const currentDate = new Date();
 
@@ -21,8 +23,8 @@ export default function OpenOrClosed({
   const hoursTillOpen = 24 - currentDate.getHours() + openingDate.getHours();
 
   return (
-    <div>
-      <span className="inline-block">
+    <div className={className}>
+      <span className="inline-block font-medium">
         {isOpen ? 'Open right now' : 'Closed'}
       </span>
       {!isOpen && (

@@ -41,7 +41,7 @@ export default function ReviewCard() {
           </div>
           <span className="inline-block text-gray-500 text-sm">5 min ago</span>
         </div>
-        <p className="line-clamp">
+        <p className="line-clamp-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
           tempora possimus, explicabo distinctio provident velit quibusdam,
           suscipit vel blanditiis sed dolores veniam voluptatibus cum qui quis

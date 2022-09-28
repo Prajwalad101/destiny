@@ -10,7 +10,7 @@
 
 @import '../features/search-business/styles/checkbox.css';
 @import '../features/create-business/styles/submit.css';
-@import '../features/write-review/styles/line-clamp.css';
+@import './line-clamp.css';
 
 html,
 body {

@@ -3,9 +3,10 @@ import { OpenOrClosed } from '@features/business-details/components';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
 import Slider from 'components/slider/Slider';
 import Image from 'next/image';
-import { useState } from 'react';
+import { BsArrowUp, BsLaptop } from 'react-icons/bs';
+import { FaPhoneAlt } from 'react-icons/fa';
 import { MdOutlinePhotoSizeSelectActual } from 'react-icons/md';
-import { getPublicFilePath, truncateText } from 'utils/text';
+import { getPublicFilePath } from 'utils/text';
 
 interface BusinessInfoSectionProps {
   business: IBusiness;
@@ -54,26 +55,37 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
           {/* Business Name */}
           <h4 className="mb-2 text-[23px] font-medium">{name}</h4>
           {/* AvgRating, NumReviews, Open/Closed */}
-          <BasicInfo
-            avgRating={avgRating}
-            rating_count={rating_count}
-            className="mb-5 flex items-center gap-10"
-          />
+          <div className="mb-5 flex items-center gap-10">
+            <RatingIcons rating={avgRating} size={20} />
+            <span className="inline-block underline text-gray-800">
+              {rating_count} reviews
+            </span>
+          </div>
           {/* Address */}
           <span className="inline-block mb-3">{location.address}</span>
-          {/* <span className="inline-block">
-            {checkInterval(businessHours.open, businessHours.close)
-              ? 'Open right now'
-              : 'Closed'}
-          </span> */}
           <OpenOrClosed
             openingTime={businessHours.open}
             closingTime={businessHours.close}
+            className="mb-5"
           />
-          <Description
-            description={description}
-            className="text-gray-700 md:overflow-y-auto"
-          />
+          <Description description={description} className="mb-7" />
+
+          <div className="text-gray-800 flex gap-7 mb-3">
+            <span>$$-$$$</span>
+            <span>Healthy, Authentic, Vegeterian Friendly</span>
+          </div>
+
+          <div className="flex gap-3 items-center mb-3 text-gray-800">
+            <FaPhoneAlt size={17} />
+            <span>+977 9083939558</span>
+          </div>
+          <div className="hover:underline cursor-pointer relative flex gap-3 items-center max-w-max text-gray-800">
+            <BsLaptop size={19} />
+            <div className="flex items-center gap-1 ">
+              <span>Website</span>
+              <BsArrowUp size={15} />
+            </div>
+          </div>
         </div>
       </div>
       {/* Horizontal Line */}
@@ -84,60 +96,18 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
 
 export default BusinessInfoSection;
 
-interface BasicInfoProps {
-  avgRating: number;
-  rating_count: number;
-  className?: string;
-}
-
-function BasicInfo({
-  avgRating,
-  rating_count,
-  className = '',
-}: BasicInfoProps) {
-  return (
-    <div className={className}>
-      <RatingIcons rating={avgRating} size={20} />
-      <span className="inline-block underline text-gray-800">
-        {rating_count} reviews
-      </span>
-      {/* <span className="font-medium">
-        {checkInterval(businessHours.open, businessHours.close)
-          ? 'Open Now'
-          : 'Closed'}
-      </span> */}
-    </div>
-  );
-}
-
 interface DescriptionProps {
   description: string;
   className?: string;
 }
+
 function Description({ description, className = '' }: DescriptionProps) {
-  // state of the readMore button
-  const [readMore, setReadMore] = useState(false);
-  const wordLimit = 40;
-  let text;
-
-  // if readMore button is clicked or description is less than limit, return original text
-  if (readMore || description.length < wordLimit) {
-    text = description;
-  } else {
-    text = truncateText(description, wordLimit);
-  }
-
   return (
     <div className={className}>
-      <span className="leading-[26px]">{text}</span>
-      {description.length > wordLimit && (
-        <button
-          className="cursor-pointer text-primaryred  hover:text-red-600"
-          onClick={() => setReadMore(!readMore)}
-        >
-          {readMore ? 'Read Less' : 'Read More'}
-        </button>
-      )}
+      <span className="leading-[26px] line-clamp-3">{description}</span>
+      <span className="inline-block text-black cursor-pointer mt-1 underline">
+        Read More
+      </span>
     </div>
   );
 }
