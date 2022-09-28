@@ -1,4 +1,7 @@
-import { CategoriesDropdown } from '@features/business-details/components';
+import {
+  BreadCrumbs,
+  CategoriesDropdown,
+} from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import {
   BusinessInfoSection,
@@ -32,6 +35,7 @@ const Business: NextPageWithLayout = () => {
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
       <CategoriesDropdown />
+      <BreadCrumbs />
       <BusinessInfoSection business={businessData} />
       <BusinessReviewSection reviews={BusinessReviews} />
     </ConditionalRender>
