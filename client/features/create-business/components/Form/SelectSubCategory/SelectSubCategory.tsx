@@ -1,14 +1,14 @@
 import { MyListBox } from '@features/create-business/components';
 import { MyFormValues } from '@features/create-business/types';
 import { Listbox } from '@headlessui/react';
-import businessCategories from 'data/business/categoriesData';
+import { categoryDropdownData } from 'data';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { ISubcategoryDropdown } from 'types/business';
 
 // avoid accidentally mutating original array
-const categories = [...businessCategories];
+const categories = [...categoryDropdownData];
 
 function SelectSubCategory() {
   // get the currently selected category name

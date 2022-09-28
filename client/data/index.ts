@@ -1,3 +1,3 @@
-import businessCategoriesData from './business/categoriesData';
+import categoryDropdownData from './business/categoryDropdownData';
 
-export { businessCategoriesData };
+export { categoryDropdownData };

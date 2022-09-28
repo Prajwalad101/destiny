@@ -1,7 +1,7 @@
 import { SidebarCategoryDropdown } from '@features/home-page/components';
 import { useSidebar } from 'components/context-provider';
 import Portal from 'components/Portal/Portal';
-import businessCategories from 'data/business/categoriesData';
+import { categoryDropdownData } from 'data';
 import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
@@ -63,7 +63,7 @@ export default function Sidebar() {
         {/* Dropdown section */}
         <p className="mb-3 mt-4 text-lg font-medium">Explore</p>
         <div className="mt-5 font-rubik md:hidden">
-          {businessCategories.map((category, index) => (
+          {categoryDropdownData.map((category, index) => (
             <div key={index}>
               <SidebarCategoryDropdown
                 category={category}

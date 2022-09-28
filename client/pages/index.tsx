@@ -9,7 +9,7 @@ import { NavigationProvider } from 'components/context-provider/NavigationProvid
 import { AppLayout } from 'components/layout';
 import { Navbar } from 'components/navigation';
 import Sidebar from 'components/navigation/sidebar/Sidebar';
-import { businessCategoriesData } from 'data';
+import { categoryDropdownData } from 'data';
 import { NextPageWithLayout } from 'pages/_app';
 
 const Home: NextPageWithLayout = () => {
@@ -29,7 +29,7 @@ const Home: NextPageWithLayout = () => {
           />
           {/* Dropdown Items */}
           <div className="mt-5 hidden gap-5 font-rubik md:flex">
-            {businessCategoriesData.map((data, index) => (
+            {categoryDropdownData.map((data, index) => (
               <div key={index}>
                 <CategoriesDropdown
                   name={data.name}

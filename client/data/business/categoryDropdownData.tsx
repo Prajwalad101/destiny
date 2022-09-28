@@ -1,4 +1,4 @@
-import { businessFeatures } from '@destiny/common/data';
+import { businessFeatures, businessSubcategories } from '@destiny/common/data';
 import { AiFillCar, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BiCoffeeTogo, BiFootball } from 'react-icons/bi';
 import { BsMusicNote } from 'react-icons/bs';
@@ -19,12 +19,12 @@ import { ICategoryDropdown } from 'types/business';
 const iconSize = 20;
 
 // contains data about how all business are categorized
-const businessCategoriesData: ICategoryDropdown[] = [
+const categoryDropdownData: ICategoryDropdown[] = [
   {
     name: 'food and drinks',
     subcategories: [
       {
-        name: 'resturant',
+        name: businessSubcategories.resturant,
         icon: <FaPizzaSlice size={17} />,
         features: [
           { name: businessFeatures.delivery },
@@ -36,22 +36,22 @@ const businessCategoriesData: ICategoryDropdown[] = [
         ],
       },
       {
-        name: 'cafe',
+        name: businessSubcategories.cafe,
         icon: <BiCoffeeTogo size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'fast food',
+        name: businessSubcategories.fastfood,
         icon: <MdOutlineFastfood size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'hotel',
+        name: businessSubcategories.hotel,
         icon: <RiHotelLine size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'bakery',
+        name: businessSubcategories.bakery,
         icon: <RiCake3Fill size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
@@ -61,27 +61,27 @@ const businessCategoriesData: ICategoryDropdown[] = [
     name: 'sports and fitness',
     subcategories: [
       {
-        name: 'gym',
+        name: businessSubcategories.gym,
         icon: <GiWeightLiftingUp size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'futsal',
+        name: businessSubcategories.futsal,
         icon: <BiFootball size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'tennis',
+        name: businessSubcategories.tennis,
         icon: <MdOutlineSportsTennis size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'zumba',
+        name: businessSubcategories.zumba,
         icon: <BsMusicNote size={17} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'swimming',
+        name: businessSubcategories.swimming,
         icon: <FaSwimmingPool size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
@@ -91,22 +91,22 @@ const businessCategoriesData: ICategoryDropdown[] = [
     name: 'home services',
     subcategories: [
       {
-        name: 'plumbing',
+        name: businessSubcategories.plumbing,
         icon: <GiTeePipe size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'electricity',
+        name: businessSubcategories.electricity,
         icon: <GiWireCoil size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'cleaning',
+        name: businessSubcategories.cleaning,
         icon: <GiVacuumCleaner size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'repairs',
+        name: businessSubcategories.repairs,
         icon: <GiAutoRepair size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
@@ -116,22 +116,22 @@ const businessCategoriesData: ICategoryDropdown[] = [
     name: 'others',
     subcategories: [
       {
-        name: 'entertainment',
+        name: businessSubcategories.entertainment,
         icon: <TbRollercoaster size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'shopping',
+        name: businessSubcategories.shopping,
         icon: <FiShoppingBag size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'essential',
+        name: businessSubcategories.essential,
         icon: <AiOutlineShoppingCart size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
       {
-        name: 'vehicles',
+        name: businessSubcategories.vehicle,
         icon: <AiFillCar size={iconSize} />,
         features: [{ name: businessFeatures.delivery }],
       },
@@ -139,4 +139,4 @@ const businessCategoriesData: ICategoryDropdown[] = [
   },
 ];
 
-export default businessCategoriesData;
+export default categoryDropdownData;

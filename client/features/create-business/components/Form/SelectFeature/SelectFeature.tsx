@@ -1,13 +1,13 @@
 import { BusinessFeature } from '@destiny/common/types';
 import { MyListBox } from '@features/create-business/components';
 import { MyFormValues } from '@features/create-business/types';
-import businessCategories from 'data/business/categoriesData';
+import { categoryDropdownData } from 'data';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { ISubcategoryDropdown } from 'types/business';
 
 // avoid accidentally mutating original array
-const categories = [...businessCategories];
+const categories = [...categoryDropdownData];
 
 function SelectFeature() {
   // get the currently selected business subcategory name
@@ -27,15 +27,17 @@ function SelectFeature() {
   //   }
   // });
 
-  const [features, setFeatures] =
-    useState<{ name: BusinessFeature }[] | undefined>(undefined);
+  const [features, setFeatures] = useState<
+    { name: BusinessFeature }[] | undefined
+  >(undefined);
 
   // const [selectedFeatures, setSelectedFeatures] = useState<
   //   ({ name: string } | undefined)[]
   // >([businessSubCategory?.features[0]]);
 
-  const [selectedFeatures, setSelectedFeatures] =
-    useState<{ name: string }[] | undefined>(undefined);
+  const [selectedFeatures, setSelectedFeatures] = useState<
+    { name: string }[] | undefined
+  >(undefined);
 
   useEffect(() => {
     // get subcategory from the currently selected subcategory name

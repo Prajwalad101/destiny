@@ -1,6 +1,6 @@
 import { MyListBox } from '@features/create-business/components';
 import { Listbox } from '@headlessui/react';
-import businessCategories from 'data/business/categoriesData';
+import { categoryDropdownData } from 'data';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { ISubcategoryDropdown } from 'types/business';
@@ -9,7 +9,7 @@ function SelectCategory() {
   const [selectedCategory, setSelectedCategory] = useState<{
     name: string;
     subcategories?: ISubcategoryDropdown[];
-  }>(businessCategories[0]);
+  }>(categoryDropdownData[0]);
 
   const categoryState = {
     selected: selectedCategory,
@@ -19,7 +19,7 @@ function SelectCategory() {
   return (
     <div className="relative">
       <MyListBox
-        list={businessCategories}
+        list={categoryDropdownData}
         listState={categoryState}
         width={200}
         inputName="category"

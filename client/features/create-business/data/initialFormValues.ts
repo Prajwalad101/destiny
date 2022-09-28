@@ -1,5 +1,5 @@
 import { MyFormValues } from '@features/create-business/types';
-import businessCategories from 'data/business/categoriesData';
+import { categoryDropdownData } from 'data';
 
 export const initialFormValues: MyFormValues = {
   name: '',
@@ -8,9 +8,9 @@ export const initialFormValues: MyFormValues = {
     open: '1:00 AM',
     close: '1:00 PM',
   },
-  category: businessCategories[0].name,
-  subCategory: businessCategories[0].subcategories[0].name,
-  features: [businessCategories[0].subcategories[0].features[0].name],
+  category: categoryDropdownData[0].name,
+  subCategory: categoryDropdownData[0].subcategories[0].name,
+  features: [categoryDropdownData[0].subcategories[0].features[0].name],
   images: [],
   location: { type: 'Point', coordinates: [0, 0], address: '' },
 };
