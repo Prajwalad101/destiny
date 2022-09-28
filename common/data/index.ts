@@ -1,4 +1,4 @@
-import businessFeatures from './businessFeatures.data';
+import businessFeatures from './businessFeatures';
 import businessSubcategories from './businessSubCategories';
 
 export { businessFeatures, businessSubcategories };

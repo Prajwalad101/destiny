@@ -4,6 +4,11 @@ import mongoose from 'mongoose';
 import '../src/loadEnv';
 import Business from '../src/models/businessModel';
 
+/* -----INSTRUCTIONS-----
+ * importing to DB: npx ts-node [filePath] --import
+ * deleting from DB: npx ts-node [filePath] --delete
+ */
+
 const DB = process.env.DB as string;
 
 mongoose.connect(DB).then(() => {
@@ -20,7 +25,7 @@ const uniqueBusinesses = [
   ...new Map(businesses.map((item) => [item['name'], item])).values(),
 ];
 
-// IMPORT DATA INTO DB
+// Import all data into database
 const importData = async () => {
   try {
     await Business.create(uniqueBusinesses);
@@ -31,7 +36,7 @@ const importData = async () => {
   process.exit();
 };
 
-// DELETE ALL DATA FROM DB
+// Delete all data from database
 const deleteData = async () => {
   try {
     await Business.deleteMany();
