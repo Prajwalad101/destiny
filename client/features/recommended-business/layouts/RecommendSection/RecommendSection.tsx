@@ -20,7 +20,7 @@ function RecommendedSection({
   const businessResult = useBusinesses();
   const businesses = businessResult.data?.data;
 
-  if (!businesses) {
+  if (!businesses || businesses?.length <= 0) {
     return <></>;
   }
 
