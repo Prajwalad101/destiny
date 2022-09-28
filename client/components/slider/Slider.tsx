@@ -74,7 +74,7 @@ function Slider({
           transform: `translate(${(sliderIndex - 1) * -100}%)`,
           transition: 'transform 400ms ease-in-out',
         }}
-        className="flex scroll-smooth child:shrink-0"
+        className="flex scroll-smooth child:shrink-0 h-full"
       >
         {children}
       </div>

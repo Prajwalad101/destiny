@@ -1,29 +1,28 @@
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 
 interface IRatingIcons {
-  avgRating: number;
+  rating: number;
+  size?: number;
 }
 
-function RatingIcons({ avgRating }: IRatingIcons) {
-  const iconSize = 17;
-
+function RatingIcons({ rating, size = 17 }: IRatingIcons) {
   // if totalRatings or ratingCount is 0, render empty stars
   const emptyArr = Array.from(Array(5).keys());
 
-  if (avgRating === 0) {
+  if (rating === 0) {
     return (
       <div className="flex text-primaryred">
         {emptyArr.map((item) => (
-          <BsStar size={iconSize} key={item} />
+          <BsStar size={size} key={item} />
         ))}
       </div>
     );
   }
   // to check for a half star
-  const isDecimal = !Number.isInteger(avgRating);
+  const isDecimal = !Number.isInteger(rating);
 
   // to calculate the number of full stars
-  const fullRating = Math.floor(avgRating);
+  const fullRating = Math.floor(rating);
   const ratingsArr = Array.from(Array(fullRating).keys());
 
   // to calculate remaining stars
@@ -41,13 +40,13 @@ function RatingIcons({ avgRating }: IRatingIcons) {
   }
 
   return (
-    <div className="flex items-center gap-[2px] text-primaryred">
+    <div className="flex items-center gap-[3px] text-primaryred">
       {ratingsArr.map((num) => (
-        <BsStarFill key={num} size={iconSize} />
+        <BsStarFill key={num} size={size} />
       ))}
-      {isDecimal ? <BsStarHalf size={iconSize} /> : null}
+      {isDecimal ? <BsStarHalf size={size} /> : null}
       {remainingArr.map((num) => (
-        <BsStar key={num} size={iconSize} />
+        <BsStar key={num} size={size} />
       ))}
     </div>
   );
