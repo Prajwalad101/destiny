@@ -9,7 +9,6 @@ import { NavigationProvider } from 'components/context-provider/NavigationProvid
 import { AppLayout } from 'components/layout';
 import { Navbar } from 'components/navigation';
 import Sidebar from 'components/navigation/sidebar/Sidebar';
-import { categoryDropdownData } from 'data';
 import { NextPageWithLayout } from 'pages/_app';
 
 const Home: NextPageWithLayout = () => {
@@ -27,17 +26,7 @@ const Home: NextPageWithLayout = () => {
             placeholder2="Kathmandu, New baneshwor"
             className="max-w-xl md:max-w-2xl h-[60px] shadow-md rounded-md focus-within:shadow-lg transition-shadow"
           />
-          {/* Dropdown Items */}
-          <div className="mt-5 hidden gap-5 font-rubik md:flex">
-            {categoryDropdownData.map((data, index) => (
-              <div key={index}>
-                <CategoriesDropdown
-                  name={data.name}
-                  subcategories={data.subcategories}
-                />
-              </div>
-            ))}
-          </div>
+          <CategoriesDropdown />
         </section>
       </div>
       <div>
