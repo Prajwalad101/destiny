@@ -15,7 +15,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="font-rubik">
+      <body className="debug-screens font-rubik">
         <Main />
         <NextScript />
       </body>
