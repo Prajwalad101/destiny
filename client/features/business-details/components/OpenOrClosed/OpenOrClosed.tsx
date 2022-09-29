@@ -25,7 +25,7 @@ export default function OpenOrClosed({
   return (
     <div className={className}>
       <span className="inline-block font-medium">
-        {isOpen ? 'Open right now' : 'Closed'}
+        {isOpen ? 'Open' : 'Closed'}
       </span>
       {!isOpen && (
         <span className="inline-block text-gray-700 ml-5">
