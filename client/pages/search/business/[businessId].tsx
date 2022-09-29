@@ -2,6 +2,7 @@ import {
   BreadCrumbs,
   BusinessAttributes,
   CategoriesDropdown,
+  LocationAndContact,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import {
@@ -31,7 +32,7 @@ const Business: NextPageWithLayout = () => {
     return null;
   }
 
-  const BusinessReviews = businessData.reviews || [];
+  const reviews = businessData.reviews || [];
 
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
@@ -43,9 +44,10 @@ const Business: NextPageWithLayout = () => {
       />
       <BusinessAttributes
         attributes={businessData.features}
-        className="mb-10"
+        className="mb-12 md:mb-24"
       />
-      <BusinessReviewSection reviews={BusinessReviews} />
+      <LocationAndContact />
+      <BusinessReviewSection reviews={reviews} />
     </ConditionalRender>
   );
 };

@@ -16,7 +16,7 @@ export default function BusinessAttributes({
   return (
     <div
       className={classNames(
-        'flex gap-x-5 md:gap-x-10 gap-y-5 flex-wrap',
+        'flex gap-x-5 md:gap-x-8 gap-y-5 flex-wrap',
         className
       )}
     >

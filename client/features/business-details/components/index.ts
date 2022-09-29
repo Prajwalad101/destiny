@@ -4,6 +4,7 @@ import BusinessDescription from './BusinessDescription/BusinessDescription';
 import BusinessImage from './BusinessImage/BusinessImage';
 import CategoriesDropdown from './CategoriesDropdown/CategoriesDropdown';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
+import LocationAndContact from './Location&Contact/Location&Contact';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 
 export {
@@ -14,4 +15,5 @@ export {
   BusinessDescription,
   BusinessImage,
   BusinessAttributes,
+  LocationAndContact,
 };

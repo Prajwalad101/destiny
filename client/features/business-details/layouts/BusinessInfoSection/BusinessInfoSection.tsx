@@ -38,7 +38,7 @@ export default function BusinessInfoSection({
             description={business.description}
             className="mb-7"
           />
-          <div className="text-gray-800 flex gap-7 mb-4">
+          <div className="text-gray-800 flex flex-col sm:flex-row gap-2 sm:gap-7 mb-4">
             <span>$$-$$$</span>
             <span>Healthy, Authentic, Vegeterian Friendly</span>
           </div>
