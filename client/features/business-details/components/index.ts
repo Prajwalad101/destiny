@@ -1,4 +1,5 @@
 import BreadCrumbs from './BreadCrumbs/BreadCrumbs';
+import BusinessAttributes from './BusinessAttributes/BusinessAttributes';
 import BusinessDescription from './BusinessDescription/BusinessDescription';
 import BusinessImage from './BusinessImage/BusinessImage';
 import CategoriesDropdown from './CategoriesDropdown/CategoriesDropdown';
@@ -12,4 +13,5 @@ export {
   OpenOrClosed,
   BusinessDescription,
   BusinessImage,
+  BusinessAttributes,
 };

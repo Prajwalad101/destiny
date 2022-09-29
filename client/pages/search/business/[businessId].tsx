@@ -1,5 +1,6 @@
 import {
   BreadCrumbs,
+  BusinessAttributes,
   CategoriesDropdown,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
@@ -36,7 +37,14 @@ const Business: NextPageWithLayout = () => {
     <ConditionalRender isLoading={isLoading} isError={isError}>
       <CategoriesDropdown />
       <BreadCrumbs />
-      <BusinessInfoSection business={businessData} />
+      <BusinessInfoSection
+        business={businessData}
+        className="mt-4 mb-7 md:mb-12"
+      />
+      <BusinessAttributes
+        attributes={businessData.features}
+        className="mb-10"
+      />
       <BusinessReviewSection reviews={BusinessReviews} />
     </ConditionalRender>
   );

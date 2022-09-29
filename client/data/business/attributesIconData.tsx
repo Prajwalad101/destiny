@@ -1,17 +1,44 @@
 import { businessFeatures } from '@destiny/common/data';
 import { BusinessFeature } from '@destiny/common/types';
-import { BsCalendar2Event, BsPhoneVibrate } from 'react-icons/bs';
 import { FaChild } from 'react-icons/fa';
-import { MdOutlineBrunchDining, MdOutlineLibraryMusic } from 'react-icons/md';
-import { TbTruckDelivery } from 'react-icons/tb';
+import {
+  MdDirectionsBike,
+  MdOutlineLibraryMusic,
+  MdOutlineLocalDining,
+} from 'react-icons/md';
+import { RiCakeLine } from 'react-icons/ri';
+import { TbPhone } from 'react-icons/tb';
 
-const attributesIconData: { name: BusinessFeature; icon: JSX.Element }[] = [
-  { name: businessFeatures.delivery, icon: <TbTruckDelivery /> },
-  { name: businessFeatures.reservations, icon: <BsPhoneVibrate /> },
-  { name: businessFeatures.events, icon: <BsCalendar2Event /> },
-  { name: businessFeatures.goodForKids, icon: <FaChild /> },
-  { name: businessFeatures.liveMusic, icon: <MdOutlineLibraryMusic /> },
-  { name: businessFeatures.outdoorDining, icon: <MdOutlineBrunchDining /> },
+const defaultSize = 17;
+
+const attributesIconData: {
+  name: BusinessFeature;
+  icon: (_size?: number) => JSX.Element;
+}[] = [
+  {
+    name: businessFeatures.delivery,
+    icon: (size = defaultSize) => <MdDirectionsBike size={size} />,
+  },
+  {
+    name: businessFeatures.reservations,
+    icon: (size = defaultSize) => <TbPhone size={size} />,
+  },
+  {
+    name: businessFeatures.events,
+    icon: (size = defaultSize) => <RiCakeLine size={size} />,
+  },
+  {
+    name: businessFeatures.goodForKids,
+    icon: (size = defaultSize) => <FaChild size={size} />,
+  },
+  {
+    name: businessFeatures.liveMusic,
+    icon: (size = defaultSize) => <MdOutlineLibraryMusic size={size} />,
+  },
+  {
+    name: businessFeatures.outdoorDining,
+    icon: (size = defaultSize) => <MdOutlineLocalDining size={size} />,
+  },
 ];
 
 export default attributesIconData;

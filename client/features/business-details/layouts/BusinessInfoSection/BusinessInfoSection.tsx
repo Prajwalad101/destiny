@@ -9,12 +9,16 @@ import { FaPhoneAlt } from 'react-icons/fa';
 
 interface BusinessInfoSectionProps {
   business: IBusiness;
+  className?: string;
 }
 
-function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
+export default function BusinessInfoSection({
+  business,
+  className = '',
+}: BusinessInfoSectionProps) {
   return (
-    <div className="mt-4 font-rubik">
-      <div className="mb-7 flex flex-col gap-5 md:flex-row">
+    <div className={className}>
+      <div className="mb-5 md:mb-0 flex flex-col gap-5 md:flex-row">
         <BusinessImage images={business.images} />
         <div>
           <h4 className="mb-2 text-[23px] font-medium">{business.name}</h4>
@@ -44,9 +48,7 @@ function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
           </div>
         </div>
       </div>
-      <div className="mb-5 border-b-2 border-gray-200" />
+      <div className="border border-gray-300 md:hidden" />
     </div>
   );
 }
-
-export default BusinessInfoSection;
