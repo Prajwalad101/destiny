@@ -6,6 +6,7 @@ import CategoriesDropdown from './CategoriesDropdown/CategoriesDropdown';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import LocationAndContact from './Location&Contact/Location&Contact';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
+import Ratings from './Ratings/Ratings';
 
 export {
   CategoriesDropdown,
@@ -16,4 +17,5 @@ export {
   BusinessImage,
   BusinessAttributes,
   LocationAndContact,
+  Ratings,
 };

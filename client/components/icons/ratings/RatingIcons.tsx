@@ -1,11 +1,13 @@
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { classNames } from 'utils/tailwind';
 
 interface IRatingIcons {
   rating: number;
   size?: number;
+  className?: string;
 }
 
-function RatingIcons({ rating, size = 17 }: IRatingIcons) {
+function RatingIcons({ className = '', rating, size = 17 }: IRatingIcons) {
   // if totalRatings or ratingCount is 0, render empty stars
   const emptyArr = Array.from(Array(5).keys());
 
@@ -40,7 +42,12 @@ function RatingIcons({ rating, size = 17 }: IRatingIcons) {
   }
 
   return (
-    <div className="flex items-center gap-[3px] text-primaryred">
+    <div
+      className={classNames(
+        className,
+        'flex items-center gap-[3px] text-primaryred'
+      )}
+    >
       {ratingsArr.map((num) => (
         <BsStarFill key={num} size={size} />
       ))}

@@ -2,10 +2,22 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BiPhone } from 'react-icons/bi';
 import { BsLaptop } from 'react-icons/bs';
 import { TbBuildingCommunity } from 'react-icons/tb';
+import { classNames } from 'utils/tailwind';
 
-export default function LocationAndContact() {
+interface LocationAndContactProps {
+  className?: string;
+}
+
+export default function LocationAndContact({
+  className = '',
+}: LocationAndContactProps) {
   return (
-    <div className="w-full md:w-1/2 rounded-md border-2 border-gray-200 px-5 py-6">
+    <div
+      className={classNames(
+        className,
+        'rounded-md border-2 border-gray-200 px-5 py-6'
+      )}
+    >
       <h4 className="text-xl font-medium mb-6">
         Location and Contact Information
       </h4>

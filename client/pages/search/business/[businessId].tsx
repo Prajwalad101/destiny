@@ -3,6 +3,7 @@ import {
   BusinessAttributes,
   CategoriesDropdown,
   LocationAndContact,
+  Ratings,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import {
@@ -46,7 +47,14 @@ const Business: NextPageWithLayout = () => {
         attributes={businessData.features}
         className="mb-12 md:mb-24"
       />
-      <LocationAndContact />
+      <div className="flex flex-col md:flex-row gap-5 lg:gap-10 md:items-start">
+        <LocationAndContact className="flex-1" />
+        <Ratings
+          className="flex-1"
+          avgRating={businessData.avgRating}
+          numReviews={businessData.rating_count}
+        />
+      </div>
       <BusinessReviewSection reviews={reviews} />
     </ConditionalRender>
   );
