@@ -47,7 +47,7 @@ const Business: NextPageWithLayout = () => {
         attributes={businessData.features}
         className="mb-12 md:mb-24"
       />
-      <div className="flex flex-col md:flex-row gap-5 lg:gap-10 md:items-start">
+      <div className="flex flex-col md:flex-row gap-5 lg:gap-10 md:items-start mb-10 md:mb-16">
         <LocationAndContact className="flex-1" />
         <Ratings
           className="flex-1"
@@ -55,6 +55,7 @@ const Business: NextPageWithLayout = () => {
           numReviews={businessData.rating_count}
         />
       </div>
+      <div className="border border-gray-200 mb-8" />
       <BusinessReviewSection reviews={reviews} />
     </ConditionalRender>
   );

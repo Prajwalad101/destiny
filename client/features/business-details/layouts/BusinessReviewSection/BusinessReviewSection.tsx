@@ -1,9 +1,7 @@
 import { IReview } from '@destiny/common/types';
-import RatingIcons from 'components/icons/ratings/RatingIcons';
-import Slider from 'components/slider/Slider';
-import Image from 'next/image';
-import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
-import { getRelativeDate } from 'utils/date';
+import { UserReview } from '@features/business-details/components';
+import PrimaryButton from 'components/button/primary/PrimaryButton';
+import React from 'react';
 
 const images = [
   'https://dummyimage.com/300.png/09f/fff&text=1',
@@ -26,80 +24,34 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
   if (reviews.length === 0) {
     return (
       <div className="flex justify-center">
-        <h2 className="font-rubik text-xl font-medium">No reviews found</h2>
+        <h2 className="text-xl font-medium">No reviews found</h2>
       </div>
     );
   }
 
   return (
-    <div className="mb-5 font-rubik">
-      <h4 className="mb-5 text-xl font-medium text-gray-700">Top Reviews</h4>
+    <div className="mb-5">
+      <div className="flex items-center justify-between mb-8">
+        <h4 className="text-2xl font-bold font-merriweather">
+          Reviews
+          <span className="text-gray-500 inline-block pl-4">
+            ({reviews.length})
+          </span>
+        </h4>
+        <PrimaryButton
+          className="bg-black hover:bg-gray-800 px-6 py-2 sm:py-[10px] border-black hover:border-gray-800
+          rounded-[3px]"
+        >
+          Post Review
+        </PrimaryButton>
+      </div>
+
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (
-          <div key={review._id.toString()}>
-            {/* User Profile */}
-            <div className="mb-2 flex items-center gap-3">
-              <Image
-                className="rounded-full"
-                src={userProfileImg}
-                alt="user-profile"
-                width={35}
-                height={35}
-                objectFit="cover"
-              />
-              <span className="font-medium capitalize">sagar thapa</span>
-            </div>
-            {/* Rating, Relative Time */}
-            <div className="mb-2 flex items-center gap-3">
-              <RatingIcons rating={review.rating} />
-              <span className="text-sm capitalize text-secondarytext">
-                {getRelativeDate(review.createdAt)}
-              </span>
-            </div>
-            {/* User Review */}
-            <p className="mb-4">{review.review}</p>
-            <Slider numItems={images.length} className="mb-4">
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative h-[150px] w-1/3 sm:w-1/4 lg:w-1/5"
-                >
-                  <Image
-                    src={image}
-                    alt="review-image"
-                    layout="fill"
-                    objectFit="cover"
-                    className="px-1"
-                  />
-                </div>
-              ))}
-            </Slider>
-
-            <Feedback likes={review.likes} />
-            {/* Horizontal Line */}
-            <div className={`border-b-[1px] border-gray-400`} />
-          </div>
+          <React.Fragment key={review._id.toString()}>
+            <UserReview review={review} />
+          </React.Fragment>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function Feedback({ likes }: { likes: number }) {
-  return (
-    <div className="flex items-center gap-7">
-      <div className="mb-4 flex items-center gap-2">
-        <AiOutlineLike
-          size={22}
-          className="cursor-pointer hover:text-blue-500"
-        />
-        <span>{likes} likes</span>
-      </div>
-      <div className="mb-4 flex items-center gap-2">
-        <AiOutlineDislike
-          size={22}
-          className="cursor-pointer hover:text-primaryred"
-        />
       </div>
     </div>
   );
