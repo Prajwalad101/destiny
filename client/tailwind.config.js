@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   important: true,
   content: [
@@ -7,6 +10,10 @@ module.exports = {
     './features/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    screens: {
+      xs: '475px',
+      ...defaultTheme.screens,
+    },
     extend: {
       fontFamily: {
         rubik: ['Rubik', 'sans-serif'],
