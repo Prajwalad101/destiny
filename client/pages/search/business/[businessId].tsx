@@ -42,12 +42,11 @@ const Business: NextPageWithLayout = () => {
       <BreadCrumbs />
       <BusinessInfoSection
         business={businessData}
-        className="mt-4 mb-7 md:mb-12"
+        className="mt-4 mb-7 md:mb-16"
       />
-      <BusinessAttributes
-        attributes={businessData.features}
-        className="mb-12 md:mb-24"
-      />
+      <div className="border border-gray-200 mb-5" />
+      <BusinessAttributes attributes={businessData.features} />
+      <div className="border border-gray-200 mb-12 md:mb-16" />
       <div className="flex flex-col md:flex-row gap-5 lg:gap-10 md:items-start mb-10 md:mb-16">
         <LocationAndContact className="flex-1" />
         <Ratings

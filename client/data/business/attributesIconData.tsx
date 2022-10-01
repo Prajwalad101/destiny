@@ -1,13 +1,8 @@
 import { businessFeatures } from '@destiny/common/data';
 import { BusinessFeature } from '@destiny/common/types';
 import { FaChild } from 'react-icons/fa';
-import {
-  MdDirectionsBike,
-  MdOutlineLibraryMusic,
-  MdOutlineLocalDining,
-} from 'react-icons/md';
-import { RiCakeLine } from 'react-icons/ri';
-import { TbPhone } from 'react-icons/tb';
+import { GiDeliveryDrone, GiPartyPopper, GiSmartphone } from 'react-icons/gi';
+import { MdOutlineDining, MdOutlineLibraryMusic } from 'react-icons/md';
 
 const defaultSize = 17;
 
@@ -17,15 +12,15 @@ const attributesIconData: {
 }[] = [
   {
     name: businessFeatures.delivery,
-    icon: (size = defaultSize) => <MdDirectionsBike size={size} />,
+    icon: (size = defaultSize) => <GiDeliveryDrone size={size} />,
   },
   {
     name: businessFeatures.reservations,
-    icon: (size = defaultSize) => <TbPhone size={size} />,
+    icon: (size = defaultSize) => <GiSmartphone size={size} />,
   },
   {
     name: businessFeatures.events,
-    icon: (size = defaultSize) => <RiCakeLine size={size} />,
+    icon: (size = defaultSize) => <GiPartyPopper size={size} />,
   },
   {
     name: businessFeatures.goodForKids,
@@ -37,7 +32,7 @@ const attributesIconData: {
   },
   {
     name: businessFeatures.outdoorDining,
-    icon: (size = defaultSize) => <MdOutlineLocalDining size={size} />,
+    icon: (size = defaultSize) => <MdOutlineDining size={size} />,
   },
 ];
 
