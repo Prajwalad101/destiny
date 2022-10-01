@@ -32,20 +32,20 @@ export default function UserReview({ review }: UserReviewProps) {
   return (
     <div>
       <div className="flex justify-between">
-        <div className="flex items-start gap-5 mb-3">
-          <div className="shrink-0">
+        <div className="flex items-center gap-5 mb-3">
+          <div className="shrink-0 h-[45px]">
             <Image
               className="rounded-full"
               src={userProfileImg}
               alt="user-profile"
-              width={50}
-              height={50}
+              width={45}
+              height={45}
               objectFit="cover"
             />
           </div>
           <div>
             <p className="capitalize pb-1">sagar thapa</p>
-            <p className="capitalize text-gray-500">
+            <p className="text-sm text-gray-500">
               {getRelativeDate(review.createdAt)}
             </p>
           </div>
@@ -75,7 +75,6 @@ export default function UserReview({ review }: UserReviewProps) {
                   + {images.length - 2} more
                 </p>
               )}
-
               <Image
                 key={index}
                 src={image}
@@ -97,12 +96,12 @@ export default function UserReview({ review }: UserReviewProps) {
 
 function Feedback({ likes }: { likes: number }) {
   return (
-    <div className="flex items-center gap-9">
-      <div className="mb-4 flex items-center flex-col gap-1">
+    <div className="flex mb-5 items-center gap-9">
+      <div className="flex items-center flex-col gap-1">
         <BiLike size={24} className="cursor-pointer hover:text-blue-500" />
         <p className="text-gray-700">{likes}</p>
       </div>
-      <div className="mb-4 flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center gap-1">
         <BiHeart size={24} className="cursor-pointer hover:text-primaryred" />
         <p className="text-gray-700">8</p>
       </div>

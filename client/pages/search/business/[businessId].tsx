@@ -8,7 +8,8 @@ import {
 import { useBusiness } from '@features/business-details/hooks';
 import {
   BusinessInfoSection,
-  BusinessReviewSection,
+  QASection,
+  ReviewSection,
 } from '@features/business-details/layouts';
 import { fetchBusiness } from '@features/business-details/utils/api';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
@@ -56,7 +57,9 @@ const Business: NextPageWithLayout = () => {
         />
       </div>
       <div className="border border-gray-200 mb-8" />
-      <BusinessReviewSection reviews={reviews} />
+      <QASection businessName={businessData.name} className="mb-8" />
+      <div className="border border-gray-200 mb-8" />
+      <ReviewSection reviews={reviews} className="mb-10" />
     </ConditionalRender>
   );
 };

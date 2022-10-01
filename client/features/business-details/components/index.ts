@@ -9,6 +9,8 @@ import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import Ratings from './Ratings/Ratings';
 import ReportUserDropdown from './ReportUserDropdown/ReportUserDropdown';
 import ReviewText from './ReviewText/ReviewText';
+import UserProfile from './UserProfile/UserProfile';
+import UserQuestion from './UserQuestion/UserQuestion';
 import UserReview from './UserReview/UserReview';
 
 export {
@@ -24,4 +26,6 @@ export {
   UserReview,
   ReviewText,
   ReportUserDropdown,
+  UserQuestion,
+  UserProfile,
 };

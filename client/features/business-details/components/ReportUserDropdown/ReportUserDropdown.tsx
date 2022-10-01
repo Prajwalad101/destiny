@@ -22,7 +22,7 @@ export default function ReportUserDropdown() {
               <button
                 className={classNames(
                   active ? 'bg-gray-200 border-gray-200' : '',
-                  'w-full text-right transition-colors whitespace-nowrap px-5 sm:px-10 py-[10px] border border-gray-300 rounded-sm'
+                  'w-full text-right transition-colors whitespace-nowrap px-5 sm:px-10 py-[10px] border border-gray-300 rounded-sm bg-white'
                 )}
               >
                 Report User

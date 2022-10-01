@@ -1,3 +1,4 @@
+import PrimaryButton from './button/primary/PrimaryButton';
 import Portal from './Portal/Portal';
 
-export { Portal };
+export { PrimaryButton, Portal };

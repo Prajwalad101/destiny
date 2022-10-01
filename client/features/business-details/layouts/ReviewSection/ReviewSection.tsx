@@ -1,9 +1,18 @@
 import { IReview } from '@destiny/common/types';
 import { UserReview } from '@features/business-details/components';
-import PrimaryButton from 'components/button/primary/PrimaryButton';
+import { PrimaryButton } from 'components';
 import React from 'react';
+import { classNames } from 'utils/tailwind';
 
-function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
+interface ReviewSectionProps {
+  reviews: IReview[];
+  className?: string;
+}
+
+export default function ReviewSection({
+  reviews,
+  className = '',
+}: ReviewSectionProps) {
   // If there are no reviews
   if (reviews.length === 0) {
     return (
@@ -14,7 +23,7 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
   }
 
   return (
-    <div className="mb-5">
+    <div className={classNames(className)}>
       <div className="flex items-center justify-between mb-8">
         <h4 className="text-2xl font-bold font-merriweather">
           Reviews
@@ -40,5 +49,3 @@ function BusinessReviewSection({ reviews }: { reviews: IReview[] }) {
     </div>
   );
 }
-
-export default BusinessReviewSection;
