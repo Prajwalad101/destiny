@@ -1,4 +1,8 @@
 import { IReview } from '@destiny/common/types';
+import {
+  ReportUserDropdown,
+  ReviewText,
+} from '@features/business-details/components';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
 import Image from 'next/image';
 import { BiHeart, BiLike } from 'react-icons/bi';
@@ -27,26 +31,30 @@ interface UserReviewProps {
 export default function UserReview({ review }: UserReviewProps) {
   return (
     <div>
-      <div className="flex items-start gap-5 mb-3">
-        <div className="shrink-0">
-          <Image
-            className="rounded-full"
-            src={userProfileImg}
-            alt="user-profile"
-            width={50}
-            height={50}
-            objectFit="cover"
-          />
+      <div className="flex justify-between">
+        <div className="flex items-start gap-5 mb-3">
+          <div className="shrink-0">
+            <Image
+              className="rounded-full"
+              src={userProfileImg}
+              alt="user-profile"
+              width={50}
+              height={50}
+              objectFit="cover"
+            />
+          </div>
+          <div>
+            <p className="capitalize pb-1">sagar thapa</p>
+            <p className="capitalize text-gray-500">
+              {getRelativeDate(review.createdAt)}
+            </p>
+          </div>
         </div>
-        <div>
-          <p className="capitalize pb-1">sagar thapa</p>
-          <p className="capitalize text-gray-500">
-            {getRelativeDate(review.createdAt)}
-          </p>
-        </div>
+        <ReportUserDropdown />
       </div>
-      <RatingIcons rating={review.rating} size={20} className="mb-6" />
-      <div className="flex gap-6 mb-6">
+      <RatingIcons rating={review.rating} size={20} className="mb-4" />
+      <ReviewText className="mb-8" />
+      <div className="flex gap-6 mb-8 overflow-scroll">
         {images.map((image, index) => {
           if (index >= 2) {
             return;
@@ -80,7 +88,7 @@ export default function UserReview({ review }: UserReviewProps) {
           );
         })}
       </div>
-      <p className="mb-5 leading-7 w-2/3">{review.review}</p>
+      {/* <p className="mb-5 leading-7 w-2/3">{review.review}</p> */}
       <Feedback likes={review.likes} />
       <div className="border border-gray-300" />
     </div>

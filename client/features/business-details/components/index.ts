@@ -7,6 +7,8 @@ import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import LocationAndContact from './Location&Contact/Location&Contact';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import Ratings from './Ratings/Ratings';
+import ReportUserDropdown from './ReportUserDropdown/ReportUserDropdown';
+import ReviewText from './ReviewText/ReviewText';
 import UserReview from './UserReview/UserReview';
 
 export {
@@ -20,4 +22,6 @@ export {
   LocationAndContact,
   Ratings,
   UserReview,
+  ReviewText,
+  ReportUserDropdown,
 };
