@@ -5,6 +5,7 @@ import BusinessImage from './BusinessImage/BusinessImage';
 import CategoriesDropdown from './CategoriesDropdown/CategoriesDropdown';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import LocationAndContact from './Location&Contact/Location&Contact';
+import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import Ratings from './Ratings/Ratings';
 import ReportUserDropdown from './ReportUserDropdown/ReportUserDropdown';
@@ -28,4 +29,5 @@ export {
   ReportUserDropdown,
   UserQuestion,
   UserProfile,
+  BusinessImageModal,
 };
