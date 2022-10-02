@@ -24,7 +24,7 @@ export default function BusinessImageModal({
 
   const handleLeft = () => {
     setSelectedIndex((prevIndex) => {
-      if (prevIndex <= 1) return prevIndex;
+      if (prevIndex <= 0) return prevIndex;
       return --prevIndex;
     });
   };
@@ -41,7 +41,7 @@ export default function BusinessImageModal({
 
   return (
     <Transition show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={closeModal}>
+      <Dialog as="div" className="relative z-50" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -68,8 +68,14 @@ export default function BusinessImageModal({
                 <div className="flex flex-col md:flex-row h-full gap-5">
                   {/* Main Image */}
                   <div className="relative h-full basis-[75%]">
-                    <LeftButton onClick={handleLeft} />
-                    <RightButton onClick={handleRight} />
+                    <LeftButton
+                      onClick={handleLeft}
+                      disabled={selectedIndex <= 0}
+                    />
+                    <RightButton
+                      onClick={handleRight}
+                      disabled={selectedIndex >= images.length - 1}
+                    />
                     <Image
                       src={selectedImage}
                       alt="business-image"
@@ -111,12 +117,15 @@ export default function BusinessImageModal({
   );
 }
 
-const LeftButton = ({ className = '', onClick }: ButtonProps) => {
+const LeftButton = ({ className = '', onClick, disabled }: ButtonProps) => {
   return (
     <button
       className={classNames(
-        'absolute left-3 top-1/2 cursor-pointer hover:opacity-100 -translate-y-1/2 z-10 bg-white opacity-80 rounded-full p-1',
-        className
+        className,
+        'absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1',
+        disabled
+          ? 'opacity-40 cursor-default'
+          : 'cursor-pointer hover:opacity-100 opacity-80'
       )}
       onClick={onClick}
     >
@@ -125,12 +134,15 @@ const LeftButton = ({ className = '', onClick }: ButtonProps) => {
   );
 };
 
-const RightButton = ({ onClick, className = '' }: ButtonProps) => {
+const RightButton = ({ onClick, className = '', disabled }: ButtonProps) => {
   return (
     <button
       className={classNames(
-        'absolute right-3 top-1/2 cursor-pointer hover:opacity-100 -translate-y-1/2 z-10 bg-white opacity-80 rounded-full p-1',
-        className
+        className,
+        'absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1',
+        disabled
+          ? 'opacity-40 cursor-default'
+          : 'cursor-pointer hover:opacity-100 opacity-80'
       )}
       onClick={onClick}
     >
