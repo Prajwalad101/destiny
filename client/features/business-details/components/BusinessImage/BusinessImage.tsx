@@ -12,7 +12,7 @@ interface BusinessImageProps {
 export default function BusinessImage({
   images: businessImages,
 }: BusinessImageProps) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const images = businessImages.map((image) => getPublicFilePath(image));
 

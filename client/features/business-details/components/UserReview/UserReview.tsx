@@ -1,10 +1,12 @@
 import { IReview } from '@destiny/common/types';
 import {
+  BusinessImageModal,
   ReportUserDropdown,
   ReviewText,
 } from '@features/business-details/components';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
 import Image from 'next/image';
+import { useState } from 'react';
 import { BiHeart, BiLike } from 'react-icons/bi';
 import { getRelativeDate } from 'utils/date';
 import { classNames } from 'utils/tailwind';
@@ -29,6 +31,8 @@ interface UserReviewProps {
 }
 
 export default function UserReview({ review }: UserReviewProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div>
       <div className="flex justify-between">
@@ -63,6 +67,7 @@ export default function UserReview({ review }: UserReviewProps) {
             <div
               key={index}
               className="relative w-[240px] h-[150px] shrink-0 group cursor-pointer"
+              onClick={() => setIsModalOpen(true)}
             >
               <div
                 className={classNames(
@@ -87,6 +92,11 @@ export default function UserReview({ review }: UserReviewProps) {
           );
         })}
       </div>
+      <BusinessImageModal
+        isOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+        images={images}
+      />
       {/* <p className="mb-5 leading-7 w-2/3">{review.review}</p> */}
       <Feedback likes={review.likes} />
       <div className="border border-gray-300" />
