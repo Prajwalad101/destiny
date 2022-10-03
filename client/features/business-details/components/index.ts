@@ -7,6 +7,7 @@ import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import LocationAndContact from './Location&Contact/Location&Contact';
 import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
+import OrderFood from './OrderFood/OrderFood';
 import Ratings from './Ratings/Ratings';
 import ReportUserDropdown from './ReportUserDropdown/ReportUserDropdown';
 import ReviewText from './ReviewText/ReviewText';
@@ -30,4 +31,5 @@ export {
   UserQuestion,
   UserProfile,
   BusinessImageModal,
+  OrderFood,
 };

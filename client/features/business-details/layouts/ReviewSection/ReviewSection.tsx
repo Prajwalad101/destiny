@@ -1,6 +1,6 @@
 import { IReview } from '@destiny/common/types';
 import { UserReview } from '@features/business-details/components';
-import { PrimaryButton } from 'components';
+import { SecondaryButton } from 'components';
 import React from 'react';
 import { classNames } from 'utils/tailwind';
 
@@ -31,12 +31,9 @@ export default function ReviewSection({
             ({reviews.length})
           </span>
         </h4>
-        <PrimaryButton
-          className="bg-black hover:bg-gray-700 px-6 py-2 sm:py-[10px] border-black hover:border-gray-700
-          rounded-[3px] hover:shadow-lg"
-        >
+        <SecondaryButton className="px-6 py-2 sm:py-[10px]">
           Post Review
-        </PrimaryButton>
+        </SecondaryButton>
       </div>
 
       <div className="child-notlast:mb-7">

@@ -15,6 +15,7 @@ export default function BusinessAttributes({
 }: BusinessAttributesProps) {
   return (
     <div className={classNames(className)}>
+      <div className="border border-gray-200 mb-5" />
       <div className="flex flex-col xs:flex-row mb-6 gap-3 xs:items-center xs:justify-between ">
         <h4 className="text-xl font-medium">Highlights from this Business</h4>
         <p className=" hover:text-gray-500 text-gray-700 text-sm underline cursor-pointer">
@@ -37,6 +38,7 @@ export default function BusinessAttributes({
           );
         })}
       </div>
+      <div className="border border-gray-200 mb-12 md:mb-16" />
     </div>
   );
 }

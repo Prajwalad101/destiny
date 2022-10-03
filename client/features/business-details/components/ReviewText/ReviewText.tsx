@@ -15,7 +15,7 @@ export default function ReviewText({ className = '' }: { className?: string }) {
   return (
     <p
       className={classNames(
-        'leading-7 md:w-[90%] lg:w-[80%] cursor-pointer hover:text-gray-800',
+        'leading-7 cursor-pointer hover:text-gray-800',
         className
       )}
       onClick={handleClick}
