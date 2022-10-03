@@ -43,7 +43,7 @@ const Business: NextPageWithLayout = () => {
         business={businessData}
         className="mt-4 mb-7 md:mb-16"
       />
-      <div className="flex gap-x-10 flex-row-reverse items-start">
+      <div className="flex gap-x-16 flex-row-reverse items-start">
         <OrderFood className="basis-[40%]" />
         <div className="basis-[60%]">
           <BusinessAttributes attributes={businessData.features} />

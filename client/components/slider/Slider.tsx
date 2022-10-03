@@ -1,6 +1,6 @@
 import { useWindowSize } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { ButtonProps } from 'types/props';
 import { getVisibleChildrenCount } from 'utils/dom';
 import { classNames } from 'utils/tailwind';
@@ -54,14 +54,20 @@ function Slider({
   };
 
   const leftButton = LeftButton ? (
-    <LeftButton onClick={handleLeft} />
+    <LeftButton onClick={handleLeft} disabled={sliderIndex <= 1} />
   ) : (
-    <SliderLeftButton onClick={handleLeft} />
+    <SliderLeftButton onClick={handleLeft} disabled={sliderIndex <= 1} />
   );
   const rightButton = RightButton ? (
-    <RightButton onClick={handleRight} />
+    <RightButton
+      onClick={handleRight}
+      disabled={sliderIndex * numVisibleChildren >= numItems}
+    />
   ) : (
-    <SilderRightButton onClick={handleRight} />
+    <SilderRightButton
+      onClick={handleRight}
+      disabled={sliderIndex * numVisibleChildren >= numItems}
+    />
   );
 
   return (
@@ -79,38 +85,42 @@ function Slider({
         {children}
       </div>
       {/* Slider Control Buttons */}
-      {sliderIndex > 1 && leftButton}
-      {sliderIndex * numVisibleChildren < numItems && rightButton}
+      {leftButton}
+      {rightButton}
     </div>
   );
 }
 
 export default Slider;
 
-const SliderLeftButton = ({ onClick }: ButtonProps) => {
+const SliderLeftButton = ({ onClick, disabled }: ButtonProps) => {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={
-        'shadow-md left-[5px] absolute top-[50%] translate-y-[-50%]  z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white'
-      }
+      className={classNames(
+        'shadow-md left-[5px] absolute top-[50%] translate-y-[-50%]  z-10 rounded-full bg-gray-50 p-1 transition-colors',
+        disabled ? 'opacity-50' : 'opacity-80 hover:opacity-100'
+      )}
+      disabled={disabled}
     >
-      <AiOutlineLeft size={20} />
+      <BiChevronLeft size={30} />
     </button>
   );
 };
 
-const SilderRightButton = ({ onClick }: ButtonProps) => {
+const SilderRightButton = ({ onClick, disabled }: ButtonProps) => {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={
-        'absolute top-[50%] translate-y-[-50%] right-[5px] z-10 rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md'
-      }
+      className={classNames(
+        'absolute top-[50%] translate-y-[-50%] right-[5px] z-10 rounded-full bg-gray-50 p-1 transition-colors shadow-md',
+        disabled ? 'opacity-50' : 'opacity-80 hover:opacity-100'
+      )}
+      disabled={disabled}
     >
-      <AiOutlineRight size={20} />
+      <BiChevronRight size={30} />
     </button>
   );
 };

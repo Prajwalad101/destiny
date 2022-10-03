@@ -47,11 +47,13 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           View Charges
         </p>
       </div>
+      {/* Input Fields */}
       <div className="flex items-center gap-4 mb-4">
         <label
           htmlFor="delivery"
           className={classNames(
-            selectedOption === 'takeout' ? 'text-gray-500' : ''
+            selectedOption === 'takeout' ? 'text-gray-500' : '',
+            'w-[130px]'
           )}
         >
           Delivery Address:
@@ -65,7 +67,9 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         />
       </div>
       <div className="flex items-center gap-4 mb-7">
-        <label htmlFor="phone-number">Phone Number:</label>
+        <label htmlFor="phone-number" className="w-[130px]">
+          Phone Number:
+        </label>
         <input
           type="text"
           id="phone-number"
@@ -73,6 +77,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           className="flex-grow border-gray-300 border-[1px] rounded-md px-5 py-2 "
         />
       </div>
+
       <div className="flex gap-5 items-center mb-9">
         <SecondaryButton>
           <p className="px-6 py-2">Browse Menu</p>
