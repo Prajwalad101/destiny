@@ -1,7 +1,12 @@
-import { Ratings, UserReview } from '@features/business-details/components';
+import {
+  Ratings,
+  SortReview,
+  UserReview,
+} from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { classNames } from 'utils/tailwind';
 
 interface ReviewSectionProps {
@@ -30,11 +35,27 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
 
   return (
     <div className={classNames(className)}>
+      <div className="mb-7 flex items-center justify-between">
+        <SortReview />
+        {/* Search bar */}
+        <div className="relative mr-[2px] flex w-max items-center">
+          <input
+            type="text"
+            className="rounded-[4px] border border-gray-500 px-5 py-[9px]"
+            placeholder="Search for reviews"
+          />
+          <AiOutlineSearch className="absolute right-4 shrink-0" size={20} />
+        </div>
+      </div>
+      <div className="mb-7 border-b border-gray-300" />
       <Ratings
         avgRating={businessData.avgRating}
         numReviews={businessData.rating_count}
-        className="mb-12"
+        className="mb-7"
       />
+      <div className="mb-12 border-b border-gray-300" />
+
+      {/* <div className="border-b border-gray-300" /> */}
 
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (

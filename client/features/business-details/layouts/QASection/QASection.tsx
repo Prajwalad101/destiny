@@ -1,6 +1,7 @@
-import { UserQuestion } from '@features/business-details/components';
+import { SortQA, UserQuestion } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import { useRouter } from 'next/router';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { classNames } from 'utils/tailwind';
 
 interface QASectionProps {
@@ -18,6 +19,17 @@ export default function QASection({ className = '' }: QASectionProps) {
 
   return (
     <div className={classNames(className)}>
+      <div className="mb-12 flex items-center justify-between">
+        <SortQA />
+        <div className="relative mr-[2px] flex w-max items-center">
+          <input
+            type="text"
+            className="rounded-[4px] border border-gray-500 px-5 py-[9px]"
+            placeholder="Search for questions"
+          />
+          <AiOutlineSearch className="absolute right-4 shrink-0" size={20} />
+        </div>
+      </div>
       <UserQuestion businessName={businessData.name} />
     </div>
   );

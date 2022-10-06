@@ -4,6 +4,8 @@ import BusinessDescription from './BusinessDescription/BusinessDescription';
 import BusinessImage from './BusinessImage/BusinessImage';
 import CategoriesDropdown from './CategoriesDropdown/CategoriesDropdown';
 import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
+import SortQA from './dropdown/SortQA/SortQA';
+import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
 import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
@@ -32,4 +34,6 @@ export {
   UserProfile,
   BusinessImageModal,
   OrderFood,
+  SortReview,
+  SortQA,
 };

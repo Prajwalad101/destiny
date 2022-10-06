@@ -24,9 +24,7 @@ export default function Ratings({
   numReviews = 300;
 
   return (
-    <div
-      className={classNames(className, 'rounded-md border border-gray-300 p-7')}
-    >
+    <div className={classNames(className, 'rounded-md border-gray-300')}>
       <div className="mb-3 flex items-center gap-8">
         <h4 className="text-3xl font-medium">{avgRating.toFixed(1)}</h4>
         <RatingIcons rating={avgRating} size={19} className="gap-[6px]" />
@@ -49,14 +47,14 @@ export default function Ratings({
                 >
                   {rating.name}
                 </label>
-                <div className="relative h-[10px] w-full rounded-sm bg-gray-300">
+                <div className="relative h-[10px] w-full rounded-full bg-gray-300">
                   <div
-                    className="absolute left-0 top-0 bottom-0 h-full rounded-sm bg-primaryred"
+                    className="absolute left-0 top-0 bottom-0 h-full rounded-full bg-primaryred"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
               </div>
-              <p className="text-gray-700">{percentage.toFixed(0)}%</p>
+              <p className="text-gray-600">{percentage.toFixed(0)}%</p>
             </div>
           );
         })}
