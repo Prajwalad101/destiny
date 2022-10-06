@@ -22,7 +22,7 @@ export default function Ratings({
         'rounded-md border-2 border-gray-200 px-5 py-6'
       )}
     >
-      <h4 className="mb-5 text-xl font-medium">Ratings</h4>
+      {/* <h4 className="mb-5 text-xl font-medium">Ratings</h4> */}
       <div className="mb-3 flex items-center gap-10">
         <h4 className="text-3xl font-medium">{avgRating.toFixed(1)}</h4>
         <RatingIcons rating={avgRating} size={20} className="gap-1" />

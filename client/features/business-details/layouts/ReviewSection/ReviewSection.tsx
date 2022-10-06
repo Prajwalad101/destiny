@@ -1,18 +1,24 @@
-import { IReview } from '@destiny/common/types';
-import { UserReview } from '@features/business-details/components';
-import { SecondaryButton } from 'components';
+import { Ratings, UserReview } from '@features/business-details/components';
+import { useBusiness } from '@features/business-details/hooks';
+import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import { classNames } from 'utils/tailwind';
 
 interface ReviewSectionProps {
-  reviews: IReview[];
   className?: string;
 }
 
-export default function ReviewSection({
-  reviews,
-  className = '',
-}: ReviewSectionProps) {
+export default function ReviewSection({ className = '' }: ReviewSectionProps) {
+  const { query } = useRouter();
+  const businessId = query.businessId as string;
+
+  const result = useBusiness(businessId);
+  const businessData = result.data?.data;
+
+  if (!businessData) return <></>;
+
+  const reviews = businessData.reviews || [];
+
   // If there are no reviews
   if (reviews.length === 0) {
     return (
@@ -24,17 +30,11 @@ export default function ReviewSection({
 
   return (
     <div className={classNames(className)}>
-      <div className="mb-8 flex items-center justify-between">
-        <h4 className="font-merriweather text-2xl font-bold">
-          Reviews
-          <span className="inline-block pl-4 text-gray-500">
-            ({reviews.length})
-          </span>
-        </h4>
-        <SecondaryButton className="px-6 py-2 sm:py-[10px]">
-          Post Review
-        </SecondaryButton>
-      </div>
+      <Ratings
+        avgRating={businessData.avgRating}
+        numReviews={businessData.rating_count}
+        className="mb-10"
+      />
 
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (
