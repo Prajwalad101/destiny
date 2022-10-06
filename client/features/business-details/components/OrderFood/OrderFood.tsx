@@ -12,14 +12,14 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
     <div
       className={classNames(
         className,
-        'sticky top-10 min-w-[420px] rounded-md border-2 border-gray-200 p-5'
+        'top-7 w-full rounded-md border-2 border-gray-200 p-5 md:sticky md:max-w-[330px] lg:max-w-[440px]'
       )}
     >
       <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
       </h4>
-      <div className="mb-10 flex items-center justify-between">
-        <div className="-ml-3 flex gap-7 ">
+      <div className="mb-10 flex flex-wrap items-center justify-between gap-y-5">
+        <div className="-ml-3 flex gap-2 lg:gap-4">
           <button
             className={classNames(
               selectedOption === 'delivery'
@@ -48,7 +48,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         </p>
       </div>
       {/* Input Fields */}
-      <div className="mb-4 flex items-center gap-4">
+      <div className="mb-4 flex flex-wrap items-center gap-4">
         <label
           htmlFor="delivery"
           className={classNames(
@@ -67,7 +67,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           size={10}
         />
       </div>
-      <div className="mb-7 flex items-center gap-4">
+      <div className="mb-7 flex flex-wrap items-center gap-4">
         <label htmlFor="phone-number" className="w-[130px]">
           Phone Number:
         </label>
@@ -80,7 +80,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         />
       </div>
 
-      <div className="mb-9 flex items-center gap-5">
+      <div className="mb-9 flex flex-wrap items-center gap-3 lg:gap-7">
         <SecondaryButton>
           <p className="px-6 py-2">Browse Menu</p>
         </SecondaryButton>
