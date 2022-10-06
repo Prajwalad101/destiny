@@ -4,7 +4,6 @@ import {
   CategoriesDropdown,
   LocationAndContact,
   OrderFood,
-  Ratings,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import {
@@ -46,16 +45,16 @@ const Business: NextPageWithLayout = () => {
         className="mt-4 mb-7 md:mb-16"
       />
       <div className="flex flex-row-reverse items-start gap-x-16">
-        <OrderFood className="" />
+        <OrderFood />
         <div className="w-full overflow-y-auto">
           <BusinessAttributes attributes={businessData.features} />
           <div className="mb-10 flex flex-col gap-5 md:mb-16 md:flex-row md:items-start lg:gap-10">
             <LocationAndContact className="flex-1" />
-            <Ratings
+            {/* <Ratings
               className="flex-1"
               avgRating={businessData.avgRating}
               numReviews={businessData.rating_count}
-            />
+            /> */}
           </div>
           <div className="mb-8 border border-gray-200" />
           <QASection businessName={businessData.name} className="mb-8" />

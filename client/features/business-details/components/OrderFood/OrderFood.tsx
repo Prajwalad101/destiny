@@ -12,14 +12,14 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
     <div
       className={classNames(
         className,
-        'sticky top-10 max-w-2xl rounded-md border-2 border-gray-200 p-5'
+        'sticky top-10 min-w-[420px] rounded-md border-2 border-gray-200 p-5'
       )}
     >
       <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
       </h4>
       <div className="mb-10 flex items-center justify-between">
-        <div className="-ml-3 flex  gap-7">
+        <div className="-ml-3 flex gap-7 ">
           <button
             className={classNames(
               selectedOption === 'delivery'
@@ -48,12 +48,12 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         </p>
       </div>
       {/* Input Fields */}
-      <div className="mb-4 flex flex-wrap items-center gap-4">
+      <div className="mb-4 flex items-center gap-4">
         <label
           htmlFor="delivery"
           className={classNames(
             selectedOption === 'takeout' ? 'text-gray-500' : '',
-            'w-[130px]'
+            'min-w-[130px]'
           )}
         >
           Delivery Address:
@@ -62,8 +62,9 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           type="text"
           id="delivery"
           placeholder="eg: Kapan, Baluwakhani"
-          className="flex-grow rounded-md border-[1px] border-gray-300 px-5 py-2"
+          className="grow rounded-md border-[1px] border-gray-300 px-5 py-2"
           disabled={selectedOption === 'takeout'}
+          size={10}
         />
       </div>
       <div className="mb-7 flex items-center gap-4">
@@ -74,7 +75,8 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           type="text"
           id="phone-number"
           placeholder="(+977)"
-          className="flex-grow rounded-md border-[1px] border-gray-300 px-5 py-2 "
+          className="grow rounded-md border-[1px] border-gray-300 px-5 py-2 "
+          size={10}
         />
       </div>
 
