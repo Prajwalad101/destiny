@@ -33,7 +33,7 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
       <Ratings
         avgRating={businessData.avgRating}
         numReviews={businessData.rating_count}
-        className="mb-10"
+        className="mb-12"
       />
 
       <div className="child-notlast:mb-7">

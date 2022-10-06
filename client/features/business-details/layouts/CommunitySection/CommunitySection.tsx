@@ -15,7 +15,7 @@ export default function CommunitySection({
 
   return (
     <div className={classNames(className)}>
-      <div className="mb-8 border border-gray-200" />
+      <div className="mb-8 border-b border-gray-300" />
       <div className="mb-5 flex items-center justify-between">
         <h4 className="font-merriweather text-2xl font-bold">Community</h4>
         {selectedSection === 'reviews' && (
@@ -30,7 +30,7 @@ export default function CommunitySection({
         )}
       </div>
       {/* Tabs */}
-      <div className="mb-10 flex items-center gap-12">
+      <div className="mb-12 flex items-center gap-12">
         <button
           className={classNames(
             ' border-b-[3px] border-black px-3 py-2 text-xl font-medium',
