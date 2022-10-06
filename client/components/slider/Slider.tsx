@@ -80,7 +80,7 @@ function Slider({
           transform: `translate(${(sliderIndex - 1) * -100}%)`,
           transition: 'transform 400ms ease-in-out',
         }}
-        className="flex scroll-smooth child:shrink-0 h-full"
+        className="flex h-full scroll-smooth child:shrink-0"
       >
         {children}
       </div>
@@ -99,7 +99,7 @@ const SliderLeftButton = ({ onClick, disabled }: ButtonProps) => {
       type="button"
       onClick={onClick}
       className={classNames(
-        'shadow-md left-[5px] absolute top-[50%] translate-y-[-50%]  z-10 rounded-full bg-gray-50 p-1 transition-colors',
+        'absolute left-[5px] top-[50%] z-10 translate-y-[-50%]  rounded-full bg-gray-50 p-1 shadow-md transition-colors',
         disabled ? 'opacity-50' : 'opacity-80 hover:opacity-100'
       )}
       disabled={disabled}
@@ -115,7 +115,7 @@ const SilderRightButton = ({ onClick, disabled }: ButtonProps) => {
       type="button"
       onClick={onClick}
       className={classNames(
-        'absolute top-[50%] translate-y-[-50%] right-[5px] z-10 rounded-full bg-gray-50 p-1 transition-colors shadow-md',
+        'absolute top-[50%] right-[5px] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-1 shadow-md transition-colors',
         disabled ? 'opacity-50' : 'opacity-80 hover:opacity-100'
       )}
       disabled={disabled}

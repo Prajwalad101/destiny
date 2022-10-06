@@ -8,7 +8,7 @@ function Logo({ children }: ILogo) {
   return (
     <Link href="/">
       <a>
-        <div className="text-xl font-merriweather">{children}</div>
+        <div className="font-merriweather text-xl">{children}</div>
       </a>
     </Link>
   );

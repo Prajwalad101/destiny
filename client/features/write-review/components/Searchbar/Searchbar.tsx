@@ -17,7 +17,7 @@ function Searchbar({
     <div>
       <div
         className={classNames(
-          'relative flex bg-gray-500 overflow-hidden w-full items-center font-merriweather',
+          'relative flex w-full items-center overflow-hidden bg-gray-500 font-merriweather',
           className
         )}
       >
@@ -29,16 +29,16 @@ function Searchbar({
         />
         {/* Search by location */}
         <input
-          className="outline-none absolute right-0 h-full w-1/2 border-l-2 px-3 sm:pr-16 text-[15px] md:block "
+          className="absolute right-0 h-full w-1/2 border-l-2 px-3 text-[15px] outline-none sm:pr-16 md:block "
           type="text"
           placeholder={placeholder2}
         />
         {/* Search button */}
-        <button className="hidden sm:flex absolute bottom-0 right-0 h-full w-[60px] items-center justify-center bg-primaryred text-white hover:bg-red-500">
+        <button className="absolute bottom-0 right-0 hidden h-full w-[60px] items-center justify-center bg-primaryred text-white hover:bg-red-500 sm:flex">
           <AiOutlineSearch size={23} />
         </button>
       </div>
-      <PrimaryButton className="px-10 py-2.5 shadow-md mt-5 sm:hidden">
+      <PrimaryButton className="mt-5 px-10 py-2.5 shadow-md sm:hidden">
         Search
       </PrimaryButton>
     </div>

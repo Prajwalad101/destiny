@@ -58,7 +58,7 @@ const RightButton = ({ onClick }: ButtonProps) => {
     <button
       onClick={onClick}
       type="button"
-      className="md:right-[15px] right-[10px] absolute top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md"
+      className="absolute right-[10px] top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 shadow-md transition-colors hover:bg-primaryred hover:text-xl hover:text-white md:right-[15px]"
     >
       <AiOutlineRight size={20} />
     </button>
@@ -70,7 +70,7 @@ const LeftButton = ({ onClick }: ButtonProps) => {
     <button
       onClick={onClick}
       type="button"
-      className="md:left-[15px] left-[10px] absolute top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 transition-colors hover:bg-primaryred hover:text-xl hover:text-white shadow-md"
+      className="absolute left-[10px] top-[35%] z-10 translate-y-[-50%] rounded-full bg-gray-50 p-2 shadow-md transition-colors hover:bg-primaryred hover:text-xl hover:text-white md:left-[15px]"
     >
       <AiOutlineLeft size={20} />
     </button>

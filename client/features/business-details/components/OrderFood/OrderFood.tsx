@@ -12,20 +12,20 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
     <div
       className={classNames(
         className,
-        'sticky top-10 border-2 p-5 border-gray-200 rounded-md max-w-2xl'
+        'sticky top-10 max-w-2xl rounded-md border-2 border-gray-200 p-5'
       )}
     >
-      <h4 className="font-medium text-xl mb-6">
+      <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
       </h4>
-      <div className="flex justify-between items-center mb-10">
-        <div className="flex gap-7 -ml-3">
+      <div className="mb-10 flex items-center justify-between">
+        <div className="-ml-3 flex  gap-7">
           <button
             className={classNames(
               selectedOption === 'delivery'
                 ? 'border-primaryred'
                 : 'border-white',
-              'px-3 py-1 border-b-[3px]'
+              'border-b-[3px] px-3 py-1'
             )}
             onClick={() => setSelectedOption('delivery')}
           >
@@ -36,19 +36,19 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
               selectedOption === 'takeout'
                 ? 'border-primaryred'
                 : 'border-white',
-              'px-3 py-1 border-b-[3px]'
+              'border-b-[3px] px-3 py-1'
             )}
             onClick={() => setSelectedOption('takeout')}
           >
             Takeout
           </button>
         </div>
-        <p className="underline text-sm text-gray-600 cursor-pointer">
+        <p className="cursor-pointer text-sm text-gray-600 underline">
           View Charges
         </p>
       </div>
       {/* Input Fields */}
-      <div className="flex flex-wrap items-center gap-4 mb-4">
+      <div className="mb-4 flex flex-wrap items-center gap-4">
         <label
           htmlFor="delivery"
           className={classNames(
@@ -62,11 +62,11 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           type="text"
           id="delivery"
           placeholder="eg: Kapan, Baluwakhani"
-          className="flex-grow border-gray-300 border-[1px] rounded-md px-5 py-2"
+          className="flex-grow rounded-md border-[1px] border-gray-300 px-5 py-2"
           disabled={selectedOption === 'takeout'}
         />
       </div>
-      <div className="flex items-center gap-4 mb-7">
+      <div className="mb-7 flex items-center gap-4">
         <label htmlFor="phone-number" className="w-[130px]">
           Phone Number:
         </label>
@@ -74,11 +74,11 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           type="text"
           id="phone-number"
           placeholder="(+977)"
-          className="flex-grow border-gray-300 border-[1px] rounded-md px-5 py-2 "
+          className="flex-grow rounded-md border-[1px] border-gray-300 px-5 py-2 "
         />
       </div>
 
-      <div className="flex gap-5 items-center mb-9">
+      <div className="mb-9 flex items-center gap-5">
         <SecondaryButton>
           <p className="px-6 py-2">Browse Menu</p>
         </SecondaryButton>
@@ -86,7 +86,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
       </div>
 
       <div className="-mx-[21px] -mb-[21px]">
-        <PrimaryButton className="py-3 w-full">Place Order</PrimaryButton>
+        <PrimaryButton className="w-full py-3">Place Order</PrimaryButton>
       </div>
     </div>
   );

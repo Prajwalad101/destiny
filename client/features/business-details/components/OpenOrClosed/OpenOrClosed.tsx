@@ -28,7 +28,7 @@ export default function OpenOrClosed({
         {isOpen ? 'Open' : 'Closed'}
       </span>
       {!isOpen && (
-        <span className="inline-block text-gray-700 ml-5">
+        <span className="ml-5 inline-block text-gray-700">
           (Opens after {hoursTillOpen} hours)
         </span>
       )}

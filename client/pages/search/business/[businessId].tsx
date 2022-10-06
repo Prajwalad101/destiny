@@ -45,11 +45,11 @@ const Business: NextPageWithLayout = () => {
         business={businessData}
         className="mt-4 mb-7 md:mb-16"
       />
-      <div className="flex gap-x-16 flex-row-reverse items-start">
+      <div className="flex flex-row-reverse items-start gap-x-16">
         <OrderFood className="" />
         <div className="w-full overflow-y-auto">
           <BusinessAttributes attributes={businessData.features} />
-          <div className="flex flex-col md:flex-row gap-5 lg:gap-10 md:items-start mb-10 md:mb-16">
+          <div className="mb-10 flex flex-col gap-5 md:mb-16 md:flex-row md:items-start lg:gap-10">
             <LocationAndContact className="flex-1" />
             <Ratings
               className="flex-1"
@@ -57,9 +57,9 @@ const Business: NextPageWithLayout = () => {
               numReviews={businessData.rating_count}
             />
           </div>
-          <div className="border border-gray-200 mb-8" />
+          <div className="mb-8 border border-gray-200" />
           <QASection businessName={businessData.name} className="mb-8" />
-          <div className="border border-gray-200 mb-8" />
+          <div className="mb-8 border border-gray-200" />
           <ReviewSection reviews={reviews} className="mb-10" />
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function ReviewText({ className = '' }: { className?: string }) {
   return (
     <p
       className={classNames(
-        'leading-7 cursor-pointer hover:text-gray-800',
+        'cursor-pointer leading-7 hover:text-gray-800',
         className
       )}
       onClick={handleClick}
@@ -25,7 +25,7 @@ export default function ReviewText({ className = '' }: { className?: string }) {
 
       <span
         onClick={handleClick}
-        className="inline-block ml-3 underline hover:text-gray-700"
+        className="ml-3 inline-block underline hover:text-gray-700"
       >
         {isExpanded ? 'Read Less' : 'Read More'}
       </span>

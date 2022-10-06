@@ -9,9 +9,9 @@ function HeroSection() {
     <div>
       <div className="h-[550px] font-rubik md:h-[600px]">
         {/* BG Image */}
-        <div className="absolute h-[650px] md:h-[700px] inset-0 -z-10 hidden bg-for-business-main bg-cover bg-no-repeat md:block" />
+        <div className="absolute inset-0 -z-10 hidden h-[650px] bg-for-business-main bg-cover bg-no-repeat md:block md:h-[700px]" />
         {/* Overlay */}
-        <div className="absolute h-[650px] md:h-[700px] inset-0 -z-10 hidden w-full bg-gray-600 opacity-10 md:block" />
+        <div className="absolute inset-0 -z-10 hidden h-[650px] w-full bg-gray-600 opacity-10 md:block md:h-[700px]" />
         <MainHeading className="mb-3 max-w-sm sm:max-w-[40rem]">
           Register your business for free
         </MainHeading>

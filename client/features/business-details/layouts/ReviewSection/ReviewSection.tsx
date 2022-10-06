@@ -24,10 +24,10 @@ export default function ReviewSection({
 
   return (
     <div className={classNames(className)}>
-      <div className="flex items-center justify-between mb-8">
-        <h4 className="text-2xl font-bold font-merriweather">
+      <div className="mb-8 flex items-center justify-between">
+        <h4 className="font-merriweather text-2xl font-bold">
           Reviews
-          <span className="text-gray-500 inline-block pl-4">
+          <span className="inline-block pl-4 text-gray-500">
             ({reviews.length})
           </span>
         </h4>

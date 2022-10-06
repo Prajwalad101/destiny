@@ -9,8 +9,8 @@ export default function BusinessDescription({
 }: BusinessDescriptionProps) {
   return (
     <div className={className}>
-      <span className="leading-[26px] line-clamp-3">{description}</span>
-      <span className="hover:text-gray-700 inline-block text-black cursor-pointer mt-1 underline">
+      <span className="line-clamp-3 leading-[26px]">{description}</span>
+      <span className="mt-1 inline-block cursor-pointer text-black underline hover:text-gray-700">
         Read More
       </span>
     </div>

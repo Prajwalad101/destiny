@@ -36,7 +36,7 @@ export default function UserReview({ review }: UserReviewProps) {
   return (
     <div>
       <div className="flex justify-between">
-        <div className="flex items-center gap-5 mb-3">
+        <div className="mb-3 flex items-center gap-5">
           <div className="h-[45px]">
             <Image
               className="rounded-full"
@@ -48,7 +48,7 @@ export default function UserReview({ review }: UserReviewProps) {
             />
           </div>
           <div>
-            <p className="capitalize pb-1">sagar thapa</p>
+            <p className="pb-1 capitalize">sagar thapa</p>
             <p className="text-sm text-gray-500">
               {getRelativeDate(review.createdAt)}
             </p>
@@ -58,7 +58,7 @@ export default function UserReview({ review }: UserReviewProps) {
       </div>
       <RatingIcons rating={review.rating} size={20} className="mb-4" />
       <ReviewText className="mb-8" />
-      <div className="flex gap-6 mb-8 overflow-scroll">
+      <div className="mb-8 flex gap-6 overflow-scroll">
         {images.map((image, index) => {
           if (index >= 2) {
             return;
@@ -66,17 +66,17 @@ export default function UserReview({ review }: UserReviewProps) {
           return (
             <div
               key={index}
-              className="relative w-[240px] h-[150px] shrink-0 group cursor-pointer"
+              className="group relative h-[150px] w-[240px] shrink-0 cursor-pointer"
               onClick={() => setIsModalOpen(true)}
             >
               <div
                 className={classNames(
-                  'absolute w-full h-full rounded-sm z-20 hover:opacity-30',
+                  'absolute z-20 h-full w-full rounded-sm hover:opacity-30',
                   index === 1 ? 'bg-black opacity-30' : 'bg-black opacity-0'
                 )}
               />
               {index === 1 && (
-                <p className="absolute z-20 text-white text-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 tracking-wider group-hover:underline">
+                <p className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-xl tracking-wider text-white group-hover:underline">
                   + {images.length - 2} more
                 </p>
               )}
@@ -106,8 +106,8 @@ export default function UserReview({ review }: UserReviewProps) {
 
 function Feedback({ likes }: { likes: number }) {
   return (
-    <div className="flex mb-5 items-center gap-9">
-      <div className="flex items-center flex-col gap-1">
+    <div className="mb-5 flex items-center gap-9">
+      <div className="flex flex-col items-center gap-1">
         <BiLike size={24} className="cursor-pointer hover:text-blue-500" />
         <p className="text-gray-700">{likes}</p>
       </div>

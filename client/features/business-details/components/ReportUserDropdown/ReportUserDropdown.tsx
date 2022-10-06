@@ -5,7 +5,7 @@ import { classNames } from 'utils/tailwind';
 export default function ReportUserDropdown() {
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="hover:bg-gray-200 p-[6px] rounded-full">
+      <Menu.Button className="rounded-full p-[6px] hover:bg-gray-200">
         <BsThreeDotsVertical size={23} />
       </Menu.Button>
       <Transition
@@ -22,9 +22,9 @@ export default function ReportUserDropdown() {
               <button
                 className={classNames(
                   active
-                    ? 'bg-gray-200 border-gray-200'
-                    : 'bg-white border-gray-300',
-                  'w-full text-right transition-colors whitespace-nowrap px-5 sm:px-10 py-[10px] border rounded-sm'
+                    ? 'border-gray-200 bg-gray-200'
+                    : 'border-gray-300 bg-white',
+                  'w-full whitespace-nowrap rounded-sm border px-5 py-[10px] text-right transition-colors sm:px-10'
                 )}
               >
                 Report User

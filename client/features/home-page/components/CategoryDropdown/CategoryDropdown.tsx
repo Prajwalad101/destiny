@@ -35,7 +35,7 @@ export default function CategoryDropdown({
   );
 
   return (
-    <div className="relative capitalize h-max">
+    <div className="relative h-max capitalize">
       {/* Dropdown heading */}
       <div className="peer cursor-pointer hover:opacity-70">
         <span className="inline-block">{name}</span>
@@ -44,7 +44,7 @@ export default function CategoryDropdown({
       <div className="peer h-2" />
 
       {/* Dropdown menu */}
-      <div className="shadow-md bg-white invisible absolute z-30 flex gap-x-10  rounded-sm p-4 opacity-0 transition-opacity delay-100 hover:visible hover:opacity-100 peer-hover:visible peer-hover:opacity-100">
+      <div className="invisible absolute z-30 flex gap-x-10 rounded-sm bg-white  p-4 opacity-0 shadow-md transition-opacity delay-100 hover:visible hover:opacity-100 peer-hover:visible peer-hover:opacity-100">
         <div className="flex flex-col gap-y-4">
           {evenItems.map((subcategory, index) => link(subcategory, index))}
         </div>

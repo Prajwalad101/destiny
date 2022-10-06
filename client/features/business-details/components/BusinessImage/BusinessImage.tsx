@@ -18,15 +18,15 @@ export default function BusinessImage({
 
   return (
     <>
-      <div className="relative group">
+      <div className="group relative">
         <Slider
           numItems={images.length}
-          className="shrink-0 w-full md:w-[400px] h-[300px] md:h-[400px] lg:w-[535px]"
+          className="h-[300px] w-full shrink-0 md:h-[400px] md:w-[400px] lg:w-[535px]"
         >
           {images.map((image, key) => (
             <div
               key={key}
-              className="relative w-full h-full"
+              className="relative h-full w-full"
               onClick={() => setIsOpen(true)}
             >
               <Image
@@ -38,7 +38,7 @@ export default function BusinessImage({
             </div>
           ))}
         </Slider>
-        <div className="group-hover:opacity-100 transition-opacity flex opacity-0 absolute bottom-3 left-5 gap-3 items-end text-gray-100 hover:underline cursor-pointer">
+        <div className="absolute bottom-3 left-5 flex cursor-pointer items-end gap-3 text-gray-100 opacity-0 transition-opacity hover:underline group-hover:opacity-100">
           <MdOutlinePhotoSizeSelectActual size={25} />
           <span className="inline-block" onClick={() => setIsOpen(true)}>
             View all {images.length} photos

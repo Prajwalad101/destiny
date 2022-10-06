@@ -16,7 +16,7 @@ export default function UserProfile({
 }: UserProfileProps) {
   return (
     <div className={classNames('flex items-center gap-5', className)}>
-      <div className="shrink-0 h-[45px]">
+      <div className="h-[45px] shrink-0">
         <Image
           className="rounded-full"
           src={profile.image}
@@ -28,7 +28,7 @@ export default function UserProfile({
       </div>
       <div>
         <p className="capitalize">{profile.name}</p>
-        <p className="text-gray-500 text-sm">{profile.time}</p>
+        <p className="text-sm text-gray-500">{profile.time}</p>
       </div>
     </div>
   );

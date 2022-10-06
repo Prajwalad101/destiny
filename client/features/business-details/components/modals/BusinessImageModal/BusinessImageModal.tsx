@@ -48,7 +48,7 @@ export default function BusinessImageModal({
           <div className="fixed inset-0 bg-black/50" />
         </Transition.Child>
         <div className="fixed inset-0">
-          <div className="flex min-h-full justify-center p-6 items-center">
+          <div className="flex min-h-full items-center justify-center p-6">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -58,8 +58,8 @@ export default function BusinessImageModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="relative w-full p-4 rounded-sm h-[80vh] max-w-7xl bg-white">
-                <div className="flex flex-col md:flex-row h-full gap-5">
+              <Dialog.Panel className="relative h-[80vh] w-full max-w-7xl rounded-sm bg-white p-4">
+                <div className="flex h-full flex-col gap-5 md:flex-row">
                   {/* Main Image */}
                   <div className="relative h-full basis-[75%]">
                     <LeftButton
@@ -79,15 +79,15 @@ export default function BusinessImageModal({
                     />
                   </div>
                   {/* Scrollable Images */}
-                  <div className="flex md:grid grid-cols-2 basis-[25%] gap-3 overflow-auto">
+                  <div className="flex basis-[25%] grid-cols-2 gap-3 overflow-auto md:grid">
                     {images.map((image, index) => (
                       <div
                         key={index}
-                        className="relative h-full w-1/2 sm:w-1/5 xs:w-1/3 md:w-full md:h-[150px] shrink-0 cursor-pointer"
+                        className="relative h-full w-1/2 shrink-0 cursor-pointer xs:w-1/3 sm:w-1/5 md:h-[150px] md:w-full"
                         onClick={() => handleImageClick(index)}
                       >
                         {index !== selectedIndex && (
-                          <div className="absolute inset-0 bg-black/20 z-10 hover:bg-black/10 rounded-sm" />
+                          <div className="absolute inset-0 z-10 rounded-sm bg-black/20 hover:bg-black/10" />
                         )}
 
                         <Image
@@ -116,10 +116,10 @@ const LeftButton = ({ className = '', onClick, disabled }: ButtonProps) => {
     <button
       className={classNames(
         className,
-        'absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1',
+        'absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-1',
         disabled
-          ? 'opacity-40 cursor-default'
-          : 'cursor-pointer hover:opacity-100 opacity-80'
+          ? 'cursor-default opacity-40'
+          : 'cursor-pointer opacity-80 hover:opacity-100'
       )}
       onClick={onClick}
       disabled={disabled}
@@ -134,10 +134,10 @@ const RightButton = ({ onClick, className = '', disabled }: ButtonProps) => {
     <button
       className={classNames(
         className,
-        'absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1',
+        'absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-1',
         disabled
-          ? 'opacity-40 cursor-default'
-          : 'cursor-pointer hover:opacity-100 opacity-80'
+          ? 'cursor-default opacity-40'
+          : 'cursor-pointer opacity-80 hover:opacity-100'
       )}
       onClick={onClick}
       disabled={disabled}
