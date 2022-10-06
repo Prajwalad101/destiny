@@ -37,7 +37,7 @@ export default function UserReview({ review }: UserReviewProps) {
     <div>
       <div className="flex justify-between">
         <div className="flex items-center gap-5 mb-3">
-          <div className="shrink-0 h-[45px]">
+          <div className="h-[45px]">
             <Image
               className="rounded-full"
               src={userProfileImg}

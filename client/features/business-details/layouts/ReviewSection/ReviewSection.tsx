@@ -1,7 +1,7 @@
 import { IReview } from '@destiny/common/types';
 import { UserReview } from '@features/business-details/components';
 import { SecondaryButton } from 'components';
-import React from 'react';
+import { Fragment } from 'react';
 import { classNames } from 'utils/tailwind';
 
 interface ReviewSectionProps {
@@ -38,9 +38,9 @@ export default function ReviewSection({
 
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (
-          <React.Fragment key={review._id.toString()}>
+          <Fragment key={review._id.toString()}>
             <UserReview review={review} />
-          </React.Fragment>
+          </Fragment>
         ))}
       </div>
     </div>

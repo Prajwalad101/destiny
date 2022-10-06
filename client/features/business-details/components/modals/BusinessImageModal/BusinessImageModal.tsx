@@ -23,17 +23,11 @@ export default function BusinessImageModal({
   };
 
   const handleLeft = () => {
-    setSelectedIndex((prevIndex) => {
-      if (prevIndex <= 0) return prevIndex;
-      return --prevIndex;
-    });
+    setSelectedIndex((prevIndex) => --prevIndex);
   };
 
   const handleRight = () => {
-    setSelectedIndex((prevIndex) => {
-      if (prevIndex >= images.length - 1) return prevIndex;
-      return ++prevIndex;
-    });
+    setSelectedIndex((prevIndex) => ++prevIndex);
   };
 
   const selectedImage =
@@ -128,6 +122,7 @@ const LeftButton = ({ className = '', onClick, disabled }: ButtonProps) => {
           : 'cursor-pointer hover:opacity-100 opacity-80'
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       <BiChevronLeft size={30} />
     </button>
@@ -145,6 +140,7 @@ const RightButton = ({ onClick, className = '', disabled }: ButtonProps) => {
           : 'cursor-pointer hover:opacity-100 opacity-80'
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       <BiChevronRight size={30} />
     </button>

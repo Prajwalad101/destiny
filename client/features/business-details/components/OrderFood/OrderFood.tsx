@@ -48,7 +48,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         </p>
       </div>
       {/* Input Fields */}
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex flex-wrap items-center gap-4 mb-4">
         <label
           htmlFor="delivery"
           className={classNames(
