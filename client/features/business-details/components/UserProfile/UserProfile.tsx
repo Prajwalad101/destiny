@@ -16,19 +16,26 @@ export default function UserProfile({
 }: UserProfileProps) {
   return (
     <div className={classNames('flex items-center gap-5', className)}>
-      <div className="h-[45px] shrink-0">
-        <Image
-          className="rounded-full"
-          src={profile.image}
-          alt="user-profile"
-          width={45}
-          height={45}
-          objectFit="cover"
-        />
+      <div className="flex flex-col">
+        <div className="h-[45px] shrink-0">
+          <Image
+            className="rounded-full"
+            src={profile.image}
+            alt="user-profile"
+            width={50}
+            height={50}
+            objectFit="cover"
+          />
+        </div>
+        <div className="border-l-2 border-gray-200" />
       </div>
       <div>
-        <p className="capitalize">{profile.name}</p>
-        <p className="text-sm text-gray-500">{profile.time}</p>
+        <p className="mb-[2px] font-medium capitalize">{profile.name}</p>
+        <div className="flex items-center gap-4">
+          <p className="text-gray-600">8 reviews</p>
+          <div className="h-[5px] w-[5px] shrink-0 rounded-full bg-gray-600" />
+          <p className="text-gray-600">3 d</p>
+        </div>
       </div>
     </div>
   );

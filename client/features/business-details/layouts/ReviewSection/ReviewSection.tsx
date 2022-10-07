@@ -54,9 +54,6 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         className="mb-7"
       />
       <div className="mb-12 border-b border-gray-300" />
-
-      {/* <div className="border-b border-gray-300" /> */}
-
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (
           <Fragment key={review._id.toString()}>

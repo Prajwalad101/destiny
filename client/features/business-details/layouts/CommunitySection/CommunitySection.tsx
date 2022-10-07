@@ -30,10 +30,10 @@ export default function CommunitySection({
         )}
       </div>
       {/* Tabs */}
-      <div className="mb-12 flex items-center gap-12">
+      <div className="mb-8 flex items-center gap-8">
         <button
           className={classNames(
-            ' border-b-[3px] border-black px-3 py-2 text-xl font-medium',
+            ' border-b-[3px]  border-black px-3 py-2 text-lg font-medium',
             selectedSection !== 'reviews' ? 'border-black/0 text-black/60' : ''
           )}
           onClick={() => setSelectedSection('reviews')}
@@ -42,7 +42,7 @@ export default function CommunitySection({
         </button>
         <button
           className={classNames(
-            'border-b-[3px] border-black px-3 py-2 text-xl font-medium',
+            'border-b-[3px] border-black px-3 py-2 text-lg font-medium',
             selectedSection !== 'q&a' ? 'border-black/0 text-black/60' : ''
           )}
           onClick={() => setSelectedSection('q&a')}

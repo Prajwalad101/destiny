@@ -19,7 +19,7 @@ export default function QASection({ className = '' }: QASectionProps) {
 
   return (
     <div className={classNames(className)}>
-      <div className="mb-12 flex items-center justify-between">
+      <div className="mb-7 flex items-center justify-between">
         <SortQA />
         <div className="relative mr-[2px] flex w-max items-center">
           <input
@@ -30,6 +30,7 @@ export default function QASection({ className = '' }: QASectionProps) {
           <AiOutlineSearch className="absolute right-4 shrink-0" size={20} />
         </div>
       </div>
+      <div className="mb-12 border-b border-gray-300" />
       <UserQuestion businessName={businessData.name} />
     </div>
   );
