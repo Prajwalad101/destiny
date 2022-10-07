@@ -20,7 +20,7 @@ export default function ReviewText({ className = '' }: { className?: string }) {
       )}
       onClick={handleClick}
     >
-      {!isExpanded && truncateText(review, 100)}
+      {!isExpanded && truncateText(review, 70)}
       {isExpanded && review}
 
       <span

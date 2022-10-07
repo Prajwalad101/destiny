@@ -31,7 +31,7 @@ export default function QASection({ className = '' }: QASectionProps) {
         </div>
       </div>
       <div className="mb-12 border-b border-gray-300" />
-      <UserQuestion businessName={businessData.name} />
+      <UserQuestion />
     </div>
   );
 }

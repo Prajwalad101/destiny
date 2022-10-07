@@ -53,7 +53,7 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         numReviews={businessData.rating_count}
         className="mb-7"
       />
-      <div className="mb-12 border-b border-gray-300" />
+      <div className="mb-10 border-b border-gray-300" />
       <div className="child-notlast:mb-7">
         {reviews.map((review) => (
           <Fragment key={review._id.toString()}>

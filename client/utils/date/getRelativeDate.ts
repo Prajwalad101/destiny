@@ -8,6 +8,7 @@ import { msToTime } from './msToTime';
 export function getRelativeDate(date: string) {
   const formatter = new Intl.RelativeTimeFormat('en-US', {
     numeric: 'auto',
+    style: 'narrow',
   });
 
   const diff: number = new Date().getTime() - new Date(date).getTime(); // difference in milliseconds
