@@ -4,11 +4,10 @@ import { FiChevronDown } from 'react-icons/fi';
 import { classNames } from 'utils/tailwind';
 
 const sortItems = [
-  { id: 1, name: 'most helpful' },
-  { id: 2, name: 'newest' },
-  { id: 3, name: 'oldest' },
-  // { id: 4, name: 'highest ratings' },
-  // { id: 5, name: 'lowest ratings' },
+  { id: 1, name: 'frequently asked' },
+  { id: 2, name: 'most helpful' },
+  { id: 3, name: 'newest' },
+  { id: 4, name: 'oldest' },
 ];
 
 export default function SortQA() {
