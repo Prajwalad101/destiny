@@ -1,5 +1,4 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { ScrollPosition } from 'hooks/useScrollPosition';
 import Image from 'next/image';
 import { Dispatch, Fragment, SetStateAction, useEffect, useState } from 'react';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
@@ -17,14 +16,11 @@ export default function BusinessImageModal({
   closeModal,
   images,
 }: BusinessImageModalProps) {
+  // since order of images doesn't change, image index is used as image id
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [viewMode, setViewMode] = useState<'slideshow' | 'gallery'>(
     'slideshow'
   );
-  const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
-    top: undefined,
-    left: undefined,
-  });
 
   return (
     <Transition show={isOpen} as={Fragment}>

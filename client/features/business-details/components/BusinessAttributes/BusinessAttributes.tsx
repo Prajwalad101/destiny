@@ -1,4 +1,7 @@
-import { attributesIconData } from 'data';
+import { businessFeatures } from '@destiny/common/types';
+import { useState } from 'react';
+import { FiCheck, FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { IoMdClose } from 'react-icons/io';
 import { classNames } from 'utils/tailwind';
 
 interface BusinessAttributesProps {
@@ -6,34 +9,53 @@ interface BusinessAttributesProps {
   className?: string;
 }
 
-// prevent mutating original data
-const iconData = [...attributesIconData];
+const allAttributes = Object.values(businessFeatures);
 
 export default function BusinessAttributes({
   attributes,
   className = '',
 }: BusinessAttributesProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className={classNames(className)}>
       <div className="mb-5 border border-gray-200" />
       <div className="mb-6 flex flex-col gap-3 xs:flex-row xs:items-center xs:justify-between ">
-        <h4 className="text-xl font-medium">Highlights from this Business</h4>
-        <p className=" cursor-pointer text-sm text-gray-700 underline hover:text-gray-500">
-          View All
-        </p>
+        <h4 className="text-xl font-medium">Business Attributes</h4>
+        <div className="group flex cursor-pointer items-center gap-2">
+          <button
+            className="text-gray-800 group-hover:text-gray-600"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? 'Show less' : 'Expand'}
+          </button>
+          {isExpanded ? (
+            <FiChevronUp size={20} className="shrink-0" />
+          ) : (
+            <FiChevronDown size={20} className="shrink-0" />
+          )}
+        </div>
       </div>
-      <div className="flex flex-wrap justify-around gap-x-5 gap-y-5 md:justify-start md:gap-x-24">
-        {attributes.map((attribute, i) => {
-          const businessAttribute = iconData.find(
-            (businessAttribute) => businessAttribute.name === attribute
-          );
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(max(150px,25%),1fr))]">
+        {allAttributes.map((attribute, i) => {
+          if (!isExpanded && i > 3) return;
+          const doesExist = attributes.includes(attribute);
           return (
-            <div
-              key={i}
-              className="flex shrink-0 flex-col items-center justify-center gap-2 rounded-md py-4"
-            >
-              {businessAttribute?.icon(35)}
-              <p className="text-center capitalize">{attribute}</p>
+            <div key={i} className="flex items-center gap-2 rounded-md py-4">
+              {doesExist ? (
+                <FiCheck size={20} />
+              ) : (
+                <IoMdClose size={20} className="text-red-600" />
+              )}
+
+              <p
+                className={classNames(
+                  'capitalize',
+                  !doesExist ? 'text-gray-500' : ''
+                )}
+              >
+                {attribute}
+              </p>
             </div>
           );
         })}
