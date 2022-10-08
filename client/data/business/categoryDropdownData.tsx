@@ -1,4 +1,3 @@
-import { businessFeatures, businessSubcategories } from '@destiny/common/data';
 import { AiFillCar, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BiCoffeeTogo, BiFootball } from 'react-icons/bi';
 import { BsMusicNote } from 'react-icons/bs';
@@ -24,36 +23,36 @@ const categoryDropdownData: ICategoryDropdown[] = [
     name: 'food and drinks',
     subcategories: [
       {
-        name: businessSubcategories.resturant,
+        name: 'resturant',
         icon: <FaPizzaSlice size={17} />,
         features: [
-          { name: businessFeatures.delivery },
-          { name: businessFeatures.reservations },
-          { name: businessFeatures.events },
-          { name: businessFeatures.goodForKids },
-          { name: businessFeatures.liveMusic },
-          { name: businessFeatures.outdoorDining },
+          { name: 'delivery' },
+          { name: 'reservations' },
+          { name: 'events' },
+          { name: 'good for kids' },
+          { name: 'live music' },
+          { name: 'outdoor dining' },
         ],
       },
       {
-        name: businessSubcategories.cafe,
+        name: 'cafe',
         icon: <BiCoffeeTogo size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.fastfood,
+        name: 'fast food',
         icon: <MdOutlineFastfood size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.hotel,
+        name: 'hotel',
         icon: <RiHotelLine size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.bakery,
+        name: 'bakery',
         icon: <RiCake3Fill size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
     ],
   },
@@ -61,29 +60,29 @@ const categoryDropdownData: ICategoryDropdown[] = [
     name: 'sports and fitness',
     subcategories: [
       {
-        name: businessSubcategories.gym,
+        name: 'gym',
         icon: <GiWeightLiftingUp size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.futsal,
+        name: 'futsal',
         icon: <BiFootball size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.tennis,
+        name: 'tennis',
         icon: <MdOutlineSportsTennis size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.zumba,
+        name: 'zumba',
         icon: <BsMusicNote size={17} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.swimming,
+        name: 'swimming',
         icon: <FaSwimmingPool size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
     ],
   },
@@ -91,24 +90,24 @@ const categoryDropdownData: ICategoryDropdown[] = [
     name: 'home services',
     subcategories: [
       {
-        name: businessSubcategories.plumbing,
+        name: 'plumbing',
         icon: <GiTeePipe size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.electricity,
+        name: 'electricity',
         icon: <GiWireCoil size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.cleaning,
+        name: 'cleaning',
         icon: <GiVacuumCleaner size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.repairs,
+        name: 'repairs',
         icon: <GiAutoRepair size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
     ],
   },
@@ -116,24 +115,24 @@ const categoryDropdownData: ICategoryDropdown[] = [
     name: 'others',
     subcategories: [
       {
-        name: businessSubcategories.entertainment,
+        name: 'entertainment',
         icon: <TbRollercoaster size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.shopping,
+        name: 'shopping',
         icon: <FiShoppingBag size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.essential,
+        name: 'essential',
         icon: <AiOutlineShoppingCart size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
       {
-        name: businessSubcategories.vehicle,
+        name: 'vehicles',
         icon: <AiFillCar size={iconSize} />,
-        features: [{ name: businessFeatures.delivery }],
+        features: [{ name: 'delivery' }],
       },
     ],
   },

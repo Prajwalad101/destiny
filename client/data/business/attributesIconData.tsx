@@ -1,4 +1,3 @@
-import { businessFeatures } from '@destiny/common/data';
 import { BusinessFeature } from '@destiny/common/types';
 import { FaChild } from 'react-icons/fa';
 import { GiDeliveryDrone, GiPartyPopper, GiSmartphone } from 'react-icons/gi';
@@ -11,27 +10,27 @@ const attributesIconData: {
   icon: (_size?: number) => JSX.Element;
 }[] = [
   {
-    name: businessFeatures.delivery,
+    name: 'delivery',
     icon: (size = defaultSize) => <GiDeliveryDrone size={size} />,
   },
   {
-    name: businessFeatures.reservations,
+    name: 'reservations',
     icon: (size = defaultSize) => <GiSmartphone size={size} />,
   },
   {
-    name: businessFeatures.events,
+    name: 'events',
     icon: (size = defaultSize) => <GiPartyPopper size={size} />,
   },
   {
-    name: businessFeatures.goodForKids,
+    name: 'good for kids',
     icon: (size = defaultSize) => <FaChild size={size} />,
   },
   {
-    name: businessFeatures.liveMusic,
+    name: 'live music',
     icon: (size = defaultSize) => <MdOutlineLibraryMusic size={size} />,
   },
   {
-    name: businessFeatures.outdoorDining,
+    name: 'outdoor dining',
     icon: (size = defaultSize) => <MdOutlineDining size={size} />,
   },
 ];
