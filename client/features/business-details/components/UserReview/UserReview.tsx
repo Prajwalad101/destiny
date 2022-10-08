@@ -30,7 +30,7 @@ interface UserReviewProps {
 export default function UserReview({ review }: UserReviewProps) {
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex items-start justify-between">
         <div className="mb-4 flex items-center gap-5">
           <div className="h-[50px] w-[50px] shrink-0">
             <Image
@@ -44,18 +44,24 @@ export default function UserReview({ review }: UserReviewProps) {
           </div>
           <div>
             <p className="pb-1 font-medium capitalize">sagar thapa</p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-x-4">
               <p className="text-gray-600">8 reviews</p>
               <Seperator />
               <p className="text-gray-600">35 cp</p>
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4">
-          <p className="text-gray-600">{getRelativeDate(review.createdAt)}</p>
+        <div className="flex flex-col items-end">
           <ReportUserDropdown />
+          <p className="hidden text-gray-600 xs:block">
+            {getRelativeDate(review.createdAt)}
+          </p>
         </div>
       </div>
+      <p className="mb-2 text-gray-600 xs:hidden">
+        {getRelativeDate(review.createdAt)}
+      </p>
+
       <RatingIcons
         rating={review.rating}
         size={20}
@@ -65,7 +71,10 @@ export default function UserReview({ review }: UserReviewProps) {
       <div className="mb-8 flex gap-3 overflow-scroll">
         {images.map((image, index) => {
           return (
-            <div key={index} className="relative h-[140px] w-[240px] shrink-0">
+            <div
+              key={index}
+              className="relative h-[140px] w-[min(50%-12px,240px)] shrink-0"
+            >
               <Image
                 key={index}
                 src={image}

@@ -4,9 +4,9 @@ import { classNames } from 'utils/tailwind';
 
 export default function ReportUserDropdown() {
   return (
-    <Menu as="div" className="relative">
-      <Menu.Button className="rounded-full p-[6px] hover:bg-gray-200">
-        <BsThreeDotsVertical size={23} />
+    <Menu as="div" className="relative h-[29px]">
+      <Menu.Button className="rounded-full px-1 py-[3px] transition-colors hover:bg-gray-200 xs:px-3">
+        <BsThreeDotsVertical size={23} className="text-gray-700 xs:rotate-90" />
       </Menu.Button>
       <Transition
         enter="transition duration-100 ease-out"

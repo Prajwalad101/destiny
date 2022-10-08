@@ -34,8 +34,9 @@ export default function Ratings({
         {ratings.map((rating, index) => {
           const percentage = (rating.value / numReviews) * 100;
           return (
-            <div key={index} className="flex items-center gap-8">
-              <div className="flex w-[80%] items-center gap-3">
+            // <div key={index} className="flex items-center gap-8">
+            <div key={index} className="mb-1 items-center xs:flex">
+              <div className="mb-1 flex gap-3 xs:mb-0">
                 <input
                   type="checkbox"
                   id={rating.name}
@@ -47,15 +48,22 @@ export default function Ratings({
                 >
                   {rating.name}
                 </label>
+              </div>
+              <div className="flex grow items-center gap-4">
                 <div className="relative h-[10px] w-full rounded-full bg-gray-300">
                   <div
                     className="absolute left-0 top-0 bottom-0 h-full rounded-full bg-primaryred"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
+                {
+                  <p className="w-[50px] text-gray-600">
+                    {percentage.toFixed(0)}%
+                  </p>
+                }
               </div>
-              <p className="text-gray-600">{percentage.toFixed(0)}%</p>
             </div>
+            // </div>
           );
         })}
       </div>
