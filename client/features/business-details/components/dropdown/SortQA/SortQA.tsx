@@ -14,7 +14,7 @@ export default function SortQA() {
   const [selectedSort, setSelectedSort] = useState(sortItems[0]);
 
   return (
-    <Menu as="div" className="relative z-30 w-[180px]">
+    <Menu as="div" className="relative z-30">
       <Menu.Button className="flex w-max items-center gap-1 rounded-full border border-gray-500 px-7 py-[9px] capitalize">
         <span className="text-sm">{selectedSort.name}</span>
         <FiChevronDown size={20} />
@@ -35,7 +35,7 @@ export default function SortQA() {
                 {({ active }) => (
                   <button
                     className={classNames(
-                      'w-full px-7 py-[9px] text-left text-sm capitalize',
+                      'w-full whitespace-nowrap px-7 py-[9px] text-left text-sm capitalize',
                       active ? 'bg-gray-100' : ''
                     )}
                     onClick={() => setSelectedSort(sort)}

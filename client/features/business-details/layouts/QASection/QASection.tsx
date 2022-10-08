@@ -19,7 +19,7 @@ export default function QASection({ className = '' }: QASectionProps) {
 
   return (
     <div className={classNames(className)}>
-      <div className="mb-7 flex items-center justify-between">
+      <div className="mb-7 flex flex-wrap-reverse items-center justify-between gap-y-5 gap-x-2">
         <SortQA />
         <div className="relative mr-[2px] flex w-max items-center">
           <input

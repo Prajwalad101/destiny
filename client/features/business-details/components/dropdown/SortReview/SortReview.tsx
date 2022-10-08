@@ -15,8 +15,8 @@ export default function SortReview() {
   const [selectedSort, setSelectedSort] = useState(sortItems[0]);
 
   return (
-    <Menu as="div" className="relative w-[180px]">
-      <Menu.Button className="flex w-max items-center gap-1 rounded-full border border-gray-500 px-7 py-[9px] capitalize">
+    <Menu as="div" className="relative">
+      <Menu.Button className="flex items-center gap-1 rounded-full border border-gray-500 px-7 py-[9px] capitalize">
         <span className="text-sm">{selectedSort.name}</span>
         <FiChevronDown size={20} />
       </Menu.Button>
@@ -36,7 +36,7 @@ export default function SortReview() {
                 {({ active }) => (
                   <button
                     className={classNames(
-                      'w-full px-7 py-[9px] text-left text-sm capitalize',
+                      'w-full whitespace-nowrap px-7 py-[9px] text-left text-sm capitalize',
                       active ? 'bg-gray-100' : ''
                     )}
                     onClick={() => setSelectedSort(sort)}

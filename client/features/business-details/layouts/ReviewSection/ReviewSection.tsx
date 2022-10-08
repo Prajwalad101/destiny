@@ -35,7 +35,7 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
 
   return (
     <div className={classNames(className)}>
-      <div className="mb-7 flex flex-wrap-reverse items-center justify-between gap-x-2 gap-y-5 ">
+      <div className="mb-7 flex flex-wrap-reverse items-center justify-between gap-y-5 gap-x-2">
         <SortReview />
         {/* Search bar */}
         <div className="relative mr-[2px] flex w-max items-center">
