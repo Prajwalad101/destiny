@@ -9,7 +9,7 @@ import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
 import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
 import PostQuestion from './modals/PostQuestion/PostQuestion';
-import PostReviewModal from './modals/PostReviewModal/PostReviewModal';
+import PostReview from './modals/PostReview/PostReview';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import OrderFood from './OrderFood/OrderFood';
 import Ratings from './Ratings/Ratings';
@@ -38,6 +38,6 @@ export {
   OrderFood,
   SortReview,
   SortQA,
-  PostReviewModal,
+  PostReview,
   PostQuestion,
 };

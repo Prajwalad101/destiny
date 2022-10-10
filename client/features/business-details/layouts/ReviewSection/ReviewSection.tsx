@@ -1,11 +1,13 @@
 import {
+  PostReview,
   Ratings,
   SortReview,
   UserReview,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
+import { Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { classNames } from 'utils/tailwind';
 
@@ -14,6 +16,8 @@ interface ReviewSectionProps {
 }
 
 export default function ReviewSection({ className = '' }: ReviewSectionProps) {
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+
   const { query } = useRouter();
   const businessId = query.businessId as string;
 
@@ -35,6 +39,18 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
 
   return (
     <div className={classNames(className)}>
+      <Portal selector="#start-review-button">
+        <SecondaryButton
+          className="px-6 py-2 sm:py-[10px]"
+          onClick={() => setReviewModalOpen(true)}
+        >
+          Post Review
+        </SecondaryButton>
+      </Portal>
+      <PostReview
+        isOpen={reviewModalOpen}
+        closeModal={() => setReviewModalOpen(false)}
+      />
       <div className="mb-7 flex flex-wrap-reverse items-center justify-between gap-y-5 gap-x-2">
         <SortReview />
         {/* Search bar */}
