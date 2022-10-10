@@ -1,3 +1,4 @@
+import { PostReviewModal } from '@features/business-details/components';
 import { SecondaryButton } from 'components';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
@@ -12,14 +13,20 @@ export default function CommunitySection({
   className = '',
 }: CommunitySectionProps) {
   const [selectedSection, setSelectedSection] = useState('reviews');
+  // const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  // const [isQAModalOpen, setIs]
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
 
   return (
-    <div className={classNames(className)}>
-      <div className="mb-8 border-b border-gray-300" />
+    <div className={classNames('relative', className)}>
+      <div className="b mb-8 border-b border-gray-300" />
       <div className="mb-5 flex items-center justify-between">
         <h4 className="font-merriweather text-2xl font-bold">Community</h4>
         {selectedSection === 'reviews' && (
-          <SecondaryButton className="px-6 py-2 sm:py-[10px]">
+          <SecondaryButton
+            className="px-6 py-2 sm:py-[10px]"
+            onClick={() => setReviewModalOpen(true)}
+          >
             Post Review
           </SecondaryButton>
         )}
@@ -50,7 +57,10 @@ export default function CommunitySection({
           Q & A
         </button>
       </div>
-
+      <PostReviewModal
+        isOpen={reviewModalOpen}
+        closeModal={() => setReviewModalOpen(false)}
+      />
       {selectedSection === 'reviews' && <ReviewSection />}
       {selectedSection === 'q&a' && <QASection />}
     </div>
