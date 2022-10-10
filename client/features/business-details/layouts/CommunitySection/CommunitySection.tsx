@@ -13,8 +13,6 @@ export default function CommunitySection({
   className = '',
 }: CommunitySectionProps) {
   const [selectedSection, setSelectedSection] = useState('reviews');
-  // const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-  // const [isQAModalOpen, setIs]
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
 
   return (
@@ -31,9 +29,8 @@ export default function CommunitySection({
           </SecondaryButton>
         )}
         {selectedSection === 'q&a' && (
-          <SecondaryButton className="px-6 py-2 sm:py-[10px]">
-            Ask Question
-          </SecondaryButton>
+          // AskQuestion button is rendered here with portal
+          <div id="ask-question-button" />
         )}
       </div>
       {/* Tabs */}
@@ -61,6 +58,7 @@ export default function CommunitySection({
         isOpen={reviewModalOpen}
         closeModal={() => setReviewModalOpen(false)}
       />
+
       {selectedSection === 'reviews' && <ReviewSection />}
       {selectedSection === 'q&a' && <QASection />}
     </div>

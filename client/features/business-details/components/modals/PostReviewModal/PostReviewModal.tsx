@@ -50,7 +50,7 @@ export default function PostReviewModal({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-3xl bg-white p-8">
-                <h3 className="mb-10 font-merriweather text-xl font-bold">
+                <h3 className="mb-10 font-merriweather text-[22px] font-bold">
                   Start your review
                 </h3>
                 <div className="mb-9">
@@ -60,7 +60,7 @@ export default function PostReviewModal({
                   <textarea
                     id="review"
                     rows={7}
-                    className="mb-3 w-full rounded-md bg-gray-200 px-3 py-2 ring-blue-500  ring-offset-2 focus:outline-none focus:ring"
+                    className="mb-3 w-full rounded-md bg-gray-200 px-3 py-2 ring-blue-500 ring-offset-2 focus:outline-none focus:ring"
                   />
                   <p className="text-right text-sm text-gray-600">0 / 500</p>
                 </div>
