@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Divider, SecondaryButton } from 'components';
-import { Fragment, useState } from 'react';
+import { Divider, PrimaryButton, SecondaryButton } from 'components';
+import { ChangeEvent, Fragment, useState } from 'react';
 import { BsCaretDown, BsCaretRight } from 'react-icons/bs';
 
 interface IMenuCategory {
@@ -9,31 +9,37 @@ interface IMenuCategory {
   items: { id: number; name: string; info: string; price: number }[];
 }
 
+type MenuItem = IMenuCategory['items'][number];
+interface IAddedMenuItem {
+  item: MenuItem;
+  quantity: number;
+}
+
 const menuCategories: IMenuCategory[] = [
   {
     id: 1,
     name: 'breakfast',
     items: [
       {
-        id: 1,
+        id: 2,
         name: 'buttermilk or buckwheat pancakes',
         info: 'comes with bacon or maple sausage',
         price: 250,
       },
       {
-        id: 2,
+        id: 3,
         name: 'french toast',
         info: 'with bacon or maple sausage',
         price: 300,
       },
       {
-        id: 3,
+        id: 4,
         name: 'the scrambler',
         info: 'three eggs scrambled with onion, green peppers, mushrooms, dice chicken and apple sauce',
         price: 350,
       },
       {
-        id: 4,
+        id: 5,
         name: 'good morning parfait',
         info: "layers of Nancy's yogurt, house granola and berries",
         price: 150,
@@ -41,23 +47,23 @@ const menuCategories: IMenuCategory[] = [
     ],
   },
   {
-    id: 2,
+    id: 6,
     name: 'appetizers',
     items: [
       {
-        id: 1,
+        id: 7,
         name: 'chicken chilli',
         info: 'boneless chicken sauteed with green chillies and spring onions',
         price: 300,
       },
       {
-        id: 2,
+        id: 8,
         name: 'chicken 65',
         info: 'chicken pieces marinated in a spicy sauce blend and deep fried',
         price: 280,
       },
       {
-        id: 3,
+        id: 9,
         name: 'chicken manchurian',
         info: 'An Indo-Chinese dish of tender chicken coated in spices and saluteed with spring onions',
         price: 500,
@@ -65,17 +71,17 @@ const menuCategories: IMenuCategory[] = [
     ],
   },
   {
-    id: 3,
+    id: 10,
     name: 'soups',
     items: [
       {
-        id: 1,
+        id: 11,
         name: 'lentil soup',
         info: 'a delicious mixture of yellow lentils seasoned with spices and blended smooth',
         price: 150,
       },
       {
-        id: 2,
+        id: 12,
         name: 'mango corn soup',
         info: 'a midly spiced soup made from the cream of mango and corn',
         price: 150,
@@ -83,29 +89,29 @@ const menuCategories: IMenuCategory[] = [
     ],
   },
   {
-    id: 4,
+    id: 13,
     name: 'kathmandu specials',
     items: [
       {
-        id: 1,
+        id: 14,
         name: 'fried vegetable momo',
         info: 'fried vegetable dumplings stuffed with cabbage, cilantro and red onions',
         price: 120,
       },
       {
-        id: 2,
+        id: 15,
         name: 'chicked chow mein',
         info: 'Stir fried noodles cooked with chicken and spiced vegetables in a spicy & savory sauce',
         price: 200,
       },
       {
-        id: 3,
+        id: 16,
         name: 'shrimp chow mein',
         info: 'Stir fried noodles cooked with shrimp and spiced vegetables in a spicy & savory sauce',
         price: 400,
       },
       {
-        id: 4,
+        id: 17,
         name: 'vegetable thukpa soup',
         info: 'Traditional Nepali style vegetable noodle soup',
         price: 200,
@@ -121,6 +127,14 @@ interface BrowseMenuProps {
 
 export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [addedItems, setAddedItems] = useState<IAddedMenuItem[]>([]);
+
+  const initialQuantity = menuCategories.flatMap((category) =>
+    category.items.map((item) => ({ item, quantity: 1 }))
+  );
+
+  const [itemsQuantity, setItemsQuantity] =
+    useState<{ item: MenuItem; quantity: number }[]>(initialQuantity);
 
   const handleExpandItems = (categoryName: string) => {
     const isExpanded = categoryName === selectedCategory;
@@ -129,6 +143,80 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
       return;
     }
     setSelectedCategory(categoryName);
+  };
+
+  const handleAddItem = (item: MenuItem) => {
+    const itemQuantity = getQuantity(item);
+    setAddedItems([...addedItems, { item, quantity: itemQuantity }]);
+  };
+
+  const handleRemoveItem = (item: MenuItem) => {
+    const newItems = addedItems.filter(
+      (addedItem) => addedItem.item.id !== item.id
+    );
+    setAddedItems(newItems);
+  };
+
+  const getItemButton = (item: MenuItem) => {
+    // check if the item has already been added
+    const addedItem = addedItems.find(
+      (addedItem) => addedItem.item.id === item.id
+    );
+
+    if (addedItem) {
+      return (
+        <PrimaryButton
+          className="h-[40px] w-28"
+          onClick={() => handleRemoveItem(item)}
+        >
+          Remove
+        </PrimaryButton>
+      );
+    }
+    return (
+      <SecondaryButton
+        className="h-[40px] w-28"
+        onClick={() => handleAddItem(item)}
+      >
+        Add
+      </SecondaryButton>
+    );
+  };
+
+  const getCaretIcon = (category: IMenuCategory) => {
+    if (category.name === selectedCategory) return <BsCaretDown size={22} />;
+    return <BsCaretRight size={22} />;
+  };
+
+  const getAddedItems = (category: IMenuCategory) => {
+    const categoryItemIds = category.items.map((item) => item.id);
+    const items = addedItems.filter((item) =>
+      categoryItemIds.includes(item.item.id)
+    );
+    return items;
+  };
+
+  const handleQuantityChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    item: MenuItem
+  ) => {
+    let value = Number(e.target.value);
+    if (isNaN(value)) value = 0;
+
+    const newItemsQuantity = itemsQuantity.map((itemQuantity) => {
+      // if items match, update that item
+      if (itemQuantity.item.id === item.id) return { item, quantity: value };
+      return itemQuantity;
+    });
+
+    setItemsQuantity(newItemsQuantity);
+  };
+
+  const getQuantity = (item: MenuItem) => {
+    const quantity = itemsQuantity.find(
+      (itemQuantity) => itemQuantity.item.id === item.id
+    )?.quantity;
+    return quantity || 0;
   };
 
   return (
@@ -163,20 +251,42 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
                 <div>
                   {menuCategories.map((category) => (
                     <div key={category.id}>
-                      <CategoryHeading
-                        category={category}
-                        selectedCategory={selectedCategory}
+                      <div
+                        className="group flex cursor-pointer items-center justify-between py-4 transition-colors  hover:bg-gray-100"
                         onClick={() => handleExpandItems(category.name)}
-                      />
-                      <Divider className="mb-7" />
+                      >
+                        <div className="flex items-center gap-1 transition-transform group-hover:translate-x-2 group-hover:text-gray-700">
+                          {getCaretIcon(category)}
+                          <h4 className="font-merriweather font-bold uppercase">
+                            {category.name}
+                          </h4>
+                        </div>
+                        <p className=" pr-3 text-gray-600">
+                          {getAddedItems(category).length} /{' '}
+                          {category.items.length} selected
+                        </p>
+                      </div>
+                      <Divider />
                       {category.name === selectedCategory && (
-                        <div>
+                        <div className="my-7">
                           {category.items.map((item) => (
                             <Fragment key={item.id}>
-                              <Item item={item} />
+                              <Item item={item}>
+                                <div className="flex items-center gap-3">
+                                  <span>Quantity:</span>
+                                  <input
+                                    value={getQuantity(item)}
+                                    onChange={(e) =>
+                                      handleQuantityChange(e, item)
+                                    }
+                                    className="h-[40px] w-16 rounded-md bg-white px-4 py-2 shadow-[rgba(0,0,0,0.10)_0px_5px_15px_0px]"
+                                  />
+                                </div>
+                                {getItemButton(item)}
+                              </Item>
                             </Fragment>
                           ))}
-                          <Divider className="mb-4" />
+                          <Divider />
                         </div>
                       )}
                     </div>
@@ -191,8 +301,13 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
   );
 }
 
-function Item({ item }: { item: IMenuCategory['items'][number] }) {
-  // box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+function Item({
+  item,
+  children,
+}: {
+  item: MenuItem;
+  children: React.ReactNode;
+}) {
   return (
     <div className="mb-12 flex items-start justify-between">
       <div className="max-w-[400px]">
@@ -200,39 +315,7 @@ function Item({ item }: { item: IMenuCategory['items'][number] }) {
         <p className="mb-3 text-gray-600">{item.info}</p>
         <p>Rs. {item.price}</p>
       </div>
-      <div className="flex items-start gap-20">
-        <div className="flex items-center gap-3">
-          <span>Quantity:</span>
-          <input className="h-[40px] w-16 rounded-md bg-white px-4 py-2 shadow-[rgba(0,0,0,0.10)_0px_5px_15px_0px]" />
-        </div>
-        <SecondaryButton className="h-[40px] w-28">Add</SecondaryButton>
-      </div>
-    </div>
-  );
-}
-
-function CategoryHeading({
-  category,
-  selectedCategory,
-  onClick,
-}: {
-  category: IMenuCategory;
-  selectedCategory: string;
-  onClick: () => void;
-}) {
-  return (
-    <div className="mb-4 flex items-center justify-between">
-      <div
-        className="flex cursor-pointer items-center gap-1 hover:text-gray-700"
-        onClick={onClick}
-      >
-        {category.name === selectedCategory && <BsCaretDown size={22} />}
-        {category.name !== selectedCategory && <BsCaretRight size={22} />}
-        <h4 className="font-merriweather font-bold uppercase">
-          {category.name}
-        </h4>
-      </div>
-      <p className="text-gray-600">0 items selected</p>
+      <div className="flex items-start gap-20">{children}</div>
     </div>
   );
 }
