@@ -1,3 +1,4 @@
+import { MenuItem } from '@features/business-details/data/menuData';
 import { PrimaryButton, SecondaryButton } from 'components';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
@@ -7,9 +8,15 @@ interface OrderFoodProps {
   className?: string;
 }
 
+export interface ISelectedMenuItem {
+  item: MenuItem;
+  quantity: number;
+}
+
 export default function OrderFood({ className = '' }: OrderFoodProps) {
   const [selectedOption, setSelectedOption] = useState('delivery');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<ISelectedMenuItem[]>([]);
 
   return (
     <div
@@ -21,6 +28,8 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
       <BrowseMenu
         isOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
+        selectedItems={selectedItems}
+        setSelectedItems={setSelectedItems}
       />
       <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
@@ -88,7 +97,11 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         >
           Browse Menu
         </SecondaryButton>
-        <p className="text-gray-700">No items selected</p>
+
+        <p className="text-gray-700">
+          {selectedItems.length === 0 ? 'No' : selectedItems.length}{' '}
+          {selectedItems.length === 1 ? 'item' : 'items'} selected
+        </p>
       </div>
 
       <div className="-mx-[21px] -mb-[21px]">

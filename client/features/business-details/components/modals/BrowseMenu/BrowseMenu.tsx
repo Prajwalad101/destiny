@@ -1,135 +1,37 @@
+import { ISelectedMenuItem } from '@features/business-details/components/OrderFood/OrderFood';
+import { menuData } from '@features/business-details/data';
+import {
+  IMenuCategory,
+  MenuItem,
+} from '@features/business-details/data/menuData';
 import { Dialog, Transition } from '@headlessui/react';
 import { Divider, PrimaryButton, SecondaryButton } from 'components';
-import { ChangeEvent, Fragment, useState } from 'react';
+import Image from 'next/image';
+import {
+  ChangeEvent,
+  Dispatch,
+  Fragment,
+  SetStateAction,
+  useState,
+} from 'react';
 import { BsCaretDown, BsCaretRight } from 'react-icons/bs';
-
-interface IMenuCategory {
-  id: number;
-  name: string;
-  items: { id: number; name: string; info: string; price: number }[];
-}
-
-type MenuItem = IMenuCategory['items'][number];
-interface IAddedMenuItem {
-  item: MenuItem;
-  quantity: number;
-}
-
-const menuCategories: IMenuCategory[] = [
-  {
-    id: 1,
-    name: 'breakfast',
-    items: [
-      {
-        id: 2,
-        name: 'buttermilk or buckwheat pancakes',
-        info: 'comes with bacon or maple sausage',
-        price: 250,
-      },
-      {
-        id: 3,
-        name: 'french toast',
-        info: 'with bacon or maple sausage',
-        price: 300,
-      },
-      {
-        id: 4,
-        name: 'the scrambler',
-        info: 'three eggs scrambled with onion, green peppers, mushrooms, dice chicken and apple sauce',
-        price: 350,
-      },
-      {
-        id: 5,
-        name: 'good morning parfait',
-        info: "layers of Nancy's yogurt, house granola and berries",
-        price: 150,
-      },
-    ],
-  },
-  {
-    id: 6,
-    name: 'appetizers',
-    items: [
-      {
-        id: 7,
-        name: 'chicken chilli',
-        info: 'boneless chicken sauteed with green chillies and spring onions',
-        price: 300,
-      },
-      {
-        id: 8,
-        name: 'chicken 65',
-        info: 'chicken pieces marinated in a spicy sauce blend and deep fried',
-        price: 280,
-      },
-      {
-        id: 9,
-        name: 'chicken manchurian',
-        info: 'An Indo-Chinese dish of tender chicken coated in spices and saluteed with spring onions',
-        price: 500,
-      },
-    ],
-  },
-  {
-    id: 10,
-    name: 'soups',
-    items: [
-      {
-        id: 11,
-        name: 'lentil soup',
-        info: 'a delicious mixture of yellow lentils seasoned with spices and blended smooth',
-        price: 150,
-      },
-      {
-        id: 12,
-        name: 'mango corn soup',
-        info: 'a midly spiced soup made from the cream of mango and corn',
-        price: 150,
-      },
-    ],
-  },
-  {
-    id: 13,
-    name: 'kathmandu specials',
-    items: [
-      {
-        id: 14,
-        name: 'fried vegetable momo',
-        info: 'fried vegetable dumplings stuffed with cabbage, cilantro and red onions',
-        price: 120,
-      },
-      {
-        id: 15,
-        name: 'chicked chow mein',
-        info: 'Stir fried noodles cooked with chicken and spiced vegetables in a spicy & savory sauce',
-        price: 200,
-      },
-      {
-        id: 16,
-        name: 'shrimp chow mein',
-        info: 'Stir fried noodles cooked with shrimp and spiced vegetables in a spicy & savory sauce',
-        price: 400,
-      },
-      {
-        id: 17,
-        name: 'vegetable thukpa soup',
-        info: 'Traditional Nepali style vegetable noodle soup',
-        price: 200,
-      },
-    ],
-  },
-];
 
 interface BrowseMenuProps {
   isOpen: boolean;
+  selectedItems: ISelectedMenuItem[];
+  setSelectedItems: Dispatch<SetStateAction<ISelectedMenuItem[]>>;
   closeModal: () => void;
 }
 
-export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
+export default function BrowseMenu({
+  isOpen,
+  closeModal,
+  selectedItems,
+  setSelectedItems,
+}: BrowseMenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [addedItems, setAddedItems] = useState<IAddedMenuItem[]>([]);
 
-  const initialQuantity = menuCategories.flatMap((category) =>
+  const initialQuantity = menuData.flatMap((category) =>
     category.items.map((item) => ({ item, quantity: 1 }))
   );
 
@@ -147,23 +49,23 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
 
   const handleAddItem = (item: MenuItem) => {
     const itemQuantity = getQuantity(item);
-    setAddedItems([...addedItems, { item, quantity: itemQuantity }]);
+    setSelectedItems([...selectedItems, { item, quantity: itemQuantity }]);
   };
 
   const handleRemoveItem = (item: MenuItem) => {
-    const newItems = addedItems.filter(
-      (addedItem) => addedItem.item.id !== item.id
+    const newItems = selectedItems.filter(
+      (selectedItem) => selectedItem.item.id !== item.id
     );
-    setAddedItems(newItems);
+    setSelectedItems(newItems);
   };
 
   const getItemButton = (item: MenuItem) => {
     // check if the item has already been added
-    const addedItem = addedItems.find(
-      (addedItem) => addedItem.item.id === item.id
+    const selectedItem = selectedItems.find(
+      (selectedItem) => selectedItem.item.id === item.id
     );
 
-    if (addedItem) {
+    if (selectedItem) {
       return (
         <PrimaryButton
           className="h-[40px] w-28"
@@ -190,8 +92,8 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
 
   const getAddedItems = (category: IMenuCategory) => {
     const categoryItemIds = category.items.map((item) => item.id);
-    const items = addedItems.filter((item) =>
-      categoryItemIds.includes(item.item.id)
+    const items = selectedItems.filter((selectedItem) =>
+      categoryItemIds.includes(selectedItem.item.id)
     );
     return items;
   };
@@ -244,12 +146,31 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="h-[95vh] w-full max-w-5xl overflow-scroll bg-white p-8">
-                <h3 className="mb-16 text-center font-merriweather text-[22px] font-bold underline">
-                  The Burger House Menu
-                </h3>
+              <Dialog.Panel className="h-[95vh] w-full max-w-5xl overflow-scroll rounded-md bg-white p-8">
+                <div className="relative left-0 top-0 right-0 -mx-8 -mt-8 mb-5 h-[270px]">
+                  <div className="absolute inset-0 z-10 bg-gray-600/20" />
+                  <Image
+                    alt="photo of a resturant."
+                    src="https://images.unsplash.com/photo-1494233914995-8c8b438d3f60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <div className="absolute bottom-0 z-20 w-full px-8 pb-8 text-white">
+                    <h3 className="mb-4 max-w-lg font-merriweather text-3xl font-bold leading-relaxed">
+                      The Burger House and Crunchy Fried Chicken
+                    </h3>
+                    <div className="flex w-full items-center justify-between">
+                      <p className="uppercase text-gray-300">Food Menu</p>
+                      <p>Kathmandu, Kapan</p>
+                    </div>
+                  </div>
+                </div>
+
                 <div>
-                  {menuCategories.map((category) => (
+                  <p className="mb-5 text-gray-700">
+                    Select items from the categories below
+                  </p>
+                  {menuData.map((category) => (
                     <div key={category.id}>
                       <div
                         className="group flex cursor-pointer items-center justify-between py-4 transition-colors  hover:bg-gray-100"
@@ -268,7 +189,7 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
                       </div>
                       <Divider />
                       {category.name === selectedCategory && (
-                        <div className="my-7">
+                        <div className="mt-7">
                           {category.items.map((item) => (
                             <Fragment key={item.id}>
                               <Item item={item}>
@@ -279,7 +200,7 @@ export default function BrowseMenu({ isOpen, closeModal }: BrowseMenuProps) {
                                     onChange={(e) =>
                                       handleQuantityChange(e, item)
                                     }
-                                    className="h-[40px] w-16 rounded-md bg-white px-4 py-2 shadow-[rgba(0,0,0,0.10)_0px_5px_15px_0px]"
+                                    className="h-[40px] w-16 rounded-md border border-gray-500 bg-white px-4 py-2 text-center outline-none ring-gray-500 ring-offset-1 focus:ring"
                                   />
                                 </div>
                                 {getItemButton(item)}
