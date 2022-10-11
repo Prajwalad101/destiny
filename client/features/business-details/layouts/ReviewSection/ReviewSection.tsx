@@ -1,7 +1,7 @@
 import {
-  PostReview,
   Ratings,
   SortReview,
+  StartReview,
   UserReview,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
@@ -44,10 +44,10 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
           className="px-6 py-2 sm:py-[10px]"
           onClick={() => setReviewModalOpen(true)}
         >
-          Post Review
+          Start Review
         </SecondaryButton>
       </Portal>
-      <PostReview
+      <StartReview
         isOpen={reviewModalOpen}
         closeModal={() => setReviewModalOpen(false)}
       />

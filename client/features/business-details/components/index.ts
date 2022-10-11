@@ -7,11 +7,12 @@ import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SortQA from './dropdown/SortQA/SortQA';
 import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
+import BrowseMenu from './modals/BrowseMenu/BrowseMenu';
 import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
-import PostQuestion from './modals/PostQuestion/PostQuestion';
-import PostReview from './modals/PostReview/PostReview';
+import StartReview from './modals/StartReview/StartReview';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import OrderFood from './OrderFood/OrderFood';
+import PostQuestion from './PostQuestion/PostQuestion';
 import Ratings from './Ratings/Ratings';
 import ReportUserDropdown from './ReportUserDropdown/ReportUserDropdown';
 import ReviewText from './ReviewText/ReviewText';
@@ -38,6 +39,7 @@ export {
   OrderFood,
   SortReview,
   SortQA,
-  PostReview,
+  StartReview,
   PostQuestion,
+  BrowseMenu,
 };

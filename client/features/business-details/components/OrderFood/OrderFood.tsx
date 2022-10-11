@@ -1,6 +1,7 @@
 import { PrimaryButton, SecondaryButton } from 'components';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
+import BrowseMenu from '../modals/BrowseMenu/BrowseMenu';
 
 interface OrderFoodProps {
   className?: string;
@@ -8,6 +9,8 @@ interface OrderFoodProps {
 
 export default function OrderFood({ className = '' }: OrderFoodProps) {
   const [selectedOption, setSelectedOption] = useState('delivery');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div
       className={classNames(
@@ -15,38 +18,36 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         'top-7 w-full rounded-md border-2 border-gray-200 p-5 md:sticky md:max-w-[330px] lg:max-w-[440px]'
       )}
     >
+      <BrowseMenu
+        isOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+      />
       <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
       </h4>
-      <div className="mb-10 flex flex-wrap items-center justify-between gap-y-5">
-        <div className="-ml-3 flex gap-2 lg:gap-4">
-          <button
-            className={classNames(
-              selectedOption === 'delivery'
-                ? 'border-primaryred'
-                : 'border-white',
-              'border-b-[3px] px-3 py-1'
-            )}
-            onClick={() => setSelectedOption('delivery')}
-          >
-            Delivery
-          </button>
-          <button
-            className={classNames(
-              selectedOption === 'takeout'
-                ? 'border-primaryred'
-                : 'border-white',
-              'border-b-[3px] px-3 py-1'
-            )}
-            onClick={() => setSelectedOption('takeout')}
-          >
-            Takeout
-          </button>
-        </div>
-        <p className="cursor-pointer text-sm text-gray-600 underline">
-          View Charges
-        </p>
+      <div className="-ml-3 mb-10 flex gap-2 lg:gap-4">
+        <button
+          className={classNames(
+            selectedOption === 'delivery'
+              ? 'border-primaryred'
+              : 'border-white',
+            'border-b-[3px] px-3 py-1'
+          )}
+          onClick={() => setSelectedOption('delivery')}
+        >
+          Delivery
+        </button>
+        <button
+          className={classNames(
+            selectedOption === 'takeout' ? 'border-primaryred' : 'border-white',
+            'border-b-[3px] px-3 py-1'
+          )}
+          onClick={() => setSelectedOption('takeout')}
+        >
+          Takeout
+        </button>
       </div>
+
       {/* Input Fields */}
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <label
@@ -81,8 +82,11 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
       </div>
 
       <div className="mb-9 flex flex-wrap items-center gap-3 lg:gap-7">
-        <SecondaryButton>
-          <p className="px-6 py-2">Browse Menu</p>
+        <SecondaryButton
+          onClick={() => setIsModalOpen(true)}
+          className="px-6 py-2"
+        >
+          Browse Menu
         </SecondaryButton>
         <p className="text-gray-700">No items selected</p>
       </div>

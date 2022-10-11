@@ -3,15 +3,12 @@ import { PrimaryButton, SecondaryButton } from 'components';
 import { Fragment, useState } from 'react';
 import { BsImages, BsStar, BsStarFill } from 'react-icons/bs';
 
-interface PostReviewModalInterface {
+interface StartReviewProps {
   isOpen: boolean;
   closeModal: () => void;
 }
 
-export default function PostReviewModal({
-  isOpen,
-  closeModal,
-}: PostReviewModalInterface) {
+export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
   const [rating, _setRating] = useState(0);
 
   const starIcon = (rating: number) => (
