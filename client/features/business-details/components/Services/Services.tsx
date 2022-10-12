@@ -1,6 +1,5 @@
 import { Divider, PrimaryButton, SecondaryButton } from 'components';
 import Link from 'next/link';
-import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
 
 interface ServicesProps {
@@ -8,7 +7,6 @@ interface ServicesProps {
 }
 
 export default function Services({ className = '' }: ServicesProps) {
-  const [selectedOption, setSelectedOption] = useState('delivery');
   return (
     <div
       className={classNames(
@@ -19,18 +17,18 @@ export default function Services({ className = '' }: ServicesProps) {
       <h4 className="mb-3 text-xl font-medium">Services</h4>
       <Divider width={2} className="-mx-5 mb-5 border-gray-200" />
 
-      <div className="mb-10">
+      <div className="mb-7">
         <p className="mb-3 text-gray-700">
-          Connect with the business by sending a direct message
+          - Connect with the business by sending a direct message
         </p>
         <SecondaryButton className="w-full max-w-[200px] py-2.5">
           Send a message
         </SecondaryButton>
       </div>
 
-      <div className="mb-10">
+      <div className="mb-7">
         <p className="mb-3 text-gray-700">
-          Get directions to the business from your current location
+          - Get directions to the business from your current location
         </p>
         <SecondaryButton className="w-full max-w-[200px] py-2.5">
           Get directions
@@ -39,7 +37,7 @@ export default function Services({ className = '' }: ServicesProps) {
 
       <div>
         <p className="mb-3 text-gray-700">
-          Easily browse menu and order food directly from ____
+          - Easily browse menu and order food directly from ____
         </p>
         <Link
           href={{

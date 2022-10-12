@@ -4,8 +4,10 @@ import { Divider, PrimaryButton, SecondaryButton } from 'components';
 import { NavigationProvider, QueryProvider } from 'components/context-provider';
 import { AppLayout } from 'components/layout';
 import { Navbar, Sidebar } from 'components/navigation';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
+import Hamburger from 'public/illustrations/business-details/Hamburger.svg';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import {
   AiFillMinusCircle,
@@ -27,30 +29,42 @@ const StartOrderPage: NextPageWithLayout = () => {
   const [selectedItems, setSelectedItems] = useState<ISelectedMenuItem[]>([]);
 
   return (
-    <>
-      <h1 className="mb-14 mt-16 font-merriweather text-3xl font-bold text-gray-800">
-        Start your Order
-      </h1>
-      <BrowseMenu
-        isOpen={isMenuOpen}
-        closeModal={() => setIsMenuOpen(false)}
-        selectedItems={selectedItems}
-        setSelectedItems={setSelectedItems}
-      />
-      <OrderDetails
-        orderItems={selectedItems}
-        setOrderItems={setSelectedItems}
-        onClick={() => setIsMenuOpen(true)}
-      />
-      <PersonalDetailsForm />
-      <PaymentInfoForm />
-      <div className="mb-20 flex gap-7">
-        <SecondaryButton className="px-6 py-2" onClick={() => router.back()}>
-          Go back
-        </SecondaryButton>
-        <PrimaryButton className="px-6 py-2">Place Order</PrimaryButton>
+    <div className="flex items-start justify-between gap-10">
+      <div className="min-w-0 grow">
+        <h1 className="my-8 font-merriweather text-2xl font-bold text-gray-800 sm:text-3xl md:my-12">
+          Start your Order
+        </h1>
+        <BrowseMenu
+          isOpen={isMenuOpen}
+          closeModal={() => setIsMenuOpen(false)}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+        />
+        <OrderDetails
+          orderItems={selectedItems}
+          setOrderItems={setSelectedItems}
+          onClick={() => setIsMenuOpen(true)}
+        />
+        <PersonalDetailsForm />
+        <PaymentInfoForm />
+        <div className="mb-20 flex flex-wrap gap-7">
+          <PrimaryButton className="px-6 py-2.5">Place Order</PrimaryButton>
+          <SecondaryButton
+            className="px-6 py-2.5"
+            onClick={() => router.back()}
+          >
+            Go back
+          </SecondaryButton>
+        </div>
       </div>
-    </>
+      <div className="relative mt-16 hidden h-[400px] w-[400px] lg:block xl:h-[500px] xl:w-[500px]">
+        <Image
+          src={Hamburger}
+          alt="illustration of a hamburger."
+          layout="fill"
+        />
+      </div>
+    </div>
   );
 };
 
@@ -153,9 +167,9 @@ function OrderDetails({
         />
       )}
 
-      <SecondaryButton className="mb-6 px-4 py-2" onClick={onClick}>
+      <PrimaryButton className="mb-6 px-4 py-2.5" onClick={onClick}>
         Browse Menu
-      </SecondaryButton>
+      </PrimaryButton>
       <Divider />
     </div>
   );
@@ -171,32 +185,45 @@ function OrderedItemsTable({
   handleDeleteItem: (_item: ISelectedMenuItem) => void;
 }) {
   return (
-    <div className="mb-6 max-w-3xl rounded-md border-2 border-gray-300">
-      <div className="flex gap-5 py-3 px-5">
+    <div className="mb-8 max-w-3xl rounded-md border-2 border-gray-300">
+      <div className="hidden gap-5 py-3 px-5 xs:flex">
         <p className="flex-[4_1_0] font-medium">Item</p>
         <p className="flex-[2_1_0] text-center font-medium">Qty</p>
         <p className="flex-[2_1_0] text-center font-medium">Price</p>
         <p className="flex-1 font-medium"></p>
       </div>
-      <Divider width={2} className="mb-2" />
+      <Divider width={2} className="hidden xs:flex" />
       {orderItems.map((orderItem) => (
-        <div
-          key={orderItem.item.id}
-          className="flex items-center gap-5 px-5 py-4"
-        >
-          <p className="flex-[4_1_0] capitalize">{orderItem.item.name}</p>
-          <div className="flex-[2_1_0]">{getQuantityButton(orderItem)}</div>
-          <p className="flex-[2_1_0] text-center">
-            Rs. {orderItem.item.price * orderItem.quantity}
-          </p>
-          <div className="flex-1">
-            <FiTrash2
-              size={22}
-              className="ml-auto cursor-pointer text-gray-600 hover:text-primaryred"
-              onClick={() => handleDeleteItem(orderItem)}
-            />
+        <>
+          <div key={orderItem.item.id} className="px-5 py-4">
+            <div className="flex items-center gap-2 pb-2 xs:gap-5 xs:pb-0">
+              <p className="flex-[4_1_0] font-medium capitalize xs:font-normal">
+                {orderItem.item.name}
+              </p>
+              <div className="hidden flex-[2_1_0] xs:block">
+                {getQuantityButton(orderItem)}
+              </div>
+              <p className="hidden flex-[2_1_0] text-center xs:block">
+                Rs. {orderItem.item.price * orderItem.quantity}
+              </p>
+              <div className="flex-1">
+                <FiTrash2
+                  size={22}
+                  className="ml-auto cursor-pointer text-gray-600 hover:text-primaryred"
+                  onClick={() => handleDeleteItem(orderItem)}
+                />
+              </div>
+            </div>
+            {/* for smaller screens */}
+            <div className="flex gap-8 xs:hidden">
+              <div className="">{getQuantityButton(orderItem)}</div>
+              <p className="">
+                Rs. {orderItem.item.price * orderItem.quantity}
+              </p>
+            </div>
           </div>
-        </div>
+          <Divider className="last:hidden" />
+        </>
       ))}
     </div>
   );
@@ -204,33 +231,35 @@ function OrderedItemsTable({
 
 function PersonalDetailsForm() {
   return (
-    <div className="mb-9">
+    <div className="mb-9 w-full">
       <h5 className="mb-2 text-xl font-medium">Personal Details</h5>
       <p className="mb-9 text-gray-600">
         Fill all the fields with correct information
       </p>
-      <div className="mb-5 flex items-center gap-5">
+
+      <div className="mb-5 flex flex-wrap items-center gap-5">
         <label htmlFor="name" className="w-[150px]">
           Name:
         </label>
         <input
           type="text"
           id="name"
-          className="rounded-md border border-gray-300 px-5 py-2"
+          placeholder="Enter your full name"
+          className="w-full max-w-[300px] rounded-md border border-gray-300 px-5 py-2"
         />
       </div>
-      <div className="mb-5 flex items-center gap-5">
-        <label htmlFor="phone-number" className="w-[150px]">
+      <div className="mb-5 flex flex-wrap items-center gap-5">
+        <label htmlFor="phone-number" className="w-full max-w-[150px]">
           Phone Number:
         </label>
         <input
           type="text"
           placeholder="(+977)"
           id="phone-number"
-          className="rounded-md border border-gray-300 px-5 py-2"
+          className="w-full max-w-[300px] rounded-md border border-gray-300 px-5 py-2"
         />
       </div>
-      <div className="mb-6 flex items-center gap-5">
+      <div className="mb-6 flex flex-wrap items-center gap-5">
         <label htmlFor="address" className="w-[150px]">
           Delivery Address:
         </label>
@@ -238,7 +267,7 @@ function PersonalDetailsForm() {
           type="text"
           placeholder="eg: Kapan, Baluwakhani"
           id="address"
-          className="rounded-md border border-gray-300 px-5 py-2"
+          className="w-full max-w-[300px] rounded-md border border-gray-300 px-5 py-2"
         />
       </div>
       <Divider />
