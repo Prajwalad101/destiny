@@ -7,7 +7,6 @@ import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SortQA from './dropdown/SortQA/SortQA';
 import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
-import BrowseMenu from './modals/BrowseMenu/BrowseMenu';
 import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
 import StartReview from './modals/StartReview/StartReview';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
@@ -41,5 +40,4 @@ export {
   SortQA,
   StartReview,
   PostQuestion,
-  BrowseMenu,
 };

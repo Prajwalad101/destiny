@@ -1,4 +1,3 @@
-import { ISelectedMenuItem } from '@features/business-details/components/Services/OrderFood';
 import { menuData } from '@features/business-details/data';
 import {
   IMenuCategory,
@@ -7,6 +6,7 @@ import {
 import { Dialog, Transition } from '@headlessui/react';
 import { Divider, PrimaryButton, SecondaryButton } from 'components';
 import Image from 'next/image';
+import { IOrderedMenuItem } from 'pages/start-order';
 import {
   ChangeEvent,
   Dispatch,
@@ -19,8 +19,8 @@ import { IoMdClose } from 'react-icons/io';
 
 interface BrowseMenuProps {
   isOpen: boolean;
-  selectedItems: ISelectedMenuItem[];
-  setSelectedItems: Dispatch<SetStateAction<ISelectedMenuItem[]>>;
+  selectedItems: IOrderedMenuItem[];
+  setSelectedItems: Dispatch<SetStateAction<IOrderedMenuItem[]>>;
   closeModal: () => void;
 }
 
