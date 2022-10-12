@@ -200,7 +200,7 @@ export default function BrowseMenu({
                     className="h-[45px] w-[120px]"
                     onClick={closeModal}
                   >
-                    Close
+                    Done
                   </PrimaryButton>
                 </div>
               </Dialog.Panel>

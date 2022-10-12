@@ -1,8 +1,8 @@
+import { BrowseMenu, StartOrder } from '@features/business-details/components';
 import { MenuItem } from '@features/business-details/data/menuData';
 import { PrimaryButton, SecondaryButton } from 'components';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
-import BrowseMenu from '../modals/BrowseMenu/BrowseMenu';
 
 interface OrderFoodProps {
   className?: string;
@@ -15,7 +15,8 @@ export interface ISelectedMenuItem {
 
 export default function OrderFood({ className = '' }: OrderFoodProps) {
   const [selectedOption, setSelectedOption] = useState('delivery');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isStartOrderOpen, setIsStartOrderOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ISelectedMenuItem[]>([]);
 
   return (
@@ -26,10 +27,15 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
       )}
     >
       <BrowseMenu
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
+        isOpen={isMenuOpen}
+        closeModal={() => setIsMenuOpen(false)}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
+      />
+      <StartOrder
+        selectedItems={selectedItems}
+        isOpen={isStartOrderOpen}
+        closeModal={() => setIsStartOrderOpen(false)}
       />
       <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
@@ -72,7 +78,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
           type="text"
           id="delivery"
           placeholder="eg: Kapan, Baluwakhani"
-          className="grow rounded-md border-[1px] border-gray-300 px-5 py-2"
+          className="grow rounded-md border border-gray-300 px-5 py-2"
           disabled={selectedOption === 'takeout'}
           size={10}
         />
@@ -92,7 +98,7 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
 
       <div className="mb-9 flex flex-wrap items-center gap-3 lg:gap-7">
         <SecondaryButton
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setIsMenuOpen(true)}
           className="px-6 py-2"
         >
           Browse Menu
@@ -105,7 +111,12 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
       </div>
 
       <div className="-mx-[21px] -mb-[21px]">
-        <PrimaryButton className="w-full py-3">Place Order</PrimaryButton>
+        <PrimaryButton
+          className="w-full py-3"
+          onClick={() => setIsStartOrderOpen(true)}
+        >
+          Start Order
+        </PrimaryButton>
       </div>
     </div>
   );
