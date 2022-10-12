@@ -28,7 +28,7 @@ const StartOrderPage: NextPageWithLayout = () => {
 
   return (
     <>
-      <h1 className="mb-16 mt-10 font-merriweather text-3xl font-bold">
+      <h1 className="mb-14 mt-16 font-merriweather text-3xl font-bold text-gray-800">
         Start your Order
       </h1>
       <BrowseMenu
@@ -45,10 +45,10 @@ const StartOrderPage: NextPageWithLayout = () => {
       <PersonalDetailsForm />
       <PaymentInfoForm />
       <div className="mb-20 flex gap-7">
-        <PrimaryButton className="px-6 py-2">Place Order</PrimaryButton>
         <SecondaryButton className="px-6 py-2" onClick={() => router.back()}>
           Go back
         </SecondaryButton>
+        <PrimaryButton className="px-6 py-2">Place Order</PrimaryButton>
       </div>
     </>
   );
@@ -153,7 +153,7 @@ function OrderDetails({
         />
       )}
 
-      <SecondaryButton className="mb-6 px-6 py-2" onClick={onClick}>
+      <SecondaryButton className="mb-6 px-4 py-2" onClick={onClick}>
         Browse Menu
       </SecondaryButton>
       <Divider />

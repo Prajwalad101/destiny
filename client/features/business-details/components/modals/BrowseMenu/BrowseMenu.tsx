@@ -1,4 +1,4 @@
-import { ISelectedMenuItem } from '@features/business-details/components/OrderFood/OrderFood';
+import { ISelectedMenuItem } from '@features/business-details/components/Services/OrderFood';
 import { menuData } from '@features/business-details/data';
 import {
   IMenuCategory,

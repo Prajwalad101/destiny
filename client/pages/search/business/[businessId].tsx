@@ -3,7 +3,7 @@ import {
   BusinessAttributes,
   CategoriesDropdown,
   LocationAndContact,
-  OrderFood,
+  Services,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import {
@@ -39,7 +39,7 @@ const Business: NextPageWithLayout = () => {
         className="mt-4 mb-7 md:mb-16"
       />
       <div className="flex flex-col items-start gap-x-16 gap-y-7 md:flex-row-reverse">
-        <OrderFood />
+        <Services />
         <div className="w-full overflow-y-auto">
           <BusinessAttributes attributes={businessData.features} />
           <LocationAndContact className="mb-10 md:mb-16" />

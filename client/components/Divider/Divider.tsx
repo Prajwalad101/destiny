@@ -8,7 +8,7 @@ interface DividerProps {
 export default function Divider({ className = '', width = 1 }: DividerProps) {
   return (
     <hr
-      className={classNames(className, ' border-gray-300')}
+      className={classNames('border-gray-300', className)}
       style={{ borderTopWidth: width }}
     />
   );
