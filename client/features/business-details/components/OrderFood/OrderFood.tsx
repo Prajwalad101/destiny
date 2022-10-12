@@ -1,6 +1,6 @@
-import { BrowseMenu, StartOrder } from '@features/business-details/components';
 import { MenuItem } from '@features/business-details/data/menuData';
-import { PrimaryButton, SecondaryButton } from 'components';
+import { PrimaryButton } from 'components';
+import Link from 'next/link';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
 
@@ -15,10 +15,6 @@ export interface ISelectedMenuItem {
 
 export default function OrderFood({ className = '' }: OrderFoodProps) {
   const [selectedOption, setSelectedOption] = useState('delivery');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isStartOrderOpen, setIsStartOrderOpen] = useState(false);
-  const [selectedItems, setSelectedItems] = useState<ISelectedMenuItem[]>([]);
-
   return (
     <div
       className={classNames(
@@ -26,17 +22,6 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         'top-7 w-full rounded-md border-2 border-gray-200 p-5 md:sticky md:max-w-[330px] lg:max-w-[440px]'
       )}
     >
-      <BrowseMenu
-        isOpen={isMenuOpen}
-        closeModal={() => setIsMenuOpen(false)}
-        selectedItems={selectedItems}
-        setSelectedItems={setSelectedItems}
-      />
-      <StartOrder
-        selectedItems={selectedItems}
-        isOpen={isStartOrderOpen}
-        closeModal={() => setIsStartOrderOpen(false)}
-      />
       <h4 className="mb-6 text-xl font-medium">
         Order food by <span className="capitalize">{selectedOption}</span>
       </h4>
@@ -64,6 +49,18 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
       </div>
 
       {/* Input Fields */}
+      <div className="mb-4 flex flex-wrap items-center gap-4">
+        <label htmlFor="name" className="min-w-[130px]">
+          Name:
+        </label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your full name"
+          className="grow rounded-md border border-gray-300 px-5 py-2"
+          size={10}
+        />
+      </div>
       <div className="mb-4 flex flex-wrap items-center gap-4">
         <label
           htmlFor="delivery"
@@ -96,27 +93,17 @@ export default function OrderFood({ className = '' }: OrderFoodProps) {
         />
       </div>
 
-      <div className="mb-9 flex flex-wrap items-center gap-3 lg:gap-7">
-        <SecondaryButton
-          onClick={() => setIsMenuOpen(true)}
-          className="px-6 py-2"
-        >
-          Browse Menu
-        </SecondaryButton>
-
-        <p className="text-gray-700">
-          {selectedItems.length === 0 ? 'No' : selectedItems.length}{' '}
-          {selectedItems.length === 1 ? 'item' : 'items'} selected
-        </p>
-      </div>
-
       <div className="-mx-[21px] -mb-[21px]">
-        <PrimaryButton
-          className="w-full py-3"
-          onClick={() => setIsStartOrderOpen(true)}
+        <Link
+          href={{
+            pathname: '/start-order',
+            query: { name: 'Your name' },
+          }}
         >
-          Start Order
-        </PrimaryButton>
+          <a>
+            <PrimaryButton className="w-full py-3">Start Order</PrimaryButton>
+          </a>
+        </Link>
       </div>
     </div>
   );

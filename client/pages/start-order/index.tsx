@@ -4,6 +4,7 @@ import { Divider, PrimaryButton, SecondaryButton } from 'components';
 import { NavigationProvider, QueryProvider } from 'components/context-provider';
 import { AppLayout } from 'components/layout';
 import { Navbar, Sidebar } from 'components/navigation';
+import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import {
@@ -20,12 +21,14 @@ export interface ISelectedMenuItem {
 }
 
 const StartOrderPage: NextPageWithLayout = () => {
+  const router = useRouter();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ISelectedMenuItem[]>([]);
 
   return (
     <>
-      <h1 className="mb-16 mt-10 font-merriweather text-3xl font-bold underline">
+      <h1 className="mb-16 mt-10 font-merriweather text-3xl font-bold">
         Start your Order
       </h1>
       <BrowseMenu
@@ -42,8 +45,10 @@ const StartOrderPage: NextPageWithLayout = () => {
       <PersonalDetailsForm />
       <PaymentInfoForm />
       <div className="mb-20 flex gap-7">
-        <SecondaryButton className="px-6 py-2">Cancel</SecondaryButton>
         <PrimaryButton className="px-6 py-2">Place Order</PrimaryButton>
+        <SecondaryButton className="px-6 py-2" onClick={() => router.back()}>
+          Go back
+        </SecondaryButton>
       </div>
     </>
   );
