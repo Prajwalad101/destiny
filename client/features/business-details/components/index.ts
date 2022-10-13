@@ -7,6 +7,7 @@ import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SortQA from './dropdown/SortQA/SortQA';
 import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
+import About from './modals/About/About';
 import ImageGallery from './modals/ImageGallery/ImageGallery';
 import SendMessage from './modals/SendMessage/SendMessage';
 import StartReview from './modals/StartReview/StartReview';
@@ -42,4 +43,5 @@ export {
   StartReview,
   PostQuestion,
   SendMessage,
+  About,
 };

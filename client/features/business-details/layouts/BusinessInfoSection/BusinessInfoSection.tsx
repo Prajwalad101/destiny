@@ -44,7 +44,7 @@ export default function BusinessInfoSection({
           </div>
           <div className="flex items-center gap-3 text-gray-800">
             <FaPhoneAlt size={17} />
-            <span>+977 9083939558</span>
+            <span>(+977) 9083939558</span>
           </div>
         </div>
       </div>
