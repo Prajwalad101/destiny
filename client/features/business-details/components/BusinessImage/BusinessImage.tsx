@@ -1,4 +1,5 @@
-import { BusinessImageModal } from '@features/business-details/components';
+import { ImageGallery } from '@features/business-details/components';
+import { MyModal } from 'components';
 import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -18,6 +19,13 @@ export default function BusinessImage({
 
   return (
     <>
+      <MyModal
+        className="relative h-[80vh] w-full max-w-7xl"
+        closeModal={() => setIsOpen(false)}
+        isOpen={isOpen}
+      >
+        <ImageGallery images={images} />
+      </MyModal>
       <div className="group relative">
         <Slider
           numItems={images.length}
@@ -45,11 +53,6 @@ export default function BusinessImage({
           </span>
         </div>
       </div>
-      <BusinessImageModal
-        images={images}
-        isOpen={isOpen}
-        closeModal={() => setIsOpen(false)}
-      />
     </>
   );
 }

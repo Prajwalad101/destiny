@@ -22,11 +22,11 @@ export default function BusinessAttributes({
       <div className="mb-5 border border-gray-200" />
       <div className="mb-6 flex flex-col gap-3 xs:flex-row xs:items-center xs:justify-between ">
         <h4 className="text-xl font-medium">Business Attributes</h4>
-        <div className="group flex cursor-pointer items-center gap-2">
-          <button
-            className="text-gray-800 group-hover:text-gray-600"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
+        <div
+          className="group flex cursor-pointer items-center gap-2"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <button className="text-gray-800 group-hover:text-gray-600">
             {isExpanded ? 'Show less' : 'Expand'}
           </button>
           {isExpanded ? (

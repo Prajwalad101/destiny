@@ -1,4 +1,4 @@
-import { Divider, PrimaryButton, SecondaryButton } from 'components';
+import { Divider, MyModal, PrimaryButton, SecondaryButton } from 'components';
 import Link from 'next/link';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
@@ -11,12 +11,19 @@ interface ServicesProps {
 export default function Services({ className = '' }: ServicesProps) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
 
+  const closeMessageModal = () => {
+    setIsMessageOpen(false);
+  };
+
   return (
     <>
-      <SendMessage
+      <MyModal
         isOpen={isMessageOpen}
-        closeModal={() => setIsMessageOpen(false)}
-      />
+        closeModal={closeMessageModal}
+        className="w-full max-w-2xl"
+      >
+        <SendMessage closeModal={closeMessageModal} />
+      </MyModal>
       <div
         className={classNames(
           className,

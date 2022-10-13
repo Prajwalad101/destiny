@@ -7,7 +7,7 @@ import CategoryDropdown from './CategoryDropdown/CategoryDropdown';
 import SortQA from './dropdown/SortQA/SortQA';
 import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
-import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
+import ImageGallery from './modals/ImageGallery/ImageGallery';
 import SendMessage from './modals/SendMessage/SendMessage';
 import StartReview from './modals/StartReview/StartReview';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
@@ -35,7 +35,7 @@ export {
   ReportUserDropdown,
   UserQuestion,
   UserProfile,
-  BusinessImageModal,
+  ImageGallery,
   Services,
   SortReview,
   SortQA,
