@@ -8,6 +8,7 @@ import SortQA from './dropdown/SortQA/SortQA';
 import SortReview from './dropdown/SortReview/SortReview';
 import LocationAndContact from './Location&Contact/Location&Contact';
 import BusinessImageModal from './modals/BusinessImageModal/BusinessImageModal';
+import SendMessage from './modals/SendMessage/SendMessage';
 import StartReview from './modals/StartReview/StartReview';
 import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import PostQuestion from './PostQuestion/PostQuestion';
@@ -40,4 +41,5 @@ export {
   SortQA,
   StartReview,
   PostQuestion,
+  SendMessage,
 };
