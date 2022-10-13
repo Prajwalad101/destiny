@@ -5,10 +5,14 @@ import { classNames } from 'utils/tailwind';
 import SendMessage from '../modals/SendMessage/SendMessage';
 
 interface ServicesProps {
+  businessId: string;
   className?: string;
 }
 
-export default function Services({ className = '' }: ServicesProps) {
+export default function Services({
+  businessId,
+  className = '',
+}: ServicesProps) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
 
   const closeMessageModal = () => {
@@ -61,7 +65,7 @@ export default function Services({ className = '' }: ServicesProps) {
           <Link
             href={{
               pathname: '/start-order',
-              query: { name: 'Your name' },
+              query: { id: businessId },
             }}
           >
             <a>

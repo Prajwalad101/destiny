@@ -24,6 +24,9 @@ export interface IOrderedMenuItem {
 const StartOrderPage: NextPageWithLayout = () => {
   const router = useRouter();
 
+  const { query } = router;
+  const _businessId = query.id as string;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPlaceOrderOpen, setIsPlaceOrderOpen] = useState(false);
 

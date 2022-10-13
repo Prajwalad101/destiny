@@ -39,7 +39,7 @@ const Business: NextPageWithLayout = () => {
         className="mt-4 mb-7 md:mb-16"
       />
       <div className="flex flex-col items-start gap-x-16 gap-y-7 md:flex-row-reverse">
-        <Services />
+        <Services businessId={businessData._id} />
         <div className="w-full overflow-y-auto">
           <BusinessAttributes attributes={businessData.features} />
           <LocationAndContact className="mb-10 md:mb-16" />
