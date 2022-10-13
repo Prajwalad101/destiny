@@ -1,8 +1,14 @@
-import { CategoriesDropdown } from '@features/business-details/components';
+import {
+  BreadCrumbs,
+  BusinessAttributes,
+  CategoriesDropdown,
+  LocationAndContact,
+  Services,
+} from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import {
   BusinessInfoSection,
-  BusinessReviewSection,
+  CommunitySection,
 } from '@features/business-details/layouts';
 import { fetchBusiness } from '@features/business-details/utils/api';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
@@ -15,25 +21,31 @@ import { NextPageWithLayout } from 'pages/_app';
 import { dehydrate, QueryClient } from 'react-query';
 
 const Business: NextPageWithLayout = () => {
-  const router = useRouter();
-  const { query } = router;
+  const { query } = useRouter();
   const businessId = query.businessId as string;
 
   const businessResult = useBusiness(businessId);
   const { isLoading, isError } = businessResult;
 
   const businessData = businessResult.data?.data;
-  if (businessData === undefined) {
-    return null;
-  }
-
-  const BusinessReviews = businessData.reviews || [];
+  if (!businessData) return null;
 
   return (
     <ConditionalRender isLoading={isLoading} isError={isError}>
       <CategoriesDropdown />
-      <BusinessInfoSection business={businessData} />
-      <BusinessReviewSection reviews={BusinessReviews} />
+      <BreadCrumbs />
+      <BusinessInfoSection
+        business={businessData}
+        className="mt-4 mb-7 md:mb-16"
+      />
+      <div className="flex flex-col items-start gap-x-16 gap-y-7 md:flex-row-reverse">
+        <Services businessId={businessData._id} />
+        <div className="w-full overflow-y-auto">
+          <BusinessAttributes attributes={businessData.features} />
+          <LocationAndContact className="mb-10 md:mb-16" />
+          <CommunitySection className="mb-10" />
+        </div>
+      </div>
     </ConditionalRender>
   );
 };

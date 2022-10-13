@@ -1,0 +1,19 @@
+.star1:hover ~ .star5 {
+  color: blue;
+}
+
+.ratings div:hover ~ div .star-empty {
+  display: none;
+}
+
+.ratings > div > .star-full {
+  display: none;
+}
+
+.ratings div:hover ~ div .star-full {
+  display: block;
+}
+
+/* .ratings div:hover .ratings div .star-empty {
+  opacity: 0;
+} */

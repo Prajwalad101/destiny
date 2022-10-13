@@ -15,7 +15,7 @@ function Searchbar({
   return (
     <div
       className={classNames(
-        'relative flex h-[51.5px] bg-gray-500 overflow-hidden w-full items-center font-merriweather md:h-[60px]',
+        'relative flex h-[51.5px] w-full items-center overflow-hidden bg-gray-500 font-merriweather md:h-[60px]',
         className
       )}
     >
@@ -28,7 +28,7 @@ function Searchbar({
 
       {/* LOCATION SEARCH INPUT FIELD  */}
       <input
-        className="outline-none absolute right-0 hidden h-full w-1/2 rounded-r-sm border-l-2 bg-[#E6E6E6] pl-3 pr-16 text-[15px] md:block md:bg-white"
+        className="absolute right-0 hidden h-full w-1/2 rounded-r-sm border-l-2 bg-[#E6E6E6] pl-3 pr-16 text-[15px] outline-none md:block md:bg-white"
         type="text"
         placeholder={placeholder2}
       />

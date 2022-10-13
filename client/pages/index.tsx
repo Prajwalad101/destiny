@@ -15,7 +15,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <div>
       <div className="mb-10 md:mb-0 md:h-[550px]">
-        <div className="absolute h-[700px] inset-0 -z-10 hidden bg-main-img bg-cover bg-no-repeat md:block" />
+        <div className="absolute inset-0 -z-10 hidden h-[700px] bg-main-img bg-cover bg-no-repeat md:block" />
 
         <section className="mt-7 md:mt-20">
           <MainHeading className="mb-5 max-w-sm sm:max-w-xl md:mb-7">
@@ -24,7 +24,7 @@ const Home: NextPageWithLayout = () => {
           <Searchbar
             placeholder1="Search for stuff"
             placeholder2="Kathmandu, New baneshwor"
-            className="max-w-xl md:max-w-2xl h-[60px] shadow-md rounded-md focus-within:shadow-lg transition-shadow"
+            className="h-[60px] max-w-xl rounded-md shadow-md transition-shadow focus-within:shadow-lg md:max-w-2xl"
           />
           <CategoriesDropdown />
         </section>

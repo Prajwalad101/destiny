@@ -29,7 +29,7 @@ function BusinessCard({ business }: BusinessCardProps) {
         </div>
         {/* Business Rating */}
         <div className="mb-2 flex gap-2 ">
-          <RatingIcons avgRating={business.avgRating} />
+          <RatingIcons rating={business.avgRating} />
           <span className="text-sm text-secondarytext">
             ({business.rating_count})
           </span>

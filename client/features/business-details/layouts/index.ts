@@ -1,4 +1,6 @@
 import BusinessInfoSection from './BusinessInfoSection/BusinessInfoSection';
-import BusinessReviewSection from './BusinessReviewSection/BusinessReviewSection';
+import CommunitySection from './CommunitySection/CommunitySection';
+import QASection from './QASection/QASection';
+import ReviewSection from './ReviewSection/ReviewSection';
 
-export { BusinessInfoSection, BusinessReviewSection };
+export { BusinessInfoSection, ReviewSection, QASection, CommunitySection };

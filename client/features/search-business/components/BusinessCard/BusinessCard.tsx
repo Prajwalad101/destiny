@@ -4,7 +4,6 @@ import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft } from 'react-icons/fa';
-import { checkInterval } from 'utils/date';
 import { getPublicFilePath } from 'utils/text';
 
 export interface BusinessCardProps {
@@ -32,19 +31,19 @@ function BusinessCard({ business }: BusinessCardProps) {
               <h3 className="mb-2 text-lg font-medium">{business.name}</h3>
               <div className="mb-2 flex items-center gap-4">
                 <div className="flex items-center gap-3">
-                  <RatingIcons avgRating={business.avgRating} />
+                  <RatingIcons rating={business.avgRating} />
                   <p className="text-sm text-secondarytext">
                     ({business.rating_count})
                   </p>
                 </div>
-                <p className="text-[15px] font-medium text-secondarytext">
+                {/* <p className="text-[15px] font-medium text-secondarytext">
                   {checkInterval(
                     business.businessHours.open,
                     business.businessHours.close
                   )
                     ? 'Open now'
                     : 'Closed'}
-                </p>
+                </p> */}
               </div>
               <p className="mb-4 text-sm text-secondarytext">
                 {business.location.address}

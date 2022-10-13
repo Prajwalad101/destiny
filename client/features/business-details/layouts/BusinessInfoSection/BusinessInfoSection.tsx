@@ -1,150 +1,54 @@
 import { IBusiness } from '@destiny/common/types';
+import {
+  BusinessDescription,
+  BusinessImage,
+  OpenOrClosed,
+} from '@features/business-details/components';
 import RatingIcons from 'components/icons/ratings/RatingIcons';
-import Slider from 'components/slider/Slider';
-import Image from 'next/image';
-import { useState } from 'react';
-import { checkInterval } from 'utils/date';
-import { getPublicFilePath, truncateText } from 'utils/text';
+import { FaPhoneAlt } from 'react-icons/fa';
 
 interface BusinessInfoSectionProps {
   business: IBusiness;
+  className?: string;
 }
 
-function BusinessInfoSection({ business }: BusinessInfoSectionProps) {
-  // Destructuring business properties
-  const {
-    name,
-    avgRating,
-    rating_count,
-    businessHours,
-    features,
-    location,
-    description,
-  } = business;
-
-  const images = business.images.map((image) => getPublicFilePath(image));
-
+export default function BusinessInfoSection({
+  business,
+  className = '',
+}: BusinessInfoSectionProps) {
   return (
-    <div className="mt-4 font-rubik">
-      <div className="mb-7 flex flex-col gap-5 md:flex-row">
-        {/* Cover Image */}
-        <div className="relative h-[250px] w-full shrink-0 sm:h-[300px] md:w-[300px] lg:w-[450px]">
-          <Image alt={name} src={images[0]} layout="fill" objectFit="cover" />
-        </div>
+    <div className={className}>
+      <div className="mb-5 flex flex-col gap-5 md:mb-0 md:flex-row">
+        <BusinessImage images={business.images} />
         <div>
-          {/* Business Name */}
-          <h4 className="mb-2 text-xl font-medium">{name}</h4>
-          {/* AvgRating, NumReviews, Open/Closed */}
-          <BasicInfo
-            avgRating={avgRating}
-            rating_count={rating_count}
-            businessHours={businessHours}
-            className="mb-2 flex items-center gap-4"
+          <h4 className="mb-2 text-[23px] font-medium">{business.name}</h4>
+          <div className="mb-5 flex items-center gap-10">
+            <RatingIcons rating={business.avgRating} size={20} />
+            <span className="inline-block text-gray-800 underline">
+              {business.rating_count} reviews
+            </span>
+          </div>
+          <span className="mb-2 inline-block">{business.location.address}</span>
+          <OpenOrClosed
+            openingTime={business.businessHours.open}
+            closingTime={business.businessHours.close}
+            className="mb-5"
           />
-          {/* Address */}
-          <p className="mb-3 text-secondarytext">{location.address}</p>
-          <Feature features={features} className="mb-3 flex gap-2" />
-          <Description
-            description={description}
-            className="text-gray-700 md:h-[150px] md:overflow-y-auto"
+          <BusinessDescription
+            description={business.description}
+            className="mb-7"
           />
+          <div className="mb-4 flex flex-col gap-2 text-gray-800 sm:flex-row sm:gap-7">
+            <span>$$-$$$</span>
+            <span>Healthy, Authentic, Vegeterian Friendly</span>
+          </div>
+          <div className="flex items-center gap-3 text-gray-800">
+            <FaPhoneAlt size={17} />
+            <span>(+977) 9083939558</span>
+          </div>
         </div>
       </div>
-      <Slider numItems={images.length} className="mb-5">
-        {images.map((image, key) => (
-          <div key={key} className="sm:1-1/4 relative h-[150px] w-1/2 lg:w-1/6">
-            <Image
-              src={image}
-              alt="business images"
-              layout="fill"
-              objectFit="cover"
-              className="px-1"
-            />
-          </div>
-        ))}
-      </Slider>
-      {/* Horizontal Line */}
-      <div className="mb-5 border-b-2 border-gray-200" />
-    </div>
-  );
-}
-
-export default BusinessInfoSection;
-
-interface BasicInfoProps {
-  avgRating: number;
-  rating_count: number;
-  businessHours: { open: string; close: string };
-  className?: string;
-}
-function BasicInfo({
-  avgRating,
-  rating_count,
-  businessHours,
-  className = '',
-}: BasicInfoProps) {
-  return (
-    <div className={className}>
-      <RatingIcons avgRating={avgRating} />
-      <span>{rating_count} reviews</span>
-      <span className="font-medium">
-        {checkInterval(businessHours.open, businessHours.close)
-          ? 'Open Now'
-          : 'Closed'}
-      </span>
-    </div>
-  );
-}
-
-interface FeatureProps {
-  features: string[];
-  className?: string;
-}
-function Feature({ features, className = '' }: FeatureProps) {
-  return (
-    <div className={className}>
-      {features.map((feature, index) => (
-        <div
-          key={index}
-          className="w-max cursor-pointer rounded-sm bg-gray-200 px-3 py-[2px] hover:bg-gray-300"
-        >
-          <span className="text-sm capitalize text-secondarytext">
-            {feature}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-interface DescriptionProps {
-  description: string;
-  className?: string;
-}
-function Description({ description, className = '' }: DescriptionProps) {
-  // state of the readMore button
-  const [readMore, setReadMore] = useState(false);
-  const wordLimit = 40;
-  let text;
-
-  // if readMore button is clicked or description is less than limit, return original text
-  if (readMore || description.length < wordLimit) {
-    text = description;
-  } else {
-    text = truncateText(description, wordLimit);
-  }
-
-  return (
-    <div className={className}>
-      <span className="leading-[26px]">{text}</span>
-      {description.length > wordLimit && (
-        <button
-          className="cursor-pointer text-primaryred  hover:text-red-600"
-          onClick={() => setReadMore(!readMore)}
-        >
-          {readMore ? 'Read Less' : 'Read More'}
-        </button>
-      )}
+      <div className="border border-gray-300 md:hidden" />
     </div>
   );
 }

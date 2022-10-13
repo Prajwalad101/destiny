@@ -16,7 +16,7 @@ export default function Sidebar() {
       <div
         className={classNames(
           !open ? '-translate-x-[300px]' : '',
-          'absolute z-20 h-[100vh] w-[300px] overflow-scroll bg-gray-50 p-5 font-rubik transition-all duration-500 md:hidden top-0'
+          'absolute top-0 z-20 h-[100vh] w-[300px] overflow-scroll bg-gray-50 p-5 font-rubik transition-all duration-500 md:hidden'
         )}
       >
         {/* Logo section */}

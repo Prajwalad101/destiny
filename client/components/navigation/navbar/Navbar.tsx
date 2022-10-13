@@ -64,7 +64,7 @@ function Navbar({ theme }: INavbar) {
         </div>
       </div>
       {/* Divider */}
-      <div className="left-0 right-0 absolute border border-gray-300 md:hidden w-full" />
+      <div className="absolute left-0 right-0 w-full border border-gray-300 md:hidden" />
     </>
   );
 }

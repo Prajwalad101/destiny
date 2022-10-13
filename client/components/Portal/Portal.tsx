@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalProps {
@@ -10,7 +10,7 @@ export default function Portal({ children, selector }: PortalProps) {
   const ref = useRef<Element | null>(null);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     ref.current = document.querySelector(selector);
 
     if (!ref.current)
