@@ -4,6 +4,7 @@ import {
   OrderDetails,
   PaymentForm,
   PersonalDetailsForm,
+  PlaceOrder,
 } from '@features/order-food/components';
 import { PrimaryButton, SecondaryButton } from 'components';
 import { NavigationProvider, QueryProvider } from 'components/context-provider';
@@ -24,6 +25,8 @@ const StartOrderPage: NextPageWithLayout = () => {
   const router = useRouter();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPlaceOrderOpen, setIsPlaceOrderOpen] = useState(false);
+
   const [selectedItems, setSelectedItems] = useState<IOrderedMenuItem[]>([]);
 
   return (
@@ -38,6 +41,11 @@ const StartOrderPage: NextPageWithLayout = () => {
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />
+        <PlaceOrder
+          orderedItems={selectedItems}
+          isOpen={isPlaceOrderOpen}
+          closeModal={() => setIsPlaceOrderOpen(false)}
+        />
         <OrderDetails
           orderItems={selectedItems}
           setOrderItems={setSelectedItems}
@@ -46,7 +54,12 @@ const StartOrderPage: NextPageWithLayout = () => {
         <PersonalDetailsForm />
         <PaymentForm />
         <div className="mb-20 flex flex-wrap gap-7">
-          <PrimaryButton className="px-6 py-2.5">Place Order</PrimaryButton>
+          <PrimaryButton
+            onClick={() => setIsPlaceOrderOpen(true)}
+            className="px-6 py-2.5"
+          >
+            Place Order
+          </PrimaryButton>
           <SecondaryButton
             className="px-6 py-2.5"
             onClick={() => router.back()}
