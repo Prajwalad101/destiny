@@ -1,3 +1,4 @@
 import useBusiness from './useBusiness';
+import useSubmitReview from './useSubmitReview';
 
-export { useBusiness };
+export { useBusiness, useSubmitReview };
