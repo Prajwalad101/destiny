@@ -1,7 +1,3 @@
-.star1:hover ~ .star5 {
-  color: blue;
-}
-
 .ratings div:hover ~ div .star-empty {
   display: none;
 }
@@ -14,6 +10,10 @@
   display: block;
 }
 
-/* .ratings div:hover .ratings div .star-empty {
-  opacity: 0;
-} */
+rating-icon1 .star-full {
+  display: block;
+}
+
+rating-icon2 .star-empty {
+  display: none;
+}

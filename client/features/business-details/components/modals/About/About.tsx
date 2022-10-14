@@ -7,7 +7,7 @@ interface AboutProps {
 
 export default function About({ description, closeModal }: AboutProps) {
   return (
-    <div className="rounded-md bg-white p-5 xs:p-8">
+    <div className="xs:p-8g rounded-md bg-white p-5">
       <h3 className="mb-6 font-merriweather text-xl font-bold">About</h3>
       <p className="mb-8 text-gray-800">{description}</p>
       <div className="flex justify-end">
