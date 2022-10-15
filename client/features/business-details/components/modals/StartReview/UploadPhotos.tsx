@@ -1,22 +1,33 @@
+import { IReviewFormValues } from '@features/business-details/types';
 import Image from 'next/image';
 import File from 'public/illustrations/business-details/File.svg';
-
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { UseFormReturn } from 'react-hook-form';
 import { readFilesAsDataURL } from 'utils/browser';
 import { classNames } from 'utils/tailwind';
 
-export default function UploadPhotos() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UploadPhotosProps = UseFormReturn<IReviewFormValues, any>;
+
+export default function UploadPhotos({
+  register,
+  setValue,
+}: UploadPhotosProps) {
   const [images, setImages] = useState<string[]>();
   const [error, setError] = useState<string>('');
 
-  const onDrop = useCallback((imageFiles: File[]) => {
-    const { promises } = readFilesAsDataURL(imageFiles);
+  const onDrop = useCallback(
+    (imageFiles: File[]) => {
+      setValue('photos', imageFiles);
+      const { promises } = readFilesAsDataURL(imageFiles);
 
-    Promise.all(promises)
-      .then((images) => setImages(images))
-      .catch((error) => setError(error));
-  }, []);
+      Promise.all(promises)
+        .then((images) => setImages(images))
+        .catch((error) => setError(error));
+    },
+    [setValue]
+  );
 
   const { getRootProps, getInputProps, isDragReject, isDragAccept, open } =
     useDropzone({
@@ -27,7 +38,7 @@ export default function UploadPhotos() {
       },
     });
 
-  const acceptClassName = isDragAccept ? ' bg-gray-50 border-blue-400 ' : '';
+  const acceptClassName = isDragAccept ? ' bg-gray-100 border-blue-400 ' : '';
 
   return (
     <div className="mb-10 md:mb-16">
@@ -35,11 +46,11 @@ export default function UploadPhotos() {
       <div
         {...getRootProps()}
         className={classNames(
-          'mb-4 flex w-full flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 py-5',
+          'relative mb-4 flex w-full flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 py-5 transition-colors',
           acceptClassName
         )}
       >
-        <input {...getInputProps()} />
+        <input {...register('photos')} {...getInputProps()} />
         <div className="text-center">
           <div>
             <Image src={File} alt="file-illustration." width={45} height={45} />
@@ -55,6 +66,11 @@ export default function UploadPhotos() {
           >
             Browse
           </button>
+          {images?.length && (
+            <p className="mt-3 text-gray-500">
+              {images.length} images uploaded
+            </p>
+          )}
         </div>
         {isDragReject && (
           <p className="text-gray-400">File type is not allowed</p>
@@ -62,7 +78,7 @@ export default function UploadPhotos() {
       </div>
       {error && <p className="mb-3 text-sm text-red-600">*{error}</p>}
       {/* Preview images */}
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="flex gap-3 overflow-x-auto">
         {images?.map((image, index) => (
           <div key={index} className="relative h-[150px] w-[180px] shrink-0">
             <Image
@@ -70,7 +86,7 @@ export default function UploadPhotos() {
               alt="image"
               layout="fill"
               objectFit="cover"
-              className="rounded-sm"
+              className="rounded-md"
             />
           </div>
         ))}
