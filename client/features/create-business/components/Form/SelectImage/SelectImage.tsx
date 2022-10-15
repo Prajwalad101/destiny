@@ -1,11 +1,11 @@
 import { MyLabel, MySubLabel } from '@features/create-business/components';
-import { readFilesAsDataURL } from '@features/create-business/utils/api';
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
 import Slider from 'components/slider/Slider';
 import { useField } from 'formik';
 import { useEffectAfterMount } from 'hooks';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
+import { readFilesAsDataURL } from 'utils/browser';
 
 interface SelectImageProps {
   inputName: string;
@@ -36,11 +36,13 @@ const SelectImage = ({ inputName }: SelectImageProps) => {
 
   // convert all imageFiles into data URL
   useEffect(() => {
-    const fileReaders: FileReader[] = [];
     let isCancel = false;
+    let readers: FileReader[] = [];
 
     if (imageFiles?.length) {
-      const promises = readFilesAsDataURL(imageFiles);
+      // const promises = readFilesAsDataURL(imageFiles);
+      const { promises, fileReaders } = readFilesAsDataURL(imageFiles);
+      readers = fileReaders;
 
       // update state after all files have finished loading
       Promise.all(promises)
@@ -56,7 +58,7 @@ const SelectImage = ({ inputName }: SelectImageProps) => {
 
     return () => {
       isCancel = true;
-      fileReaders.forEach((fileReader) => {
+      readers.forEach((fileReader) => {
         if (fileReader.readyState === 1) {
           fileReader.abort();
         }

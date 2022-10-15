@@ -1,5 +1,5 @@
 import { IReviewFormValues } from '@features/business-details/types';
-import { UseFormReturn } from 'react-hook-form';
+import { UseFormReturn, useFormState } from 'react-hook-form';
 import { BsStar, BsStarFill } from 'react-icons/bs';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -7,10 +7,12 @@ type AddRatingProps = UseFormReturn<IReviewFormValues, any>;
 
 export default function AddRating({
   setValue,
-  register,
-  formState: { errors },
   getValues,
+  register,
+  control,
 }: AddRatingProps) {
+  const { errors } = useFormState({ control });
+
   const getStarIcon = (ratingNo: number) => (
     <>
       <div
@@ -32,7 +34,7 @@ export default function AddRating({
   );
 
   return (
-    <div className="mb-9">
+    <div className="mb-10">
       <div>
         <input
           type="number"
@@ -41,7 +43,7 @@ export default function AddRating({
           {...register('rating', { min: 1, max: 5 })}
         />
       </div>
-      <p className="mb-3 text-lg font-medium">Add rating</p>
+      <p className="mb-3 text-lg font-medium">Rating</p>
       <div className="ratings mb-3 flex flex-row-reverse justify-end text-gray-700">
         <span className="ml-3 inline-block">({getValues('rating')}/5)</span>
         {getStarIcon(5)}

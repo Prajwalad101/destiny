@@ -1,13 +1,21 @@
 import Image from 'next/image';
 import File from 'public/illustrations/business-details/File.svg';
 
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { readFilesAsDataURL } from 'utils/browser';
 import { classNames } from 'utils/tailwind';
 
 export default function UploadPhotos() {
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    console.log(acceptedFiles);
+  const [images, setImages] = useState<string[]>();
+  const [error, setError] = useState<string>('');
+
+  const onDrop = useCallback((imageFiles: File[]) => {
+    const { promises } = readFilesAsDataURL(imageFiles);
+
+    Promise.all(promises)
+      .then((images) => setImages(images))
+      .catch((error) => setError(error));
   }, []);
 
   const { getRootProps, getInputProps, isDragReject, isDragAccept, open } =
@@ -27,7 +35,7 @@ export default function UploadPhotos() {
       <div
         {...getRootProps()}
         className={classNames(
-          'flex w-full flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 py-5',
+          'mb-4 flex w-full flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 py-5',
           acceptClassName
         )}
       >
@@ -51,6 +59,21 @@ export default function UploadPhotos() {
         {isDragReject && (
           <p className="text-gray-400">File type is not allowed</p>
         )}
+      </div>
+      {error && <p className="mb-3 text-sm text-red-600">*{error}</p>}
+      {/* Preview images */}
+      <div className="flex gap-2 overflow-x-auto">
+        {images?.map((image, index) => (
+          <div key={index} className="relative h-[150px] w-[180px] shrink-0">
+            <Image
+              src={image}
+              alt="image"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-sm"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
