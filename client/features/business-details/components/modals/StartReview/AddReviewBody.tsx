@@ -12,7 +12,7 @@ export default function AddReviewBody({
   const review = useWatch({ control, name: 'review' });
 
   return (
-    <div className="relative mb-2 md:mb-5">
+    <div className="mb-2 md:mb-5">
       <textarea
         {...register('review', {
           required: true,
@@ -26,10 +26,7 @@ export default function AddReviewBody({
       />
       {/* Errors */}
       {errors.review?.type === 'required' && (
-        <p
-          role="alert"
-          className="absolute bottom-1 left-0 text-sm text-red-600"
-        >
+        <p role="alert" className="text-sm text-red-600">
           * This is a required field
         </p>
       )}

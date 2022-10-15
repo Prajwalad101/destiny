@@ -10,7 +10,6 @@ export default function AddRating({
   register,
   formState: { errors },
   getValues,
-  control,
 }: AddRatingProps) {
   const getStarIcon = (ratingNo: number) => (
     <>
@@ -33,7 +32,7 @@ export default function AddRating({
   );
 
   return (
-    <div className="relative mb-9">
+    <div className="mb-9">
       <div>
         <input
           type="number"
@@ -42,8 +41,8 @@ export default function AddRating({
           {...register('rating', { min: 1, max: 5 })}
         />
       </div>
-      <p className="mb-3">Add rating</p>
-      <div className="ratings flex flex-row-reverse justify-end text-gray-700">
+      <p className="mb-3 text-lg font-medium">Add rating</p>
+      <div className="ratings mb-3 flex flex-row-reverse justify-end text-gray-700">
         <span className="ml-3 inline-block">({getValues('rating')}/5)</span>
         {getStarIcon(5)}
         {getStarIcon(4)}
@@ -52,7 +51,7 @@ export default function AddRating({
         {getStarIcon(1)}
       </div>
       {errors.rating?.type === 'min' && (
-        <p role="alert" className="absolute -bottom-7 text-sm text-red-600">
+        <p role="alert" className="text-sm text-red-600">
           * Rating should at least be 1
         </p>
       )}
