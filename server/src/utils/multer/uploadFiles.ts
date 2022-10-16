@@ -1,19 +1,21 @@
 import multer from 'multer';
 
-/**
- * returns a  middleware to process files
- */
-function uploadFiles() {
-  const upload = multer({
-    storage: storage('../client/public/uploads/images/business/'),
-  });
-
-  return upload.array('image', 10);
+interface UploadFilesProps {
+  path: string;
+  maxCount: number;
+  fieldName: string;
 }
 
-const storage = (path: string) => {
+/**
+ *
+ * @param props.path FilePath to save the files to
+ * @param props.maxCount Max numbers to files allowed
+ * @param props.fieldName Name of the field containing images
+ * @returns
+ */
+function uploadFiles({ path, maxCount, fieldName }: UploadFilesProps) {
   const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function (_req, _file, cb) {
       cb(null, path);
     },
     filename: (_req, file, cb) => {
@@ -27,7 +29,11 @@ const storage = (path: string) => {
     },
   });
 
-  return storage;
-};
+  const upload = multer({
+    storage: storage,
+  });
+
+  return upload.array(fieldName, maxCount);
+}
 
 export default uploadFiles;
