@@ -5,16 +5,16 @@ import reviewRouter from './reviewRoutes';
 
 const router = express.Router();
 
-// path to store business images
-const filePath = '../client/public/uploads/images/business/';
+const upload = uploadFiles({
+  path: '../client/public/uploads/images/business/',
+  maxCount: 20,
+  fieldName: 'image',
+});
 
 router
   .route('/')
   .get(businessController.getAllBusinesses)
-  .post(
-    uploadFiles({ path: filePath, maxCount: 20, fieldName: 'image' }),
-    businessController.createBusiness
-  );
+  .post(upload, businessController.createBusiness);
 
 router
   .route('/:id')

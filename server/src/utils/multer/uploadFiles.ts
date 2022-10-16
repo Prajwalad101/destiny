@@ -11,7 +11,7 @@ interface UploadFilesProps {
  * @param props.path FilePath to save the files to
  * @param props.maxCount Max numbers to files allowed
  * @param props.fieldName Name of the field containing images
- * @returns
+ * @returns multer middleware that processes multiple files
  */
 function uploadFiles({ path, maxCount, fieldName }: UploadFilesProps) {
   const storage = multer.diskStorage({
