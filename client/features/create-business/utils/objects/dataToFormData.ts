@@ -1,10 +1,10 @@
 import { MyFormValues } from '@features/create-business/types/MyFormValues';
-import { buildFormData } from './buildFormData';
+import { buildFormData } from 'utils/browser';
 
 export function dataToFormData(data: MyFormValues) {
   const formData = new FormData();
 
-  buildFormData(formData, data);
+  buildFormData({ formData, data });
 
   //! Fix: Price is not uploaded by user
   formData.append('price', 'medium');

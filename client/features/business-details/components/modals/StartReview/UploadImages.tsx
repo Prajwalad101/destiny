@@ -8,18 +8,18 @@ import { readFilesAsDataURL } from 'utils/browser';
 import { classNames } from 'utils/tailwind';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type UploadPhotosProps = UseFormReturn<IReviewFormValues, any>;
+type UploadImagesProps = UseFormReturn<IReviewFormValues, any>;
 
-export default function UploadPhotos({
+export default function UploadImages({
   register,
   setValue,
-}: UploadPhotosProps) {
+}: UploadImagesProps) {
   const [images, setImages] = useState<string[]>();
   const [error, setError] = useState<string>('');
 
   const onDrop = useCallback(
     (imageFiles: File[]) => {
-      setValue('photos', imageFiles);
+      setValue('images', imageFiles);
       const { promises } = readFilesAsDataURL(imageFiles);
 
       Promise.all(promises)
@@ -50,7 +50,7 @@ export default function UploadPhotos({
           acceptClassName
         )}
       >
-        <input {...register('photos')} {...getInputProps()} />
+        <input {...register('images')} {...getInputProps()} />
         <div className="text-center">
           <div>
             <Image src={File} alt="file-illustration." width={45} height={45} />
