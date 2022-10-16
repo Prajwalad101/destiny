@@ -18,7 +18,7 @@ export const incrementBusinessRating = catchAsync(
     if (!business) return next();
 
     business.rating_count += 1; //increment rating_count by 1
-    business.total_rating += req.body.rating; // increment total_rating by new rating
+    business.total_rating += Number(req.body.rating); // increment total_rating by new rating
     await business.save();
 
     next();
