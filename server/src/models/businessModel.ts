@@ -97,16 +97,16 @@ businessSchema.pre('find', function (next) {
   next();
 });
 
-businessSchema.pre('findOne', function (next) {
-  this.populate({
-    path: 'reviews',
-    select: '-business review rating likes dislikes createdAt',
-    options: { sort: '-likes' },
-    perDocumentLimit: 10,
-  });
+// businessSchema.pre('findOne', function (next) {
+//   this.populate({
+//     path: 'reviews',
+//     select: '-business review rating likes dislikes createdAt',
+//     options: { sort: '-likes' },
+//     perDocumentLimit: 10,
+//   });
 
-  next();
-});
+//   next();
+// });
 
 const Business = mongoose.model<IBusiness>('Business', businessSchema);
 
