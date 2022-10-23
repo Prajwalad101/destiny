@@ -5,6 +5,7 @@ import {
   UserReview,
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
+import useReviews from '@features/business-details/hooks/useReviews';
 import { MyModal, Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
@@ -21,21 +22,22 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const { query } = useRouter();
   const businessId = query.businessId as string;
 
-  const result = useBusiness(businessId);
-  const businessData = result.data?.data;
+  const reviewsResult = useReviews(businessId);
+  const businessResult = useBusiness(businessId);
 
-  if (!businessData) return <></>;
-
-  const reviews = businessData.reviews || [];
+  const reviews = reviewsResult.data?.data || [];
+  const business = businessResult.data?.data;
 
   // If there are no reviews
-  if (reviews.length === 0) {
+  if (!reviews) {
     return (
       <div className="flex justify-center">
         <h2 className="text-xl font-medium">No reviews found</h2>
       </div>
     );
   }
+
+  if (!business) return <></>;
 
   return (
     <>
@@ -70,8 +72,8 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         </div>
         <div className="mb-7 border-b border-gray-300" />
         <Ratings
-          avgRating={businessData.avgRating}
-          numReviews={businessData.rating_count}
+          avgRating={business.avgRating}
+          numReviews={business.rating_count}
           className="mb-7"
         />
         <div className="mb-10 border-b border-gray-300" />

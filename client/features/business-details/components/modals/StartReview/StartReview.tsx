@@ -18,6 +18,8 @@ export default function StartReview({ closeModal }: StartReviewProps) {
 
   const mutation = useSubmitReview(businessId);
 
+  console.log(mutation.data);
+
   const formMethods = useForm<IReviewFormValues>({
     defaultValues: { review: '', rating: 0 },
   });
@@ -27,8 +29,10 @@ export default function StartReview({ closeModal }: StartReviewProps) {
     buildFormData({ formData, data: data });
 
     if (data.images) {
-      data.images.forEach((image) => formData.append('images', image));
+      data.images.forEach((image) => formData.append('image', image));
     }
+
+    mutation.mutate(formData);
   };
 
   return (
