@@ -15,6 +15,7 @@ import OpenOrClosed from './OpenOrClosed/OpenOrClosed';
 import PostQuestion from './PostQuestion/PostQuestion';
 import Ratings from './Ratings/Ratings';
 import ReportUserDropdown from './ReportUserDropdown/ReportUserDropdown';
+import ReviewSkeleton from './ReviewSkeleton/ReviewSkeleton';
 import ReviewText from './ReviewText/ReviewText';
 import Services from './Services/Services';
 import UserProfile from './UserProfile/UserProfile';
@@ -44,4 +45,5 @@ export {
   PostQuestion,
   SendMessage,
   About,
+  ReviewSkeleton,
 };

@@ -5,7 +5,7 @@
 @import '../features/search-business/styles/checkbox.css';
 @import '../features/create-business/styles/submit.css';
 @import './line-clamp.css';
-@import '../features/business-details/styles/rating-hover.css';
+@import '../features/business-details/styles/index.css';
 
 html,
 body {

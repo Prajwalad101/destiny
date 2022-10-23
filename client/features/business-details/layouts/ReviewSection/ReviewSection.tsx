@@ -1,5 +1,6 @@
 import {
   Ratings,
+  ReviewSkeleton,
   SortReview,
   StartReview,
   UserReview,
@@ -35,6 +36,10 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         <h2 className="text-xl font-medium">No reviews found</h2>
       </div>
     );
+  }
+
+  if (reviewsResult.isLoading) {
+    return <ReviewSkeleton />;
   }
 
   if (!business) return <></>;
