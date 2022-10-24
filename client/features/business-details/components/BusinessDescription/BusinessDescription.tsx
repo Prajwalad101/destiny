@@ -1,5 +1,4 @@
 import { About } from '@features/business-details/components';
-import { MyModal } from 'components';
 import { useState } from 'react';
 
 interface BusinessDescriptionProps {
@@ -15,13 +14,11 @@ export default function BusinessDescription({
 
   return (
     <>
-      <MyModal
+      <About
         isOpen={isOpen}
+        description={description}
         closeModal={() => setIsOpen(false)}
-        className="w-full max-w-2xl"
-      >
-        <About description={description} closeModal={() => setIsOpen(false)} />
-      </MyModal>
+      />
       <div className={className}>
         <span className="line-clamp-3 leading-[26px]">{description}</span>
         <span

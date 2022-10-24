@@ -1,4 +1,4 @@
-import { SidebarCategoryDropdown } from '@features/home-page/components';
+import SidebarCategoryDropdown from '@features/home-page/components/SidebarCategoryDropdown/SidebarCategoryDropdown';
 import { useSidebar } from 'components/context-provider';
 import Portal from 'components/Portal/Portal';
 import { categoryDropdownData } from 'data';

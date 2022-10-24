@@ -8,6 +8,7 @@ import {
 import { useBusiness } from '@features/business-details/hooks';
 import {
   BusinessInfoSection,
+  // BusinessInfoSection,
   CommunitySection,
 } from '@features/business-details/layouts';
 import { fetchBusiness } from '@features/business-details/utils/api';

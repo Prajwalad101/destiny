@@ -7,7 +7,7 @@ import {
 } from '@features/business-details/components';
 import { useBusiness } from '@features/business-details/hooks';
 import useReviews from '@features/business-details/hooks/useReviews';
-import { MyModal, Portal, SecondaryButton } from 'components';
+import { Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -46,13 +46,10 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
 
   return (
     <>
-      <MyModal
+      <StartReview
         isOpen={reviewModalOpen}
         closeModal={() => setReviewModalOpen(false)}
-        className="w-full max-w-3xl"
-      >
-        <StartReview closeModal={() => setReviewModalOpen(false)} />
-      </MyModal>
+      />
       <div className={classNames(className)}>
         <Portal selector="#start-review-button">
           <SecondaryButton

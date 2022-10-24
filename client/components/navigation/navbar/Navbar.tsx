@@ -2,7 +2,7 @@ import PrimaryButton from 'components/button/primary/PrimaryButton';
 import SecondaryButton from 'components/button/secondary/SecondaryButton';
 import { useSidebar } from 'components/context-provider';
 import Logo from 'components/logo/Logo';
-import usePreventBodyOverflow from 'hooks/usePreventBodyOverflow';
+import { usePreventBodyOverflow } from 'hooks';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';

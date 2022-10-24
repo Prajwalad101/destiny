@@ -4,7 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { ICategoryDropdown } from 'types/business';
 import { classNames } from 'utils/tailwind';
 
-interface SidebarCategoryDropdown {
+export interface SidebarCategoryDropdownProps {
   category: ICategoryDropdown;
   onClick: () => void;
 }
@@ -12,7 +12,7 @@ interface SidebarCategoryDropdown {
 function SidebarCategoryDropdown({
   category,
   onClick,
-}: SidebarCategoryDropdown) {
+}: SidebarCategoryDropdownProps) {
   // currently selected items
   const [selectedCategory, setSelectedCategory] = useState<string>();
 
