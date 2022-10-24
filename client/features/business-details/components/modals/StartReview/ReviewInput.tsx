@@ -11,11 +11,8 @@ export default function ReviewInput({ register, control }: ReviewInputProps) {
   const review = useWatch({ control, name: 'review' });
 
   return (
-    <div className="">
-      <div className="mb-3 flex items-center gap-3">
-        <p className="text-lg font-medium">Review</p>
-        <Error errorType={errors.review?.type} />
-      </div>
+    <div className={errors.review ? 'mb-5' : ''}>
+      <p className="mb-3 text-lg font-medium">Review</p>
       <textarea
         {...register('review', {
           required: true,
@@ -30,9 +27,12 @@ export default function ReviewInput({ register, control }: ReviewInputProps) {
           errors.review ? 'ring-red-500' : 'ring-blue-500'
         )}
       />
-      <p className="grow text-right text-sm text-gray-600">
-        {review.length} / 1000
-      </p>
+      <div className="flex justify-between">
+        <Error errorType={errors.review?.type} />
+        <p className="grow text-right text-sm text-gray-600">
+          {review.length} / 1000
+        </p>
+      </div>
     </div>
   );
 }
@@ -41,13 +41,13 @@ function Error({ errorType }: { errorType: string | undefined }) {
   return (
     <>
       {errorType === 'required' && (
-        <InputError className="pt-[2px]">(*Required)</InputError>
+        <InputError>This field is required</InputError>
       )}
       {errorType === 'maxLength' && (
-        <InputError className="pt-[3px]">(*Too long)</InputError>
+        <InputError>Your review is too long</InputError>
       )}
       {errorType === 'minLength' && (
-        <InputError className="pt-[3px]">(*Too short)</InputError>
+        <InputError>Your review is too short</InputError>
       )}
     </>
   );

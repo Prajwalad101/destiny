@@ -41,7 +41,7 @@ export default function UploadImages({
   const acceptClassName = isDragAccept ? ' bg-gray-100 border-blue-400 ' : '';
 
   return (
-    <div className="mb-10 md:mb-16">
+    <div className="mb-10">
       <p className="mb-3 text-lg font-medium">Upload Photos</p>
       <div
         {...getRootProps()}

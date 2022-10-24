@@ -21,8 +21,6 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
 
   const mutation = useSubmitReview(businessId);
 
-  console.log(mutation.data);
-
   const formMethods = useForm<IReviewFormValues>({
     defaultValues: { review: '', rating: 0 },
   });
