@@ -21,9 +21,10 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
 
   const mutation = useSubmitReview(businessId);
 
-  const formMethods = useForm<IReviewFormValues>({
-    defaultValues: { review: '', rating: 0 },
-  });
+  const { register, control, setValue, getValues, handleSubmit } =
+    useForm<IReviewFormValues>({
+      defaultValues: { review: '', rating: 0 },
+    });
 
   const onSubmit: SubmitHandler<IReviewFormValues> = (data) => {
     const formData = new FormData();
@@ -32,8 +33,11 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
     if (data.images) {
       data.images.forEach((image) => formData.append('image', image));
     }
-
-    mutation.mutate(formData);
+    mutation.mutate(formData, {
+      onSuccess: () => {
+        closeModal();
+      },
+    });
   };
 
   return (
@@ -66,10 +70,15 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
                   <h3 className="mb-5 font-merriweather  text-[22px] font-bold md:mb-7">
                     Start your review
                   </h3>
-                  <form onSubmit={formMethods.handleSubmit(onSubmit)}>
-                    <ReviewInput {...formMethods} />
-                    <SelectRating {...formMethods} />
-                    <UploadImages {...formMethods} />
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <ReviewInput register={register} control={control} />
+                    <SelectRating
+                      register={register}
+                      control={control}
+                      setValue={setValue}
+                      getValues={getValues}
+                    />
+                    <UploadImages register={register} setValue={setValue} />
                     <Buttons onClick={closeModal} />
                   </form>
                 </div>

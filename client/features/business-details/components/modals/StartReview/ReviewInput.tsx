@@ -1,10 +1,18 @@
 import { IReviewFormValues } from '@features/business-details/types';
-import { UseFormReturn, useFormState, useWatch } from 'react-hook-form';
+import {
+  Control,
+  UseFormRegister,
+  useFormState,
+  useWatch,
+} from 'react-hook-form';
 import { classNames } from 'utils/tailwind';
 import InputError from './InputError';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ReviewInputProps = UseFormReturn<IReviewFormValues, any>;
+type ReviewInputProps = {
+  register: UseFormRegister<IReviewFormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<IReviewFormValues, any>;
+};
 
 export default function ReviewInput({ register, control }: ReviewInputProps) {
   const { errors } = useFormState({ control });

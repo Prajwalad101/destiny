@@ -3,12 +3,15 @@ import Image from 'next/image';
 import File from 'public/illustrations/business-details/File.svg';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { UseFormReturn } from 'react-hook-form';
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { readFilesAsDataURL } from 'utils/browser';
 import { classNames } from 'utils/tailwind';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type UploadImagesProps = UseFormReturn<IReviewFormValues, any>;
+type UploadImagesProps = {
+  register: UseFormRegister<IReviewFormValues>;
+  setValue: UseFormSetValue<IReviewFormValues>;
+};
 
 export default function UploadImages({
   register,

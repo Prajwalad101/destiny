@@ -1,10 +1,21 @@
 import { IReviewFormValues } from '@features/business-details/types';
-import { UseFormReturn, useFormState } from 'react-hook-form';
+import {
+  Control,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+  useFormState,
+} from 'react-hook-form';
 import { BsStar, BsStarFill } from 'react-icons/bs';
 import InputError from './InputError';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SelectRatingProps = UseFormReturn<IReviewFormValues, any>;
+interface SelectRatingProps {
+  register: UseFormRegister<IReviewFormValues>;
+  setValue: UseFormSetValue<IReviewFormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<IReviewFormValues, any>;
+  getValues: UseFormGetValues<IReviewFormValues>;
+}
 
 export default function SelectRating({
   setValue,
