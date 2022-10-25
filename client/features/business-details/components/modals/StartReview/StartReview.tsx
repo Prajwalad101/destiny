@@ -2,9 +2,10 @@ import { useSubmitReview } from '@features/business-details/hooks';
 import { IReviewFormValues } from '@features/business-details/types';
 import { Dialog, Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { buildFormData } from 'utils/browser';
+import { classNames } from 'utils/tailwind';
 import Buttons from './Buttons';
 import ReviewInput from './ReviewInput';
 import SelectRating from './SelectRating';
@@ -21,10 +22,17 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
 
   const mutation = useSubmitReview(businessId);
 
-  const { register, control, setValue, getValues, handleSubmit } =
+  const { register, control, setValue, getValues, handleSubmit, reset } =
     useForm<IReviewFormValues>({
       defaultValues: { review: '', rating: 0 },
     });
+
+  // reset form after successful mutation
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      reset({ review: '', rating: 0 });
+    }
+  }, [mutation.isSuccess, reset]);
 
   const onSubmit: SubmitHandler<IReviewFormValues> = (data) => {
     const formData = new FormData();
@@ -65,8 +73,18 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-3xl">
-                <div className=" rounded-sm bg-white p-5 md:p-8">
+              <Dialog.Panel
+                className={classNames(
+                  'w-full max-w-3xl',
+                  mutation.isLoading ? 'cursor-wait' : 'cursor-default'
+                )}
+              >
+                <div
+                  className={classNames(
+                    mutation.isLoading ? 'bg-gray-50' : 'bg-white',
+                    'rounded-sm p-5 md:p-8'
+                  )}
+                >
                   <h3 className="mb-5 font-merriweather  text-[22px] font-bold md:mb-7">
                     Start your review
                   </h3>
@@ -79,7 +97,10 @@ export default function StartReview({ isOpen, closeModal }: StartReviewProps) {
                       getValues={getValues}
                     />
                     <UploadImages register={register} setValue={setValue} />
-                    <Buttons onClick={closeModal} />
+                    <Buttons
+                      isLoading={mutation.isLoading}
+                      onCancel={closeModal}
+                    />
                   </form>
                 </div>
               </Dialog.Panel>
