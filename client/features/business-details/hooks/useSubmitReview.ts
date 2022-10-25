@@ -13,8 +13,14 @@ export default function useSubmitReview(businessId: string) {
   return useMutation(
     (reviewForm: FormData) => postReview(businessId, reviewForm),
     {
-      onSuccess(data, variables, context) {
-        return queryClient.invalidateQueries([]);
+      onSuccess(newReview) {
+        queryClient.setQueryData<IReview[]>(
+          ['reviews', businessId],
+          (oldData) => {
+            if (!oldData) return [newReview.data.data]; // if no data, return new data
+            return [newReview.data.data, ...oldData];
+          }
+        );
       },
     }
   );

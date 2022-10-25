@@ -26,7 +26,7 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const reviewsResult = useReviews(businessId);
   const businessResult = useBusiness(businessId);
 
-  const reviews = reviewsResult.data?.data || [];
+  const reviews = reviewsResult.data || [];
   const business = businessResult.data?.data;
 
   // If there are no reviews
