@@ -1,4 +1,4 @@
 import fetchBusiness from './fetchBusiness';
-import postReview from './postReview';
+import getReviews from './getReviews';
 
-export { fetchBusiness, postReview };
+export { fetchBusiness, getReviews };

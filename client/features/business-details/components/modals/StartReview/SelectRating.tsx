@@ -1,10 +1,21 @@
 import { IReviewFormValues } from '@features/business-details/types';
-import { UseFormReturn, useFormState } from 'react-hook-form';
+import {
+  Control,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+  useFormState,
+} from 'react-hook-form';
 import { BsStar, BsStarFill } from 'react-icons/bs';
 import InputError from './InputError';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SelectRatingProps = UseFormReturn<IReviewFormValues, any>;
+interface SelectRatingProps {
+  register: UseFormRegister<IReviewFormValues>;
+  setValue: UseFormSetValue<IReviewFormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<IReviewFormValues, any>;
+  getValues: UseFormGetValues<IReviewFormValues>;
+}
 
 export default function SelectRating({
   setValue,
@@ -24,20 +35,16 @@ export default function SelectRating({
           {...register('rating', { min: 1, max: 5 })}
         />
       </div>
-      <p className="mb-3 text-lg font-medium">
-        Rating{' '}
-        {errors.rating?.type === 'min' && (
-          <InputError className="ml-3 inline-block font-normal">
-            (*Required)
-          </InputError>
-        )}
-      </p>
+      <p className="mb-3 text-lg font-medium">Rating</p>
       <StarIcons
         rating={getValues('rating')}
         onClick={(iconNum) =>
           setValue('rating', iconNum, { shouldValidate: true })
         }
       />
+      {errors.rating?.type === 'min' && (
+        <InputError>Please provide a rating</InputError>
+      )}
     </div>
   );
 }
@@ -70,7 +77,7 @@ function StarIcons({ onClick, rating }: StarIconsProps) {
   }
 
   return (
-    <div className="ratings mb-3 flex flex-row-reverse flex-wrap justify-end gap-y-2 text-gray-700">
+    <div className="ratings mb-4 flex flex-row-reverse flex-wrap justify-end gap-y-2 text-gray-700">
       {ratingStatus && (
         <span className="ml-3 inline-block text-gray-500">
           ({ratingStatus})

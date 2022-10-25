@@ -1,4 +1,4 @@
-import { Divider, MyModal, PrimaryButton, SecondaryButton } from 'components';
+import { Divider, PrimaryButton, SecondaryButton } from 'components';
 import Link from 'next/link';
 import { useState } from 'react';
 import { classNames } from 'utils/tailwind';
@@ -21,13 +21,7 @@ export default function Services({
 
   return (
     <>
-      <MyModal
-        isOpen={isMessageOpen}
-        closeModal={closeMessageModal}
-        className="w-full max-w-2xl"
-      >
-        <SendMessage closeModal={closeMessageModal} />
-      </MyModal>
+      <SendMessage isOpen={isMessageOpen} closeModal={closeMessageModal} />
       <div
         className={classNames(
           className,

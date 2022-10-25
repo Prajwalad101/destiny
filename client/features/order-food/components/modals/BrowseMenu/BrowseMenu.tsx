@@ -3,6 +3,7 @@ import {
   IMenuCategory,
   MenuItem,
 } from '@features/business-details/data/menuData';
+import { Dialog, Transition } from '@headlessui/react';
 import { Divider, PrimaryButton, SecondaryButton } from 'components';
 import Image from 'next/image';
 import { IOrderedMenuItem } from 'pages/start-order';
@@ -17,12 +18,14 @@ import { BsCaretDown, BsCaretRight } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 
 interface BrowseMenuProps {
+  isOpen: boolean;
   selectedItems: IOrderedMenuItem[];
   setSelectedItems: Dispatch<SetStateAction<IOrderedMenuItem[]>>;
   closeModal: () => void;
 }
 
 export default function BrowseMenu({
+  isOpen,
   closeModal,
   selectedItems,
   setSelectedItems,
@@ -120,58 +123,94 @@ export default function BrowseMenu({
   };
 
   return (
-    <div className="flex h-full flex-col overflow-scroll rounded-md bg-white p-4 md:p-8">
-      <Heading onClick={closeModal} />
-      <div className="mb-5 h-auto grow">
-        <p className="mb-5 text-gray-700">
-          Select items from the categories below
-        </p>
-        {menuData.map((category) => (
-          <div key={category.id}>
-            <div
-              className="group flex cursor-pointer flex-col items-start justify-between gap-y-2 py-4 transition-colors hover:bg-gray-100 xs:flex-row  xs:items-center"
-              onClick={() => handleExpandItems(category.name)}
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black bg-opacity-25" />
+        </Transition.Child>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-6">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
-              <div className="flex items-center gap-1 transition-transform group-hover:translate-x-2 group-hover:text-gray-700">
-                {getCaretIcon(category)}
-                <h4 className="font-merriweather font-bold uppercase">
-                  {category.name}
-                </h4>
-              </div>
-              <p className=" pr-3 text-gray-600">
-                {getAddedItems(category).length} / {category.items.length}{' '}
-                selected
-              </p>
-            </div>
-            <Divider />
-            {category.name === selectedCategory && (
-              <div className="mt-7 child-notlast:mb-5">
-                {category.items.map((item) => (
-                  <Fragment key={item.id}>
-                    <Item item={item}>
-                      <div className="flex items-center gap-3">
-                        <span>Quantity:</span>
-                        <input
-                          value={getQuantity(item)}
-                          onChange={(e) => handleQuantityChange(e, item)}
-                          className="h-[40px] w-16 rounded-md border border-gray-500 bg-white px-4 py-2 text-center outline-none ring-gray-500 ring-offset-1 focus:ring"
-                        />
+              <Dialog.Panel className="h-[95vh] w-full max-w-5xl">
+                <div className="flex h-full flex-col overflow-scroll rounded-md bg-white p-4 md:p-8">
+                  <Heading onClick={closeModal} />
+                  <div className="mb-5 h-auto grow">
+                    <p className="mb-5 text-gray-700">
+                      Select items from the categories below
+                    </p>
+                    {menuData.map((category) => (
+                      <div key={category.id}>
+                        <div
+                          className="group flex cursor-pointer flex-col items-start justify-between gap-y-2 py-4 transition-colors hover:bg-gray-100 xs:flex-row  xs:items-center"
+                          onClick={() => handleExpandItems(category.name)}
+                        >
+                          <div className="flex items-center gap-1 transition-transform group-hover:translate-x-2 group-hover:text-gray-700">
+                            {getCaretIcon(category)}
+                            <h4 className="font-merriweather font-bold uppercase">
+                              {category.name}
+                            </h4>
+                          </div>
+                          <p className=" pr-3 text-gray-600">
+                            {getAddedItems(category).length} /{' '}
+                            {category.items.length} selected
+                          </p>
+                        </div>
+                        <Divider />
+                        {category.name === selectedCategory && (
+                          <div className="mt-7 child-notlast:mb-5">
+                            {category.items.map((item) => (
+                              <Fragment key={item.id}>
+                                <Item item={item}>
+                                  <div className="flex items-center gap-3">
+                                    <span>Quantity:</span>
+                                    <input
+                                      value={getQuantity(item)}
+                                      onChange={(e) =>
+                                        handleQuantityChange(e, item)
+                                      }
+                                      className="h-[40px] w-16 rounded-md border border-gray-500 bg-white px-4 py-2 text-center outline-none ring-gray-500 ring-offset-1 focus:ring"
+                                    />
+                                  </div>
+                                  {getItemButton(item)}
+                                </Item>
+                              </Fragment>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                      {getItemButton(item)}
-                    </Item>
-                  </Fragment>
-                ))}
-              </div>
-            )}
+                    ))}
+                  </div>
+                  <div className="ml-auto">
+                    <PrimaryButton
+                      className="h-[45px] w-[120px]"
+                      onClick={closeModal}
+                    >
+                      Done
+                    </PrimaryButton>
+                  </div>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
-        ))}
-      </div>
-      <div className="ml-auto">
-        <PrimaryButton className="h-[45px] w-[120px]" onClick={closeModal}>
-          Done
-        </PrimaryButton>
-      </div>
-    </div>
+        </div>
+      </Dialog>
+    </Transition>
   );
 }
 

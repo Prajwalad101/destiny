@@ -1,16 +1,21 @@
+import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, Fragment, SetStateAction, useEffect, useState } from 'react';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { ButtonProps } from 'types/props';
 import { classNames } from 'utils/tailwind';
 
-interface BusinessImageModalProps {
+interface ImagePreviewProps {
+  isOpen: boolean;
+  closeModal: () => void;
   images: string[];
 }
 
-export default function BusinessImageModal({
+export default function ImagePreview({
+  isOpen,
+  closeModal,
   images,
-}: BusinessImageModalProps) {
+}: ImagePreviewProps) {
   // since order of images doesn't change, image index is used as image id
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [viewMode, setViewMode] = useState<'slideshow' | 'gallery'>(
@@ -18,27 +23,58 @@ export default function BusinessImageModal({
   );
 
   return (
-    <div className="h-full rounded-sm bg-white p-4">
-      {viewMode === 'slideshow' && (
-        <SlideShow
-          images={images}
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-          onClick={(_image) => setViewMode('gallery')}
-        />
-      )}
-      <div />
-      {viewMode === 'gallery' && (
-        <Gallery
-          images={images}
-          onClick={(imageIndex) => {
-            setViewMode('slideshow');
-            setSelectedIndex(imageIndex);
-          }}
-          selectedIndex={selectedIndex}
-        />
-      )}
-    </div>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black bg-opacity-25" />
+        </Transition.Child>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-6">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="relative h-[80vh] w-full max-w-7xl">
+                <div className="h-full rounded-sm bg-white p-4">
+                  {viewMode === 'slideshow' && (
+                    <SlideShow
+                      images={images}
+                      selectedIndex={selectedIndex}
+                      setSelectedIndex={setSelectedIndex}
+                      onClick={(_image) => setViewMode('gallery')}
+                    />
+                  )}
+                  <div />
+                  {viewMode === 'gallery' && (
+                    <Gallery
+                      images={images}
+                      onClick={(imageIndex) => {
+                        setViewMode('slideshow');
+                        setSelectedIndex(imageIndex);
+                      }}
+                      selectedIndex={selectedIndex}
+                    />
+                  )}
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition>
   );
 }
 

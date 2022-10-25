@@ -1,10 +1,9 @@
-import { ImageGallery } from '@features/business-details/components';
-import { MyModal } from 'components';
 import Slider from 'components/slider/Slider';
 import Image from 'next/image';
 import { useState } from 'react';
 import { MdOutlinePhotoSizeSelectActual } from 'react-icons/md';
 import { getPublicFilePath } from 'utils/text';
+import ImagePreview from '../modals/ImagePreview/ImagePreview';
 
 interface BusinessImageProps {
   images: string[];
@@ -14,18 +13,15 @@ export default function BusinessImage({
   images: businessImages,
 }: BusinessImageProps) {
   const [isOpen, setIsOpen] = useState(false);
-
   const images = businessImages.map((image) => getPublicFilePath(image));
 
   return (
     <>
-      <MyModal
-        className="relative h-[80vh] w-full max-w-7xl"
-        closeModal={() => setIsOpen(false)}
+      <ImagePreview
         isOpen={isOpen}
-      >
-        <ImageGallery images={images} />
-      </MyModal>
+        closeModal={() => setIsOpen(false)}
+        images={images}
+      />
       <div className="group relative">
         <Slider
           numItems={images.length}

@@ -6,7 +6,7 @@ import {
   PersonalDetailsForm,
   PlaceOrder,
 } from '@features/order-food/components';
-import { MyModal, PrimaryButton, SecondaryButton } from 'components';
+import { PrimaryButton, SecondaryButton } from 'components';
 import { NavigationProvider, QueryProvider } from 'components/context-provider';
 import { AppLayout } from 'components/layout';
 import { Navbar, Sidebar } from 'components/navigation';
@@ -46,27 +46,17 @@ const StartOrderPage: NextPageWithLayout = () => {
         <h1 className="my-8 font-merriweather text-2xl font-bold text-gray-800 sm:text-3xl md:my-12">
           Start your Order
         </h1>
-        <MyModal
+        <BrowseMenu
           isOpen={isMenuOpen}
           closeModal={closeMenu}
-          className="h-[95vh] w-full max-w-5xl"
-        >
-          <BrowseMenu
-            closeModal={closeMenu}
-            selectedItems={selectedItems}
-            setSelectedItems={setSelectedItems}
-          />
-        </MyModal>
-        <MyModal
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+        />
+        <PlaceOrder
           isOpen={isPlaceOrderOpen}
           closeModal={closeConfirmationMenu}
-          className="w-full max-w-2xl "
-        >
-          <PlaceOrder
-            closeModal={closeConfirmationMenu}
-            orderedItems={selectedItems}
-          />
-        </MyModal>
+          orderedItems={selectedItems}
+        />
         <OrderDetails
           orderItems={selectedItems}
           setOrderItems={setSelectedItems}
