@@ -6,11 +6,9 @@ import catchAsync from '../utils/catchAsync';
 
 const getAllReviews = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
-    // if business exists on the body, filter based on that id
-    const businessId = req.body.business;
-    const filter = businessId ? { business: businessId } : {};
+    const query = Review.find();
 
-    const features = new APIFeatures(Review.find(filter), req.query)
+    const features = new APIFeatures(query, req.query)
       .filter()
       .sort()
       .limitFields()
@@ -43,6 +41,10 @@ const getReview = catchAsync(
 
 const createReview = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
+    req.body.business = req.query.business;
+
+    console.log(req.body);
+
     const newReview = await Review.create(req.body);
 
     res.status(201).json({
