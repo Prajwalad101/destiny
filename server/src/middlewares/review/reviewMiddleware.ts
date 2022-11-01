@@ -8,13 +8,13 @@ import catchAsync from '../../utils/catchAsync';
 export const incrementBusinessRating = catchAsync(
   async (req: Request, _res: Response, next: NextFunction) => {
     // throw error if businessId is not provided
-    if (!req.body.business)
+    if (!req.query.business)
       return next(new AppError('No business id found', 400));
 
     // throw error if rating is not provided
     if (!req.body.rating) return next(new AppError('No rating found', 400));
 
-    const business = await Business.findById(req.body.business);
+    const business = await Business.findById(req.query.business);
     if (!business) return next();
 
     business.rating_count += 1; //increment rating_count by 1
@@ -31,7 +31,7 @@ export const updateBusinessRating = catchAsync(
     if (!req.body.rating) return next();
 
     // throw error if businessId is not given (make businessId mandatory)
-    if (!req.body.business)
+    if (!req.query.business)
       return next(new AppError('No business id found.', 400));
 
     // get the old rating and update new rating based on that
@@ -41,7 +41,7 @@ export const updateBusinessRating = catchAsync(
     // increment new rating by the difference between new and previous rating
     const incrementBy = req.body.rating - review.rating;
 
-    const business = await Business.findById(req.body.business);
+    const business = await Business.findById(req.query.business);
     if (!business) return next();
 
     business.total_rating += incrementBy; // increment or decrement total_rating (depends on incrementBy)
