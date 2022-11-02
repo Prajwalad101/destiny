@@ -1,12 +1,15 @@
-import { IReviewResponse } from '@features/business-details/hooks/useReviews';
-import axios from 'axios';
+import { IReviewFilterOptions } from '@features/business-details/types';
 
-async function getReviews(businessId: string) {
-  const response = await axios.get<IReviewResponse>(
-    `${process.env.NEXT_PUBLIC_HOST}/api/business/${businessId}/reviews`
+async function getReviews(
+  businessId: string,
+  filterOptions?: IReviewFilterOptions
+) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/reviews?business=${businessId}&sort=${filterOptions?.sort}`
   );
 
-  return response.data.data;
+  const data = await response.json();
+  return data.data;
 }
 
 export default getReviews;

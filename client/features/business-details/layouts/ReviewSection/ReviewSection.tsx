@@ -5,6 +5,7 @@ import {
   StartReview,
   UserReview,
 } from '@features/business-details/components';
+import { reviewSortOptions } from '@features/business-details/data';
 import { useBusiness } from '@features/business-details/hooks';
 import useReviews from '@features/business-details/hooks/useReviews';
 import { Portal, SecondaryButton } from 'components';
@@ -19,11 +20,16 @@ interface ReviewSectionProps {
 
 export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [selectedReviewSort, setSelectedReviewSort] = useState(
+    reviewSortOptions[0]
+  );
 
   const { query } = useRouter();
   const businessId = query.businessId as string;
 
-  const reviewsResult = useReviews(businessId);
+  const reviewsResult = useReviews(businessId, {
+    sort: selectedReviewSort.field,
+  });
   const businessResult = useBusiness(businessId);
 
   const reviews = reviewsResult.data || [];
@@ -61,7 +67,11 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         </Portal>
 
         <div className="mb-7 flex flex-wrap-reverse items-center justify-between gap-y-5 gap-x-2">
-          <SortReview />
+          <SortReview
+            sortOptions={reviewSortOptions}
+            selectedSort={selectedReviewSort}
+            onSelect={(sortItem) => setSelectedReviewSort(sortItem)}
+          />
           {/* Search bar */}
           <div className="relative mr-[2px] flex w-max items-center">
             <input

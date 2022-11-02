@@ -1,6 +1,7 @@
 import { IReview } from '@destiny/common/types';
+import { IReviewFilterOptions } from '@features/business-details/types';
+import { getReviews } from '@features/business-details/utils/api';
 import { useQuery } from 'react-query';
-import { getReviews } from '../utils/api';
 
 export interface IReviewResponse {
   status: string;
@@ -8,10 +9,13 @@ export interface IReviewResponse {
   data: IReview[];
 }
 
-export default function useReviews(businessId: string) {
+export default function useReviews(
+  businessId: string,
+  filterOptions?: IReviewFilterOptions
+) {
   const query = useQuery<IReview[], Error>(
-    ['reviews', businessId],
-    () => getReviews(businessId),
+    ['reviews', businessId, filterOptions],
+    () => getReviews(businessId, filterOptions),
     { staleTime: 1000 * 10 }
   );
 
