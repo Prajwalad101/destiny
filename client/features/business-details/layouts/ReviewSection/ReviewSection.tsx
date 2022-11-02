@@ -12,6 +12,7 @@ import { Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { addOrRemove } from 'utils/array';
 import { classNames } from 'utils/tailwind';
 
 interface ReviewSectionProps {
@@ -23,12 +24,14 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const [selectedReviewSort, setSelectedReviewSort] = useState(
     reviewSortOptions[0]
   );
+  const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
 
   const { query } = useRouter();
   const businessId = query.businessId as string;
 
   const reviewsResult = useReviews(businessId, {
     sort: selectedReviewSort.field,
+    ratings: selectedRatings,
   });
   const businessResult = useBusiness(businessId);
 
@@ -42,10 +45,6 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         <h2 className="text-xl font-medium">No reviews found</h2>
       </div>
     );
-  }
-
-  if (reviewsResult.isLoading) {
-    return <ReviewSkeleton />;
   }
 
   if (!business) return <></>;
@@ -87,15 +86,24 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
           avgRating={business.avgRating}
           numReviews={business.rating_count}
           className="mb-7"
+          onClick={(rating) => {
+            setSelectedRatings(addOrRemove(selectedRatings, rating));
+          }}
         />
         <div className="mb-10 border-b border-gray-300" />
-        <div className="child-notlast:mb-7">
-          {reviews.map((review) => (
-            <Fragment key={review._id.toString()}>
-              <UserReview review={review} />
-            </Fragment>
-          ))}
-        </div>
+        {reviewsResult.isLoading ? (
+          <ReviewSkeleton items={5} />
+        ) : (
+          <>
+            <div className="child-notlast:mb-7">
+              {reviews.map((review) => (
+                <Fragment key={review._id.toString()}>
+                  <UserReview review={review} />
+                </Fragment>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

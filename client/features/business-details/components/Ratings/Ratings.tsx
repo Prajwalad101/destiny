@@ -1,25 +1,27 @@
 import RatingIcons from 'components/icons/ratings/RatingIcons';
 import { classNames } from 'utils/tailwind';
 
+const ratings = [
+  { name: 'excellent', value: 5, numRatings: 232 },
+  { name: 'very good', value: 4, numRatings: 30 },
+  { name: 'average', value: 3, numRatings: 50 },
+  { name: 'poor', value: 2, numRatings: 18 },
+  { name: 'very poor', value: 1, numRatings: 10 },
+];
+
 interface RatingsProps {
   avgRating: number;
   numReviews: number;
   className?: string;
+  onClick: (_value: number) => void;
 }
 
 export default function Ratings({
   avgRating,
   numReviews,
   className = '',
+  onClick,
 }: RatingsProps) {
-  const ratings = [
-    { name: 'excellent', value: 232 },
-    { name: 'very good', value: 30 },
-    { name: 'average', value: 50 },
-    { name: 'poor', value: 18 },
-    { name: 'very poor', value: 10 },
-  ];
-
   //! Change Later
   numReviews = 300;
 
@@ -32,7 +34,7 @@ export default function Ratings({
       <p className="mb-10 text-gray-500 underline">from {numReviews} reviews</p>
       <div className="flex flex-col gap-3">
         {ratings.map((rating, index) => {
-          const percentage = (rating.value / numReviews) * 100;
+          const percentage = (rating.numRatings / numReviews) * 100;
           return (
             // <div key={index} className="flex items-center gap-8">
             <div key={index} className="mb-1 items-center xs:flex">
@@ -41,6 +43,7 @@ export default function Ratings({
                   type="checkbox"
                   id={rating.name}
                   className="cursor-pointer"
+                  onClick={() => onClick(rating.value)}
                 />
                 <label
                   className="w-[120px] cursor-pointer capitalize"

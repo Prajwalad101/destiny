@@ -1,8 +1,16 @@
-export default function ReviewSkeleton() {
-  const cards = [1, 2, 3];
+interface ReviewSkeletonProps {
+  items?: number;
+  className?: string;
+}
+
+export default function ReviewSkeleton({
+  items = 3,
+  className = '',
+}: ReviewSkeletonProps) {
+  const cards = Array.from(Array(items).keys());
 
   return (
-    <>
+    <div className={className}>
       {cards.map((card, i) => (
         <div
           key={i}
@@ -17,6 +25,6 @@ export default function ReviewSkeleton() {
           <div className="h-4 w-full rounded-sm bg-white" />
         </div>
       ))}
-    </>
+    </div>
   );
 }
