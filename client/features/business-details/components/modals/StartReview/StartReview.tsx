@@ -1,4 +1,4 @@
-import { useSubmitReview } from '@features/business-details/hooks';
+import { useSubmitReview } from '@features/business-details/queries';
 import { IReviewFormValues } from '@features/business-details/types';
 import { Dialog, Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';

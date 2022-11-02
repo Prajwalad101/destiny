@@ -6,8 +6,7 @@ import {
   UserReview,
 } from '@features/business-details/components';
 import { reviewSortOptions } from '@features/business-details/data';
-import { useBusiness } from '@features/business-details/hooks';
-import useReviews from '@features/business-details/hooks/useReviews';
+import { useBusiness, useReviews } from '@features/business-details/queries';
 import { Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';

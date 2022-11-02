@@ -1,9 +1,30 @@
+import { IReview } from '@destiny/common/types';
 import { IReviewFilterOptions } from '@features/business-details/types';
+import { useQuery } from 'react-query';
 
-async function getReviews(
+export interface IReviewResponse {
+  status: string;
+  documentCount: number;
+  data: IReview[];
+}
+
+export default function useReviews(
   businessId: string,
   filterOptions?: IReviewFilterOptions
 ) {
+  const query = useQuery<IReview[], Error>(
+    ['reviews', businessId, filterOptions],
+    () => getReviews(businessId, filterOptions),
+    { staleTime: 1000 * 10 }
+  );
+
+  return query;
+}
+
+const getReviews = async (
+  businessId: string,
+  filterOptions?: IReviewFilterOptions
+) => {
   let URL = `${process.env.NEXT_PUBLIC_HOST}/api/reviews?business=${businessId}`;
 
   if (filterOptions) {
@@ -14,9 +35,9 @@ async function getReviews(
   const data = await response.json();
 
   return data.data;
-}
+};
 
-function getQueryURL(filterOptions: IReviewFilterOptions) {
+const getQueryURL = (filterOptions: IReviewFilterOptions) => {
   let URL = '';
 
   if (filterOptions.sort) {
@@ -27,6 +48,4 @@ function getQueryURL(filterOptions: IReviewFilterOptions) {
   }
 
   return URL;
-}
-
-export default getReviews;
+};
