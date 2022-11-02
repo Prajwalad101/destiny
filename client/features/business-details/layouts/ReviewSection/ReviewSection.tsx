@@ -32,6 +32,7 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
     sort: selectedReviewSort.field,
     ratings: selectedRatings,
   });
+
   const businessResult = useBusiness(businessId);
 
   const reviews = reviewsResult.data || [];
@@ -85,8 +86,9 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
           avgRating={business.avgRating}
           numReviews={business.rating_count}
           className="mb-7"
-          onClick={(rating) => {
-            setSelectedRatings(addOrRemove(selectedRatings, rating));
+          onClick={(rating: number) => {
+            const ratings = addOrRemove(selectedRatings, rating);
+            setSelectedRatings(ratings);
           }}
         />
         <div className="mb-10 border-b border-gray-300" />

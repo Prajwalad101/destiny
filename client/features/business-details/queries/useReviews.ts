@@ -12,6 +12,10 @@ export default function useReviews(
   businessId: string,
   filterOptions?: IReviewFilterOptions
 ) {
+  // sort ratings array because order of keys in an array matters
+  // modifying ratings from [1,2] to [2,1] should not trigger a refetch
+  filterOptions?.ratings && filterOptions.ratings.sort((a, b) => b - a);
+
   const query = useQuery<IReview[], Error>(
     ['reviews', businessId, filterOptions],
     () => getReviews(businessId, filterOptions),
