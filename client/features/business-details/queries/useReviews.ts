@@ -25,10 +25,10 @@ export default function useReviews(
   return query;
 }
 
-const getReviews = async (
+async function getReviews(
   businessId: string,
   filterOptions?: IReviewFilterOptions
-) => {
+) {
   let URL = `${process.env.NEXT_PUBLIC_HOST}/api/reviews?business=${businessId}`;
 
   if (filterOptions) {
@@ -38,10 +38,14 @@ const getReviews = async (
   const response = await fetch(URL);
   const data = await response.json();
 
-  return data.data;
-};
+  if (!response.ok) {
+    throw new Error(data.message);
+  }
 
-const getQueryURL = (filterOptions: IReviewFilterOptions) => {
+  return data.data;
+}
+
+function getQueryURL(filterOptions: IReviewFilterOptions) {
   let URL = '';
 
   if (filterOptions.sort) {
@@ -52,4 +56,4 @@ const getQueryURL = (filterOptions: IReviewFilterOptions) => {
   }
 
   return URL;
-};
+}
