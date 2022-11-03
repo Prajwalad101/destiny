@@ -2,38 +2,24 @@ import { IReview } from '@destiny/common/types';
 import { IReviewFilterOptions } from '@features/business-details/types';
 import { useQuery } from 'react-query';
 
-export interface IReviewResponse {
-  status: string;
-  documentCount: number;
-  data: IReview[];
-}
-
-export default function useReviews(
-  businessId: string,
-  filterOptions?: IReviewFilterOptions
-) {
+export default function useReviews(filterOptions: IReviewFilterOptions) {
   // sort ratings array because order of keys in an array matters
   // modifying ratings from [1,2] to [2,1] should not trigger a refetch
   filterOptions?.ratings && filterOptions.ratings.sort((a, b) => b - a);
 
-  const query = useQuery<IReview[], Error>(
-    ['reviews', businessId, filterOptions],
-    () => getReviews(businessId, filterOptions),
+  const query = useQuery(
+    ['reviews', filterOptions.businessId, filterOptions],
+    () => fetchReviews(filterOptions),
     { staleTime: 1000 * 10 }
   );
 
   return query;
 }
 
-async function getReviews(
-  businessId: string,
-  filterOptions?: IReviewFilterOptions
-) {
-  let URL = `${process.env.NEXT_PUBLIC_HOST}/api/reviews?business=${businessId}`;
-
-  if (filterOptions) {
-    URL += getQueryURL(filterOptions);
-  }
+async function fetchReviews(
+  filterOptions: IReviewFilterOptions
+): Promise<IReview[]> {
+  const URL = buildQueryURL(filterOptions);
 
   const response = await fetch(URL);
   const data = await response.json();
@@ -45,8 +31,8 @@ async function getReviews(
   return data.data;
 }
 
-function getQueryURL(filterOptions: IReviewFilterOptions) {
-  let URL = '';
+function buildQueryURL(filterOptions: IReviewFilterOptions) {
+  let URL = `${process.env.NEXT_PUBLIC_HOST}/api/reviews?business=${filterOptions.businessId}`;
 
   if (filterOptions.sort) {
     URL += `&sort=${filterOptions.sort}`;

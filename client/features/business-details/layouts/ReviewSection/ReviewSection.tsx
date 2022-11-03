@@ -28,7 +28,8 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const { query } = useRouter();
   const businessId = query.businessId as string;
 
-  const reviewsResult = useReviews(businessId, {
+  const reviewsResult = useReviews({
+    businessId: businessId,
     sort: selectedReviewSort.field,
     ratings: selectedRatings,
   });
