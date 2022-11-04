@@ -1,7 +1,10 @@
+import { IReview } from '@destiny/common/types';
+import { SortBy } from 'types/filters/SortBy';
+
 export interface IReviewSortOption {
   readonly id: number;
   readonly name: string;
-  readonly field: string;
+  readonly field: SortBy<IReview>;
 }
 
 const reviewSortOptions: IReviewSortOption[] = [

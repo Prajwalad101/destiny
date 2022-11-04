@@ -1,5 +1,4 @@
-import { IReviewSortOption } from '@features/business-details/data/reviewSortOptions';
-
+import { IReviewSortOption } from '@features/business-details/data';
 import { Menu, Transition } from '@headlessui/react';
 import { FiChevronDown } from 'react-icons/fi';
 import { classNames } from 'utils/tailwind';
