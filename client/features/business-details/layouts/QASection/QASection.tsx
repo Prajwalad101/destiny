@@ -3,7 +3,7 @@ import {
   SortQA,
   UserQuestion,
 } from '@features/business-details/components';
-import { useBusiness } from '@features/business-details/hooks';
+import { useBusiness } from '@features/business-details/queries';
 import { Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
 import { useState } from 'react';

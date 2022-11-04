@@ -5,12 +5,13 @@ import {
   StartReview,
   UserReview,
 } from '@features/business-details/components';
-import { useBusiness } from '@features/business-details/hooks';
-import useReviews from '@features/business-details/hooks/useReviews';
+import { reviewSortOptions } from '@features/business-details/data';
+import { useBusiness, useReviews } from '@features/business-details/queries';
 import { Portal, SecondaryButton } from 'components';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { addOrRemove } from 'utils/array';
 import { classNames } from 'utils/tailwind';
 
 interface ReviewSectionProps {
@@ -19,12 +20,27 @@ interface ReviewSectionProps {
 
 export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [selectedReviewSort, setSelectedReviewSort] = useState(
+    reviewSortOptions[0]
+  );
+  const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
 
   const { query } = useRouter();
   const businessId = query.businessId as string;
 
-  const reviewsResult = useReviews(businessId);
+  const reviewsResult = useReviews({
+    filters: {
+      match: { business: businessId },
+      in: { rating: selectedRatings },
+    },
+    sort: selectedReviewSort.field,
+  });
+
   const businessResult = useBusiness(businessId);
+
+  if (reviewsResult.isError) {
+    return <div>Some error occurred while getting reviews</div>;
+  }
 
   const reviews = reviewsResult.data || [];
   const business = businessResult.data?.data;
@@ -36,10 +52,6 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         <h2 className="text-xl font-medium">No reviews found</h2>
       </div>
     );
-  }
-
-  if (reviewsResult.isLoading) {
-    return <ReviewSkeleton />;
   }
 
   if (!business) return <></>;
@@ -61,7 +73,11 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
         </Portal>
 
         <div className="mb-7 flex flex-wrap-reverse items-center justify-between gap-y-5 gap-x-2">
-          <SortReview />
+          <SortReview
+            sortOptions={reviewSortOptions}
+            selectedSort={selectedReviewSort}
+            onSelect={(sortItem) => setSelectedReviewSort(sortItem)}
+          />
           {/* Search bar */}
           <div className="relative mr-[2px] flex w-max items-center">
             <input
@@ -77,15 +93,25 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
           avgRating={business.avgRating}
           numReviews={business.rating_count}
           className="mb-7"
+          onClick={(rating: number) => {
+            const ratings = addOrRemove(selectedRatings, rating);
+            setSelectedRatings(ratings);
+          }}
         />
         <div className="mb-10 border-b border-gray-300" />
-        <div className="child-notlast:mb-7">
-          {reviews.map((review) => (
-            <Fragment key={review._id.toString()}>
-              <UserReview review={review} />
-            </Fragment>
-          ))}
-        </div>
+        {reviewsResult.isLoading ? (
+          <ReviewSkeleton items={5} />
+        ) : (
+          <>
+            <div className="child-notlast:mb-7">
+              {reviews.map((review) => (
+                <Fragment key={review._id.toString()}>
+                  <UserReview review={review} />
+                </Fragment>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );

@@ -67,7 +67,7 @@ export default function UserReview({ review }: UserReviewProps) {
         size={20}
         className="mb-4 gap-[5px]"
       />
-      <ReviewText className="mb-8" />
+      <ReviewText reviewText={review.review} className="mb-8" />
       <div className="mb-8 flex gap-3 overflow-scroll">
         {images.map((image, index) => {
           return (

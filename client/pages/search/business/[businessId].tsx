@@ -5,13 +5,12 @@ import {
   LocationAndContact,
   Services,
 } from '@features/business-details/components';
-import { useBusiness } from '@features/business-details/hooks';
 import {
   BusinessInfoSection,
-  // BusinessInfoSection,
   CommunitySection,
 } from '@features/business-details/layouts';
-import { fetchBusiness } from '@features/business-details/utils/api';
+import { useBusiness } from '@features/business-details/queries';
+import { fetchBusiness } from '@features/business-details/queries/useBusiness';
 import ConditionalRender from 'components/conditional-render/ConditionalRender';
 import { NavigationProvider, QueryProvider } from 'components/context-provider';
 import { AppLayout } from 'components/layout';

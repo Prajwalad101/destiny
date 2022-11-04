@@ -1,19 +1,19 @@
+import { IReviewSortOption } from '@features/business-details/data';
 import { Menu, Transition } from '@headlessui/react';
-import { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import { classNames } from 'utils/tailwind';
 
-const sortItems = [
-  { id: 1, name: 'most helpful' },
-  { id: 2, name: 'newest' },
-  { id: 3, name: 'oldest' },
-  { id: 4, name: 'highest ratings' },
-  { id: 5, name: 'lowest ratings' },
-];
+interface SortReviewProps {
+  sortOptions: IReviewSortOption[];
+  selectedSort: IReviewSortOption;
+  onSelect: (_value: IReviewSortOption) => void;
+}
 
-export default function SortReview() {
-  const [selectedSort, setSelectedSort] = useState(sortItems[0]);
-
+export default function SortReview({
+  sortOptions,
+  selectedSort,
+  onSelect,
+}: SortReviewProps) {
   return (
     <Menu as="div" className="relative">
       <Menu.Button className="flex items-center gap-1 rounded-full border border-gray-500 px-7 py-[9px] capitalize">
@@ -29,19 +29,19 @@ export default function SortReview() {
         leaveTo="transform scale-95 opacity-0"
       >
         <Menu.Items className="absolute top-0 mt-2 rounded-md border border-gray-300 bg-white shadow-sm">
-          {sortItems.map((sort) => {
-            if (sort.name === selectedSort.name) return;
+          {sortOptions.map((sortOption) => {
+            if (sortOption.name === selectedSort.name) return;
             return (
-              <Menu.Item key={sort.id}>
+              <Menu.Item key={sortOption.id}>
                 {({ active }) => (
                   <button
                     className={classNames(
                       'w-full whitespace-nowrap px-7 py-[9px] text-left text-sm capitalize',
                       active ? 'bg-gray-100' : ''
                     )}
-                    onClick={() => setSelectedSort(sort)}
+                    onClick={() => onSelect(sortOption)}
                   >
-                    {sort.name}
+                    {sortOption.name}
                   </button>
                 )}
               </Menu.Item>

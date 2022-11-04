@@ -1,3 +1,7 @@
 import { menuData } from './menuData';
+import reviewSortOptions from './reviewSortOptions';
 
-export { menuData };
+import { IReviewSortOption } from './reviewSortOptions';
+
+export { menuData, reviewSortOptions };
+export type { IReviewSortOption };
