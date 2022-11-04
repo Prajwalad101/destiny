@@ -1,5 +1,5 @@
 import { IReview } from '@destiny/common/types';
-import { SortBy } from 'types/filters/SortBy';
+import { SortBy } from 'types/queryParams/SortBy';
 
 export interface IReviewSortOption {
   readonly id: number;

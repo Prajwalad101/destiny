@@ -29,9 +29,11 @@ export default function ReviewSection({ className = '' }: ReviewSectionProps) {
   const businessId = query.businessId as string;
 
   const reviewsResult = useReviews({
-    businessId: businessId,
+    filters: {
+      match: { business: businessId },
+      in: { rating: selectedRatings },
+    },
     sort: selectedReviewSort.field,
-    ratings: selectedRatings,
   });
 
   const businessResult = useBusiness(businessId);

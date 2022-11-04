@@ -1,4 +1,4 @@
-import { IReviewFilterOptions } from './IReviewFilterOptions';
 import IReviewFormValues from './IReviewFormValues';
+import { ReviewQueryParams } from './ReviewQueryParams';
 
-export type { IReviewFormValues, IReviewFilterOptions };
+export type { IReviewFormValues, ReviewQueryParams };
