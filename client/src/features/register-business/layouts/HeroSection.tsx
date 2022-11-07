@@ -52,7 +52,7 @@ function CallToAction() {
       <p className="mb-4 font-semibold text-black">
         Set up your listing in minutes
       </p>
-      <Link href="/register-business/register">
+      <Link href="/register-business/form">
         <a>
           <PrimaryButton>
             <p className="px-6 py-2">Register now</p>

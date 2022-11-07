@@ -37,7 +37,7 @@ function Navbar({ theme = 'light' }: NavbarProps) {
             </Link>
           </div>
 
-          <Link href="/register-business/register">
+          <Link href="/register-business/form">
             <a>
               <PrimaryButton className="px-6 py-2">
                 Create Listing

@@ -14,7 +14,7 @@ import AppLayout from 'src/components/layout/app/AppLayout';
 import { NextPageWithLayout } from 'src/pages/_app';
 import { logMutationError } from 'src/utils/logger';
 
-const RegisterBusiness: NextPageWithLayout = () => {
+const Form: NextPageWithLayout = () => {
   const mutation = useSubmitForm();
   const router = useRouter();
 
@@ -73,7 +73,7 @@ const RegisterBusiness: NextPageWithLayout = () => {
   );
 };
 
-RegisterBusiness.getLayout = (page) => (
+Form.getLayout = (page) => (
   <>
     <QueryProvider>
       <AppLayout size="sm">
@@ -84,4 +84,4 @@ RegisterBusiness.getLayout = (page) => (
   </>
 );
 
-export default RegisterBusiness;
+export default Form;
