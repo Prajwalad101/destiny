@@ -1,3 +1,4 @@
+import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
 import MyLabel from './Form/MyLabel/MyLabel';
 import MyListBox from './Form/MyListBox/MyListBox';
 import MySelect from './Form/MySelect/MySelect';
@@ -26,4 +27,5 @@ export {
   SelectSubCategory,
   SelectTime,
   Navbar,
+  Breadcrumbs,
 };
