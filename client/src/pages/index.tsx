@@ -4,12 +4,12 @@ import {
   Searchbar,
 } from '@features/home-page/components';
 import { RecommendedSection } from '@features/recommended-business/layouts';
-import { NextPageWithLayout } from 'pages/_app';
 import { QueryProvider } from 'src/components/context-provider';
 import { NavigationProvider } from 'src/components/context-provider/NavigationProvider/NavigationProvider';
 import { AppLayout } from 'src/components/layout';
 import { Navbar } from 'src/components/navigation';
 import Sidebar from 'src/components/navigation/sidebar/Sidebar';
+import { NextPageWithLayout } from 'src/pages/_app';
 
 const Home: NextPageWithLayout = () => {
   return (

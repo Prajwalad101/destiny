@@ -1,8 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { IOrderedMenuItem } from 'pages/start-order';
 import { Fragment } from 'react';
 import { IoIosClose } from 'react-icons/io';
 import { Divider, PrimaryButton, SecondaryButton } from 'src/components';
+import { IOrderedMenuItem } from 'src/pages/start-order';
 
 interface PlaceOrderProps {
   isOpen: boolean;

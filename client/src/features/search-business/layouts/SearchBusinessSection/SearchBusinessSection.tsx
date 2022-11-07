@@ -1,10 +1,10 @@
 import { BusinessList } from '@features/search-business/layouts';
 import { IQueryData } from '@features/search-business/types';
-import useIsomorphicLayoutEffect from 'hooks/useIsomorphicLayoutEffect';
 import { useRouter } from 'next/router';
 import { memo, useState } from 'react';
 import { UseQueryResult } from 'react-query';
 import ConditionalRender from 'src/components/conditional-render/ConditionalRender';
+import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 
 interface SearchBusinessSectionProps {
   filterComponent: JSX.Element;

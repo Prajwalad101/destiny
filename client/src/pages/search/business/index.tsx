@@ -13,7 +13,6 @@ import {
 } from '@features/search-business/utils/api';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { NextPageWithLayout } from 'pages/_app';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 import {
@@ -22,6 +21,7 @@ import {
 } from 'src/components/context-provider';
 import { AppLayout } from 'src/components/layout';
 import { Navbar, Sidebar } from 'src/components/navigation';
+import { NextPageWithLayout } from 'src/pages/_app';
 
 // fields to not query for when fetching businesses
 const businessFields = ['-description', '-price', '-features', '-total_rating'];

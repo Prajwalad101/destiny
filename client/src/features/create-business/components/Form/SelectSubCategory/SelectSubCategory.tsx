@@ -1,10 +1,10 @@
 import { MyListBox } from '@features/create-business/components';
 import { MyFormValues } from '@features/create-business/types';
 import { Listbox } from '@headlessui/react';
-import { categoryDropdownData } from 'data';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
+import { categoryDropdownData } from 'src/data';
 import { ISubcategoryDropdown } from 'src/types/business';
 
 // avoid accidentally mutating original array

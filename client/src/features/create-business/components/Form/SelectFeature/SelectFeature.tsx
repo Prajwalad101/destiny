@@ -1,9 +1,9 @@
 import { BusinessFeature } from '@destiny/common/types';
 import { MyListBox } from '@features/create-business/components';
 import { MyFormValues } from '@features/create-business/types';
-import { categoryDropdownData } from 'data';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
+import { categoryDropdownData } from 'src/data';
 import { ISubcategoryDropdown } from 'src/types/business';
 
 // avoid accidentally mutating original array

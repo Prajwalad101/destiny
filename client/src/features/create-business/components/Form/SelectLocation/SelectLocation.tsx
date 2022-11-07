@@ -1,8 +1,8 @@
 import { getUserCoordinates } from '@features/create-business/utils/api';
 import { useField } from 'formik';
-import { useEffectAfterMount } from 'hooks';
 import { useState } from 'react';
 import PrimaryButton from 'src/components/button/primary/PrimaryButton';
+import { useEffectAfterMount } from 'src/hooks';
 
 function SelectLocation() {
   const [, meta, handler] = useField('location.coordinates');

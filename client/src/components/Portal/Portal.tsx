@@ -1,6 +1,6 @@
-import { useIsomorphicLayoutEffect } from 'hooks';
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useIsomorphicLayoutEffect } from 'src/hooks';
 
 interface PortalProps {
   children: React.ReactNode;

@@ -8,7 +8,6 @@ import {
 } from '@features/order-food/components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { NextPageWithLayout } from 'pages/_app';
 import Hamburger from 'public/illustrations/business-details/Hamburger.svg';
 import { useState } from 'react';
 import { PrimaryButton, SecondaryButton } from 'src/components';
@@ -18,6 +17,7 @@ import {
 } from 'src/components/context-provider';
 import { AppLayout } from 'src/components/layout';
 import { Navbar, Sidebar } from 'src/components/navigation';
+import { NextPageWithLayout } from 'src/pages/_app';
 
 export interface IOrderedMenuItem {
   item: MenuItem;

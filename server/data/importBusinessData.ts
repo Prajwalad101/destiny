@@ -29,7 +29,7 @@ const uniqueBusinesses = [
 const importData = async () => {
   try {
     await Business.create(uniqueBusinesses);
-    console.log('Data successfully loaded');
+    console.log('src/data successfully loaded');
   } catch (err) {
     console.log(err);
   }
@@ -40,7 +40,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Business.deleteMany();
-    console.log('Data successfully deleted!');
+    console.log('src/data successfully deleted!');
   } catch (err) {
     console.log(err);
   }

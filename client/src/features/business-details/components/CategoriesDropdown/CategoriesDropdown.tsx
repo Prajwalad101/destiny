@@ -1,6 +1,6 @@
 import { CategoryDropdown } from '@features/home-page/components';
-import { categoryDropdownData } from 'data';
 import React from 'react';
+import { categoryDropdownData } from 'src/data';
 
 // prevent original data from accidently mutating
 const categories = [...categoryDropdownData];

@@ -1,10 +1,10 @@
 import { MyLabel, MySubLabel } from '@features/create-business/components';
 import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
 import { useField } from 'formik';
-import { useEffectAfterMount } from 'hooks';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 import Slider from 'src/components/slider/Slider';
+import { useEffectAfterMount } from 'src/hooks';
 import { readFilesAsDataURL } from 'src/utils/browser';
 
 interface SelectImageProps {

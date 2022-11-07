@@ -1,4 +1,3 @@
-import { usePreventBodyOverflow } from 'hooks';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiMenu } from 'react-icons/bi';
@@ -6,6 +5,7 @@ import PrimaryButton from 'src/components/button/primary/PrimaryButton';
 import SecondaryButton from 'src/components/button/secondary/SecondaryButton';
 import { useSidebar } from 'src/components/context-provider';
 import Logo from 'src/components/logo/Logo';
+import { usePreventBodyOverflow } from 'src/hooks';
 import { classNames } from 'src/utils/tailwind';
 
 interface INavbar {

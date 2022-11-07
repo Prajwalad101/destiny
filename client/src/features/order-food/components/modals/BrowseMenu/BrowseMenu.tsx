@@ -5,7 +5,6 @@ import {
 } from '@features/business-details/data/menuData';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { IOrderedMenuItem } from 'pages/start-order';
 import {
   ChangeEvent,
   Dispatch,
@@ -16,6 +15,7 @@ import {
 import { BsCaretDown, BsCaretRight } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 import { Divider, PrimaryButton, SecondaryButton } from 'src/components';
+import { IOrderedMenuItem } from 'src/pages/start-order';
 
 interface BrowseMenuProps {
   isOpen: boolean;

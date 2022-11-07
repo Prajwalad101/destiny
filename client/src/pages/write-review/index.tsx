@@ -1,10 +1,10 @@
 import { ReviewCards, Searchbar } from '@features/write-review/components';
 import Image from 'next/image';
-import { NextPageWithLayout } from 'pages/_app';
 import PhoneIllustration from 'public/illustrations/review-business/phone.svg';
 import { NavigationProvider } from 'src/components/context-provider';
 import { AppLayout } from 'src/components/layout';
 import { Navbar, Sidebar } from 'src/components/navigation';
+import { NextPageWithLayout } from 'src/pages/_app';
 
 const WriteReview: NextPageWithLayout = () => {
   return (

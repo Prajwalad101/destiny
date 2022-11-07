@@ -7,11 +7,11 @@ import { MyFormValues } from '@features/create-business/types';
 import { dataToFormData } from '@features/create-business/utils/objects/dataToFormData';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
-import { NextPageWithLayout } from 'pages/_app';
 import { useEffect } from 'react';
 import SecondaryButton from 'src/components/button/secondary/SecondaryButton';
 import { QueryProvider } from 'src/components/context-provider';
 import AppLayout from 'src/components/layout/app/AppLayout';
+import { NextPageWithLayout } from 'src/pages/_app';
 import { logMutationError } from 'src/utils/logger';
 
 const RegisterBusiness: NextPageWithLayout = () => {

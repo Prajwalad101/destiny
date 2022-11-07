@@ -1,5 +1,4 @@
 import { ItemsTable } from '@features/order-food/components';
-import { IOrderedMenuItem } from 'pages/start-order';
 import { Dispatch, SetStateAction } from 'react';
 import {
   AiFillMinusCircle,
@@ -8,6 +7,7 @@ import {
   AiOutlinePlusCircle,
 } from 'react-icons/ai';
 import { Divider, PrimaryButton } from 'src/components';
+import { IOrderedMenuItem } from 'src/pages/start-order';
 
 interface OrderDetailsProps {
   orderItems: IOrderedMenuItem[];

@@ -1,5 +1,5 @@
 import { CategoryDropdown } from '@features/business-details/components';
-import { categoryDropdownData } from 'data';
+import { categoryDropdownData } from 'src/data';
 
 // prevent original data from accidently mutating
 const categories = [...categoryDropdownData];

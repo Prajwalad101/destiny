@@ -2,11 +2,11 @@ import { Navbar } from '@features/create-business/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { NextPageWithLayout } from 'pages/_app';
 import Success from 'public/create-business/animations/completed.gif';
 import Error from 'public/create-business/animations/error.gif';
 import SecondaryButton from 'src/components/button/secondary/SecondaryButton';
 import AppLayout from 'src/components/layout/app/AppLayout';
+import { NextPageWithLayout } from 'src/pages/_app';
 
 const SubmitBusiness: NextPageWithLayout = () => {
   const router = useRouter();

@@ -1,7 +1,7 @@
-import { IOrderedMenuItem } from 'pages/start-order';
 import { ReactNode } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { Divider } from 'src/components';
+import { IOrderedMenuItem } from 'src/pages/start-order';
 
 interface ItemsTableProps {
   getQuantityButton: (_item: IOrderedMenuItem) => ReactNode;

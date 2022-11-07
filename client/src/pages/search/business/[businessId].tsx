@@ -13,7 +13,6 @@ import { useBusiness } from '@features/business-details/queries';
 import { fetchBusiness } from '@features/business-details/queries/useBusiness';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { NextPageWithLayout } from 'pages/_app';
 import { dehydrate, QueryClient } from 'react-query';
 import ConditionalRender from 'src/components/conditional-render/ConditionalRender';
 import {
@@ -22,6 +21,7 @@ import {
 } from 'src/components/context-provider';
 import { AppLayout } from 'src/components/layout';
 import { Navbar, Sidebar } from 'src/components/navigation';
+import { NextPageWithLayout } from 'src/pages/_app';
 
 const Business: NextPageWithLayout = () => {
   const { query } = useRouter();

@@ -1,6 +1,6 @@
-import { useWindowSize } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
+import { useWindowSize } from 'src/hooks';
 import { ButtonProps } from 'src/types/props';
 import { getVisibleChildrenCount } from 'src/utils/dom';
 import { classNames } from 'src/utils/tailwind';

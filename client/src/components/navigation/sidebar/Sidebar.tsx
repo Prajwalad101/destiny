@@ -1,11 +1,11 @@
 import SidebarCategoryDropdown from '@features/home-page/components/SidebarCategoryDropdown/SidebarCategoryDropdown';
-import { categoryDropdownData } from 'data';
 import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoMdPerson } from 'react-icons/io';
 import { MdLogin } from 'react-icons/md';
 import { useSidebar } from 'src/components/context-provider';
 import Portal from 'src/components/Portal/Portal';
+import { categoryDropdownData } from 'src/data';
 import { classNames } from 'src/utils/tailwind';
 
 export default function Sidebar() {

@@ -1,8 +1,8 @@
 import { MyListBox } from '@features/create-business/components';
 import { Listbox } from '@headlessui/react';
-import { categoryDropdownData } from 'data';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';
+import { categoryDropdownData } from 'src/data';
 import { ISubcategoryDropdown } from 'src/types/business';
 
 function SelectCategory() {
