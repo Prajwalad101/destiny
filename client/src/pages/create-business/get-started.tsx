@@ -1,5 +1,4 @@
-import { Navbar } from '@features/create-business/components';
-import { linkData } from '@features/create-business/data';
+import { Navbar } from '@features/register-business/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import SecondaryButton from 'src/components/button/secondary/SecondaryButton';
@@ -11,7 +10,7 @@ const GetStarted: NextPageWithLayout = () => {
     <div className="mt-10 flex flex-col items-center font-rubik md:flex-row-reverse md:items-end md:justify-between">
       <div className="w-[100%] max-w-[300px] md:max-w-[370px]">
         <Image
-          src={'/illustrations/create-business/new-world.svg'}
+          src={'/illustrations/register-business/new-world.svg'}
           width={242}
           height={249}
           layout="responsive"
@@ -31,7 +30,7 @@ const GetStarted: NextPageWithLayout = () => {
           Since, most of the steps involved are pretty simple, you should be
           done in a few minutes.
         </p>
-        <Link href={linkData.register}>
+        <Link href="/register-business/register">
           <SecondaryButton className="h-[45px] w-full max-w-[400px]">
             <p className="px-6 py-2">Let&apos;s get started</p>
           </SecondaryButton>

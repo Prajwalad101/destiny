@@ -1,4 +1,3 @@
-import { linkData } from '@features/create-business/data';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import PrimaryButton from 'src/components/button/primary/PrimaryButton';
@@ -38,7 +37,7 @@ function Navbar({ theme = 'light' }: NavbarProps) {
             </Link>
           </div>
 
-          <Link href={linkData.getStarted}>
+          <Link href="/register-business/register">
             <a>
               <PrimaryButton className="px-6 py-2">
                 Create Listing

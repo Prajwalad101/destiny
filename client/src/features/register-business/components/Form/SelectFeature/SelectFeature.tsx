@@ -1,6 +1,6 @@
 import { BusinessFeature } from '@destiny/common/types';
-import { MyListBox } from '@features/create-business/components';
-import { MyFormValues } from '@features/create-business/types';
+import { MyListBox } from '@features/register-business/components';
+import { MyFormValues } from '@features/register-business/types';
 import { useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
 import { categoryDropdownData } from 'src/data';

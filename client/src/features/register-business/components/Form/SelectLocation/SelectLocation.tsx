@@ -1,4 +1,4 @@
-import { getUserCoordinates } from '@features/create-business/utils/api';
+import { getUserCoordinates } from '@features/register-business/utils/api';
 import { useField } from 'formik';
 import { useState } from 'react';
 import PrimaryButton from 'src/components/button/primary/PrimaryButton';

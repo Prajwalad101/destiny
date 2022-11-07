@@ -1,4 +1,3 @@
-import { linkData } from '@features/create-business/data';
 import { MainHeading } from '@features/home-page/components';
 import Link from 'next/link';
 import { BsClipboardData, BsLightbulb, BsPeople } from 'react-icons/bs';
@@ -53,7 +52,7 @@ function CallToAction() {
       <p className="mb-4 font-semibold text-black">
         Set up your listing in minutes
       </p>
-      <Link href={linkData.getStarted}>
+      <Link href="/register-business/register">
         <a>
           <PrimaryButton>
             <p className="px-6 py-2">Register now</p>

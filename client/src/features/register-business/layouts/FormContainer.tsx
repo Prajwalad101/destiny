@@ -9,8 +9,8 @@ import {
   SelectLocation,
   SelectSubCategory,
   SelectTime,
-} from '@features/create-business/components';
-import { FieldLayout } from '@features/create-business/layouts';
+} from '@features/register-business/components';
+import { FieldLayout } from '@features/register-business/layouts';
 import { Form } from 'formik';
 
 interface FormContainerProps {

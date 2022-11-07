@@ -1,4 +1,4 @@
-import { MyFormValues } from '@features/create-business/types/MyFormValues';
+import { MyFormValues } from '@features/register-business/types/MyFormValues';
 import { buildFormData } from 'src/utils/browser';
 
 export function dataToFormData(data: MyFormValues) {

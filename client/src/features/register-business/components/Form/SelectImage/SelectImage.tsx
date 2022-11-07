@@ -1,5 +1,5 @@
-import { MyLabel, MySubLabel } from '@features/create-business/components';
-import checkValidImageFiles from '@features/create-business/utils/objects/checkValidImageFiles';
+import { MyLabel, MySubLabel } from '@features/register-business/components';
+import checkValidImageFiles from '@features/register-business/utils/objects/checkValidImageFiles';
 import { useField } from 'formik';
 import Image from 'next/image';
 import { ChangeEvent, memo, useEffect, useState } from 'react';

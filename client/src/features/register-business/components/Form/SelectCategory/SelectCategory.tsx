@@ -1,4 +1,4 @@
-import { MyListBox } from '@features/create-business/components';
+import { MyListBox } from '@features/register-business/components';
 import { Listbox } from '@headlessui/react';
 import { useState } from 'react';
 import { HiOutlineSelector } from 'react-icons/hi';

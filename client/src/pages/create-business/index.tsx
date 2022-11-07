@@ -1,7 +1,7 @@
-import { Navbar } from '@features/create-business/components';
-import { infoCardData } from '@features/create-business/data';
-import { HeroSection } from '@features/create-business/layouts';
-import { EllipsisSeperator, InfoCard } from '@features/create-business/ui';
+import { Navbar } from '@features/register-business/components';
+import { infoCardData } from '@features/register-business/data';
+import { HeroSection } from '@features/register-business/layouts';
+import { EllipsisSeperator, InfoCard } from '@features/register-business/ui';
 import React from 'react';
 import { NavigationProvider } from 'src/components/context-provider';
 import AppLayout from 'src/components/layout/app/AppLayout';

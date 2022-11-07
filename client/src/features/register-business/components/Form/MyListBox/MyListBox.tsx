@@ -1,4 +1,4 @@
-import { ListboxItem, ListboxState } from '@features/create-business/types';
+import { ListboxItem, ListboxState } from '@features/register-business/types';
 import { Listbox, Transition } from '@headlessui/react';
 import { useField } from 'formik';
 import { Fragment } from 'react';

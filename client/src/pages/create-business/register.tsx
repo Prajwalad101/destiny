@@ -1,10 +1,10 @@
-import { Navbar } from '@features/create-business/components';
-import { initialFormValues } from '@features/create-business/data';
-import { useSubmitForm } from '@features/create-business/hooks';
-import { FormContainer } from '@features/create-business/layouts';
-import { formikValidationSchema } from '@features/create-business/schema';
-import { MyFormValues } from '@features/create-business/types';
-import { dataToFormData } from '@features/create-business/utils/objects/dataToFormData';
+import { Navbar } from '@features/register-business/components';
+import { initialFormValues } from '@features/register-business/data';
+import { useSubmitForm } from '@features/register-business/hooks';
+import { FormContainer } from '@features/register-business/layouts';
+import { formikValidationSchema } from '@features/register-business/schema';
+import { MyFormValues } from '@features/register-business/types';
+import { dataToFormData } from '@features/register-business/utils/objects/dataToFormData';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
