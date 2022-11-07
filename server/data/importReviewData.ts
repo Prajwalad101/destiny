@@ -26,7 +26,7 @@ reviews.forEach((review) => {
 const importData = async () => {
   try {
     await Review.create(reviews);
-    console.log('Data successfully loaded');
+    console.log('src/data successfully loaded');
   } catch (err) {
     console.log(err);
   }
@@ -37,7 +37,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Review.deleteMany({ business: BUSINESS_ID });
-    console.log('Data successfully deleted!');
+    console.log('src/data successfully deleted!');
   } catch (err) {
     console.log(err);
   }
