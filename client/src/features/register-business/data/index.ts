@@ -1,5 +1,4 @@
 import { infoCardData } from './infoCardData';
-import { initialFormValues } from './initialFormValues';
-import { hours, minutes, timeOfDay } from './timeData';
+import { hours } from './timeData';
 
-export { hours, minutes, timeOfDay, infoCardData, initialFormValues };
+export { hours, infoCardData };

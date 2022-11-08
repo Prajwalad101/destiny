@@ -1,4 +1,3 @@
-// Formik Initial values
 export const hours = [
   { name: '1' },
   { name: '2' },
@@ -25,20 +24,3 @@ export const hours = [
   { name: '23' },
   { name: '24' },
 ];
-
-export const minutes = [
-  { name: '00' },
-  { name: '05' },
-  { name: '10' },
-  { name: '15' },
-  { name: '20' },
-  { name: '25' },
-  { name: '30' },
-  { name: '35' },
-  { name: '40' },
-  { name: '45' },
-  { name: '50' },
-  { name: '55' },
-];
-
-export const timeOfDay = [{ name: 'AM' }, { name: 'PM' }];

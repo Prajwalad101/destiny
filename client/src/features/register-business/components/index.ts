@@ -12,6 +12,7 @@ import SelectLocation from './Form/SelectLocation/SelectLocation';
 import SelectSubCategory from './Form/SelectSubCategory/SelectSubCategory';
 import SelectTime from './Form/SelectTime/SelectTime';
 import Navbar from './Navbar';
+import TimePicker from './TimePicker/TimePicker';
 
 export {
   MyLabel,
@@ -28,4 +29,5 @@ export {
   SelectTime,
   Navbar,
   Breadcrumbs,
+  TimePicker,
 };

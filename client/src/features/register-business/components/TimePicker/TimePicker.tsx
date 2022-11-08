@@ -1,3 +1,4 @@
+import { classNames } from 'src/utils/tailwind';
 import time from './data';
 import TimeDropdown from './TimeDropdown';
 
@@ -11,28 +12,34 @@ const weeks = [
   'Saturday',
 ];
 
-export default function TimePicker() {
-  return (
-    <div className="child-notlast:mb-6">
-      {weeks.map((week, index) => (
-        <div key={index} className="flex items-center gap-6">
-          <p className="w-24">{week}</p>
-          <TimeDropdown
-            list={time}
-            selected={time[0]}
-            onSelect={() => {
-              return;
-            }}
-          />
+interface TimePickerProps {
+  className?: string;
+}
 
-          <span className="text-gray-700">to</span>
-          <TimeDropdown
-            list={time}
-            selected={time[0]}
-            onSelect={() => {
-              return;
-            }}
-          />
+export default function TimePicker({ className = '' }: TimePickerProps) {
+  return (
+    <div className={classNames(className, 'child-notlast:mb-7')}>
+      {weeks.map((week, index) => (
+        <div key={index} className="flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <p className="w-28">{week}</p>
+            <TimeDropdown
+              list={time}
+              selected={time[0]}
+              onSelect={() => {
+                return;
+              }}
+            />
+
+            <span className="text-gray-700">to</span>
+            <TimeDropdown
+              list={time}
+              selected={time[0]}
+              onSelect={() => {
+                return;
+              }}
+            />
+          </div>
           <div>
             <input
               type="checkbox"
@@ -46,7 +53,7 @@ export default function TimePicker() {
                   <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                 </svg>
               </span>
-              <span className="capitalize">Closed</span>
+              <span className="capitalize text-gray-700">Closed</span>
             </label>
           </div>
         </div>
