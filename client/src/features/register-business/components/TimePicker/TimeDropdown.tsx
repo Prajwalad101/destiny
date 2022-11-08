@@ -21,7 +21,7 @@ export default function TimeDropdown({
           <div className="relative">
             <Listbox.Button
               className={classNames(
-                open ? 'ring-[3px] ring-blue-400' : 'ring-2 ring-gray-400/60',
+                open ? 'ring-[3px] ring-blue-400' : 'ring-2 ring-gray-300',
                 'relative w-full rounded-sm px-5 py-2 text-left'
               )}
             >
