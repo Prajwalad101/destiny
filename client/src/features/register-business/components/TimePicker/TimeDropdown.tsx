@@ -21,8 +21,8 @@ export default function TimeDropdown({
           <div className="relative">
             <Listbox.Button
               className={classNames(
-                open ? 'ring-[3px] ring-blue-400' : 'ring-2 ring-gray-300',
-                'relative w-full rounded-sm px-5 py-2 text-left'
+                open ? 'ring-[3px] ring-blue-400' : 'border-2 border-gray-300',
+                'relative w-full rounded-md px-5 py-2 text-left'
               )}
             >
               <span className="block truncate capitalize text-gray-400">
@@ -39,7 +39,7 @@ export default function TimeDropdown({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 -ml-[2px] max-h-60 w-[calc(100%+4px)] overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
                 {list.map((item, index) => (
                   <Listbox.Option
                     key={index}
