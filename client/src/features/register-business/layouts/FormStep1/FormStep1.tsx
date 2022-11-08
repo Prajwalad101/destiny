@@ -18,8 +18,8 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
     <div className={className}>
       <Header />
       {/* Business name input */}
-      <div className="mt-28 mb-24 flex items-center justify-between gap-32">
-        <div className="">
+      <div className="mt-12 mb-16 grid-cols-2 items-start gap-5 md:my-24 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+        <div className="mb-5">
           <label
             htmlFor="name"
             className="mb-2 inline-block text-lg font-medium"
@@ -33,14 +33,14 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
         <input
           type="text"
           id="name"
-          className="max-w-xl grow rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-blue-600 ring-offset-1 transition-all focus:ring-[3px]"
+          className="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-blue-600 ring-offset-1 transition-all focus:ring-[3px]"
           placeholder="eg: The Burger House"
         />
       </div>
 
       {/* Business description input */}
-      <div className="mb-20 flex items-start justify-between">
-        <div className="max-w-md">
+      <div className="mb-14 grid-cols-2 items-start gap-5 md:mb-20 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+        <div className="mb-5">
           <label
             htmlFor="description"
             className="mb-2 inline-block text-lg font-medium"
@@ -52,7 +52,7 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
             the business and include some key features
           </span>
         </div>
-        <div className="max-w-xl grow">
+        <div>
           <textarea
             id="description"
             rows={7}
@@ -63,8 +63,8 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
       </div>
 
       {/* Business address input */}
-      <div className="mb-32 flex items-start justify-between">
-        <div>
+      <div className="mb-20 grid-cols-2 items-start gap-5 md:mb-28 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+        <div className="mb-5">
           <label
             htmlFor="address"
             className="mb-2 inline-block text-lg font-medium"
@@ -75,7 +75,7 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
             Provide the address, city and the zip code of your business
           </span>
         </div>
-        <div className="max-w-xl grow">
+        <div>
           <input
             type="text"
             id="address"
@@ -91,7 +91,6 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
                   return;
                 },
               }}
-              width={180}
             />
             <MyListBox
               list={cities}
@@ -101,14 +100,13 @@ export default function FormStep1({ className = '' }: FormStep1Props) {
                   return;
                 },
               }}
-              width={180}
             />
           </div>
         </div>
       </div>
       {/* Working hours */}
-      <div className="flex items-start justify-between">
-        <div>
+      <div className="grid-cols-2 items-start gap-5 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+        <div className="mb-10">
           <label
             htmlFor="hours"
             className="mb-2 inline-block text-lg font-medium"

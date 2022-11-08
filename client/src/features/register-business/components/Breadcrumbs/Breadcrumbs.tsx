@@ -2,8 +2,8 @@ import { classNames } from 'src/utils/tailwind';
 
 const breadcrumbsData = [
   // 'general information',
-  'location & contact',
-  'category & attributes',
+  'location and contact',
+  'category and attributes',
   'socials and uploads',
 ];
 
@@ -13,14 +13,16 @@ interface BreadCrumbsProps {
 
 export default function Breadcrumbs({ className = '' }: BreadCrumbsProps) {
   return (
-    <div className={classNames(className, 'flex justify-between')}>
+    <div
+      className={classNames(className, 'hidden justify-between gap-7 xs:flex')}
+    >
       <div className="flex items-center gap-4">
-        <div className="h-4 w-4 rounded-full bg-primaryred" />
+        <div className="hidden h-4 w-4 shrink-0 rounded-full bg-primaryred sm:block" />
         <p className="capitalize ">general information</p>
       </div>
       {breadcrumbsData.map((name, index) => (
         <div key={index} className="flex items-center gap-4">
-          <div className="h-4 w-4 rounded-full bg-gray-300" />
+          <div className="hidden h-4 w-4 shrink-0 rounded-full bg-gray-300 sm:block" />
           <p className="capitalize text-gray-600">{name}</p>
         </div>
       ))}
