@@ -1,9 +1,17 @@
-const defaultFormValues = {
+import cities from '../../components/FormStep1/data/cities';
+
+export type FormInputs = {
+  name: string;
+  description: string;
+  address: string;
+  city: typeof cities[number];
+};
+
+const defaultFormValues: FormInputs = {
   name: '',
   address: '',
   description: '',
-  city: '',
+  city: cities[0],
 };
 
-export type FormInputs = typeof defaultFormValues;
 export default defaultFormValues;
