@@ -1,10 +1,10 @@
 import { MyLabel, TimePicker } from '@features/register-business/components';
 import { Control, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormInputs } from '../../layouts/FormContainer';
+import AddressInput from './AddressInput';
 import DescriptionInput from './DescriptionInput';
 import Header from './Header';
 import NameInput from './NameInput';
-import SelectAddress from './SelectAddress';
 
 interface FormStep1Props {
   register: UseFormRegister<FormInputs>;
@@ -24,11 +24,7 @@ export default function FormStep1({
       <Header />
       <NameInput register={register} control={control} />
       <DescriptionInput register={register} control={control} />
-      <SelectAddress
-        register={register}
-        setValue={setValue}
-        control={control}
-      />
+      <AddressInput register={register} setValue={setValue} control={control} />
       {/* Working hours */}
       <div className="grid-cols-2 items-start gap-5 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
         <MyLabel

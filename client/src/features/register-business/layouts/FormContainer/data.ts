@@ -3,7 +3,6 @@ const defaultFormValues = {
   address: '',
   description: '',
   city: '',
-  zipcode: '',
 };
 
 export type FormInputs = typeof defaultFormValues;
