@@ -1,5 +1,4 @@
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
-import MyLabel from './Form/MyLabel/MyLabel';
 import MyListBox from './Form/MyListBox/MyListBox';
 import MySelect from './Form/MySelect/MySelect';
 import MySubLabel from './Form/MySubLabel/MySubLabel';
@@ -14,8 +13,9 @@ import SelectTime from './Form/SelectTime/SelectTime';
 import Navbar from './Navbar';
 import TimePicker from './TimePicker/TimePicker';
 
+export { default as ErrorMessage } from './ErrorMessage/ErrorMessage';
+export { default as MyLabel } from './MyLabel/MyLabel';
 export {
-  MyLabel,
   MyListBox,
   MySelect,
   MySubLabel,

@@ -1,60 +1,32 @@
-import { ListboxItem, ListboxState } from '@features/register-business/types';
+import { FormInputs } from '@features/register-business/layouts/FormContainer';
 import { Listbox, Transition } from '@headlessui/react';
-import { useField } from 'formik';
 import { Fragment } from 'react';
+import { UseFormSetValue } from 'react-hook-form';
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { BsCheck2 } from 'react-icons/bs';
 import { classNames } from 'src/utils/tailwind';
 
 interface MyListBoxProps {
   list: { name: string }[];
-  listState: ListboxState;
-  inputName?: string;
+  setValue: UseFormSetValue<FormInputs>;
+  name: keyof FormInputs;
   width?: number;
   button?: JSX.Element;
-  multiple?: boolean;
 }
 
 function MyListBox({
   list,
-  listState,
-  inputName,
+  name,
+  setValue,
   width = 250, // default width
   button,
-  multiple = false,
 }: MyListBoxProps) {
-  // if no inputName given, pass a non existing field
-  const [_field, _meta, helpers] = useField(inputName || 'doesnotexist');
-
-  // updates listbox and formik state
-  const handleChange = (newValue: ListboxItem) => {
-    /* setSelected can be any of the functions defined by listItem.
-      since, we know those functions ONLY vary by parameter types,
-      we can assert a new function type to setSelected
-    */
-    const setSelected = listState.setSelected as (
-      _value: ListboxItem | ListboxItem[]
-    ) => void;
-
-    setSelected(newValue);
-
-    // only update formik state if inputName is passed
-    if (!inputName) return;
-    if (Array.isArray(newValue)) {
-      // newValue can also be an array
-      const values = newValue.map((item) => item.name); // extract values from name property
-      helpers.setValue(values);
-    } else {
-      helpers.setValue(newValue.name);
-    }
-  };
-
   return (
     <div className="font-rubik" style={{ width: width }}>
       <Listbox
-        value={listState.selected}
-        onChange={handleChange}
-        multiple={multiple}
+        onChange={(value) => setValue(name, value.name)}
+        name={name}
+        defaultValue={list[0]}
       >
         {({ open }) => (
           <div className="relative">
@@ -67,16 +39,20 @@ function MyListBox({
                   'relative w-full rounded-md px-5 py-2.5 text-left'
                 )}
               >
-                <span className="block truncate capitalize text-gray-400">
-                  {open ? 'Choose a city' : listState.selected.name}
-                </span>
-                <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
-                  {open ? (
-                    <BiChevronUp size={20} />
-                  ) : (
-                    <BiChevronDown size={20} />
-                  )}
-                </span>
+                {({ value }) => (
+                  <>
+                    <span className="block truncate capitalize text-gray-400">
+                      {open ? 'Choose a city' : value.name}
+                    </span>
+                    <span className="absolute right-0 top-1/2 -translate-y-1/2 pr-2">
+                      {open ? (
+                        <BiChevronUp size={20} />
+                      ) : (
+                        <BiChevronDown size={20} />
+                      )}
+                    </span>
+                  </>
+                )}
               </Listbox.Button>
             )}
 
