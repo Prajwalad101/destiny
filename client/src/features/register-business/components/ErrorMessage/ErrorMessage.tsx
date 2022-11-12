@@ -19,8 +19,6 @@ export default function ErrorMessage({
     <div className={classNames(className)}>
       <p className="text-red-600">
         {validate.includes(error.type) && error.message}
-        {/* {error.type === 'maxLength' && 'Description is too long '} */}
-        {/* {error.type === 'minLength' && 'Description is too short '} */}
       </p>
     </div>
   );
