@@ -1,14 +1,9 @@
 import { Navbar } from '@features/register-business/components';
-import { initialFormValues } from '@features/register-business/data';
 import { useSubmitForm } from '@features/register-business/hooks';
 import { FormContainer } from '@features/register-business/layouts';
-import { formikValidationSchema } from '@features/register-business/schema';
-import { MyFormValues } from '@features/register-business/types';
 import { dataToFormData } from '@features/register-business/utils/objects/dataToFormData';
-import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import SecondaryButton from 'src/components/button/secondary/SecondaryButton';
 import { QueryProvider } from 'src/components/context-provider';
 import AppLayout from 'src/components/layout/app/AppLayout';
 import { NextPageWithLayout } from 'src/pages/_app';
@@ -18,9 +13,9 @@ const Form: NextPageWithLayout = () => {
   const mutation = useSubmitForm();
   const router = useRouter();
 
-  const handleSubmit = (values: MyFormValues) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _handleSubmit = (values: any) => {
     const formData = dataToFormData(values);
-
     mutation.mutate(formData);
   };
 
@@ -39,16 +34,6 @@ const Form: NextPageWithLayout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stringifiedMutation]);
 
-  const submitButton = (
-    <SecondaryButton
-      className="mt-16 px-10 py-2"
-      type="submit"
-      disabled={mutation.isLoading}
-    >
-      Submit
-    </SecondaryButton>
-  );
-
   // change the cursor style when submitting form
   useEffect(() => {
     if (mutation.isLoading) {
@@ -58,21 +43,8 @@ const Form: NextPageWithLayout = () => {
     }
   }, [mutation.isLoading]);
 
-  return (
-    <>
-      <Formik
-        initialValues={initialFormValues}
-        validationSchema={formikValidationSchema}
-        onSubmit={handleSubmit}
-        validateOnChange={false}
-        validateOnBlur={true}
-      >
-        <FormContainer submitButton={submitButton} />
-      </Formik>
-    </>
-  );
+  return <FormContainer />;
 };
-
 Form.getLayout = (page) => (
   <>
     <QueryProvider>
