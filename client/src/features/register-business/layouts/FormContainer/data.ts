@@ -1,10 +1,15 @@
-import cities from '../../components/FormStep1/data/cities';
+import { cities, days, TimeString } from '../../components/FormStep1/data';
 
 export type FormInputs = {
   name: string;
   description: string;
   address: string;
   city: typeof cities[number];
+  workingDays: {
+    day: typeof days[number];
+    startTime: TimeString;
+    endTime: TimeString;
+  }[];
 };
 
 const defaultFormValues: FormInputs = {
@@ -12,6 +17,38 @@ const defaultFormValues: FormInputs = {
   address: '',
   description: '',
   city: cities[0],
+  workingDays: [
+    {
+      day: 'Sunday',
+      startTime: '9:00 PM',
+      endTime: '5:00 PM',
+    },
+    {
+      day: 'Monday',
+      startTime: '9:00 PM',
+      endTime: '5:00 PM',
+    },
+    {
+      day: 'Tuesday',
+      startTime: '9:00 PM',
+      endTime: '5:00 PM',
+    },
+    {
+      day: 'Wednesday',
+      startTime: '9:00 PM',
+      endTime: '5:00 PM',
+    },
+    {
+      day: 'Thursday',
+      startTime: '9:00 PM',
+      endTime: '5:00 PM',
+    },
+    {
+      day: 'Friday',
+      startTime: '9:00 PM',
+      endTime: '5:00 PM',
+    },
+  ],
 };
 
 export default defaultFormValues;

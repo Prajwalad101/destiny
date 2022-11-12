@@ -14,7 +14,7 @@ const hours = [
 ] as const;
 const minutes = ['00', '15', '30', '45'] as const;
 
-type TimeString = `${typeof hours[number]}:${typeof minutes[number]} ${
+export type TimeString = `${typeof hours[number]}:${typeof minutes[number]} ${
   | 'AM'
   | 'PM'}`;
 
