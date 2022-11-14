@@ -4,7 +4,6 @@ import { classNames } from 'src/utils/tailwind';
 interface ErrorMessageProps {
   className?: string;
   error: FieldError | undefined;
-  // message: { [_key in FieldError['type']]?: string };
   validate: FieldError['type'][];
 }
 

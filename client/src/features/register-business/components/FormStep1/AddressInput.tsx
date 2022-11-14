@@ -22,7 +22,7 @@ export default function AddressInput({
   setValue,
   control,
 }: AddressInputProps) {
-  const { errors } = useFormState({ control, name: ['address'] });
+  const { errors } = useFormState({ control, name: 'address' });
 
   return (
     <div className="mb-20 grid-cols-2 items-start gap-5 md:mb-28 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">

@@ -25,7 +25,8 @@ export default function FormStep1({
       <NameInput register={register} control={control} />
       <DescriptionInput register={register} control={control} />
       <AddressInput register={register} setValue={setValue} control={control} />
-      <WorkingHours setValue={setValue} control={control} />
+
+      <WorkingHours control={control} setValue={setValue} />
     </div>
   );
 }

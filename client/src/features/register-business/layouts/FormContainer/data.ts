@@ -20,32 +20,32 @@ const defaultFormValues: FormInputs = {
   workingDays: [
     {
       day: 'Sunday',
-      startTime: '9:00 PM',
+      startTime: '9:00 AM',
       endTime: '5:00 PM',
     },
     {
       day: 'Monday',
-      startTime: '9:00 PM',
+      startTime: '9:00 AM',
       endTime: '5:00 PM',
     },
     {
       day: 'Tuesday',
-      startTime: '9:00 PM',
+      startTime: '9:00 AM',
       endTime: '5:00 PM',
     },
     {
       day: 'Wednesday',
-      startTime: '9:00 PM',
+      startTime: '9:00 AM',
       endTime: '5:00 PM',
     },
     {
       day: 'Thursday',
-      startTime: '9:00 PM',
+      startTime: '9:00 AM',
       endTime: '5:00 PM',
     },
     {
       day: 'Friday',
-      startTime: '9:00 PM',
+      startTime: '9:00 AM',
       endTime: '5:00 PM',
     },
   ],
