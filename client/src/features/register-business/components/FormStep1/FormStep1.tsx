@@ -1,20 +1,18 @@
-import { Control, UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { Control, Controller, UseFormRegister } from 'react-hook-form';
 import { FormInputs } from '../../layouts/FormContainer';
 import AddressInput from './AddressInput';
 import DescriptionInput from './DescriptionInput';
 import Header from './Header';
 import NameInput from './NameInput';
-import WorkingHours from './WorkingHours';
+import WorkingDays from './WorkingDays';
 
 interface FormStep1Props {
   register: UseFormRegister<FormInputs>;
-  setValue: UseFormSetValue<FormInputs>;
   control: Control<FormInputs>;
   className?: string;
 }
 
 export default function FormStep1({
-  setValue,
   control,
   register,
   className = '',
@@ -24,9 +22,22 @@ export default function FormStep1({
       <Header />
       <NameInput register={register} control={control} />
       <DescriptionInput register={register} control={control} />
-      <AddressInput register={register} setValue={setValue} control={control} />
-
-      <WorkingHours control={control} setValue={setValue} />
+      <AddressInput register={register} control={control} />
+      <Controller
+        control={control}
+        name="workingDays"
+        rules={{
+          validate: (value) =>
+            value.length > 0 || 'Please select at least one working day',
+        }}
+        render={({ field, fieldState }) => (
+          <WorkingDays
+            list={field.value}
+            onChange={field.onChange}
+            error={fieldState.error}
+          />
+        )}
+      />
     </div>
   );
 }

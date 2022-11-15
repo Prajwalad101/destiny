@@ -5,13 +5,13 @@ import FormStep1 from '../../components/FormStep1/FormStep1';
 import defaultFormValues, { FormInputs } from './data';
 
 function FormContainer() {
-  const { register, setValue, control, handleSubmit } = useForm({
+  const { register, control, handleSubmit } = useForm({
     mode: 'onBlur',
     defaultValues: defaultFormValues,
   });
 
   const onSubmit = (data: FormInputs) => {
-    console.log(data);
+    console.log('Data', data);
   };
 
   return (
@@ -19,7 +19,6 @@ function FormContainer() {
       <Breadcrumbs />
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormStep1
-          setValue={setValue}
           control={control}
           register={register}
           className="mb-20 xs:pt-10"

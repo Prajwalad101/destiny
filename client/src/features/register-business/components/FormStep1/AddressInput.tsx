@@ -3,7 +3,6 @@ import {
   Control,
   Controller,
   UseFormRegister,
-  UseFormSetValue,
   useFormState,
 } from 'react-hook-form';
 import { classNames } from 'src/utils/tailwind';
@@ -13,16 +12,11 @@ import SelectCity from './SelectCity';
 
 interface AddressInputProps {
   register: UseFormRegister<FormInputs>;
-  setValue: UseFormSetValue<FormInputs>;
   control: Control<FormInputs>;
   className?: string;
 }
 
-export default function AddressInput({
-  register,
-  setValue,
-  control,
-}: AddressInputProps) {
+export default function AddressInput({ register, control }: AddressInputProps) {
   const { errors } = useFormState({ control, name: 'address' });
 
   return (
@@ -58,6 +52,7 @@ export default function AddressInput({
           render={({ field, fieldState }) => (
             <>
               <SelectCity
+                error={fieldState.error}
                 selected={field.value}
                 onChange={field.onChange}
                 className="mb-2 w-48"

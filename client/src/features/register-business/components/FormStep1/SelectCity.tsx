@@ -1,22 +1,25 @@
+import { FormInputs } from '@features/register-business/layouts/FormContainer';
 import { Listbox, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { FieldError } from 'react-hook-form';
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { BsCheck2 } from 'react-icons/bs';
 import { classNames } from 'src/utils/tailwind';
-import { FormInputs } from '../../layouts/FormContainer';
 import cities from './data/cities';
 
-interface SelectCityProps {
-  selected: FormInputs['city'];
-  onChange: (_value: FormInputs['city']) => void;
+interface SelectCityProps<T extends FormInputs> {
+  selected: T['city'];
+  onChange: (_value: T['city']) => void;
+  error: FieldError | undefined;
   className?: string;
 }
 
 export default function SelectCity({
+  error,
   selected,
   onChange,
   className = '',
-}: SelectCityProps) {
+}: SelectCityProps<FormInputs>) {
   return (
     <Listbox
       as="div"
@@ -29,7 +32,11 @@ export default function SelectCity({
         <div className="relative">
           <Listbox.Button
             className={classNames(
-              open ? 'ring-[3px] ring-blue-400' : 'ring-2 ring-gray-400/60',
+              open && error
+                ? 'ring-[3px] ring-red-400'
+                : open
+                ? 'ring-[3px] ring-blue-400'
+                : 'ring-2 ring-gray-400/60',
               'relative w-full rounded-md px-5 py-2.5 text-left'
             )}
           >
