@@ -1,7 +1,6 @@
-import { MyFormValues } from '@features/register-business/types/MyFormValues';
 import { buildFormData } from 'src/utils/browser';
 
-export function dataToFormData(data: MyFormValues) {
+export function dataToFormData(data: any) {
   const formData = new FormData();
 
   buildFormData({ formData, data });
