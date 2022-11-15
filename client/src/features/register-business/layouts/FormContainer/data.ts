@@ -4,7 +4,7 @@ export type FormInputs = {
   name: string;
   description: string;
   address: string;
-  city: typeof cities[number];
+  city: typeof cities[number] | '';
   workingDays: {
     day: typeof days[number];
     startTime: TimeString;
@@ -16,7 +16,7 @@ const defaultFormValues: FormInputs = {
   name: '',
   address: '',
   description: '',
-  city: cities[0],
+  city: '',
   workingDays: [
     {
       day: 'Sunday',
@@ -45,6 +45,11 @@ const defaultFormValues: FormInputs = {
     },
     {
       day: 'Friday',
+      startTime: '9:00 AM',
+      endTime: '5:00 PM',
+    },
+    {
+      day: 'Saturday',
       startTime: '9:00 AM',
       endTime: '5:00 PM',
     },

@@ -108,7 +108,7 @@ export default function WorkingHours({ control, setValue }: WorkingHoursProps) {
   };
 
   const handleCheck = (index: number, day: WorkingDay['day']) => {
-    // get the correct index of the dynamic fields array
+    // remove, insert takes the index of field array which is dynamic
     const fieldIndex = fields.findIndex((field) => field.day === day);
 
     if (isChecked(day)) {

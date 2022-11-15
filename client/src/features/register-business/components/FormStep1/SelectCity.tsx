@@ -3,14 +3,17 @@ import { Fragment } from 'react';
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { BsCheck2 } from 'react-icons/bs';
 import { classNames } from 'src/utils/tailwind';
+import { FormInputs } from '../../layouts/FormContainer';
 import cities from './data/cities';
 
 interface SelectCityProps {
-  onChange: (_value: typeof cities[number]) => void;
+  selected: FormInputs['city'];
+  onChange: (_value: FormInputs['city']) => void;
   className?: string;
 }
 
 export default function SelectCity({
+  selected,
   onChange,
   className = '',
 }: SelectCityProps) {
@@ -19,8 +22,8 @@ export default function SelectCity({
       as="div"
       className={className}
       name="city"
+      value={selected || 'City'}
       onChange={onChange}
-      defaultValue={cities[0]}
     >
       {({ open }) => (
         <div className="relative">

@@ -1,6 +1,7 @@
 import { FormInputs } from '@features/register-business/layouts/FormContainer';
 import {
   Control,
+  Controller,
   UseFormRegister,
   UseFormSetValue,
   useFormState,
@@ -50,9 +51,20 @@ export default function AddressInput({
           error={errors.address}
           validate={['required', 'maxLength', 'minLength']}
         />
-        <SelectCity
-          onChange={(value) => setValue('city', value)}
-          className="w-48"
+        <Controller
+          control={control}
+          name="city"
+          rules={{ required: 'Please select a city' }}
+          render={({ field, fieldState }) => (
+            <>
+              <SelectCity
+                selected={field.value}
+                onChange={field.onChange}
+                className="mb-2 w-48"
+              />
+              <ErrorMessage error={fieldState.error} validate={['required']} />
+            </>
+          )}
         />
       </div>
     </div>
