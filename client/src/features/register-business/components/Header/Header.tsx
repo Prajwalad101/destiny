@@ -15,12 +15,12 @@ const headerContent = [
 ];
 
 interface HeaderProps {
-  formStep: number;
+  step: number;
   className?: string;
 }
 
-export default function Header({ formStep, className = '' }: HeaderProps) {
-  const headingItem = headerContent.find((item) => item.id === formStep);
+export default function Header({ step, className = '' }: HeaderProps) {
+  const headingItem = headerContent.find((item) => item.id === step);
   if (!headingItem) return <></>;
 
   return (
