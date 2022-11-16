@@ -22,6 +22,7 @@ function FormContainer() {
 
   const handleBack = () => {
     if (step === 1) {
+      // TODO: handle logic to cancel form
       return;
     }
     setStep((prev) => --prev);
@@ -39,7 +40,13 @@ function FormContainer() {
             className="mb-20 xs:pt-10"
           />
         )}
-        {step === 2 && <FormStep2 />}
+        {step === 2 && (
+          <FormStep2
+            control={control}
+            register={register}
+            className="mb-20 xs:pt-10"
+          />
+        )}
         <Divider className="mb-10" width={2} />
         <div className="flex flex-wrap gap-x-10 gap-y-5">
           <SecondaryButton

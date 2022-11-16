@@ -1,6 +1,7 @@
-import { FormInputs } from '@features/register-business/layouts/FormContainer';
 import { Control, UseFormRegister, useFormState } from 'react-hook-form';
 import { classNames } from 'src/utils/tailwind';
+import { FieldLayout } from '../../layouts';
+import { FormInputs } from '../../layouts/FormContainer';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import MyLabel from '../MyLabel/MyLabel';
 
@@ -14,7 +15,7 @@ export default function NameInput({ register, control }: NameInputProps) {
   const { errors } = useFormState({ control, name: 'name' });
 
   return (
-    <div className="mt-12 mb-16 grid-cols-2 items-start gap-5 md:my-24 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+    <FieldLayout>
       <MyLabel
         name="business name"
         sublabel="Provide the full name of your business"
@@ -39,6 +40,6 @@ export default function NameInput({ register, control }: NameInputProps) {
           validate={['required', 'maxLength', 'minLength']}
         />
       </div>
-    </div>
+    </FieldLayout>
   );
 }

@@ -6,6 +6,7 @@ import {
   useFormState,
 } from 'react-hook-form';
 import { classNames } from 'src/utils/tailwind';
+import { FieldLayout } from '../../layouts';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import MyLabel from '../MyLabel/MyLabel';
 import SelectCity from './SelectCity';
@@ -20,7 +21,7 @@ export default function AddressInput({ register, control }: AddressInputProps) {
   const { errors } = useFormState({ control, name: 'address' });
 
   return (
-    <div className="mb-20 grid-cols-2 items-start gap-5 md:mb-28 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+    <FieldLayout>
       <MyLabel
         name="address"
         sublabel="Provide the address and city of your business"
@@ -62,6 +63,6 @@ export default function AddressInput({ register, control }: AddressInputProps) {
           )}
         />
       </div>
-    </div>
+    </FieldLayout>
   );
 }

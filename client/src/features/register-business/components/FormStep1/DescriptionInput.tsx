@@ -1,6 +1,7 @@
-import { FormInputs } from '@features/register-business/layouts/FormContainer';
 import { Control, UseFormRegister, useFormState } from 'react-hook-form';
 import { classNames } from 'src/utils/tailwind';
+import { FieldLayout } from '../../layouts';
+import { FormInputs } from '../../layouts/FormContainer';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import MyLabel from '../MyLabel/MyLabel';
 
@@ -17,7 +18,7 @@ export default function DescriptionInput({
   const { errors } = useFormState({ control, name: 'description' });
 
   return (
-    <div className="mb-14 grid-cols-2 items-start gap-5 md:mb-20 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
+    <FieldLayout>
       <MyLabel
         name="description"
         sublabel="Provide a short summary of your business. Tell the customers about
@@ -43,6 +44,6 @@ export default function DescriptionInput({
         />
         <p className="text-right text-gray-400">0 / 200 words</p>
       </div>
-    </div>
+    </FieldLayout>
   );
 }

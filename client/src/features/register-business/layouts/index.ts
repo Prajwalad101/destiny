@@ -1,5 +1,3 @@
-import FormStep1 from '../components/FormStep1/FormStep1';
-import FormContainer from './FormContainer/FormContainer';
-import HeroSection from './HeroSection/HeroSection';
-
-export { FormContainer, HeroSection, FormStep1 };
+export { default as FieldLayout } from './FieldLayout/FieldLayout';
+export { default as FormContainer } from './FormContainer/FormContainer';
+export { default as HeroSection } from './HeroSection/HeroSection';
