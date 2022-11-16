@@ -2,7 +2,6 @@ import { Control, Controller, UseFormRegister } from 'react-hook-form';
 import { FormInputs } from '../../layouts/FormContainer';
 import AddressInput from './AddressInput';
 import DescriptionInput from './DescriptionInput';
-import Header from './Header';
 import NameInput from './NameInput';
 import WorkingDays from './WorkingDays';
 
@@ -19,7 +18,6 @@ export default function FormStep1({
 }: FormStep1Props) {
   return (
     <div className={className}>
-      <Header />
       <NameInput register={register} control={control} />
       <DescriptionInput register={register} control={control} />
       <AddressInput register={register} control={control} />

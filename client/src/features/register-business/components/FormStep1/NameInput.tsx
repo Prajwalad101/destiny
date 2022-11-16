@@ -17,7 +17,7 @@ export default function NameInput({ register, control }: NameInputProps) {
     <div className="mt-12 mb-16 grid-cols-2 items-start gap-5 md:my-24 md:grid lg:grid-cols-[2fr_3fr] lg:gap-24">
       <MyLabel
         name="business name"
-        sublabel="provide the full name of your business"
+        sublabel="Provide the full name of your business"
       />
       <div>
         <input
