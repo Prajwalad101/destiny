@@ -1,7 +1,5 @@
-type Res = { longitude: number; latitude: number };
-
 const getUserCoordinates = () => {
-  const promise = new Promise<Res>(function (resolve, reject) {
+  const promise = new Promise<[number, number]>(function (resolve, reject) {
     const geolocation = navigator.geolocation;
 
     if (!geolocation) {
@@ -11,7 +9,7 @@ const getUserCoordinates = () => {
     geolocation.getCurrentPosition(
       (position) => {
         const { coords } = position;
-        resolve({ longitude: coords.longitude, latitude: coords.latitude });
+        resolve([coords.longitude, coords.latitude]);
       },
       (_error) =>
         reject(

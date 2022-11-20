@@ -5,9 +5,9 @@ import {
   UseFormRegister,
   useFormState,
 } from 'react-hook-form';
-import { classNames } from 'src/utils/tailwind';
 import { FieldLayout } from '../../layouts';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import MyInput from '../MyInput/MyInput';
 import MyLabel from '../MyLabel/MyLabel';
 import SelectCity from './SelectCity';
 
@@ -27,19 +27,16 @@ export default function AddressInput({ register, control }: AddressInputProps) {
         sublabel="Provide the address and city of your business"
       />
       <div>
-        <input
+        <MyInput
+          error={errors.address}
           {...register('address', {
             required: 'Address is required',
             maxLength: { value: 50, message: 'Address is too long' },
             minLength: { value: 5, message: 'Address is too short' },
           })}
-          type="text"
           id="address"
-          className={classNames(
-            errors.address ? 'mb-2 ring-red-500' : 'mb-4 ring-blue-600',
-            'w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-offset-2 transition-all focus:ring-[3px]'
-          )}
           placeholder="eg: Kapan, Baluwakhani"
+          type="text"
         />
         <ErrorMessage
           className="mb-3"

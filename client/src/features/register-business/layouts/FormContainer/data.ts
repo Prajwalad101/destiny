@@ -10,6 +10,10 @@ export type FormInputs = {
     startTime: TimeString;
     endTime: TimeString;
   }[];
+  contactNumber: '';
+  email: '';
+  coordinates: [number, number] | null;
+  directions: { value: string }[];
 };
 
 export const defaultFormValues: FormInputs = {
@@ -54,6 +58,10 @@ export const defaultFormValues: FormInputs = {
       endTime: '5:00 PM',
     },
   ],
+  contactNumber: '',
+  email: '',
+  coordinates: null,
+  directions: [{ value: '' }],
 };
 
 export const formSteps = [

@@ -5,7 +5,7 @@ import { Breadcrumbs, FormStep1, FormStep2, Header } from '../../components';
 import { defaultFormValues, FormInputs } from './data';
 
 function FormContainer() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   const { register, control, handleSubmit } = useForm({
     mode: 'onBlur',
