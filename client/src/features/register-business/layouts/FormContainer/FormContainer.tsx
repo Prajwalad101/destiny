@@ -38,9 +38,9 @@ function FormContainer() {
   return (
     <div className="xs:my-10 md:my-16">
       <Breadcrumbs
-        onClick={(value: number) => {
+        onClick={(newStep) => {
           // only step through validated fields
-          if (value <= maxStepRef.current) setStep(step);
+          if (newStep <= maxStepRef.current) setStep(newStep);
         }}
         step={step}
       />

@@ -35,6 +35,7 @@ export default function ContactNumberInput({
           })}
           error={errors.contactNumber}
           type="text"
+          className="mb-2"
         />
         <ErrorMessage
           error={errors.contactNumber}

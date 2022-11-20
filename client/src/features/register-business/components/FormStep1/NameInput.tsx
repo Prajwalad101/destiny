@@ -31,6 +31,7 @@ export default function NameInput({ register, control }: NameInputProps) {
           id="business name"
           placeholder="eg: The Burger House"
           type="text"
+          className="mb-2"
         />
         <ErrorMessage
           error={errors.name}

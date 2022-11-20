@@ -35,6 +35,7 @@ export default function EmailInput({ register, control }: EmailInputProps) {
           })}
           type="email"
           error={errors.email}
+          className="mb-2"
         />
         <ErrorMessage error={errors.email} validate={['validate']} />
       </div>

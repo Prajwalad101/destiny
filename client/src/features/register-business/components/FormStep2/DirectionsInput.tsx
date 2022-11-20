@@ -46,6 +46,7 @@ export default function DirectionsInput({
                   minLength: { value: 10, message: 'Direction is too short' },
                   maxLength: { value: 50, message: 'Direction is too long' },
                 })}
+                error={errors.directions && errors.directions[index]?.value}
               />
               {index !== 0 && (
                 <div
@@ -66,10 +67,11 @@ export default function DirectionsInput({
         <ErrorMessage
           error={errors.directions?.root}
           validate={['maxLength']}
+          className="mb-2"
         />
         <button
           type="button"
-          className="mt-4 text-blue-700 hover:text-blue-500"
+          className="text-blue-700 hover:text-blue-500"
           onClick={() => append({ value: '' })}
         >
           Add direction
