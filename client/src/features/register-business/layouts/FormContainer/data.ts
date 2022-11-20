@@ -63,27 +63,3 @@ export const defaultFormValues: FormInputs = {
   coordinates: null,
   directions: [{ value: '' }],
 };
-
-export const formSteps = [
-  {
-    id: 1,
-    name: 'general information',
-    description: 'First, we need to know a little bit about your business',
-  },
-  {
-    id: 2,
-    name: 'location and contact',
-    description: 'Make your business easily accessible to customers',
-  },
-  {
-    id: 3,
-    name: 'category and attributes',
-    description:
-      'Uniquely identify your business category and all features it provides',
-  },
-  {
-    id: 4,
-    name: 'socials and uploads',
-    description: 'Provide your business socials and upload images and files',
-  },
-];

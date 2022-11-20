@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Divider, PrimaryButton, SecondaryButton } from 'src/components';
 import { Breadcrumbs, FormStep1, FormStep2, Header } from '../../components';
 import { defaultFormValues, FormInputs } from './data';
 
 function FormContainer() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
+
+  // holds the highest validated form step
+  const maxStepRef = useRef<number>(1);
 
   const { register, control, handleSubmit } = useForm({
     mode: 'onBlur',
@@ -14,7 +17,11 @@ function FormContainer() {
 
   const onSubmit = (data: FormInputs) => {
     if (step < 4) {
-      setStep((prev) => ++prev);
+      setStep((prev) => {
+        const newStep = prev + 1;
+        maxStepRef.current = Math.max(newStep, maxStepRef.current);
+        return newStep;
+      });
       return;
     }
     console.log('Data', data);
@@ -30,7 +37,13 @@ function FormContainer() {
 
   return (
     <div className="xs:my-10 md:my-16">
-      <Breadcrumbs step={step} />
+      <Breadcrumbs
+        onClick={(value: number) => {
+          // only step through validated fields
+          if (value <= maxStepRef.current) setStep(step);
+        }}
+        step={step}
+      />
       <Header step={step} />
       <form onSubmit={handleSubmit(onSubmit)}>
         {step === 1 && (
