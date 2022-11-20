@@ -28,6 +28,7 @@ export default function AddressInput({ register, control }: AddressInputProps) {
       />
       <div>
         <MyInput
+          className="mb-3"
           error={errors.address}
           {...register('address', {
             required: 'Address is required',

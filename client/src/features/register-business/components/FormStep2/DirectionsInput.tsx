@@ -40,6 +40,7 @@ export default function DirectionsInput({
           <div className="mb-2" key={field.id}>
             <div className="flex items-center gap-4">
               <MyInput
+                className="mb-2"
                 {...register(`directions.${index}.value`, {
                   required: 'This field cannot be empty',
                   minLength: { value: 10, message: 'Direction is too short' },
@@ -73,15 +74,6 @@ export default function DirectionsInput({
         >
           Add direction
         </button>
-        {/* <button
-          className="mt-4 flex items-center gap-2 rounded-md bg-blue-500 px-6 py-2 text-white transition-all
-          hover:bg-blue-400 hover:shadow-md"
-          type="button"
-          onClick={() => append({ value: '' })}
-        >
-          Add
-          <AiOutlinePlus size={17} />
-        </button> */}
       </div>
     </FieldLayout>
   );

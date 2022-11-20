@@ -12,7 +12,10 @@ export default function Breadcrumbs({
 }: BreadCrumbsProps) {
   return (
     <div
-      className={classNames(className, 'hidden justify-between gap-7 xs:flex')}
+      className={classNames(
+        className,
+        'mb-6 hidden justify-between gap-7 xs:flex'
+      )}
     >
       {formSteps.map((formStep, index) => (
         <div key={index} className="flex items-center gap-4">

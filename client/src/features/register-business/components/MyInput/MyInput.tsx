@@ -11,8 +11,9 @@ const MyInput = forwardRef(
         {...props}
         ref={ref}
         className={classNames(
+          props.className || '',
           props.error ? 'ring-red-500' : 'ring-blue-600',
-          'mb-2 w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-offset-1 transition-all focus:ring-[3px]'
+          'w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-offset-1 transition-all focus:ring-[3px]'
         )}
       />
     );
