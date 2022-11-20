@@ -1,18 +1,6 @@
 import { Divider } from 'src/components';
 import { classNames } from 'src/utils/tailwind';
-
-const headerContent = [
-  {
-    id: 1,
-    title: 'general information',
-    description: 'First, we need to know a little bit about your business',
-  },
-  {
-    id: 2,
-    title: 'location and contact',
-    description: 'Make your business easily accessible to customers',
-  },
-];
+import { formContent } from '../../layouts/FormContainer';
 
 interface HeaderProps {
   step: number;
@@ -20,8 +8,8 @@ interface HeaderProps {
 }
 
 export default function Header({ step, className = '' }: HeaderProps) {
-  const headingItem = headerContent.find((item) => item.id === step);
-  if (!headingItem) return <></>;
+  const formItem = formContent.find((item) => item.id === step);
+  if (!formItem) return <></>;
 
   return (
     <div
@@ -31,9 +19,9 @@ export default function Header({ step, className = '' }: HeaderProps) {
       )}
     >
       <h2 className="mb-3 text-2xl font-medium capitalize sm:text-3xl">
-        {headingItem.title}
+        {formItem.name}
       </h2>
-      <p className="mb-7 text-gray-600 md:mb-10">{headingItem.description}</p>
+      <p className="mb-7 text-gray-600 md:mb-10">{formItem.description}</p>
       <div className="relative ml-[50%] h-1 w-[100vw] -translate-x-[50%]">
         <Divider
           width={3}
