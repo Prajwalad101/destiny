@@ -48,7 +48,7 @@ export default function Sidebar() {
               Write a Review
             </a>
           </Link>
-          <Link href="/create-business">
+          <Link href="/register-business">
             <a
               className="block w-max cursor-pointer underline underline-offset-2 hover:text-gray-600"
               onClick={() => setOpen(!open)}
